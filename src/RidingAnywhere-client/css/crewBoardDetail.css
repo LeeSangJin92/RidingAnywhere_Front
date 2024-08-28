@@ -1,0 +1,786 @@
+.CrewBoardDetail{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 800px;
+
+    h2, h3{
+        background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
+        -webkit-text-stroke-width: 0.1px;
+        -webkit-text-stroke-color: black;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .blockPageLine{
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(33, 33, 33, 0.788);
+        z-index: 11;
+    }
+
+    /* 투어 참여 확인 박스 */
+    .CrewTourAttendCheck{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        background-color: black;
+        border: 2px solid orange;
+        border-radius: 20px;
+        width: 800px;
+        height: 300px;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        >div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+        label{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 150px;
+            height: 80px;
+            border: 4px solid gray;
+            border-radius: 20px;
+            cursor: pointer;
+            box-sizing: border-box;
+            h1{
+                color: gray;
+            }
+        }
+        label:hover{
+            border: 4px solid gold;
+            h1{
+                background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
+                -webkit-text-stroke-width: 0.1px;
+                -webkit-text-stroke-color: black;
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+            }
+        }
+    }
+
+
+    /* 삭제 확인 박스 */
+    .CrewBoardDeleteCheckBox{
+        position: absolute;
+        left: auto;
+        width: 800px;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        gap: 40px;
+        background-color: black;
+        border: 2px solid orange;
+        border-radius: 20px;
+        box-sizing: border-box;
+        >div{
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            width: 100%;
+            label{
+                display: flex;
+                width: 150px;
+                height: 70px;
+                align-items: center;
+                justify-content: center;
+                border: 2px solid orange;
+                border-radius: 10px;
+                cursor: pointer;
+            }
+        }
+
+        
+    }
+
+
+    .BoardTopLine{
+        display: flex;
+        height: 180px;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        .boardTypeLine{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 200px;
+            height: 100%;
+            margin-left: 30px;
+        }
+        
+        .TopLine1{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 980px;
+            height: 85%;
+            margin-right: 15px;
+            border: 2px solid orange;
+            border-radius: 20px;
+            gap: 5px;
+        }
+        .TopLine2{
+            display: flex;
+            width: 100%;
+            height: 60px;
+            align-items: center;
+            justify-content: space-between;
+            box-sizing: border-box;
+            padding: 10px;
+            .boardTitleOptionLine{
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                justify-content: center;
+            }
+            .boardTitleChangeInput{
+                border: 2px solid orange;
+                border-radius: 10px;
+                box-sizing: border-box;
+                padding-left: 10px;
+                height: 60px;
+                width: 400px;
+                font-size: 25px;
+                font-weight: bold;
+            }
+            .BoardTitleChangeBtn{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: rgba(0, 0, 0, 0);
+                border: 2px solid orange;
+                color: orange;
+                font-size: 20px;
+                font-weight: bold;
+                border-radius: 10px;
+                box-sizing: border-box;
+                cursor: pointer;
+                width: 100px;
+                height: 50px;
+            }
+            .BoardInfoTop{
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                span{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 90px;
+                    height: 50px;
+                    border: 3px solid orange;
+                    border-radius: 20px;
+                    h2{
+                        margin: 0;
+                    }
+                }
+                .boardDateChangeLine{
+                    display: flex;
+                    align-items: center;
+                    justify-content: right;
+                    width: max-content;
+                    gap: 10px;
+                    .BoardChangeUpBtn{
+                        width: 100px;
+                        height: 50px;
+                        display: flex;
+                        font-size: 20px;
+                        font-weight: bold;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: rgba(0, 0, 0, 0);
+                        color: orange;
+                        border: 2px solid orange;
+                        border-radius: 10px;
+                        box-sizing: border-box;
+                        cursor: pointer;
+                    }
+                    .DatePicker{
+                        width: 140px;
+                    }
+                }
+            }
+
+            .BoardOptionLine{
+                display: flex;
+                gap: 5px;
+                input{
+                    width: 40px;
+                    height: 40px;
+                    background-size: cover;
+                    border: 0px;
+                    background-color: rgba(0, 0, 0, 0);
+                    color: rgba(0, 0, 0, 0);
+                    cursor: pointer;
+                }
+                .BoardChangeBtn{
+                    background-image: url("/public/img/ChangeBtnImg.png");
+                }
+                .BoardDeleteBtn{
+                    background-image: url("/public/img/DeleteImg.png");
+                }
+            }
+
+            .TourAddressLine{
+                display: flex;
+                flex-direction: column;
+                width: 420px;
+                height: 100%;
+                gap: 5px;
+                h3{
+                    margin: 0;
+                }
+                >div{
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                    .addressChangeUp{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 100px;
+                        height: 30px;
+                        border: 2px solid orange;
+                        border-radius: 10px;
+                        box-sizing: border-box;
+                        background-color: rgba(0, 0, 0, 0);
+                        color: orange;
+                        font-size: 15px;
+                        font-weight: bold;
+                        cursor: pointer;
+                    }
+                }
+                .addressInput{
+                    width: 400px;
+                }
+            }
+        }
+        
+    }
+
+
+    .BoardBottomLine{
+        display: flex;
+        width: 100%;
+        height: 620px;
+        box-sizing: border-box;
+            h2{
+                margin: 0;
+            }
+
+        /* 모임글 관련 정보 박스 영역 */
+        .TourInfo{
+            margin-left: 10px;
+            position: absolute;
+            height: 400px;
+            z-index: 10;
+            .TourWriter{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+
+
+            .TourBtnLine{
+                width: 100%;
+                display: flex;
+
+                input:checked + label, label:hover{
+                    border: 4px solid gold;
+                    cursor: pointer;
+                    h2{
+                        background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
+                        -webkit-text-stroke-width: 0.1px;
+                        -webkit-text-stroke-color: black;
+                        -webkit-background-clip: text;
+                        background-clip: text;
+                        color: transparent;
+                    }
+                }
+
+                label{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 80px;
+                    height: 50px;
+                    background-color: rgb(18, 18, 18);
+                    border: 4px solid rgb(84, 84, 84);
+                    border-radius: 10px;
+                    h2{
+                        color: rgb(138, 138, 138);
+                    }
+                }
+            }
+
+            #On{
+                justify-content: center;
+                align-items: center;
+                gap: 30px;
+            }
+
+            #Off{
+                justify-content: center;
+                margin-top: 20px;
+                gap: 10px;
+            }
+
+            .TourInfoSlideOff{
+                display: none;
+                flex-direction: column;
+                width: 200px;
+                height: 220px;
+                margin-top: 10px;
+                gap: 10px;
+                background-color: black;
+                border: 2px solid orange;
+                border-radius: 20px 0px 0px 20px;
+                .AttendanceCnt{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: 30px;
+                }
+            }
+
+            .TourInfoSideOn{
+                display: flex;
+                width: 450px;
+                height: 560px;
+                margin-top: 10px;
+                flex-direction: column;
+                border: 2px solid orange;
+                border-radius: 20px 0px 20px 20px;
+                background-color: rgb(0, 0, 0);
+                .AttendanceListTop{
+                    height: 150px;
+                    display: flex;
+                    .AttendanceCnt{
+                        width: 260px;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+                .AttendanceListBottom{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    .CrewAttendanceBox label{
+                        display: flex;
+                        width: 100%;
+                        height: 60px;
+                        justify-content: space-around;
+                        align-items: center;
+                        border: 2px solid orange;
+                        box-sizing: border-box;
+                        cursor: pointer;
+                    }
+                }
+        }
+
+        .TourSlideBtn{
+            width: 40px;
+            height: 220px;
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            border-top: 2px solid orange;
+            border-bottom: 2px solid orange;
+            border-right: 2px solid orange;
+            border-radius: 0px 20px 20px 0px;
+        }
+        .TourSlideBtn:hover label{
+            cursor: pointer;
+        }
+        }
+
+        .boardContextBox{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 985px;
+            height: 600px;
+            margin-left: 280px;
+            .ContextShow{
+                width: 100%;
+                height: 250px;
+                resize: none;
+                font-size: 25px;
+                font-weight: bold;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                border-radius: 20px;
+                padding: 10px;
+                border: 4px solid orange;
+                box-sizing: border-box;
+            }
+            .ContextShow *{
+                margin: 0;
+            }
+            .ContextChangeBox{
+                width: 100%;
+                height: 100%;
+                box-sizing: border-box;
+                .boardContextChangeBtn{
+                    display: flex;
+                    position: absolute;
+                    border: 2px solid orange;
+                    border-radius: 15px;
+                    width: 120px;
+                    height: 50px;
+                    font-size: 20px;
+                    font-weight: bold;
+                    background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
+                    -webkit-text-stroke-width: 0.1px;
+                    -webkit-text-stroke-color: black;
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    color: transparent;
+                    margin-top: 5px;
+                    right: 20px;
+                    cursor: pointer;
+                }
+
+
+                .quill{
+                    width: 100%;
+                    border: 2px solid orange;
+                    border-radius: 20px;
+                    >div{
+                        border: none;
+                    }
+                    >div:first-child{
+                        height: 60px;
+                        display: flex;
+                        align-items: center;
+                        border-bottom: 2px solid orange;
+                    }
+                }
+            }
+
+
+
+            /* 댓글 영역 */
+            .commentLine{
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                /* 댓글 목록 영역 */
+                .commentList{
+                    height: 300px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    box-sizing: border-box;
+                    border: 2px solid orange;
+                    border-radius: 20px;
+                    overflow-y: scroll;
+                    overscroll-behavior: contain;
+                    scrollbar-width: none;
+
+                    .commentListLine{
+                    height: 300px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding-top: 10px;
+                    padding-bottom: 10px;   
+                    gap: 10px;
+                    box-sizing: border-box;
+                    }
+
+                    /* 댓글 리스트 로딩  */
+                    .loadingBlock{
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: black;
+                    }
+
+                    /* 빈 댓글 상태 안내 */
+                    .commentEmptyNote{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 100%;
+                        height: 100%;
+                    }
+                    /* 댓글 박스 영역 */
+                    .commentBox{
+                        display: flex;
+                        gap: 20px;
+                        width: 950px;
+                        min-height: max-content;
+                        border: 2px solid orange;
+                        border-radius: 20px;
+                        padding-top: 10px;
+                        padding-left: 10px;
+                        padding-bottom: 10px;
+                        box-sizing: border-box;
+                        
+                        /* 댓글 작성자 프로필 이미지 */
+                        .profileImg{
+                            width: 100px;
+                            height: 100px;
+                            border-radius: 20px;
+                        }
+                        .ChangeCommentContext{
+                            height: 40px;
+                            width: 500px;
+                            border-radius: 5px;
+                            font-size: 20px;
+                            font-weight: bold;
+                            padding-left: 10px;
+                            box-sizing: border-box;
+                            margin-right: 10px;
+                        }
+                        .ChangeCommentContext::placeholder{
+                            color: black;
+                        }
+                        /* 댓글 정보 라인 */
+                        >div, .ReplyBox>div{
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            width: 800px;
+                            height: max-content;
+
+                            /* 댓글 작성자 등급 */
+                            .WriterLevel{
+                                width: 100px;
+                                height: 40px;
+                                border: 2px solid orange;
+                                border-radius: 10px;
+                                box-sizing: border-box;
+                                text-align: center;
+                            }
+
+                            .TopLine{
+                                display: flex;
+                                align-items: center;
+                                height: 50px;
+                                .commentNickName{
+                                    width: max-content;
+                                    margin-right: 20px;
+                                }
+                                
+                                .commentDateLine{
+                                    display: flex;
+                                    gap: 10px;
+                                    margin-left: auto;
+                                    margin-right: 10px;
+                                }
+                                .commentBtnLine{
+                                    display: flex;
+                                    height: 40px;
+                                    .commentChangeBtn,.commentDeleteBtn{
+                                        width: 40px;
+                                        text-align: center;
+                                        background-color: rgba(0, 0, 0, 0);
+                                        border: none;
+                                        cursor: pointer;
+                                        color:rgba(0, 0, 0, 0);
+                                        background-size: cover;
+                                    }
+
+                                    
+                                    .commentChangeBtn{
+                                        background-image: url('/public/img/ChangeBtnImg.png');
+                                    }
+                                    .commentDeleteBtn{
+                                        background-image: url('/public/img/DeleteImg.png');
+                                    }
+
+                                }
+    
+                            }
+                            .BottomLine{
+                                display: flex;
+                                align-items: center;
+                                height: 50px;
+
+                                .commentChangeUpLabel, .ReplyChangeUpLabel{
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    width: 120px;
+                                    height: 50px;
+                                    background-color: rgb(18, 18, 18);
+                                    border: 2px solid rgb(84, 84, 84);
+                                    border-radius: 10px;
+                                    box-sizing: border-box;
+                                    h2{
+                                        color: rgb(138, 138, 138);
+                                    };
+                                }
+
+                                .CommentChangeUpBtn + label:hover,.ReplyChangeUpBtn + label:hover{
+                                    cursor: pointer;
+                                    border: 2px solid orange;
+                                    h2{
+                                        background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
+                                        -webkit-text-stroke-width: 0.1px;
+                                        -webkit-text-stroke-color: black;
+                                        -webkit-background-clip: text;
+                                        background-clip: text;
+                                        color: transparent;
+                                    }
+                                }
+
+                                .commentReplyBtn + label{
+                                    margin-left: auto;
+                                    margin-right: 10px;
+                                }
+                                .commentReplyBtn + label:hover{
+                                    cursor: pointer;
+                                }
+
+                            }
+
+                            /* 대댓글 영역 */
+                            .ReplyBox{
+                                display: flex;
+                                width: 800px;
+                                border-top: 2px dashed orange;
+                                box-sizing: border-box;
+                                padding-top: 10px;
+                                padding-bottom: 10px;
+                                margin-top: 5px;
+                                gap: 10px;
+
+                            }
+
+                            /* 대댓글 입력 영역 */
+                            .CrewBoardReplyInsertBox{
+                                display: flex;
+                                flex-direction: column;
+                                width: 100%;
+                                height: 100px;
+                                justify-content: center;
+                                gap: 10px;
+                                margin-bottom: 10px;
+                                margin-top: 5px;
+                                box-sizing: border-box;
+                                border-top: 2px dashed orange;
+                                >div{
+                                    width: 100%;
+                                    display: flex;
+                                    gap: 10px;
+                                }
+                                .ReplyContextBox{
+                                    width: 500px;
+                                    height: 40px;
+                                    border-radius: 5px;
+                                    box-sizing: border-box;
+                                    padding-left: 10px;
+                                    font-size: 20px;
+                                    font-weight: bold;
+                                }
+                                .uploadReplyBtn{
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    width: 80px;
+                                    border: 2px solid gray;
+                                    border-radius: 10px;
+                                    box-sizing: border-box;
+                                    h2{
+                                        color: rgb(138, 138, 138);
+                                    };
+                                }
+                                .uploadReplyBtn:hover{
+                                    cursor: pointer;
+                                    border: 2px solid orange;
+                                    h2{
+                                        background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
+                                        -webkit-text-stroke-width: 0.1px;
+                                        -webkit-text-stroke-color: black;
+                                        -webkit-background-clip: text;
+                                        background-clip: text;
+                                        color: transparent;
+                                    }
+                                }
+                                .replyCancelBtn{
+                                    border: none;
+                                    width: 40px;
+                                    height: 40px;
+                                    background-color: rgba(0, 0, 0, 0);
+                                    background-image: url("/public/img/DeleteImg.png");
+                                    background-size: cover;
+                                }
+                                .replyCancelBtn:hover{
+                                    cursor: pointer;
+                                }
+                            }
+
+
+                        }
+                    }
+                }
+                
+
+                    /* 댓글 등록 라인 */
+                    .commentInputLine{
+                        display: flex;
+                        height: 60px;
+                        align-items: center;
+                        border: 2px solid orange;
+                        border-radius: 20px;
+                        box-sizing: border-box;
+                        padding-left: 10px;
+                        .commentTextBox{
+                            height: 40px;
+                            width: 700px;
+                            margin-left: 10px;
+                            border-radius: 10px;
+                            box-sizing: border-box;
+                            padding-left: 10px;
+                            font-size: 20px;
+                        }
+                        .commentUploadBtn + label{
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 120px;
+                            height: 50px;
+                            margin-left: auto;
+                            margin-right: 10px;
+                            cursor: pointer;
+                        }
+
+                    }
+            }
+        }
+    }
+}

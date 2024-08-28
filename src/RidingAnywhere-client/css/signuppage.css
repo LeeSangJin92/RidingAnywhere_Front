@@ -1,0 +1,138 @@
+.Section_signup{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 950px;
+}
+
+.Signup_Box{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10px;
+    width: 500px;
+    height: max-content;
+    border: 5px solid rgb(255, 192, 0);
+    border-radius: 40px;
+    padding: 20px 0;
+}
+
+.Signup_line{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 340px;
+    height: 40px;
+}
+
+.Signup_line h2{
+    font-size: 17px;
+    text-align: center;
+    min-width: 100px;
+    margin: 0;
+}
+
+.Signup_Box h8{
+    font-size: 15px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+#Email_pass > [name='emailAuth']{
+    font-size: 18px;
+    margin: 8px 0;
+    padding: 1px;
+    min-width: 100px;
+    text-align: center;
+    border: 2px solid gray;
+    border-radius: 5px;
+    text-shadow: 1px 1px whitesmoke;
+}
+
+.Section_signup .selectCity,.Section_signup .selectTown{
+    width: 200px;
+    height: 35px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    border: 2px solid orange;
+    border-radius: 10px;
+    
+}
+
+.Gender_radio{
+    display: flex;
+    justify-content: space-around;
+    width: 400px;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    align-items: center;
+    margin: 20px 0px;
+}
+
+[name='userGender']{
+    display: none;
+}
+
+[name='userGender'] + label{
+    display: flex;
+    justify-content: center;
+    width: 33%;
+    line-height: 50px;
+    align-items: center;
+    border: 2px solid gray;
+    height: 100%;
+}
+
+[name='userGender'] + label:first-of-type{
+    border-radius: 4px 0 0 4px;    
+}
+
+[name='userGender'] + label:last-of-type{
+    border-radius: 0 4px 4px 0;
+}
+
+input[type='radio']:checked + label{
+    background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
+    font-weight: bold;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+button:hover, .btn_submit_signup:hover{
+    cursor: pointer;
+}
+
+.Signup_line>input, #Email_pass>input{
+    height: 60%;
+    margin-left: 10px;
+}
+
+.btn_submit_signup:disabled{
+    background-color: black;
+    color: gray;
+    text-shadow: 1px 1px whitesmoke;
+    border: 2px solid gray;
+    
+}
+
+.btn_submit_signup{
+    min-width: 150px;
+    min-height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
+    font-weight: bold;
+    border: 3px solid orange;
+    border-radius: 5px;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}

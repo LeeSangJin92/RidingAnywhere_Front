@@ -1,0 +1,232 @@
+.CrewBoardWrite{
+    height: 580px;
+    background-color: black;
+    border: 2px solid orange;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h2{
+        background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
+        font-weight: bold;
+        -webkit-text-stroke-width: 0.1px;
+        -webkit-text-stroke-color: black;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    .WriteTop{
+        width: 70%;
+        display: flex;
+        height: 100px;
+        align-items: center;
+        justify-content: space-between;
+        h1{
+            margin-right: 30px;
+        }
+        .WriteOptionLine{
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            .BoardType{
+                width: 100px;
+                height: 60px;
+                border-radius: 20px;
+                text-align: center;
+                font-size: 18px;
+                font-weight: bolder;
+            }
+        }
+    }
+    .WriteBody{
+        width: 900px;
+        height: 450px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 4px solid orange;
+        border-radius: 20px;
+
+        .BoardWriteBox{
+            width: 650px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+            .WriteTitle{
+                width: 550px;
+                height: 50px;
+                font-size: 20px;
+                font-weight: bold;
+                padding-left: 10px;
+                border: 2px solid orange;
+                border-radius: 10px;
+                box-sizing: border-box;
+            }
+            .WriteContext{
+                width: 550px;
+                height: 330px;
+                border-radius: 10px;
+                border: 3px solid orange;
+                resize: none;
+                .ql-toolbar{
+                    border: none;
+                    border-bottom: 3px solid orange;
+                    height: 20%;
+                    display: flex;
+                    align-items: center;
+
+                }
+                .ql-container{
+                    border: none;
+                    height: 80%;
+                    h1,h2,h3,h4{
+                        color: white;
+                    }
+                }
+            }
+        }
+        .WriteOptionBox{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 300px;
+            height: 400px;
+            #emergencyNoteBtn:checked + label, #DateEqualBtn:checked~div .TimeLine>label{
+                border: 4px solid gold;
+                background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
+                font-weight: bold;
+                -webkit-text-stroke-width: 0.1px;
+                -webkit-text-stroke-color: black;
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+            }
+            .Option{
+                width: 300px;
+                height: 320px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .TimeLine{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
+                    height: 60px;
+                    gap: 10px;
+                }
+                h2{
+                    display: flex;
+                    align-items: center;
+                    margin: 0;
+                    height: 60px;
+                }
+                .CountMemberLine{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 20px;
+                    width: 100%;
+                    .TourOptionInput{
+                        width: 60px;
+                        height: 40px;
+                        border-radius: 20px;
+                        text-align: center;
+                        font-size: 18px;
+                        font-weight: bolder;
+                    }
+                }
+                .TourAddress{
+                    width: 90%;
+                    height: 40px;
+                    border: 2px solid orange;
+                    border-radius: 10px;
+                    text-align: center;
+                    font-size: 16px;
+                    font-weight: bolder;
+                }
+                .EmergencyNoteLabel, .NoteDateEqualLabel, .TourDateEqualLabel{
+                    width: 140px;
+                    height: 40px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-weight: bolder;
+                    font-size: 25px;
+                    color: rgb(138, 138, 138);
+                    background-color: rgb(18, 18, 18);
+                    border: 4px solid rgb(84, 84, 84);
+                    border-radius: 10px;
+                    cursor: pointer;
+                }
+            }
+
+            #Free, #Greetings{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .OkayBtnLine{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                label{
+                    width: 100px;
+                    height: 60px;
+                    border: 4px solid gray;
+                    border-radius: 20px;
+                    display: flex;
+                    text-align: center;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    h2{
+                        color : gray;
+                        margin: 0;
+                    }
+                }
+                label:hover{
+                    border: 4px solid gold;
+                    h2{
+                        background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
+                        font-weight: bold;
+                        -webkit-text-stroke-width: 0.1px;
+                        -webkit-text-stroke-color: black;
+                        -webkit-background-clip: text;
+                        background-clip: text;
+                        color: transparent;
+                    }
+                }
+            }
+        }
+    }
+    .WriteBottom{
+        /* 공지글 관련 CSS */
+        .NoteOption{
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            
+        }
+
+         /* 스케줄 관려 CSS */
+        .TourOption, .TourOptionInput{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            
+            #CountMember{
+                width: 60px;
+            };
+            #TourAddress{
+                width: 300px;
+            }
+        }
+    }
+}

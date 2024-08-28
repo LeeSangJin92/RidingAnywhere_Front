@@ -1,0 +1,200 @@
+/* 라이더 보드 메인 라인 */
+.RiderBoard{
+    width: 100%;
+    height: 600px;
+    border: 2px solid orange;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* 라이더 보드 탑 라인 */
+    .boardTopLine{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        box-sizing: border-box;
+
+        /* 라이더 보드 필터 라인 */
+        .boardFilterLine{
+
+            /* 필터 탑 라인 */
+            .filterTop{
+                display: flex;
+                margin-top: 10px;
+
+
+                /* 검색어 입력 창 */
+                .boardTextBox{
+                    width: 350px;
+                    height: 50px;
+                    border-radius: 10px;
+                    margin-left: 40px;
+                    margin-right: 10px;
+                    font-size: 20px;
+                    text-align: center;
+                    font-weight: bolder;
+                }
+
+                /* 검색 버튼 */
+                .boardSearchBtn{
+                    width: 60px;
+                    height: 60px;
+                    margin-right: 20px;
+                    cursor: pointer;
+                    background-color: rgba(0, 0, 0, 0);
+                    border: none;
+                    background-image: url("/public/img/crewboard/SearchBtnOn.png");
+                    background-size: 60px 60px;
+                }
+            }
+
+            /* 필터 바텀 라인 */
+            .filterBottom{
+                display: flex;
+                margin-top: 10px;
+                gap: 20px;
+
+                /* 목록 필터 버튼 */
+                .filterCheckBox{
+                    width: 150px;
+                    height: 50px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 30px;
+                    font-weight: bolder;
+                    color: rgb(138, 138, 138);
+                    background-color: rgb(18, 18, 18);
+                    border: 5px solid rgb(84, 84, 84);
+                    border-radius: 20px;
+                }
+
+                /* 목록 필터 버튼 마우스 호버, 체크 */
+                .filterCheckBox:hover, .filterInput:checked+label{
+                    cursor: pointer;
+                    border: 5px gold solid;
+                    span{
+                        background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
+                        font-weight: bold;
+                        -webkit-text-stroke-width: 0.1px;
+                        -webkit-text-stroke-color: black;
+                        -webkit-background-clip: text;
+                        background-clip: text;
+                        color: transparent;
+                    }
+                }
+            }
+        }
+
+        /* 게시글 작성 버튼 */
+        .boardWriteBtn{
+            width: 100px;
+            height: 120px;
+            box-sizing: border-box;
+            border: 5px solid gold;
+            border-radius: 20px;
+            margin-top: 10px;
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            cursor: pointer;
+            span{
+                background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
+                -webkit-text-stroke-width: 0.1px;
+                -webkit-text-stroke-color: black;
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                font-size: 25px;
+                font-weight: bolder;
+            }
+        }
+    }
+
+    /* 라이더 보드 목록 영역 */
+
+    .boardList{
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        height: 420px;
+        margin-top: 20px;
+        box-sizing: border-box;
+        border: 2px solid gold;
+        overflow: hidden;
+        border-radius: 20px;
+
+        /* 텍스트 배치 */
+        h2{
+            display: flex;
+            height: 100%;
+            margin:0;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 라이더 보드 각 칼럼 사이즈 */
+        .boardNo{
+            width: 80px;
+        }
+        .boardType{
+            width: 120px;
+        }
+        .boardTitle{
+            width: 380px;
+        }
+        .boardWriter{
+            width: 180px;
+        }
+        .boardLevel{
+            width: 100px;
+        }
+        .boardCount{
+            width: 100px;
+        }
+
+        /* 라이더 보드 목록 헤더 */
+        .boardListHeader{
+            width: 100%;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            gap: 10px;
+            box-sizing: border-box;
+            border-bottom: 2px solid gold;
+        }
+        .boardListBody{
+            width: 100%;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 5px;
+            box-sizing: border-box;
+            background-color: rgb(17, 17, 17);
+            div{
+                width: 100%;
+                .RiderBoardBox{
+                    height: 40px;
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    cursor: pointer;
+                }
+                .RiderBoardBox:hover{
+                    background-color: black;
+                }
+            }
+            overflow-y: scroll;
+            scrollbar-width: none;
+            
+        }
+
+
+    }
+
+
+}

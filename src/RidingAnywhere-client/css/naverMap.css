@@ -1,0 +1,330 @@
+.NaverMap{
+    display: flex;
+    position: absolute;
+    width: 1280px;
+    height: 984px;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;;
+    .BlockBox{
+        width: 100%;
+        height: 100%;
+        background-color: rgba(61, 61, 61, 0.493);
+        z-index: 21;
+    }
+    .MapBox{
+        width: 1000px;
+        height: 600px;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: black;
+        border: 4px solid orange;
+        box-sizing: border-box;
+        border-radius: 20px;
+        z-index: 22;
+        >.TopLine{
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+            padding: 0 15px;
+            width: 100%;
+            height: 120px;
+            h1{
+                width: 200px;
+                margin-right: 10px;
+                box-sizing: border-box;
+            }
+            >div{
+                width: 750px;
+                height: 100%;
+                border-left: 4px solid orange;
+                box-sizing: border-box;
+                display: flex;
+                padding-left: 20px;
+                justify-content: center;
+                flex-direction: column;
+                div{
+                    display: flex;
+                    width: 100%;
+                    height: 50%;
+                    align-items: center;
+                    gap: 10px;
+                    box-sizing: border-box;
+                    justify-content: space-between;
+                    .tagText{
+                        width: 500px;
+                        height: 40px;
+                        padding: 0 10px;
+                        box-sizing: border-box;
+                        border-radius: 10px;
+                        font-weight: bold;
+                        font-size: 18px;
+                    }
+                    .addressText{
+                        width: 560px;
+                    }
+                    label{
+                        width: 80px;
+                        height: 45px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        box-sizing: border-box;
+                        border: 2px solid gray;
+                        border-radius: 10px;
+                        h2{
+                            color: gray;
+                        }
+                    }
+                    label:hover{
+                        border: 2px solid orange;
+                        h2{
+                            background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);font-weight: bold;
+                            -webkit-text-stroke-width: 0.2px;
+                            -webkit-text-stroke-color: black;
+                            -webkit-background-clip: text;
+                            background-clip: text;
+                            color: transparent;
+                        }
+                    }
+
+                }
+            }
+        }
+        >.BottomLine{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 470px;
+            border-top: 4px solid orange;
+            box-sizing: border-box;
+            .resultBoxLine{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                border-right: 10px double orange;
+                width: max-content;
+                height: 470px;
+                padding-top: 10px;
+                padding-left: 10px;
+                scrollbar-width: none;
+                border-bottom-left-radius: 15px;
+                box-sizing: border-box;
+                position: absolute;
+                left: 0;
+                background-color: rgb(50, 50, 50);
+                z-index: 24;
+                >div{
+                    display: flex;
+                    width: 95%;
+                    height: 20%;
+                    margin-left: -10px;
+                    margin-bottom: 10px;
+                }
+
+                /* 상점 이름 결과 박스 */
+                .ResultBoxTarget{
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    box-sizing: border-box;
+                    background-color: rgb(125, 125, 125);
+                    border: 2px solid rgb(0, 0, 0);
+                    border-radius: 10px;
+                    padding: 5px;
+                    gap: 5px;
+                    cursor: pointer;
+                    .Bottom{
+                        overflow-x: scroll;
+                        scrollbar-width: none;
+                    }
+                    div{
+                        width: 100%;
+                        height: 50%;
+                        display: flex;
+                        align-items: center;
+                        font-weight: bold;
+                        scrollbar-width: none;
+                        text-wrap: nowrap;
+                        .title{
+                            font-size: 20px;
+                        }
+                        .category{
+                            position: absolute;
+                            width: max-content;
+                            height: max-content;
+                            font-size: 10px;
+                            right: 0;
+                            transform: translate(-25px, 75%)
+                            
+                        }
+                        .address{
+                            font-size: 20px;
+                        }
+                    }
+                }
+                .ResultBoxTarget:hover{
+                    border: 2px solid orange;
+                    background-color: rgb(18, 18, 18);
+                    span{
+                        background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);font-weight: bold;
+                        -webkit-text-stroke-width: 0.2px;
+                        -webkit-text-stroke-color: black;
+                        -webkit-background-clip: text;
+                        background-clip: text;
+                        color: transparent;
+                    }
+                    
+                }
+
+                .ResultBoxAddress{
+                    display: flex;
+                    flex-direction: column;
+                    width: max-content;
+                    height: 120px;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 10px;
+                    box-sizing: border-box;
+                    padding: 10px;
+                    margin: 0;
+                    margin-right: 10px;
+                    margin-bottom: 10px;
+                    background-color: rgb(125, 125, 125);
+                    border: 2px solid rgb(0, 0, 0);
+                    border-radius: 10px;
+                    font-weight: bold;
+                    .RoadAddLine{
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        width: 100%;
+                        >span{
+                            display: flex;
+                            height: 45px;
+                            align-items: center;
+                        }
+                        >label{
+                            margin-left: 10px;
+                            flex-grow: 1;
+                        }
+                    }
+                    >label{
+                        width: 100%;
+                        height: max-content;
+                        box-sizing: border-box;
+                    }
+                    label{
+                        align-items: center;
+                        justify-content: center;
+                        cursor: pointer;
+                        box-sizing: border-box;
+                        padding: 10px;
+                        border: 2px solid black;
+                        border-radius: 10px;
+                    }
+                    label:hover{
+                        border: 2px solid orange;
+                        background-color: rgb(18, 18, 18);
+                        span{
+                            background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
+                            -webkit-text-stroke-color: black;
+                            -webkit-background-clip: text;
+                            background-clip: text;
+                            color: transparent;
+                        }
+                    }
+                }
+
+                .resultHiddenLabel{
+                    width: 30px;
+                    height: 120px;
+                    display: flex;
+                    font-weight: bold;
+                    justify-content: center;
+                    align-items: center;
+                    color: rgb(143, 143, 143);
+                    text-align: center;
+                    text-wrap: wrap;
+                    position: absolute;
+                    border: solid orange;
+                    border-left: none;
+                    background-color: rgb(62, 62, 62);
+                    border-radius: 0 10px 10px 0;
+                    box-sizing: border-box;
+                    right: 0;
+                    bottom: 40%;
+                    transform: translateX(40px);
+                    cursor: pointer;
+                    z-index: 24;
+                }
+                .resultHiddenLabel:hover{
+                    color: gold;
+                    background-color: rgb(18, 18, 18);
+                }
+            }
+
+            #map{
+                border: 4px solid orange;
+                border-radius: 10px;
+                box-sizing: border-box;
+                width: 970px;
+                height: 450px;
+
+                /* ✏️ 상점 및 카테고리 POI */
+                #targetInfo{
+                    display: flex;
+                    gap: 5px;
+                    flex-direction: column;
+                    width: max-content;
+                    height: max-content;
+                    background-color: rgb(46, 46, 46);
+                    padding: 10px;
+                    border: 2px solid orange;
+                    border-radius: 10px;
+                    box-sizing: border-box;
+                    #targetType{
+                        position: absolute;
+                        right: 10px;
+                        top: 0;
+                        transform: translateY(-100%);
+                        box-sizing: border-box;
+                        border: 2px solid orange;
+                        border-bottom: 2px solid rgb(46, 46, 46);
+                        border-top-left-radius: 10px;
+                        border-top-right-radius: 10px;
+                        padding: 5px 10px 5px 10px;
+                        background-color: rgb(46, 46, 46);
+                        font-size: 12px;
+                    }
+                    span{
+                        color: rgb(255, 187, 60);
+                        font-weight: bold;
+                    }
+                }
+
+                /* ✏️ 주소 및 도로명 POI */
+                #addressInfo{
+                    display: flex;
+                    gap: 5px;
+                    flex-direction: column;
+                    width: max-content;
+                    height: max-content;
+                    background-color: rgb(46, 46, 46);
+                    padding: 10px;
+                    border: 2px solid orange;
+                    border-radius: 10px;
+                    box-sizing: border-box;
+                    span{
+                        color: rgb(255, 187, 60);
+                        font-weight: bold;
+                    }
+                }
+            } 
+        }
+    }
+}

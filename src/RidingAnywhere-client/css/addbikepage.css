@@ -1,0 +1,160 @@
+.Section_addbike{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 1100px;
+}
+
+.Addbike_Box{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 1100px;
+    height: 950px;
+    border: 5px solid rgb(255, 192, 0);
+    border-radius: 40px;
+    padding: 20px 0;
+}
+
+.addbike_line{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 5px solid orange;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+.addbike_line h2{
+    font-size: 20px;
+    text-align: center;
+    min-width: 200x;
+    margin-left: 30px;
+}
+
+.addbike_line>input{
+    height: 40%;
+    margin-left: 10px;
+}
+
+.addbike_line>.brandlogo_img{
+    display: flex;
+    width: 200px;
+    height: 200px;
+    margin-right: 20px;
+}
+
+.brandBtnLine{
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    width: 650px;
+    height: 300px;
+}
+
+.modelBtnLine{
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 850px;
+    height: 400px;
+}
+
+.brandBtnLine>label{
+    margin: 10px;
+}
+
+.modelBtnLine>label{
+    margin: 20px;
+}
+
+.bikeImfo_line{
+    position: absolute;
+    bottom: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+}
+
+.bikeImfo_line>*{
+    margin: 0 15px;
+}
+
+.bikeImfo_line>h2{
+    text-align: center;
+    margin: 0;
+    width: 100px;
+}
+
+.bikeImfoInput{
+    width: 100px;
+    height: 30px;
+    border: 3px solid orange;
+    border-radius: 5px;
+}
+
+.Addbike_Box > .button_line{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 25px;
+}
+
+.brandBtn, .modelBtn{
+    font-size: 20px;
+    color: gray;
+    padding: 5px;
+    border: 2px solid orange;
+    border-radius: 5px;
+}
+
+.brandBtn:hover,.btn:checked+label, .modelBtn:hover, .Section_addbike h2{
+    background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
+    font-weight: bold;
+    -webkit-text-stroke-width: 0.1px;
+    -webkit-text-stroke-color: black;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.btn{
+    display: none;
+}
+
+.btn_submit_addbike{
+    min-width: 150px;
+    min-height: 50px;
+    font-size: 20px;
+    background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
+    font-weight: bold;
+    text-shadow: none;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    border: 3px solid orange;
+    border-radius: 5px;
+}
+
+.btn_submit_addbike:disabled{
+    min-width: 150px;
+    min-height: 50px;
+    font-size: 20px;
+    background-color: black;
+    font-weight: bold;
+    color: gray;
+    text-shadow: 1px 1px whitesmoke;
+    border: 2px solid gray;
+    border-radius: 5px;
+}

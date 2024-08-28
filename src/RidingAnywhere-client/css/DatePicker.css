@@ -1,0 +1,10 @@
+.DatePicker{
+    width: 130px;
+    height: 40px;
+    border: 2px solid orange;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bolder;
+    cursor: pointer;
+}

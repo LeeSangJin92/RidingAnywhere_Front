@@ -1,0 +1,14 @@
+.okBox{
+    top: 35%;
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 300px;
+    border: 4px solid orange;
+    color:orange;
+    border-radius: 20px;
+    background-color: black;
+}

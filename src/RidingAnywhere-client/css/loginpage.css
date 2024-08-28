@@ -1,0 +1,142 @@
+.Section_login{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 630px;
+}
+
+.LoginImg{
+    display: flex;
+    width: 250px;
+    height: 250px;
+}
+
+.Login_Box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    height: 130px;
+    width: 500px;
+    border: 5px solid rgb(255, 192, 0);
+    border-radius: 40px;
+}
+
+.Section_login h1{
+    font-size: 45px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-family: Hobo_BT;
+    text-shadow: none;
+    background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
+    font-weight: bold;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+input_row>h2{
+    text-shadow: none;
+    background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
+    font-weight: bold;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.errorWord{
+    display: none;
+    color: rgb(248, 68, 68);
+    font-family: Hobo_BT;
+    margin: 15px;
+}
+
+.Login_InputLine{
+    display: flex;
+    padding: 0;
+    height: 100px;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.input_wrap{
+    display: inline-block;
+    width: 310px;
+    margin-left: 15px;
+
+}
+
+.input_row{
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.input_row>h2{
+    width: 80px;
+    text-align: center;
+}
+
+.login_textline{
+    width: 220px;
+    height: 75%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+.Login_Button{
+    display: flex;
+    height: 50px;
+    width: 140px;
+    align-items: center;
+    justify-content: center;
+    font-family: Hobo_BT;
+    background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
+    -webkit-text-stroke-width: 0.1px;
+    -webkit-text-stroke-color: black;
+    background-clip: text;
+    border: 3px solid orange;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 35px;
+    margin-bottom: 5px;
+    color: transparent;
+    transition: all 0.3s;
+}
+
+.Login_Button:disabled{
+    background-color: black;
+    color: gray;
+    text-shadow: 1px 1px whitesmoke;
+    border: 3px solid gray;
+    
+}
+
+.Login_Button:hover{
+    cursor: pointer;
+}
+
+.OAuth_Line{
+    margin-left: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 350px;
+    height: 100px;
+}
+
+.OAuth_log{
+    margin-top: 5px;
+    width: 140px;
+    height: 50px;
+}
