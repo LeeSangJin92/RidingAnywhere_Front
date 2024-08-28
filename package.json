@@ -1,6 +1,6 @@
 {
   "engines": {
-    "node": "21.x"
+    "node": "20.x"
   },
   "name": "riding_anywhere",
   "version": "0.1.0",
