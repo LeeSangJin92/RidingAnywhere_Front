@@ -4,7 +4,6 @@ import '../css/signuppage.css';
 import DefaultHeader from '../component/DefaultHeader_small';
 import { useNavigate } from 'react-router-dom';
 const SignupPage = () => {
-
     const navigate = useNavigate();
 
     // ✏️ 지역 관련 데이터 변수

@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import MiniCrewBoardBox from '../component/homepage/MiniCrewBoardBox';
 import MiniRiderBoardBox from '../component/homepage/MiniRiderBoardBox';
 
-const HomePage = () => {
+const HomePage = ({connect_Api}) => {
 
     const navigate = useNavigate();
 
@@ -19,8 +19,7 @@ const HomePage = () => {
         if(!accessToken){
             console.log("✅ 접속자에게 엑세스 있음!")
             console.log("🛜 라이더 데이터 확인 중...")
-            await fetch("/RA/CheckRider",
-            {headers:{
+            connect_Api("/RA/CheckRider",{headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"}})
             .then(response => {
@@ -69,7 +68,7 @@ const HomePage = () => {
     // 🛜 크루 게시글 호출
     const loadCrewBoard = async() => {
         console.log("🛜 크루 게시글 호출중...");
-        await fetch("/CR/LoadCrewBoard",{
+        connect_Api("/CR/LoadCrewBoard",{
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"}
@@ -87,19 +86,16 @@ const HomePage = () => {
     // 🛜 라이더 게시글 호출
     const loadRiderBoard = async() => {
         console.log("🛜 라이더 게시글 호출중...");
-        await fetch("/RA/LoadRiderBoard",{
+        connect_Api("/RA/LoadRiderBoard",{
             headers:{"Content-Type": "application/json;charset=utf-8"}
-        }).then(response=>{
-            if(response.status===200) return response.json();
-            else {
-                alert("🚨 라이더 게시글 호출 실패");
-            }
         }).then(data=>{
-            console.log("✅ 라이더 게시글 호출 완료");
-            setShowRiderBoard(true);
-            setRiderBoardList(data);
-            console.log(data);
-        })
+            if(data){
+                console.log("✅ 라이더 게시글 호출 완료");
+                setShowRiderBoard(true);
+                setRiderBoardList(data);
+                console.log(data);
+            }
+        });
     }
 
     return (
