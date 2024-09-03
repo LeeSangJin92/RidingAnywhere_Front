@@ -5,7 +5,7 @@ import '../css/RiderBoard.css';
 import RiderBoardBox from '../component/riderboard/RiderBoardBox'
 import { useNavigate } from 'react-router-dom';
 
-const RiderBoard = () => {
+const RiderBoard = ({connect_Api}) => {
     // 네비 사용
     const navigate = useNavigate();
 
@@ -18,19 +18,11 @@ const RiderBoard = () => {
      const loadRiderInfo = async () => {
         console.log("🛜 라이더 정보 요청");
         if(sessionStorage.getItem('accessToken'))
-        await fetch("/RA/CheckRider",
+            connect_Api("/RA/CheckRider",
             {headers:{
             "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
             "Content-Type": "application/json;charset=utf-8"}})
-            .then(response=>{
-                if(response.status===200){
-                    console.log("✅ 라이더 정보 요청");
-                    return response.json();
-                } else {
-                    console.log("🚨 로그인 데이터 오류");
-                    alert("🚨 로그인 정보 오류 발생");
-                    return null;}
-            }).then(data => {
+            .then(data => {
                 if(data){
                     console.log("✅ 접속중인 라이더");
                     setUserId(data.userData.userId);
@@ -45,13 +37,8 @@ const RiderBoard = () => {
     // 게시글 리스트 서버 요청
     const loadRiderBoard = async () => {
         console.log("🛜 서버로 게시글 요청");
-        await fetch("/RA/LoadRiderBoard",{})
-        .then(response=>{
-            if(response.status === 200) {
-                console.log("✅ 응답 완료");
-                return response.json();
-            } else return null;
-        }).then(data =>{
+        connect_Api("/RA/LoadRiderBoard",{})
+        .then(data =>{
             if(data){
                 console.log("✅ 게시글 정보 저장");
                 setRiderBoardList(data);

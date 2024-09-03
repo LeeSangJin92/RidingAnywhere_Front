@@ -31,20 +31,18 @@ const CreateCrew = (props) => {
         }
         else{
             console.log("🛜 서버로 데이터 전송중...")
-            await fetch("/CR/Create",{
+            props.connect_Api("/CR/Create",{
                 method:"POST",
                 headers:{
                     "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                     "Content-Type": "application/json;charset=utf-8"},
                 body:JSON.stringify(crewData)
-            }).then(response=>{
-                if(response.status===200){
+            }).then(data=>{
+                if(data){
                     console.log("✅ 크루 생성 완료")
                     alert("😎 크루 생성이 완료되었습니다!")
                     props.controller({block:false,up:""})
                 }
-                else console.log("❌ 크루 생성 실패");
-                
             })
         }
     }

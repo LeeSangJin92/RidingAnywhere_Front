@@ -16,13 +16,13 @@ const CrewBoardDeleteCheckBox = (props) => {
 
     const onClickOkayBtn = async () => {
         console.log("🛜 댓글 삭제 요청");
-        await fetch(`${deleteUrl}${deleteId}`,{
+        props.connect_Api(`${deleteUrl}${deleteId}`,{
             method:"POST",
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"}
-        }).then(response=>{
-            if(response.status===200){
+        }).then(data=>{
+            if(data){
                 console.log("✅ 삭제 성공");
                 alert("✅ 삭제되었습니다.");
                 if(props.deleteData.Type==="Comment") {
@@ -31,10 +31,6 @@ const CrewBoardDeleteCheckBox = (props) => {
                     props.loadCommentList();
                 }
                 else navigate("/CR/Board");
-            }
-            else{
-                console.log("❌ 삭제 실패");
-                alert("❌ 댓글 삭제 도중 오류가 발생되었습니다.");
             }
         });
     }

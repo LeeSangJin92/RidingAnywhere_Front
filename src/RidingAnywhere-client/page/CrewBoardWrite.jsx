@@ -6,7 +6,7 @@ import '../css/crewBoardWrite.css';
 import { useNavigate } from 'react-router-dom';
 import QuillEditor from '../component/QuillEditor';
 
-const CrewBoardWrite = () => {
+const CrewBoardWrite = ({connect_Api}) => {
 
     // 🛠️ 네비게이션용
     const navigate = useNavigate();
@@ -138,14 +138,14 @@ const CrewBoardWrite = () => {
     }
     const writeBoardRequest = async () => {
         console.log("🛜서버로 게시글 작성 요청");
-        await fetch("/CR/RequestWriteBoard",{
+        connect_Api("/CR/RequestWriteBoard",{
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"},
             method:"POST",
             body:JSON.stringify(boardData)
-        }).then(response=>{
-            if(response.status===200){
+        }).then(data=>{
+            if(data){
                 switch(optionControl){
                     case "Note":
                         alert("😁 공지글이 등록되었습니다")

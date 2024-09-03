@@ -3,7 +3,7 @@ import DefaultFooter from '../component/DefaultFooter';
 import '../css/signuppage.css';
 import DefaultHeader from '../component/DefaultHeader_small';
 import { useNavigate } from 'react-router-dom';
-const SignupPage = () => {
+const SignupPage = ({connect_Api}) => {
     const navigate = useNavigate();
 
     // ✏️ 지역 관련 데이터 변수
@@ -24,16 +24,14 @@ const SignupPage = () => {
     // 🛜 지역 데이터 설정
     useEffect(()=>{
         console.log("🛜지역 데이터 요청중...")
-        fetch("/RA/AddressData")
-        .then((response)=>{
-            console.log("✅지역 데이터 요청 완료");
-            if(response.status===200) return response.json();
-            else console.log("❌지역 데이터 호출 실패!")
-        }).then((data)=>{
-            console.log("🛠️지역 데이터 저장중...");
-            setAddressList(data);
-            setCityList([...new Set(data.map(data=>data.city))]);
-            console.log("✅지역 데이터 작업 완료")
+        connect_Api("/RA/AddressData")
+        .then((data)=>{
+            if(data){
+                console.log("🛠️지역 데이터 저장중...");
+                setAddressList(data);
+                setCityList([...new Set(data.map(data=>data.city))]);
+                console.log("✅지역 데이터 작업 완료")
+            }
         })
     },[])
 
@@ -114,40 +112,32 @@ const SignupPage = () => {
     const signUpPost = (e) => {
         e.preventDefault();
         setUserData({...userData,authority:'1'})
-        fetch("/RA/Signup",{
+        connect_Api("/RA/Signup",{
             method: "POST", 
             headers: {
                 "Content-Type": "application/json;charset=utf-8",       // 전송되는 데이터 타입 옵션 설정!
             },
             body:JSON.stringify(userData)
-        }).then(response => {
-            switch(response.status){
-                case 400 :
-                    alert("이미 가입된 회원입니다.");
-                    break;
-                default :
-                alert("회원가입이 완료되었습니다.");
-                return response.json;
+        }).then(data=>{
+            if(data){
+                navigate("/RA/Login");
             }
-        }).then(()=>{
-            navigate("/RA/Login");
         })
-
     }
     const [emailAuthDisable,setEmailAuthDisabled] = useState(true);
 
     // 이메일 인증번호 전송 및 중복 체크
     const sendEmailAuth = () => {
-        fetch("/RA/SignUp/Email",{
+        connect_Api("/RA/SignUp/Email",{
             method: "POST",
             headers:{
                 "Content-Type": "application/json;charset=utf-8"},
             body:JSON.stringify(userData.userEmail)
-            }).then(code=>{
-                if(code.status===200) return code.json();
-            }).then((data)=>{
-                console.log(data);
-                setEmailKey(data);
+            }).then(data=>{
+                if(data){
+                    console.log(data);
+                    setEmailKey(data);
+                }
             })
             setEmailAuthDisabled(false);
         }

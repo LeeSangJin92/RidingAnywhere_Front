@@ -6,7 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { format } from 'date-fns';
 import RiderBoardCommentBox from '../component/riderboard/RiderBoardCommentBox';
 
-const RiderBoardDetail = () => {
+const RiderBoardDetail = ({connect_Api}) => {
     const {boardId} = useParams();
     const navigate = useNavigate();
 
@@ -67,20 +67,20 @@ const RiderBoardDetail = () => {
             alert("🚨 로그인이 필요한 기능입니다. \n - 로그인 페이지로 이동합니다 -");
             navigate("/RA/Login");
         } else
-        await fetch("/RA/BoardDetail/Comment",{
+        connect_Api("/RA/BoardDetail/Comment",{
             method:'POST',
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"
             },
             body:JSON.stringify(upLoadData)
-        }).then(response => {
-            if(response.status===200){
+        }).then(data => {
+            if(data){
+                if(data){
                 alert("✅ 등록이 완료 되었습니다..");
                 setCommentData({...commentData, comment_context:''});
                 loadBoardCommentList();
-            } else {
-                response.status!==200&&alert("❌ 등록을 실패 했습니다..");}
+            }}
         })
     }
 
@@ -96,11 +96,7 @@ const RiderBoardDetail = () => {
     const loadBoardData = async () => {
         console.log(boardId);
         console.log("🛜 서버로 게시글 데이터 호출")
-        await fetch(`/RA/BoardDetail/Board?boardId=${boardId}`,{}).then(response=>{
-            if(response.status===200) return response.json(); 
-            else {alert("실패");
-                return null;
-            }
+        connect_Api(`/RA/BoardDetail/Board?boardId=${boardId}`,{
         }).then(data=>{
             if(data){
                 console.log(data)
@@ -143,11 +139,8 @@ const RiderBoardDetail = () => {
     // 🛜 게시글 댓글 불러오기
     const loadBoardCommentList = async () => {
         console.log("🛜 게시글 댓글 요청");
-        await fetch(`/RA/BoardDetail/CommentList?board=${boardId}`,{})
-        .then(response=>{
-            if(response.status===200) return response.json();
-            else console.log("🚨 게시글 댓글 요청");
-        }).then(data=>{
+        connect_Api(`/RA/BoardDetail/CommentList?board=${boardId}`,{})
+        .then(data=>{
             if(data){
                 console.log("✅ 게시글 댓글 요청");
                 setCommentList(data);
@@ -160,21 +153,11 @@ const RiderBoardDetail = () => {
     const loadRiderInfo = async () => {
         console.log("🛜 라이더 정보 요청");
         if(sessionStorage.getItem('accessToken'))
-        await fetch("/RA/CheckRider",
+        connect_Api("/RA/CheckRider",
             {headers:{
             "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
             "Content-Type": "application/json;charset=utf-8"}})
-            .then(response=>{
-                if(response.status===200){
-                    console.log("✅ 라이더 정보 요청");
-                    return response.json();
-                } else {
-                    console.log(response.status)
-                    console.log("🚨 로그인 데이터 오류");
-                    alert("🚨 로그인 정보 오류 발생\n로그인 페이지로 이동합니다.");
-                    navigate("/RA/Login");
-                    return null;}
-            }).then(data => {
+            .then(data => {
                 if(data){
                     console.log("✅ 접속중인 라이더");
                     setRiderId(data.userData.userId);
@@ -255,7 +238,7 @@ const RiderBoardDetail = () => {
                                 if(!commentData.commentReply) 
                                     return <RiderBoardCommentBox key={index} loadBoardCommentList={loadBoardCommentList} commentData={commentData} replyList={commentList.filter(
                                         comment=>comment.commentReply&&comment.commentReply.commentId===commentData.commentId)} 
-                                        userId={riderId} boardId={boardId} onClickDeleteBtn={onClickDeleteBtn}/>;
+                                        userId={riderId} boardId={boardId} onClickDeleteBtn={onClickDeleteBtn} connect_Api={connect_Api}/>;
                                 else return null;
                                 })}
                             </div>

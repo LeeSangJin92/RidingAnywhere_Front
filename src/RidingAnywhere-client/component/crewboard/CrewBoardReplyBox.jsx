@@ -19,15 +19,15 @@ const CrewBoardReplyBox = (props) => {
             alert("⚠️ 변경되지 않거나 댓글 내용이 없습니다.");
         } else {
             console.log("🛜 댓글 수정 작업 요청");
-            await fetch(`/CR/BoardDetail/CommentChange?commentId=${replyData.commentId}`,{
+            props.connect_Api(`/CR/BoardDetail/CommentChange?commentId=${replyData.commentId}`,{
                 method:"POST",
                 headers:{
                     "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                     "Content-Type": "application/json;charset=utf-8"
                 },
                 body:changeContext
-            }).then(response=>{
-                if(response.status===200){
+            }).then(data=>{
+                if(data){
                     console.log("✅ 댓글 수정 완료");
                     alert("✅ 댓글 수정이 완료 되었습니다.");
                     props.loadCommentList();

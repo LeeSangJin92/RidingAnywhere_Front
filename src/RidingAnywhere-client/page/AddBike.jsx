@@ -6,7 +6,7 @@ import AddbikeModelBtn from '../component/AddbikeModelBtn';
 import AddbikeBrandBtn from '../component/AddbikeBrandBtn';
 import { useNavigate } from 'react-router-dom';
 
-const AddBike = () => {
+const AddBike = ({connect_Api}) => {
     const navigate = useNavigate();
     
     const [addBikeData,setAddBikeData] = useState({
@@ -28,11 +28,8 @@ const AddBike = () => {
                 alert("⚠️로그인이 필요한 페이지 입니다.⚠️\n - 로그인 페이지로 이동합니다. - ")
                 navigate("/RA/Login");
             }
-            else await fetch("/RA/BikeModel")
-            .then(response => {
-                console.log("바이크 데이터 호출 시도🛜")
-                if(response.status===200) return response.json();
-            }).then(data => {
+            else connect_Api("/RA/BikeModel")
+            .then(data => {
                 console.log("바이크 데이터 호출 완료✅");
 
                 // 바이크 브랜드 리스트 저장
@@ -89,18 +86,16 @@ const AddBike = () => {
     // 입력한 바이크 데이터 저장
     const sendAddBikeData = () => {
         console.log("🛜바이크 데이터 서버로 전송")
-        fetch("/RA/AddBike",{
+        connect_Api("/RA/AddBike",{
             method: "POST",
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"},
             body:JSON.stringify(addBikeData)
-        }).then(response => {
-            if(response.status===200){
-                alert('✅바이크 추가가 완료 되었습니다!');
-                navigate("/RA/Home");
-            }
-        })
+        }).then(()=>{
+            alert('✅바이크 추가가 완료 되었습니다!');
+            navigate("/RA/Home");
+        });
     }
 
      return (

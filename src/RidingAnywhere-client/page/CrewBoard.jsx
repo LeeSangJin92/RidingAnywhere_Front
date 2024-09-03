@@ -4,7 +4,7 @@ import DefaultFooter from '../component/DefaultFooter';
 import '../css/crewBoard.css';
 import { useNavigate } from 'react-router-dom';
 import CrewBoardBox from '../component/crewboard/CrewBoardBox';
-const CrewBoard = () => {
+const CrewBoard = ({connect_Api}) => {
     const navigate = useNavigate();
 
     // 토큰 체크
@@ -53,19 +53,11 @@ const CrewBoard = () => {
         if(!accessToken){
             console.log("✅ 접속자에게 엑세스 있음!")
             console.log("🛜 라이더 데이터 확인 중...")
-            await fetch("/RA/CheckRider",
+            connect_Api("/RA/CheckRider",
             {headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"}})
-            .then(response => {
-                if(response.status===200) return response.json();
-                else if(response.status===401){
-                    console.log("❌ 토큰 데이터 만료");
-                    alert("⚠️ 로그인 유지 시간 초과 \n - 로그인 페이지로 이동합니다. -");
-                    sessionStorage.removeItem('accessToken');
-                    navigate('/RA/Login');
-                }
-            }).then(data => {
+            .then(data => {
                 if(!!data){
                     if(!data.crewId){
                     console.log("❌ 가입된 크루 없음")
@@ -91,19 +83,11 @@ const CrewBoard = () => {
     // 🛜 게시글 데이터 로드
     const loadCrewBoard = async () => {
         console.log("🛜 서버 게시글 목록 요청");
-        await fetch("/CR/LoadCrewBoard",
+        connect_Api("/CR/LoadCrewBoard",
             {
                 headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"
-            }
-        }).then(response => {
-            if(response.status===200){
-                console.log("✅ 게시글 응답 완료");
-                return response.json();
-            } else {
-                console.log("❌ 서버 응답 실패");
-                console.log("응답 상태 : " + response.status);
             }
         }).then(data=>{
             if(!!data){

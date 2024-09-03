@@ -8,7 +8,7 @@ import CrewJoinOk from '../component/crewwjoinboard/CrewJoinOk';
 
 
 // 크루 가입 게시판
-const CrewJoinBoard = () => {
+const CrewJoinBoard = ({connect_Api}) => {
 
     const navigate = useNavigate();
 
@@ -81,27 +81,38 @@ const CrewJoinBoard = () => {
         if(!accessToken){
             console.log("✅ 접속자에게 엑세스 있음!")
             console.log("🛜 라이더 데이터 확인 중...")
-            await fetch("/RA/CheckRider",
+            connect_Api("/RA/CheckRider",
             {headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"}})
-            .then(response => {
-                if(response.status===200) return response.json();
-                else if(response.status===401){
-                    console.log("❌ 토큰 데이터 만료");
-                    alert("⚠️ 로그인 유지 시간 초과 \n - 로그인 페이지로 이동합니다. -");
-                    sessionStorage.removeItem('accessToken');
-                    navigate('/RA/Login');
-                }
-            }).then(data => {
-                console.log("✅ 라이더 데이터 수집 완료!");
-                let userData = data.userData;
-                setCrewAddress({
-                    CrewCity:userData.address.city,
-                    CrewTown:userData.address.town
-                });
-                if(!data.crewId){
-                        console.log("❌ 가입된 크루 없음");
+            .then(data => {
+                if(data){
+                    console.log("✅ 라이더 데이터 수집 완료!");
+                    let userData = data.userData;
+                    setCrewAddress({
+                        CrewCity:userData.address.city,
+                        CrewTown:userData.address.town
+                    });
+                    if(!data.crewId){
+                            console.log("❌ 가입된 크루 없음");
+                            setriderInfo({
+                                ...riderInfo,
+                                userEmail : userData.userEmail,
+                                userName : userData.userName,
+                                userNickname : userData.userNickname,
+                                userBirthday : userData.userBirthday,
+                                userGender : userData.userGender,
+                                userPhone : userData.userPhone,
+                                userAddressCity : userData.address.city,
+                                userAddressTown : userData.address.town,
+                                userAuthority : userData.authorityId.authority_name,
+                                crewId:0
+                            });
+                            joinBtnController(true)
+                            return 0;
+                        }
+                    else{
+                        console.log("✅ 가입된 크루 존재");
                         setriderInfo({
                             ...riderInfo,
                             userEmail : userData.userEmail,
@@ -113,100 +124,72 @@ const CrewJoinBoard = () => {
                             userAddressCity : userData.address.city,
                             userAddressTown : userData.address.town,
                             userAuthority : userData.authorityId.authority_name,
-                            crewId:0
+                            crewId:data.crewId
                         });
-                        joinBtnController(true)
-                        return 0;
+                        joinBtnController(false);
+                        return data.crewId;
                     }
-                else{
-                    console.log("✅ 가입된 크루 존재");
-                    setriderInfo({
-                        ...riderInfo,
-                        userEmail : userData.userEmail,
-                        userName : userData.userName,
-                        userNickname : userData.userNickname,
-                        userBirthday : userData.userBirthday,
-                        userGender : userData.userGender,
-                        userPhone : userData.userPhone,
-                        userAddressCity : userData.address.city,
-                        userAddressTown : userData.address.town,
-                        userAuthority : userData.authorityId.authority_name,
-                        crewId:data.crewId
-                    });
-                    joinBtnController(false);
-                    return data.crewId;
-                }
-            }).then(async (crewId)=>{
+                }}).then(async (crewId)=>{
                 if(!!crewId){
                 console.log("🛜 가입된 크루 데이터 호출중...")
-                await fetch("/CR/LoadCrewData",{
+                connect_Api("/CR/LoadCrewData",{
                         headers:{
                             "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                             "Content-Type": "application/json;charset=utf-8"},
                         method:"POST",
                         body:JSON.stringify(crewId)
-                    }).then((response=>{
-                        console.log("✅ 서버 응답 완료")
-                        if(response.status===200){
-                            console.log("✅ 크루 데이터 로드 완료");
-                            return response.json()
-                        } else console.log("❌ 크루 데이터 호출 실패");
-                    })).then(data=>{
-                        let crewInfoData = {
-                            CrewId:data.crewId,                     // 크루 아이디
-                            CrewName:data.crew_name,                // 크루 이름
-                            CrewMaster:data.user.userNickname,      // 크루 마스터 닉네임
-                            CrewCity:data.crew_location.city,       // 크루 활동 도시
-                            CrewTown:data.crew_location.town,       // 크루 활동 지역
-                            CrewCount:data.crew_count,              // 크루 회원 인원
-                            CrewContext:data.crew_context           // 크루 인사말
-                        }
-                        setRiderCrewInfo(crewInfoData);
-                        setCrewInfo(crewInfoData);
-                        setCrewAddress({
-                            CrewCity:data.crew_location.city,
-                            CrewTown:data.crew_location.town
-                        });
-                        setShowUpInfoBlock(false);
-                        console.log("🛠️ 크루 데이터 저장 완료")
-                    })}
+                    }).then(data=>{
+                        if(data){
+                            let crewInfoData = {
+                                CrewId:data.crewId,                     // 크루 아이디
+                                CrewName:data.crew_name,                // 크루 이름
+                                CrewMaster:data.user.userNickname,      // 크루 마스터 닉네임
+                                CrewCity:data.crew_location.city,       // 크루 활동 도시
+                                CrewTown:data.crew_location.town,       // 크루 활동 지역
+                                CrewCount:data.crew_count,              // 크루 회원 인원
+                                CrewContext:data.crew_context           // 크루 인사말
+                            }
+                            setRiderCrewInfo(crewInfoData);
+                            setCrewInfo(crewInfoData);
+                            setCrewAddress({
+                                CrewCity:data.crew_location.city,
+                                CrewTown:data.crew_location.town
+                            });
+                            setShowUpInfoBlock(false);
+                            console.log("🛠️ 크루 데이터 저장 완료")
+                        }})}
                     return crewId;
                 }).then(async (crewId)=>{
                     console.log("🛜 모든 크루 리스트 요청")
-                    await fetch("/CR/CrewAllData")
-                    .then((response)=>{
-                        console.log("✅ 모든 크루 데이터 응답 완료");
-                        if(response.status===200) return response.json();
-                        else console.log("❌ 크루 데이터 호출 실패");
-                    }).then((data)=>{
-                        console.log("🛠️ 크루 리스트 저장중...");
-                        let crewList = data.map(data=>{
-                            return {
-                                 CrewId:data.crew_id,
-                                 CrewName:data.crew_name,                // 크루 이름
-                                 CrewMaster:data.user.userNickname,      // 크루 마스터 닉네임
-                                 CrewCity:data.crew_location.city,       // 크루 활동 도시
-                                 CrewTown:data.crew_location.town,       // 크루 활동 지역
-                                 CrewCount:data.crew_count,              // 크루 회원 인원
-                                 CrewContext:data.crew_context           // 크루 인사말
-                             }
-                         })
-                        setCrewList(crewList);
-                        console.log("✅ 크루 리스틑 저장 완료");
-                    })
+                    connect_Api("/CR/CrewAllData")
+                    .then(data=>{
+                        if(data){
+                            console.log("🛠️ 크루 리스트 저장중...");
+                            let crewList = data.map(data=>{
+                                return {
+                                     CrewId:data.crew_id,
+                                     CrewName:data.crew_name,                // 크루 이름
+                                     CrewMaster:data.user.userNickname,      // 크루 마스터 닉네임
+                                     CrewCity:data.crew_location.city,       // 크루 활동 도시
+                                     CrewTown:data.crew_location.town,       // 크루 활동 지역
+                                     CrewCount:data.crew_count,              // 크루 회원 인원
+                                     CrewContext:data.crew_context           // 크루 인사말
+                                 }
+                             })
+                            setCrewList(crewList);
+                            console.log("✅ 크루 리스틑 저장 완료");
+                        }})
                 }).then(async ()=>{
                 console.log("🛜 지역 데이터 요청");
-                await fetch("/RA/AddressData")
-                    .then((response)=>{
-                        console.log("✅지역 데이터 응답 완료");
-                        if(response.status===200) return response.json();
-                        else console.log("❌지역 데이터 호출 실패!")
-                    }).then((data)=>{
+                connect_Api("/RA/AddressData")
+                .then(data=>{
+                    if(data){
                         console.log("🛠️지역 데이터 저장중...");
                         setAddressList(data);
                         setCityList([...new Set(data.map(data=>data.city))]);
                         console.log("✅지역 데이터 작업 완료");
-                    });
+                    }
+                });
             })
         } else {
             console.log("⛔ 접속자에게 엑세스 없음");
@@ -253,14 +236,14 @@ const CrewJoinBoard = () => {
     // 🛠️ 크루 가입 요청
     const requestJoin = async () => {
         console.log("🛜 크루 가입 요청중...")
-        await fetch("/CR/RequestCrewJoin",{
+        connect_Api("/CR/RequestCrewJoin",{
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"},
             method:"POST",
             body:JSON.stringify(crewInfo.CrewId)
-        }).then(response=>{
-            if(response.status===200){
+        }).then(data=>{
+            if(data){
                 console.log("✅ 크루 가입 응답 성공");
                 setShowUpBox(false);
                 checkData();

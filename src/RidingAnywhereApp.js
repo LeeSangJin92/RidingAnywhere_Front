@@ -34,6 +34,7 @@ const RidingAnywhereApp = () => {
         else if(response.status===401){
           console.log("⚠️ 로그인 토큰 만료");
           alert("🚨 토큰이 만료 되었습니다. \n - 로그인 페이지로 이동합니다. -")
+          sessionStorage.removeItem('accessToken');
           navigate("/RA/Login");
         }
       });

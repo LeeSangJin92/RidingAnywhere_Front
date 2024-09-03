@@ -13,25 +13,22 @@ const CrewBoardReplyInsertBox = (props) => {
         if(!replyContext){
             alert("⚠️ 입력된 댓글이 없습니다.")
         } else {
-            await fetch(`/CR/BoardDetail/CommentReply?commentId=${props.commentId}&boardId=${props.boardId}`,{
+            props.connect_Api(`/CR/BoardDetail/CommentReply?commentId=${props.commentId}&boardId=${props.boardId}`,{
                 method:"POST",
                 headers:{
                     "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                     "Content-Type": "application/json;charset=utf-8"
                 },
                 body:replyContext
-            }).then(response => {
-                if(response.status===200){
+            }).then(data => {
+                if(data){
                     console.log("✅ 대댓글 등록 완료");
                     alert("✅ 댓글 등록이 완료 되었습니다.")
                     props.setReplyShow(false);
                     props.loadCommentList();
                 }
-                else console.log("❌ 대댓글 등록 실패");
             })
         }
-
-
     }
     const onClickCancelBtn = () => {
         setReplyContext("");

@@ -32,22 +32,21 @@ const RiderBoardCommentBox = (props) => {
             alert("⚠️ 변경되지 않거나 댓글 내용이 없습니다.");
         } else {
             console.log("🛜 댓글 수정 작업 요청");
-            await fetch(`/RA/BoardDetail/CommentChange?commentId=${commentData.commentId}`,{
+            props.connect_Api(`/RA/BoardDetail/CommentChange?commentId=${commentData.commentId}`,{
                 method:"POST",
                 headers:{
                     "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                     "Content-Type": "application/json;charset=utf-8"
                 },
                 body:changeContext
-            }).then(response=>{
-                if(response.status===200){
+            }).then(data=>{
+                if(data){
                     console.log("✅ 댓글 수정 완료");
                     alert("✅ 댓글 수정이 완료 되었습니다.");
                     props.loadBoardCommentList();
                     setChangeMode(false);
                 }
             })
-
         }
     }
 
@@ -77,8 +76,8 @@ const RiderBoardCommentBox = (props) => {
                         <label htmlFor={"commentReplyBtn"+commentData.commentId}><h2>댓글 작성</h2></label>
                     </div>
                 </div>
-                <RiderBoardReplyInsertBox setReplyShow={setReplyShow} replyShow={replyShow} commentId={commentData.commentId} loadBoardCommentList={props.loadBoardCommentList} boardId={boardId}/>
-                {replyList.map((replyData,index)=><RiderBoardReplyBox key={index} replyData={replyData} loadBoardCommentList={props.loadBoardCommentList} onClickDeleteBtn={props.onClickDeleteBtn}/>)}
+                <RiderBoardReplyInsertBox setReplyShow={setReplyShow} replyShow={replyShow} commentId={commentData.commentId} loadBoardCommentList={props.loadBoardCommentList} boardId={boardId} connect_Api={props.connect_Api}/>
+                {replyList.map((replyData,index)=><RiderBoardReplyBox key={index} replyData={replyData} loadBoardCommentList={props.loadBoardCommentList} onClickDeleteBtn={props.onClickDeleteBtn} connect_Api={props.connect_Api}/>)}
             </div>
         </div>
     );

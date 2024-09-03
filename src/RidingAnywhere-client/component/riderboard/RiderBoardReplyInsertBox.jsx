@@ -15,7 +15,7 @@ const BoardReplyInsertBox = (props) => {
         if(!replyContext){
             alert("⚠️ 입력된 댓글이 없습니다.")
         } else {
-            await fetch(`/RA/BoardDetail/CommentReply?commentId=${props.commentId}&boardId=${props.boardId}`,{
+            props.connect_Api(`/RA/BoardDetail/CommentReply?commentId=${props.commentId}&boardId=${props.boardId}`,{
                 method:"POST",
                 headers:{
                     "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,

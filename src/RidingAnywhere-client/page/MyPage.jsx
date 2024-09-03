@@ -5,7 +5,7 @@ import BikeInfoBox from '../component/mypage/BikeInfoBox';
 import "../css/mypage.css"
 import { useNavigate } from 'react-router-dom';
 
-const MyPage = () => {
+const MyPage = ({connect_Api}) => {
 
     const navigate = useNavigate();
 
@@ -46,84 +46,73 @@ const MyPage = () => {
         if(!accessToken){
             console.log("✅접속자에게 엑세스 있음!")
             console.log("🛜라이더 데이터 확인 중...")
-            await fetch("/RA/CheckRider",
+            connect_Api("/RA/CheckRider",
             {headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"}})
-            .then(response => {
-                if(response.status===200) return response.json();
-                else if(response.status===401){
-                    console.log("❌ 토큰 데이터 만료");
-                    alert("⚠️ 로그인 유지 시간 초과 \n - 로그인 페이지로 이동합니다. -");
-                    sessionStorage.removeItem('accessToken');
-                    navigate('/RA/Login');
-                }
-            }).then(data => {
-                console.log("✅라이더 데이터 수집 완료!");
-                let userData = data.userData;
-                setriderInfo({...riderInfo,
-                    userEmail : userData.userEmail,
-                    userName : userData.userName,
-                    userNickname : userData.userNickname,
-                    userBirthday : userData.userBirthday,
-                    userGender : userData.userGender,
-                    userPhone : userData.userPhone,
-                    userAddressCity : userData.address.city,
-                    userAddressTown : userData.address.town,
-                });
-                !!userData.userProfile&&setprofile('data:image/png;base64,'+userData.userProfile);
-                if(data.bikeList.length===0){
-                    console.log("⛔ 바이크 저장 이력 없음")
-                    alert("⚠️입력된 바이크 정보가 없습니다.⚠️\n - 바이크 추가 페이지로 이동합니다. - ")
-                    console.log("🛠️ 바이크 추가 페이지로 이동")
-                    navigate("/RA/Addbike");
-                }
-                else {
-                    setbikeInfo(data.bikeList.map((data,index)=>{
-                        const bikeData = {
-                            bike_index:index,
-                            bike_id:data.bikegarage_id,
-                            bike_year:data.bike_year,
-                            bike_cc:data.bikeModel.model_cc,
-                            bike_select:data.bike_select,
-                            model_name:data.bikeModel.model_name,
-                            bikebrand_logo:data.bikeModel.bikebrand_id.bikebrand_logo,
-                        }
-                        return bikeData
-                    }))
-                    console.log("바이크 데이터 수집 완료")}
-                if(!!data.crewId) {
-                    console.log("🔎 크루 데이터 감지")
-                    return data.crewId;}
-                else {console.log("❌ 가입된 크루 없음"); return;}
-            }).then(crewId=>{
+            .then(data => {
+                if(data){
+                    console.log("✅라이더 데이터 수집 완료!");
+                    let userData = data.userData;
+                    setriderInfo({...riderInfo,
+                        userEmail : userData.userEmail,
+                        userName : userData.userName,
+                        userNickname : userData.userNickname,
+                        userBirthday : userData.userBirthday,
+                        userGender : userData.userGender,
+                        userPhone : userData.userPhone,
+                        userAddressCity : userData.address.city,
+                        userAddressTown : userData.address.town,
+                    });
+                    !!userData.userProfile&&setprofile('data:image/png;base64,'+userData.userProfile);
+                    if(data.bikeList.length===0){
+                        console.log("⛔ 바이크 저장 이력 없음")
+                        alert("⚠️입력된 바이크 정보가 없습니다.⚠️\n - 바이크 추가 페이지로 이동합니다. - ")
+                        console.log("🛠️ 바이크 추가 페이지로 이동")
+                        navigate("/RA/Addbike");
+                    }
+                    else {
+                        setbikeInfo(data.bikeList.map((data,index)=>{
+                            const bikeData = {
+                                bike_index:index,
+                                bike_id:data.bikegarage_id,
+                                bike_year:data.bike_year,
+                                bike_cc:data.bikeModel.model_cc,
+                                bike_select:data.bike_select,
+                                model_name:data.bikeModel.model_name,
+                                bikebrand_logo:data.bikeModel.bikebrand_id.bikebrand_logo,
+                            }
+                            return bikeData
+                        }))
+                        console.log("바이크 데이터 수집 완료")}
+                    if(!!data.crewId) {
+                        console.log("🔎 크루 데이터 감지")
+                        return data.crewId;}
+                    else {console.log("❌ 가입된 크루 없음"); return;}
+                }}).then(crewId=>{
                 if(!crewId) return;
                 console.log("🛜 서버로 크루 데이터 로드 요청")
-                fetch("/CR/LoadCrewData",{
+                connect_Api("/CR/LoadCrewData",{
                     method:"POST",
                     headers:{
                         "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                         "Content-Type": "application/json;charset=utf-8"
                     },
                     body:JSON.stringify(crewId)
-                }).then(response=>{
-                    console.log("✅ 서버 수신 완료")
-                    if(response.status===200){
-                        console.log("✅ 크루 데이터 받기 완료");
-                        return response.json();
-                    } else console.log("❌ 크루 데이터 호출 실패");
                 }).then(data=>{
-                    console.log("수신 받은 데이터");
-                    console.log(data)
-                    setcrewInfo({
-                        crew_context:data.crew_context,
-                        crew_count:data.crew_count,
-                        crew_city:data.crew_location.city,
-                        crew_town:data.crew_location.town,
-                        crew_name:data.crew_name,
-                        crew_master:data.user.userNickname,
-                        crew_regdata:data.crew_regdate,
-                    })
+                    if(data){
+                        console.log("수신 받은 데이터");
+                        console.log(data)
+                        setcrewInfo({
+                            crew_context:data.crew_context,
+                            crew_count:data.crew_count,
+                            crew_city:data.crew_location.city,
+                            crew_town:data.crew_location.town,
+                            crew_name:data.crew_name,
+                            crew_master:data.user.userNickname,
+                            crew_regdata:data.crew_regdate,
+                        })
+                    }
                 })
             })
         } else {
@@ -148,21 +137,16 @@ const MyPage = () => {
         console.log("🛜변경 내용 서버로 전달...")
         const imgData = new FormData()
         imgData.append('file',data);
-       await fetch("/RA/UpdateImage",
+       connect_Api("/RA/UpdateImage",
        {   
         method: "POST",
         headers:{
             "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`},
         body:imgData
-    }).then(response=>{
-        console.log("✅요청 수신 완료!");
-        console.log(response);
-        console.log("✅ 이미지 변경이 완료 되었습니다.")
-        if(response.status===200) return response.json();
     }).then(data=>{
-        console.log(data)
-    }).catch(error=>{
-        console.log(error);
+        if(data){
+            console.log(data);
+        }
     })
    }
     
@@ -225,17 +209,14 @@ const MyPage = () => {
     // 🔎 지역 데이터 호출
     useEffect(()=>{
         console.log("🛜지역 데이터 요청중...")
-        fetch("/RA/AddressData")
-        .then((response)=>{
-            console.log("✅지역 데이터 요청 완료");
-            if(response.status===200) return response.json();
-            else console.log("❌지역 데이터 호출 실패!")
-        }).then((data)=>{
-            console.log("🛠️지역 데이터 저장중...");
-            setAddressList(data);
-            setCityList([...new Set(data.map(data=>data.city))]);
-            console.log("✅지역 데이터 작업 완료")
-        })
+        connect_Api("/RA/AddressData")
+        .then((data)=>{
+            if(data){
+                console.log("🛠️지역 데이터 저장중...");
+                setAddressList(data);
+                setCityList([...new Set(data.map(data=>data.city))]);
+                console.log("✅지역 데이터 작업 완료")
+            }})
     },[])
 
     // 🛠️ 지역 설정 범위
@@ -285,7 +266,7 @@ const MyPage = () => {
         {...riderInfo,userAddressCity:updateRider.userAddressCity,
         userAddressTown:updateRider.userAddressTown}
         console.log(requsetData);
-        await fetch("/RA/UpdateUser",
+        connect_Api("/RA/UpdateUser",
             {   
                 method: "POST",
                 headers:{
@@ -293,11 +274,7 @@ const MyPage = () => {
                 "Content-Type": "application/json;charset=utf-8"},
                 body:JSON.stringify(requsetData)
             })
-                .then(response=>{
-                    console.log("✅변경 내용 수신 완료")
-                    if(response.status===200)return response.json();
-                    else console.log("❌ 데이터 수정 실패!")
-                }).then(()=>{
+            .then(()=>{
                     console.log("✅데이터 변경 완료!");
                     console.log("🛜유저 데이터 재호출!");
                     checkData();
@@ -412,15 +389,15 @@ const MyPage = () => {
                 afterBikeId:bikeInfo[showBike].bike_id
             }
             console.log("🛜 서버 작업 진행중...")
-            await fetch("/RA/SelectBike",
+            connect_Api("/RA/SelectBike",
             {   
                 method: "POST",
                 headers:{
                     "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                     "Content-Type": "application/json;charset=utf-8"},
                 body:JSON.stringify(requestData)
-            }).then(response=>{
-                if(response.status===200) console.log("✅ 대표 바이크 수정 완료");
+            }).then(data=>{
+                if(data) console.log("✅ 대표 바이크 수정 완료");
                 else console.log("❌ 대표 바이크 수정 실패");
                 checkData();
                 setBikeSelectBtn({backgroundImage:"url('/img/mypage/BikeSelectBtnOff.png')"});
@@ -435,34 +412,31 @@ const MyPage = () => {
         if(bikeInfo[showBike].bike_select) alert("⚠️ 대표 바이크는 제거가 불가능합니다.⚠️")
         else {
             let deleteBikeId = {bikegarage_id:bikeInfo[showBike].bike_id}
-            await fetch("/RA/DeleteBike",
+            connect_Api("/RA/DeleteBike",
             {
                 method: "POST",
                 headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"},
                 body:JSON.stringify(deleteBikeId)
-            }).then(response=>{
-                if(response.status===200) {
-                    console.log("✅ 바이크 제거 완료");
-                    return response.json();
+            })
+            .then(data=>{
+                if(data){
+                    setbikeInfo(data.map((data,index)=>{
+                        const bikeData = {
+                            bike_index:index,
+                            bike_id:data.bikegarage_id,
+                            bike_year:data.bike_year,
+                            bike_cc:data.bikeModel.model_cc,
+                            bike_select:data.bike_select,
+                            model_name:data.bikeModel.model_name,
+                            bikebrand_logo:data.bikeModel.bikebrand_id.bikebrand_logo,
+                        }
+                        return bikeData
+                    }));
+                    setBikeSelectBtn({backgroundImage:"url('/img/mypage/BikeSelectBtnOff.png')"});
+                    setBikeDeleteBtn({backgroundImage:"url('/img/mypage/BikeDeleteBtnOff.png')"});
                 }
-            else console.log("❌ 바이크 삭제 작업 실패");    
-            }).then(data=>{
-                setbikeInfo(data.map((data,index)=>{
-                    const bikeData = {
-                        bike_index:index,
-                        bike_id:data.bikegarage_id,
-                        bike_year:data.bike_year,
-                        bike_cc:data.bikeModel.model_cc,
-                        bike_select:data.bike_select,
-                        model_name:data.bikeModel.model_name,
-                        bikebrand_logo:data.bikeModel.bikebrand_id.bikebrand_logo,
-                    }
-                    return bikeData
-                }));
-                setBikeSelectBtn({backgroundImage:"url('/img/mypage/BikeSelectBtnOff.png')"});
-                setBikeDeleteBtn({backgroundImage:"url('/img/mypage/BikeDeleteBtnOff.png')"});
             })
         }
     }
