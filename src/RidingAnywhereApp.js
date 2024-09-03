@@ -25,7 +25,6 @@ const RidingAnywhereApp = () => {
 
   const connect_Api = async (location, option) => {
     console.log("🛜 서버 연결 요청");
-    try {
       return await fetch(`${publicIP}${location}`,option).then(response=>{
         if(response.status===200) {
           console.log("✅ 서버 연결 완료");
@@ -37,11 +36,10 @@ const RidingAnywhereApp = () => {
           sessionStorage.removeItem('accessToken');
           navigate("/RA/Login");
         }
-      });
-    } catch (error) {
-      alert("🚨 서버가 중단되었습니다.");
-      navigate("/RA/PageLock");
-    }
+      }).catch(error=>{
+        alert("🚨 서버가 중단되었습니다.");
+        navigate("/RA/PageLock");
+      })
   }
 
   return (
