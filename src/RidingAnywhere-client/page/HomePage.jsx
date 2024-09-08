@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import MiniCrewBoardBox from '../component/homepage/MiniCrewBoardBox';
 import MiniRiderBoardBox from '../component/homepage/MiniRiderBoardBox';
 
-const HomePage = ({connect_Api}) => {
+const HomePage = () => {
 
     const navigate = useNavigate();
 
@@ -19,10 +19,15 @@ const HomePage = ({connect_Api}) => {
         if(!accessToken){
             console.log("✅ 접속자에게 엑세스 있음!")
             console.log("🛜 라이더 데이터 확인 중...")
-            connect_Api("/RA/CheckRider",{headers:{
+            await fetch("/RA/CheckRider",{headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
-                "Content-Type": "application/json;charset=utf-8"}})
-            .then(response => {
+                "Content-Type": "application/json;charset=utf-8"}
+            }).then(response => {
+                if(response.status==200){
+                    console.log("✅ 서버 작업 완료")
+                    return response.json();
+                } else console.log("❌ 서버 통신 실패");
+            }).then(response => {
                 if(response.status===200) return response.json();
                 else if(response.status===401){
                     console.log("❌ 토큰 데이터 만료");
@@ -68,7 +73,7 @@ const HomePage = ({connect_Api}) => {
     // 🛜 크루 게시글 호출
     const loadCrewBoard = async() => {
         console.log("🛜 크루 게시글 호출중...");
-        connect_Api("/CR/LoadCrewBoard",{
+        await fetch("/CR/LoadCrewBoard",{
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"}

@@ -15,13 +15,18 @@ const BoardReplyInsertBox = (props) => {
         if(!replyContext){
             alert("⚠️ 입력된 댓글이 없습니다.")
         } else {
-            props.connect_Api(`/RA/BoardDetail/CommentReply?commentId=${props.commentId}&boardId=${props.boardId}`,{
+            await fetch(`/RA/BoardDetail/CommentReply?commentId=${props.commentId}&boardId=${props.boardId}`,{
                 method:"POST",
                 headers:{
                     "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                     "Content-Type": "application/json;charset=utf-8"
                 },
                 body:replyContext
+            }).then(response => {
+                if(response.status==200){
+                    console.log("✅ 서버 작업 완료")
+                    return response.json();
+                } else console.log("❌ 서버 통신 실패");
             }).then(response => {
                 if(response.status===200){
                     console.log("✅ 대댓글 등록 완료");

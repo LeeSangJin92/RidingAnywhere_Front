@@ -11,7 +11,7 @@ import CrewTourAttendCheck from '../component/crewboard/CrewTourAttendCheck';
 import QuillEditor from '../component/QuillEditor';
 
 
-const CrewBoardDetail = ({connect_Api}) => {
+const CrewBoardDetail = () => {
 
     useEffect(()=>{
         checkData();
@@ -79,12 +79,17 @@ const CrewBoardDetail = ({connect_Api}) => {
     const onClickBoardChangeBtn = async (inputTag) => {
         console.log("🛜 데이터 수정 요청");
         console.log(changeData);
-        connect_Api(`/CR/BoardChange/Board?type=${inputTag.target.id}`,{
+        await fetch(`/CR/BoardChange/Board?type=${inputTag.target.id}`,{
             method:"POST",
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"},
             body:JSON.stringify(changeData)
+        }).then(response => {
+            if(response.status==200){
+                console.log("✅ 서버 작업 완료")
+                return response.json();
+            } else console.log("❌ 서버 통신 실패");
         }).then(data=>{
             if(!data){
                 console.log("✅ 수정 완료")
@@ -110,11 +115,16 @@ const CrewBoardDetail = ({connect_Api}) => {
         if(!accessToken){
             console.log("✅ 접속자에게 엑세스 있음!")
             console.log("🛜 라이더 데이터 확인 중...")
-            connect_Api("/RA/CheckRider",
+            await fetch("/RA/CheckRider",
             {headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
-                "Content-Type": "application/json;charset=utf-8"}})
-            .then(data => {
+                "Content-Type": "application/json;charset=utf-8"}
+            }).then(response => {
+                if(response.status==200){
+                    console.log("✅ 서버 작업 완료")
+                    return response.json();
+                } else console.log("❌ 서버 통신 실패");
+            }).then(data => {
                 if(!!data){
                     if(!data.crewId){
                     console.log("❌ 가입된 크루 없음")
@@ -178,12 +188,17 @@ const CrewBoardDetail = ({connect_Api}) => {
 
     const requestAttend = async (props) => {
         console.log("🛜 모임 참여 전달")
-        connect_Api(`/CR/BoardTour/Attend?boardId=${boardId}&attend=${props.attend}`,{
+        await fetch(`/CR/BoardTour/Attend?boardId=${boardId}&attend=${props.attend}`,{
             method:"Post",
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"
             }
+        }).then(response => {
+            if(response.status==200){
+                console.log("✅ 서버 작업 완료")
+                return response.json();
+            } else console.log("❌ 서버 통신 실패");
         }).then(data=>{
             if(data){
                 console.log("✅ 모임 참석 데이터 저장 완료");
@@ -196,11 +211,16 @@ const CrewBoardDetail = ({connect_Api}) => {
     // 🛜 모임 참석 명단 조회 요청
     const loadTourAttend = async () => {
         console.log("🛜 서버로 명단 조회 요청");
-        connect_Api(`/CR/BoardDetail/TourAttend?boardId=${boardId}`,{
+        await fetch(`/CR/BoardDetail/TourAttend?boardId=${boardId}`,{
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"
             }
+        }).then(response => {
+            if(response.status==200){
+                console.log("✅ 서버 작업 완료")
+                return response.json();
+            } else console.log("❌ 서버 통신 실패");
         }).then(data=>{
             if(data){
                 setTourAttendData(data);
@@ -211,11 +231,16 @@ const CrewBoardDetail = ({connect_Api}) => {
     // 🛜 게시글 데이터 조회 요청
     const loadBoardData = async (props) => {
         console.log("🛜 서버로 게시글 조회 요청");
-        connect_Api(`/CR/BoardDetail/Board?boardId=${boardId}`,{
+        await fetch(`/CR/BoardDetail/Board?boardId=${boardId}`,{
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"
             }
+        }).then(response => {
+            if(response.status==200){
+                console.log("✅ 서버 작업 완료")
+                return response.json();
+            } else console.log("❌ 서버 통신 실패");
         }).then(boardData=>{
             if(boardData){
                 // 🛠️ 게시글 타입 설정
@@ -292,13 +317,18 @@ const CrewBoardDetail = ({connect_Api}) => {
     const upLoadComment = async (upLoadData) => {
         console.log(upLoadData);
         console.log("✏️ 댓글 등록 요청");
-        connect_Api("/CR/BoardDetail/Comment",{
+        await fetch("/CR/BoardDetail/Comment",{
             method:'POST',
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"
             },
             body:JSON.stringify(upLoadData)
+        }).then(response => {
+            if(response.status==200){
+                console.log("✅ 서버 작업 완료")
+                return response.json();
+            } else console.log("❌ 서버 통신 실패");
         }).then(data => {
             if(data){
                 alert("✅ 등록이 완료 되었습니다..");
@@ -327,11 +357,16 @@ const CrewBoardDetail = ({connect_Api}) => {
     const loadCommentList = async () => {
         console.log("🛜 댓글 리스트 호출");
         setBlockList(true);
-        connect_Api(`/CR/BoardDetail/Comment?boardId=${boardId}`,{
+        await fetch(`/CR/BoardDetail/Comment?boardId=${boardId}`,{
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"
             }
+        }).then(response => {
+            if(response.status==200){
+                console.log("✅ 서버 작업 완료")
+                return response.json();
+            } else console.log("❌ 서버 통신 실패");
         }).then(commentListData=>{
             !!commentListData&&setCommentList(commentListData);
             setBlockList(false);
@@ -350,7 +385,7 @@ const CrewBoardDetail = ({connect_Api}) => {
         <main>
             <DefaultHeader/>
                 <section className='CrewBoardDetail'>
-                    <CrewBoardDeleteCheckBox setShowDeleteBox={setShowDeleteBox} showDeleteBox={showDeleteBox} deleteData={deleteData} setDeleteData={setDeleteData} loadCommentList={loadCommentList} connect_Api={connect_Api}/>
+                    <CrewBoardDeleteCheckBox setShowDeleteBox={setShowDeleteBox} showDeleteBox={showDeleteBox} deleteData={deleteData} setDeleteData={setDeleteData} loadCommentList={loadCommentList}/>
                     <CrewTourAttendCheck setShowAttendCheck={setShowAttendCheck} showAttendCheck={showAttendCheck} setCheckAttend={setCheckAttend} textData="" />
                     <div className='BoardTopLine'>
                         <div className='boardTypeLine'>
@@ -465,9 +500,7 @@ const CrewBoardDetail = ({connect_Api}) => {
                                         if(!commentData.commentReply) 
                                             return <CrewBoardCommentBox key={index} commentData={commentData} replyList={commentList.filter(
                                                 comment=>comment.commentReply&&comment.commentReply.commentId===commentData.commentId)} 
-                                                userId={userId} loadCommentList={loadCommentList} upLoadReply={upLoadComment} boardId={boardId} onClickDeleteBtn={onClickDeleteBtn}
-                                                connect_Api={connect_Api}
-                                                />;
+                                                userId={userId} loadCommentList={loadCommentList} upLoadReply={upLoadComment} boardId={boardId} onClickDeleteBtn={onClickDeleteBtn}/>;
                                         else return null;
                                         })}
                                     </div>

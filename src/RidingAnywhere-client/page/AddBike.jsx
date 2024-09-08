@@ -6,7 +6,7 @@ import AddbikeModelBtn from '../component/AddbikeModelBtn';
 import AddbikeBrandBtn from '../component/AddbikeBrandBtn';
 import { useNavigate } from 'react-router-dom';
 
-const AddBike = ({connect_Api}) => {
+const AddBike = () => {
     const navigate = useNavigate();
     
     const [addBikeData,setAddBikeData] = useState({
@@ -28,7 +28,13 @@ const AddBike = ({connect_Api}) => {
                 alert("⚠️로그인이 필요한 페이지 입니다.⚠️\n - 로그인 페이지로 이동합니다. - ")
                 navigate("/RA/Login");
             }
-            else connect_Api("/RA/BikeModel")
+            else await fetch("/RA/BikeModel")
+            .then(response => {
+                if(response.status==200){
+                    console.log("✅ 서버 작업 완료")
+                    return response.json();
+                } else console.log("❌ 서버 통신 실패");
+            })
             .then(data => {
                 console.log("바이크 데이터 호출 완료✅");
 
@@ -84,14 +90,19 @@ const AddBike = ({connect_Api}) => {
     },[addBikeData])
 
     // 입력한 바이크 데이터 저장
-    const sendAddBikeData = () => {
+    const sendAddBikeData = async () => {
         console.log("🛜바이크 데이터 서버로 전송")
-        connect_Api("/RA/AddBike",{
+        await fetch("/RA/AddBike",{
             method: "POST",
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"},
             body:JSON.stringify(addBikeData)
+        }).then(response => {
+            if(response.status==200){
+                console.log("✅ 서버 작업 완료")
+                return response.json();
+            } else console.log("❌ 서버 통신 실패");
         }).then(()=>{
             alert('✅바이크 추가가 완료 되었습니다!');
             navigate("/RA/Home");

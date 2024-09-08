@@ -4,7 +4,7 @@ import DefaultFooter from '../component/DefaultFooter';
 import { Link, useNavigate } from 'react-router-dom';
 import DefaultHeader from '../component/DefaultHeader_small';
 
-const LoginPage = ({connect_Api}) => {
+const LoginPage = () => {
 
     const navigate = useNavigate();
 
@@ -59,16 +59,21 @@ const LoginPage = ({connect_Api}) => {
     },[errorWord])
 
     // Request 보내는 작업 영역
-    const login_start = (e)=>{
+    const login_start = async (e)=>{
         console.log(request);
         e.preventDefault();
-        connect_Api("/RA/Login",{
+        await fetch("/RA/Login",{
             method: "POST", 
             headers: {
                 // 전송되는 데이터 타입 옵션 설정!
                 "Content-Type": "application/json;charset=utf-8",
             },
             body:JSON.stringify(request)
+            }).then(response => {
+                if(response.status==200){
+                    console.log("✅ 서버 작업 완료")
+                    return response.json();
+                } else console.log("❌ 서버 통신 실패");
             }).then(data => {
                 // 로그인이 잘못되었을 경우
                 if(!data){

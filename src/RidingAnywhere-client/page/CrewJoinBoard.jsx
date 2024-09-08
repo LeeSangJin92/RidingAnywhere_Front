@@ -8,7 +8,7 @@ import CrewJoinOk from '../component/crewwjoinboard/CrewJoinOk';
 
 
 // 크루 가입 게시판
-const CrewJoinBoard = ({connect_Api}) => {
+const CrewJoinBoard = () => {
 
     const navigate = useNavigate();
 
@@ -81,11 +81,16 @@ const CrewJoinBoard = ({connect_Api}) => {
         if(!accessToken){
             console.log("✅ 접속자에게 엑세스 있음!")
             console.log("🛜 라이더 데이터 확인 중...")
-            connect_Api("/RA/CheckRider",
+            await fetch("/RA/CheckRider",
             {headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
-                "Content-Type": "application/json;charset=utf-8"}})
-            .then(data => {
+                "Content-Type": "application/json;charset=utf-8"}
+            }).then(response => {
+                if(response.status==200){
+                    console.log("✅ 서버 작업 완료")
+                    return response.json();
+                } else console.log("❌ 서버 통신 실패");
+            }).then(data => {
                 if(data){
                     console.log("✅ 라이더 데이터 수집 완료!");
                     let userData = data.userData;
@@ -132,12 +137,17 @@ const CrewJoinBoard = ({connect_Api}) => {
                 }}).then(async (crewId)=>{
                 if(!!crewId){
                 console.log("🛜 가입된 크루 데이터 호출중...")
-                connect_Api("/CR/LoadCrewData",{
+                await fetch("/CR/LoadCrewData",{
                         headers:{
                             "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                             "Content-Type": "application/json;charset=utf-8"},
                         method:"POST",
                         body:JSON.stringify(crewId)
+                    }).then(response => {
+                        if(response.status==200){
+                            console.log("✅ 서버 작업 완료")
+                            return response.json();
+                        } else console.log("❌ 서버 통신 실패");
                     }).then(data=>{
                         if(data){
                             let crewInfoData = {
@@ -161,8 +171,13 @@ const CrewJoinBoard = ({connect_Api}) => {
                     return crewId;
                 }).then(async (crewId)=>{
                     console.log("🛜 모든 크루 리스트 요청")
-                    connect_Api("/CR/CrewAllData")
-                    .then(data=>{
+                    await fetch("/CR/CrewAllData")
+                    .then(response => {
+                        if(response.status==200){
+                            console.log("✅ 서버 작업 완료")
+                            return response.json();
+                        } else console.log("❌ 서버 통신 실패");
+                    }).then(data=>{
                         if(data){
                             console.log("🛠️ 크루 리스트 저장중...");
                             let crewList = data.map(data=>{
@@ -181,8 +196,13 @@ const CrewJoinBoard = ({connect_Api}) => {
                         }})
                 }).then(async ()=>{
                 console.log("🛜 지역 데이터 요청");
-                connect_Api("/RA/AddressData")
-                .then(data=>{
+                await fetch("/RA/AddressData")
+                .then(response => {
+                    if(response.status==200){
+                        console.log("✅ 서버 작업 완료")
+                        return response.json();
+                    } else console.log("❌ 서버 통신 실패");
+                }).then(data=>{
                     if(data){
                         console.log("🛠️지역 데이터 저장중...");
                         setAddressList(data);
@@ -236,12 +256,17 @@ const CrewJoinBoard = ({connect_Api}) => {
     // 🛠️ 크루 가입 요청
     const requestJoin = async () => {
         console.log("🛜 크루 가입 요청중...")
-        connect_Api("/CR/RequestCrewJoin",{
+        await fetch("/CR/RequestCrewJoin",{
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"},
             method:"POST",
             body:JSON.stringify(crewInfo.CrewId)
+        }).then(response => {
+            if(response.status==200){
+                console.log("✅ 서버 작업 완료")
+                return response.json();
+            } else console.log("❌ 서버 통신 실패");
         }).then(data=>{
             if(data){
                 console.log("✅ 크루 가입 응답 성공");

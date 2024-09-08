@@ -11,7 +11,7 @@ import CrewJoin from '../component/crewmanager/CrewJoin';
 
 
 // 🛠️ 크루 관리 페이지
-const CrewManager = ({connect_Api}) => {
+const CrewManager = () => {
     const navigate = useNavigate();
 
     // ✏️ 지역 관련 데이터 변수
@@ -69,11 +69,16 @@ const CrewManager = ({connect_Api}) => {
         if(!accessToken){
             console.log("✅ 접속자에게 엑세스 있음!")
             console.log("🛜 라이더 데이터 확인 중...")
-            connect_Api("/RA/CheckRider",
+            await fetch("/RA/CheckRider",
             {headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
-                "Content-Type": "application/json;charset=utf-8"}})
-            .then(data => {
+                "Content-Type": "application/json;charset=utf-8"}
+            }).then(response => {
+                if(response.status==200){
+                    console.log("✅ 서버 작업 완료")
+                    return response.json();
+                } else console.log("❌ 서버 통신 실패");
+            }).then(data => {
                 if(data){
                     console.log("✅ 라이더 데이터 수집 완료!");
                     let userData = data.userData;
@@ -116,7 +121,7 @@ const CrewManager = ({connect_Api}) => {
                     console.log("✅ 바이크 데이터 수집 완료")}
                     }}).then(async ()=>{
                         console.log("🛜 지역 데이터 요청중...")
-                        connect_Api("/RA/AddressData")
+                        await fetch("/RA/AddressData")
                         .then((response)=>{
                             console.log("✅ 지역 데이터 요청 완료");
                             if(response.status===200) return response.json();
@@ -145,14 +150,18 @@ const CrewManager = ({connect_Api}) => {
             } else{
                 console.log("✅ 가입된 크루 존재");
                 console.log("🛜 크루 데이터 호출중...")
-                connect_Api("/CR/LoadCrewData",{
+                await fetch("/CR/LoadCrewData",{
                     method:"POST",
                     headers:{
                     "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                     "Content-Type": "application/json;charset=utf-8"},
                     body:JSON.stringify(crewId)
-                })
-                .then(data=>{
+                }).then(response => {
+                    if(response.status==200){
+                        console.log("✅ 서버 작업 완료")
+                        return response.json();
+                    } else console.log("❌ 서버 통신 실패");
+                }).then(data=>{
                     if(data){
                     console.log("✅ 크루 데이터 호출 완료")
                     setCrewInfo({...crewInfo,
@@ -171,14 +180,19 @@ const CrewManager = ({connect_Api}) => {
                     })
                     return data.crew_id;
                 }
-            }).then(crewId =>  {
+            }).then(crewId => {
                     console.log("🛜 크루 멤버 데이터 호출중...")
-                    connect_Api("/CR/GetCrewMember",{
+                    fetch("/CR/GetCrewMember",{
                         method:"POST",
                         headers:{
                         "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                         "Content-Type": "application/json;charset=utf-8"},
                         body:JSON.stringify(crewId)
+                    }).then(response => {
+                        if(response.status==200){
+                            console.log("✅ 서버 작업 완료")
+                            return response.json();
+                        } else console.log("❌ 서버 통신 실패");
                     }).then(data=>{
                         if(data){
                             setCrewMember(data.map((crewMemberData,index)=>{
@@ -352,12 +366,17 @@ const CrewManager = ({connect_Api}) => {
                     crew_town:updateCrewInfo.CrewTown
                 };
                 console.log(data)
-                connect_Api("/CR/ChangeAddress",{
+                await fetch("/CR/ChangeAddress",{
                     method:"POST",
                     headers:{
                         "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                         "Content-Type": "application/json;charset=utf-8"},
                     body:JSON.stringify(data)
+                }).then(response => {
+                    if(response.status==200){
+                        console.log("✅ 서버 작업 완료")
+                        return response.json();
+                    } else console.log("❌ 서버 통신 실패");
                 }).then(data=>{
                     if(data){
                         console.log("🛠️ 크루 데이터 최신화")
@@ -379,11 +398,16 @@ const CrewManager = ({connect_Api}) => {
         }
         if(joinMemberData.JoinAccept){
             console.log("🛠️ 크루 가입 요청 수락 작업 중...");
-            connect_Api("/CR/RequestJoinAccept",{method:"POST",
+            await fetch("/CR/RequestJoinAccept",{method:"POST",
                     headers:{
                     "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                     "Content-Type": "application/json;charset=utf-8"},
                     body:JSON.stringify(dataJoinAccept)
+            }).then(response => {
+                if(response.status==200){
+                    console.log("✅ 서버 작업 완료")
+                    return response.json();
+                } else console.log("❌ 서버 통신 실패");
             }).then(data=>{
                 if(data){
                     console.log("✅ 크루 가입 요청 수락 완료");
@@ -391,12 +415,17 @@ const CrewManager = ({connect_Api}) => {
                 } else console.log("❌ 크루 가입 요청 수락 실패");
             })
         } else{
-            connect_Api("/CR/RequestJoinRefuse",{
+            await fetch("/CR/RequestJoinRefuse",{
                 method:"POST",
                 headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"},
                 body:JSON.stringify(dataJoinAccept)
+            }).then(response => {
+                if(response.status==200){
+                    console.log("✅ 서버 작업 완료")
+                    return response.json();
+                } else console.log("❌ 서버 통신 실패");
             }).then(data=>{
                 if(data){
                     console.log("✅ 크르 가입 요청 거절 완료");
@@ -427,12 +456,17 @@ const CrewManager = ({connect_Api}) => {
                     crew_id:crewInfo.CrewId,
                     crew_context:updateCrewInfo.CrewContext
                 };
-                connect_Api("/CR/ChangeContext",{
+                await fetch("/CR/ChangeContext",{
                     method:"POST",
                     headers:{
                         "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                         "Content-Type": "application/json;charset=utf-8"},
                     body:JSON.stringify(data)
+                }).then(response => {
+                    if(response.status==200){
+                        console.log("✅ 서버 작업 완료")
+                        return response.json();
+                    } else console.log("❌ 서버 통신 실패");
                 }).then(data=>{
                     if(data){
                         console.log("🛠️ 크루 데이터 최신화")
@@ -456,7 +490,7 @@ const CrewManager = ({connect_Api}) => {
                     {/* 🛠️ 크루 생성 또는 가입 */}
                     <CheckCrew controller={showUpController} showUp={showUpControl[1]==='Check'?true:false}/>
                     {/* 🛠️ 크루 생성 창 */}
-                    <CreateCrew addressList={addressList} cityList={cityList} controller={showUpController} showUp={showUpControl[1]==='Create'?true:false} connect_Api={connect_Api}/>
+                    <CreateCrew addressList={addressList} cityList={cityList} controller={showUpController} showUp={showUpControl[1]==='Create'?true:false}/>
                     {/* 🛠️ 크루 멤버 디테일 창 */}
                     <CrewMemberDetail memberData={crewMemberInfo} controller={showUpController} showUp={showUpControl[1]==='Detail'?true:false} requestJoinAccept={requestJoinAccept}/>
                     {/* 🛠️ 크루 가입 신청 창 */}

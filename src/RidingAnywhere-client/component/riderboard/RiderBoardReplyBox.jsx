@@ -21,13 +21,18 @@ const RiderBoardReplyBox = (props) => {
             alert("⚠️ 변경되지 않거나 댓글 내용이 없습니다.");
         } else {
             console.log("🛜 댓글 수정 작업 요청");
-            props.connect_Api(`/RA/BoardDetail/CommentChange?commentId=${replyData.commentId}`,{
+            await fetch(`/RA/BoardDetail/CommentChange?commentId=${replyData.commentId}`,{
                 method:"POST",
                 headers:{
                     "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                     "Content-Type": "application/json;charset=utf-8"
                 },
                 body:changeContext
+            }).then(response => {
+                if(response.status==200){
+                    console.log("✅ 서버 작업 완료")
+                    return response.json();
+                } else console.log("❌ 서버 통신 실패");
             }).then(response=>{
                 if(response.status===200){
                     console.log("✅ 댓글 수정 완료");

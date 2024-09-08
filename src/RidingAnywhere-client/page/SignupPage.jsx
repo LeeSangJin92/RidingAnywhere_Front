@@ -3,7 +3,7 @@ import DefaultFooter from '../component/DefaultFooter';
 import '../css/signuppage.css';
 import DefaultHeader from '../component/DefaultHeader_small';
 import { useNavigate } from 'react-router-dom';
-const SignupPage = ({connect_Api}) => {
+const SignupPage = () => {
     const navigate = useNavigate();
 
     // ✏️ 지역 관련 데이터 변수
@@ -23,9 +23,13 @@ const SignupPage = ({connect_Api}) => {
 
     // 🛜 지역 데이터 설정
     useEffect(()=>{
-        console.log("🛜지역 데이터 요청중...")
-        connect_Api("/RA/AddressData")
-        .then((data)=>{
+        console.log("🛜지역 데이터 요청중...");
+        fetch("/RA/AddressData").then(response => {
+            if(response.status==200){
+                console.log("✅ 서버 작업 완료")
+                return response.json();
+            } else console.log("❌ 서버 통신 실패");
+        }).then((data)=>{
             if(data){
                 console.log("🛠️지역 데이터 저장중...");
                 setAddressList(data);
@@ -109,15 +113,20 @@ const SignupPage = ({connect_Api}) => {
     }
 
     // 회원 가입 서버로 요청
-    const signUpPost = (e) => {
+    const signUpPost = async (e) => {
         e.preventDefault();
         setUserData({...userData,authority:'1'})
-        connect_Api("/RA/Signup",{
+        await fetch("/RA/Signup",{
             method: "POST", 
             headers: {
                 "Content-Type": "application/json;charset=utf-8",       // 전송되는 데이터 타입 옵션 설정!
             },
             body:JSON.stringify(userData)
+        }).then(response => {
+            if(response.status==200){
+                console.log("✅ 서버 작업 완료")
+                return response.json();
+            } else console.log("❌ 서버 통신 실패");
         }).then(data=>{
             if(data){
                 navigate("/RA/Login");
@@ -127,12 +136,17 @@ const SignupPage = ({connect_Api}) => {
     const [emailAuthDisable,setEmailAuthDisabled] = useState(true);
 
     // 이메일 인증번호 전송 및 중복 체크
-    const sendEmailAuth = () => {
-        connect_Api("/RA/SignUp/Email",{
+    const sendEmailAuth = async () => {
+        await fetch("/RA/SignUp/Email",{
             method: "POST",
             headers:{
                 "Content-Type": "application/json;charset=utf-8"},
             body:JSON.stringify(userData.userEmail)
+            }).then(response => {
+                if(response.status==200){
+                    console.log("✅ 서버 작업 완료")
+                    return response.json();
+                } else console.log("❌ 서버 통신 실패");
             }).then(data=>{
                 if(data){
                     console.log(data);

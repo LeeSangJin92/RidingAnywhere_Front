@@ -4,7 +4,7 @@ import DefaultFooter from '../component/DefaultFooter';
 import '../css/crewBoard.css';
 import { useNavigate } from 'react-router-dom';
 import CrewBoardBox from '../component/crewboard/CrewBoardBox';
-const CrewBoard = ({connect_Api}) => {
+const CrewBoard = () => {
     const navigate = useNavigate();
 
     // 토큰 체크
@@ -53,11 +53,16 @@ const CrewBoard = ({connect_Api}) => {
         if(!accessToken){
             console.log("✅ 접속자에게 엑세스 있음!")
             console.log("🛜 라이더 데이터 확인 중...")
-            connect_Api("/RA/CheckRider",
+            await fetch("/RA/CheckRider",
             {headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
-                "Content-Type": "application/json;charset=utf-8"}})
-            .then(data => {
+                "Content-Type": "application/json;charset=utf-8"}
+            }).then(response => {
+                    if(response.status==200){
+                        console.log("✅ 서버 작업 완료")
+                        return response.json();
+                    } else console.log("❌ 서버 통신 실패");
+            }).then(data => {
                 if(!!data){
                     if(!data.crewId){
                     console.log("❌ 가입된 크루 없음")
@@ -83,12 +88,17 @@ const CrewBoard = ({connect_Api}) => {
     // 🛜 게시글 데이터 로드
     const loadCrewBoard = async () => {
         console.log("🛜 서버 게시글 목록 요청");
-        connect_Api("/CR/LoadCrewBoard",
+        await fetch("/CR/LoadCrewBoard",
             {
                 headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"
             }
+        }).then(response => {
+            if(response.status==200){
+                console.log("✅ 서버 작업 완료")
+                return response.json();
+            } else console.log("❌ 서버 통신 실패");
         }).then(data=>{
             if(!!data){
                 console.log("✅ 게시글 목록 로드 완료");

@@ -7,7 +7,7 @@ import QuillEditor from '../component/QuillEditor';
 import { useNavigate } from 'react-router-dom';
 import NaverMap from '../component/NaverMap';
 
-const RiderBoardWrite = ({connect_Api}) => {
+const RiderBoardWrite = () => {
 
     // 🛠️ 네비게이션용
     const navigate = useNavigate();
@@ -92,15 +92,20 @@ const RiderBoardWrite = ({connect_Api}) => {
     }
 
     // 🕹️ 등록 버튼 클릭 반응
-    const onClickOkayBtn = () => {
+    const onClickOkayBtn = async () => {
         if(checkData()){
             console.log("🛜 서버 요청");
-            connect_Api("/RA/RequestWriteBoard",{
+            await fetch("/RA/RequestWriteBoard",{
                 headers:{
                     "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                     "Content-Type": "application/json;charset=utf-8"},
                 method:"POST",
                 body:JSON.stringify(boardData)
+            }).then(response => {
+                if(response.status==200){
+                    console.log("✅ 서버 작업 완료")
+                    return response.json();
+                } else console.log("❌ 서버 통신 실패");
             }).then((data)=>{
                 if(data){
                     alert("✅ 게시글이 등록되었습니다.");

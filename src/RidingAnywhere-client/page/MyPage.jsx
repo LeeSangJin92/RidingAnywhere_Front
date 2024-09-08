@@ -5,7 +5,7 @@ import BikeInfoBox from '../component/mypage/BikeInfoBox';
 import "../css/mypage.css"
 import { useNavigate } from 'react-router-dom';
 
-const MyPage = ({connect_Api}) => {
+const MyPage = () => {
 
     const navigate = useNavigate();
 
@@ -46,11 +46,16 @@ const MyPage = ({connect_Api}) => {
         if(!accessToken){
             console.log("✅접속자에게 엑세스 있음!")
             console.log("🛜라이더 데이터 확인 중...")
-            connect_Api("/RA/CheckRider",
+            await fetch("/RA/CheckRider",
             {headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
-                "Content-Type": "application/json;charset=utf-8"}})
-            .then(data => {
+                "Content-Type": "application/json;charset=utf-8"}
+            }).then(response => {
+                if(response.status==200){
+                    console.log("✅ 서버 작업 완료")
+                    return response.json();
+                } else console.log("❌ 서버 통신 실패");
+            }).then(data => {
                 if(data){
                     console.log("✅라이더 데이터 수집 완료!");
                     let userData = data.userData;
@@ -92,13 +97,18 @@ const MyPage = ({connect_Api}) => {
                 }}).then(crewId=>{
                 if(!crewId) return;
                 console.log("🛜 서버로 크루 데이터 로드 요청")
-                connect_Api("/CR/LoadCrewData",{
+                fetch("/CR/LoadCrewData",{
                     method:"POST",
                     headers:{
                         "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                         "Content-Type": "application/json;charset=utf-8"
                     },
                     body:JSON.stringify(crewId)
+                }).then(response => {
+                    if(response.status==200){
+                        console.log("✅ 서버 작업 완료")
+                        return response.json();
+                    } else console.log("❌ 서버 통신 실패");
                 }).then(data=>{
                     if(data){
                         console.log("수신 받은 데이터");
@@ -137,12 +147,17 @@ const MyPage = ({connect_Api}) => {
         console.log("🛜변경 내용 서버로 전달...")
         const imgData = new FormData()
         imgData.append('file',data);
-       connect_Api("/RA/UpdateImage",
+       await fetch("/RA/UpdateImage",
        {   
         method: "POST",
         headers:{
             "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`},
         body:imgData
+    }).then(response => {
+        if(response.status==200){
+            console.log("✅ 서버 작업 완료")
+            return response.json();
+        } else console.log("❌ 서버 통신 실패");
     }).then(data=>{
         if(data){
             console.log(data);
@@ -209,8 +224,12 @@ const MyPage = ({connect_Api}) => {
     // 🔎 지역 데이터 호출
     useEffect(()=>{
         console.log("🛜지역 데이터 요청중...")
-        connect_Api("/RA/AddressData")
-        .then((data)=>{
+        fetch("/RA/AddressData").then(response => {
+            if(response.status==200){
+                console.log("✅ 서버 작업 완료")
+                return response.json();
+            } else console.log("❌ 서버 통신 실패");
+        }).then((data)=>{
             if(data){
                 console.log("🛠️지역 데이터 저장중...");
                 setAddressList(data);
@@ -266,15 +285,19 @@ const MyPage = ({connect_Api}) => {
         {...riderInfo,userAddressCity:updateRider.userAddressCity,
         userAddressTown:updateRider.userAddressTown}
         console.log(requsetData);
-        connect_Api("/RA/UpdateUser",
+        await fetch("/RA/UpdateUser",
             {   
                 method: "POST",
                 headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"},
                 body:JSON.stringify(requsetData)
-            })
-            .then(()=>{
+            }).then(response => {
+                if(response.status==200){
+                    console.log("✅ 서버 작업 완료")
+                    return response.json();
+                } else console.log("❌ 서버 통신 실패");
+            }).then(()=>{
                     console.log("✅데이터 변경 완료!");
                     console.log("🛜유저 데이터 재호출!");
                     checkData();
@@ -389,13 +412,18 @@ const MyPage = ({connect_Api}) => {
                 afterBikeId:bikeInfo[showBike].bike_id
             }
             console.log("🛜 서버 작업 진행중...")
-            connect_Api("/RA/SelectBike",
+            await fetch("/RA/SelectBike",
             {   
                 method: "POST",
                 headers:{
                     "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                     "Content-Type": "application/json;charset=utf-8"},
                 body:JSON.stringify(requestData)
+            }).then(response => {
+                if(response.status==200){
+                    console.log("✅ 서버 작업 완료")
+                    return response.json();
+                } else console.log("❌ 서버 통신 실패");
             }).then(data=>{
                 if(data) console.log("✅ 대표 바이크 수정 완료");
                 else console.log("❌ 대표 바이크 수정 실패");
@@ -412,15 +440,19 @@ const MyPage = ({connect_Api}) => {
         if(bikeInfo[showBike].bike_select) alert("⚠️ 대표 바이크는 제거가 불가능합니다.⚠️")
         else {
             let deleteBikeId = {bikegarage_id:bikeInfo[showBike].bike_id}
-            connect_Api("/RA/DeleteBike",
+            await fetch("/RA/DeleteBike",
             {
                 method: "POST",
                 headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"},
                 body:JSON.stringify(deleteBikeId)
-            })
-            .then(data=>{
+            }).then(response => {
+                if(response.status==200){
+                    console.log("✅ 서버 작업 완료")
+                    return response.json();
+                } else console.log("❌ 서버 통신 실패");
+            }).then(data=>{
                 if(data){
                     setbikeInfo(data.map((data,index)=>{
                         const bikeData = {

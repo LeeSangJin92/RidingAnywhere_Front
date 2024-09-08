@@ -16,11 +16,16 @@ const CrewBoardDeleteCheckBox = (props) => {
 
     const onClickOkayBtn = async () => {
         console.log("🛜 댓글 삭제 요청");
-        props.connect_Api(`${deleteUrl}${deleteId}`,{
+        await fetch(`${deleteUrl}${deleteId}`,{
             method:"POST",
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"}
+        }).then(response=>{
+            if(response.status==200){
+                console.log("✅ 서버 작업 완료");
+                return response.json();
+            } else console.log("❌ 서버 작업 실패");
         }).then(data=>{
             if(data){
                 console.log("✅ 삭제 성공");

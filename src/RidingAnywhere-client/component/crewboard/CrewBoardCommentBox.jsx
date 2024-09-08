@@ -31,13 +31,19 @@ const CrewBoardCommentBox = (props) => {
             alert("⚠️ 변경되지 않거나 댓글 내용이 없습니다.");
         } else {
             console.log("🛜 댓글 수정 작업 요청");
-            props.connect_Api(`/CR/BoardDetail/CommentChange?commentId=${commentData.commentId}`,{
+            await fetch(`/CR/BoardDetail/CommentChange?commentId=${commentData.commentId}`,{
                 method:"POST",
                 headers:{
                     "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                     "Content-Type": "application/json;charset=utf-8"
                 },
                 body:changeContext
+            }).then(response => {
+                if(response.status==200){
+                    console.log("✅ 서버 작업 완료");
+                    return response.json();
+                }
+                else console.log("❌ 서버 작업 실패");
             }).then(data=>{
                 if(data){
                     console.log("✅ 댓글 수정 완료");
@@ -89,8 +95,8 @@ const CrewBoardCommentBox = (props) => {
                     <input id= {"commentReplyBtn"+commentData.commentId} type='button' className='commentReplyBtn' onClick={onClickReplyShowBtn} hidden/>
                     <label htmlFor={"commentReplyBtn"+commentData.commentId}><h2>댓글 작성</h2></label>
                 </div>
-                <CrewBoardReplyInsertBox setReplyShow={setReplyShow} replyShow={replyShow} commentId={commentData.commentId} loadCommentList={props.loadCommentList} boardId={boardId} connect_Api={props.connect_Api}/>
-                {replyList.map((replyData,index)=><CrewBoardReplyBox key={index} replyData={replyData} loadCommentList={props.loadCommentList} onClickDeleteBtn={props.onClickDeleteBtn} connect_Api={props.connect_Api}/>)}
+                <CrewBoardReplyInsertBox setReplyShow={setReplyShow} replyShow={replyShow} commentId={commentData.commentId} loadCommentList={props.loadCommentList} boardId={boardId}/>
+                {replyList.map((replyData,index)=><CrewBoardReplyBox key={index} replyData={replyData} loadCommentList={props.loadCommentList} onClickDeleteBtn={props.onClickDeleteBtn}/>)}
             </div>
         </div>
     );
