@@ -86,7 +86,7 @@ const HomePage = ({connect_Api}) => {
     // 🛜 라이더 게시글 호출
     const loadRiderBoard = async() => {
         console.log("🛜 라이더 게시글 호출중...");
-        connect_Api("/RA/LoadRiderBoard",{
+        await fetch("/RA/LoadRiderBoard",{
             headers:{"Content-Type": "application/json;charset=utf-8"}
         }).then(data=>{
             if(data){
