@@ -88,7 +88,19 @@ const HomePage = ({connect_Api}) => {
         console.log("🛜 라이더 게시글 호출중...");
         await fetch("/RA/LoadRiderBoard",{
             headers:{"Content-Type": "application/json;charset=utf-8"}
-        }).then(data=>{
+        }).then(response=>{
+            if(response.status===200) {
+              console.log("✅ 서버 연결 완료");
+              return response.json();
+            }
+            else if(response.status===401){
+              console.log("⚠️ 로그인 토큰 만료");
+              alert("🚨 토큰이 만료 되었습니다. \n - 로그인 페이지로 이동합니다. -")
+              sessionStorage.removeItem('accessToken');
+              navigate("/RA/Login");
+            }
+          })
+          .then(data=>{
             if(data){
                 console.log("✅ 라이더 게시글 호출 완료");
                 setShowRiderBoard(true);
