@@ -23,7 +23,7 @@ const RidingAnywhereApp = () => {
 
   const connect_Api = async (location, option) => {
     console.log("🛜 서버 연결 요청");
-    return await fetch(`https://ridinganywhere.site/${location}`, option).then(
+    return await fetch(`https://ridinganywhere.site${location}`, option).then(
       (response) => {
         if (response.status === 200) {
           console.log("✅ 서버 연결 완료");
