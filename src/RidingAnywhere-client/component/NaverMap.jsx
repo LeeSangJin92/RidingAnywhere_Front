@@ -118,7 +118,7 @@ const NaverMap = ({hidden, setHiddenMap, mapHiddenControl, insertLocation}) => {
   const searchCoordinate = async () => {
     console.log("🛜 좌표로 주소 요청");
     try{
-      const response = await fetch(`https://18.119.50.113:8080/Map/api/coordinate?lat=${coordinate.lat}&lng=${coordinate.lng}`);
+      const response = await fetch(`https://ridinganywhere/Map/api/coordinate?lat=${coordinate.lat}&lng=${coordinate.lng}`);
       const data = await response.json();
       if(data.results[1]){
         let region = Object.values(data.results[1].region).map(e=>e.name);
@@ -148,12 +148,12 @@ const NaverMap = ({hidden, setHiddenMap, mapHiddenControl, insertLocation}) => {
     console.log("🛜 장소 이름으로 검색 요청");
     if(location.trim().length>0){
       try {
-        let response = await fetch(`https://18.119.50.113:8080/Map/api/search?location=${location}`);
+        let response = await fetch(`https://ridinganywhere/Map/api/search?location=${location}`);
         let data = await response.json();
         console.log(data);
         if(data.items.length===0){
           console.log("⚠️ 장소로 검색된 데이터 없음");
-          response = await fetch(`https://18.119.50.113:8080/Map/api/address?address=${location}`)
+          response = await fetch(`https://ridinganywhere/Map/api/address?address=${location}`)
           data = await(response.json());
           console.log(data.addresses)
           if(data.addresses.length>0){
