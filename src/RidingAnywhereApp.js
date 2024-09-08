@@ -21,7 +21,7 @@ const RidingAnywhereApp = () => {
   const navigate = useNavigate();
 
   document.title = "Riding AnyWhere";
-  let publicIP = "https://ridinganywhere";
+  let publicIP = "https://ridinganywhere.site";
 
   const connect_Api = async (location, option) => {
     console.log("🛜 서버 연결 요청");
