@@ -17,9 +17,6 @@ import RiderBoardDetail from "./RidingAnywhere-client/page/RiderBoardDetail";
 import PageLock from "./RidingAnywhere-client/page/PageLock";
 
 const RidingAnywhereApp = () => {
-
-  const navigate = useNavigate();
-
   document.title = "Riding AnyWhere";
 
   return (
