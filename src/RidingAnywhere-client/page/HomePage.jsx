@@ -19,7 +19,7 @@ const HomePage = () => {
         if(!accessToken){
             console.log("✅ 접속자에게 엑세스 있음!")
             console.log("🛜 라이더 데이터 확인 중...")
-            await fetch("https://ridinganywhere.site/RA/CheckRider",{headers:{
+            await fetch("/RA/CheckRider",{headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"}
             }).then(response => {
@@ -73,7 +73,7 @@ const HomePage = () => {
     // 🛜 크루 게시글 호출
     const loadCrewBoard = async() => {
         console.log("🛜 크루 게시글 호출중...");
-        await fetch("https://ridinganywhere.site/CR/LoadCrewBoard",{
+        await fetch("/CR/LoadCrewBoard",{
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"}
@@ -91,7 +91,7 @@ const HomePage = () => {
     // 🛜 라이더 게시글 호출
     const loadRiderBoard = async() => {
         console.log("🛜 라이더 게시글 호출중...");
-        await fetch("https://ridinganywhere.site/RA/LoadRiderBoard",{
+        await fetch("/RA/LoadRiderBoard",{
             headers:{"Content-Type": "application/json;charset=utf-8"}
         }).then(response=>{
             if(response.status===200) {
