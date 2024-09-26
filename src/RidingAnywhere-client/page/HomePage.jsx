@@ -96,6 +96,7 @@ const HomePage = () => {
         }).then(response=>{
             if(response.status===200) {
               console.log("✅ 서버 연결 완료");
+              console.log(response.json());
               return response.json();
             }
             else if(response.status===401){
