@@ -67,7 +67,7 @@ const RiderBoardDetail = () => {
             alert("🚨 로그인이 필요한 기능입니다. \n - 로그인 페이지로 이동합니다 -");
             navigate("/RA/Login");
         } else
-        await fetch("/RA/BoardDetail/Comment",{
+        await fetch("https://ridinganywhere.site/RA/BoardDetail/Comment",{
             method:'POST',
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
@@ -101,7 +101,7 @@ const RiderBoardDetail = () => {
     const loadBoardData = async () => {
         console.log(boardId);
         console.log("🛜 서버로 게시글 데이터 호출")
-        await fetch(`/RA/BoardDetail/Board?boardId=${boardId}`,{
+        await fetch(`https://ridinganywhere.site/RA/BoardDetail/Board?boardId=${boardId}`,{
         }).then(response => {
             if(response.status==200){
                 console.log("✅ 서버 작업 완료")
@@ -149,7 +149,7 @@ const RiderBoardDetail = () => {
     // 🛜 게시글 댓글 불러오기
     const loadBoardCommentList = async () => {
         console.log("🛜 게시글 댓글 요청");
-        await fetch(`/RA/BoardDetail/CommentList?board=${boardId}`,{
+        await fetch(`https://ridinganywhere.site/RA/BoardDetail/CommentList?board=${boardId}`,{
         }).then(response => {
                 if(response.status==200){
                     console.log("✅ 서버 작업 완료")
@@ -168,7 +168,7 @@ const RiderBoardDetail = () => {
     const loadRiderInfo = async () => {
         console.log("🛜 라이더 정보 요청");
         if(sessionStorage.getItem('accessToken'))
-        await fetch("/RA/CheckRider",
+        await fetch("https://ridinganywhere.site/RA/CheckRider",
             {headers:{
             "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
             "Content-Type": "application/json;charset=utf-8"}

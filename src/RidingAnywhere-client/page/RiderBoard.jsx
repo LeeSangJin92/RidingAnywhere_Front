@@ -18,7 +18,7 @@ const RiderBoard = () => {
      const loadRiderInfo = async () => {
         console.log("🛜 라이더 정보 요청");
         if(sessionStorage.getItem('accessToken'))
-            await fetch("/RA/CheckRider",
+            await fetch("https://ridinganywhere.site/RA/CheckRider",
             {headers:{
             "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
             "Content-Type": "application/json;charset=utf-8"}
@@ -42,7 +42,7 @@ const RiderBoard = () => {
     // 게시글 리스트 서버 요청
     const loadRiderBoard = async () => {
         console.log("🛜 서버로 게시글 요청");
-        await fetch("/RA/LoadRiderBoard",{
+        await fetch("https://ridinganywhere.site/RA/LoadRiderBoard",{
 
         }).then(response => {
                 if(response.status==200){

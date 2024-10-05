@@ -28,7 +28,7 @@ const AddBike = () => {
                 alert("⚠️로그인이 필요한 페이지 입니다.⚠️\n - 로그인 페이지로 이동합니다. - ")
                 navigate("/RA/Login");
             }
-            else await fetch("/RA/BikeModel")
+            else await fetch("https://ridinganywhere.site/RA/BikeModel")
             .then(response => {
                 if(response.status==200){
                     console.log("✅ 서버 작업 완료")
@@ -92,7 +92,7 @@ const AddBike = () => {
     // 입력한 바이크 데이터 저장
     const sendAddBikeData = async () => {
         console.log("🛜바이크 데이터 서버로 전송")
-        await fetch("/RA/AddBike",{
+        await fetch("https://ridinganywhere.site/RA/AddBike",{
             method: "POST",
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,

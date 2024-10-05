@@ -13,7 +13,7 @@ const CrewBoardReplyInsertBox = (props) => {
         if(!replyContext){
             alert("⚠️ 입력된 댓글이 없습니다.")
         } else {
-            await fetch(`/CR/BoardDetail/CommentReply?commentId=${props.commentId}&boardId=${props.boardId}`,{
+            await fetch(`https://ridinganywhere.site/CR/BoardDetail/CommentReply?commentId=${props.commentId}&boardId=${props.boardId}`,{
                 method:"POST",
                 headers:{
                     "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,

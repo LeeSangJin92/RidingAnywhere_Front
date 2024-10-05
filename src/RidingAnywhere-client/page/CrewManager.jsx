@@ -69,7 +69,7 @@ const CrewManager = () => {
         if(!accessToken){
             console.log("✅ 접속자에게 엑세스 있음!")
             console.log("🛜 라이더 데이터 확인 중...")
-            await fetch("/RA/CheckRider",
+            await fetch("https://ridinganywhere.site/RA/CheckRider",
             {headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"}
@@ -121,7 +121,7 @@ const CrewManager = () => {
                     console.log("✅ 바이크 데이터 수집 완료")}
                     }}).then(async ()=>{
                         console.log("🛜 지역 데이터 요청중...")
-                        await fetch("/RA/AddressData")
+                        await fetch("https://ridinganywhere.site/RA/AddressData")
                         .then((response)=>{
                             console.log("✅ 지역 데이터 요청 완료");
                             if(response.status===200) return response.json();
@@ -150,7 +150,7 @@ const CrewManager = () => {
             } else{
                 console.log("✅ 가입된 크루 존재");
                 console.log("🛜 크루 데이터 호출중...")
-                await fetch("/CR/LoadCrewData",{
+                await fetch("https://ridinganywhere.site/CR/LoadCrewData",{
                     method:"POST",
                     headers:{
                     "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
@@ -182,7 +182,7 @@ const CrewManager = () => {
                 }
             }).then(crewId => {
                     console.log("🛜 크루 멤버 데이터 호출중...")
-                    fetch("/CR/GetCrewMember",{
+                    fetch("https://ridinganywhere.site/CR/GetCrewMember",{
                         method:"POST",
                         headers:{
                         "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
@@ -366,7 +366,7 @@ const CrewManager = () => {
                     crew_town:updateCrewInfo.CrewTown
                 };
                 console.log(data)
-                await fetch("/CR/ChangeAddress",{
+                await fetch("https://ridinganywhere.site/CR/ChangeAddress",{
                     method:"POST",
                     headers:{
                         "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
@@ -398,7 +398,7 @@ const CrewManager = () => {
         }
         if(joinMemberData.JoinAccept){
             console.log("🛠️ 크루 가입 요청 수락 작업 중...");
-            await fetch("/CR/RequestJoinAccept",{method:"POST",
+            await fetch("https://ridinganywhere.site/CR/RequestJoinAccept",{method:"POST",
                     headers:{
                     "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                     "Content-Type": "application/json;charset=utf-8"},
@@ -415,7 +415,7 @@ const CrewManager = () => {
                 } else console.log("❌ 크루 가입 요청 수락 실패");
             })
         } else{
-            await fetch("/CR/RequestJoinRefuse",{
+            await fetch("https://ridinganywhere.site/CR/RequestJoinRefuse",{
                 method:"POST",
                 headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
@@ -456,7 +456,7 @@ const CrewManager = () => {
                     crew_id:crewInfo.CrewId,
                     crew_context:updateCrewInfo.CrewContext
                 };
-                await fetch("/CR/ChangeContext",{
+                await fetch("https://ridinganywhere.site/CR/ChangeContext",{
                     method:"POST",
                     headers:{
                         "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,

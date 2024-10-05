@@ -31,7 +31,7 @@ const CreateCrew = (props) => {
         }
         else{
             console.log("🛜 서버로 데이터 전송중...")
-            await fetch("/CR/Create",{
+            await fetch("https://ridinganywhere.site/CR/Create",{
                 method:"POST",
                 headers:{
                     "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,

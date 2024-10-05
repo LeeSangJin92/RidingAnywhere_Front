@@ -53,7 +53,7 @@ const CrewBoard = () => {
         if(!accessToken){
             console.log("✅ 접속자에게 엑세스 있음!")
             console.log("🛜 라이더 데이터 확인 중...")
-            await fetch("/RA/CheckRider",
+            await fetch("https://ridinganywhere.site/RA/CheckRider",
             {headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"}
@@ -88,7 +88,7 @@ const CrewBoard = () => {
     // 🛜 게시글 데이터 로드
     const loadCrewBoard = async () => {
         console.log("🛜 서버 게시글 목록 요청");
-        await fetch("/CR/LoadCrewBoard",
+        await fetch("https://ridinganywhere.site/CR/LoadCrewBoard",
             {
                 headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,

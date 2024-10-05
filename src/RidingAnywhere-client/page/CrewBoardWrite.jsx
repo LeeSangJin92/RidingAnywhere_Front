@@ -138,7 +138,7 @@ const CrewBoardWrite = () => {
     }
     const writeBoardRequest = async () => {
         console.log("🛜서버로 게시글 작성 요청");
-        await fetch("/CR/RequestWriteBoard",{
+        await fetch("https://ridinganywhere.site/CR/RequestWriteBoard",{
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"},

@@ -81,7 +81,7 @@ const CrewJoinBoard = () => {
         if(!accessToken){
             console.log("✅ 접속자에게 엑세스 있음!")
             console.log("🛜 라이더 데이터 확인 중...")
-            await fetch("/RA/CheckRider",
+            await fetch("https://ridinganywhere.site/RA/CheckRider",
             {headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"}
@@ -137,7 +137,7 @@ const CrewJoinBoard = () => {
                 }}).then(async (crewId)=>{
                 if(!!crewId){
                 console.log("🛜 가입된 크루 데이터 호출중...")
-                await fetch("/CR/LoadCrewData",{
+                await fetch("https://ridinganywhere.site/CR/LoadCrewData",{
                         headers:{
                             "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                             "Content-Type": "application/json;charset=utf-8"},
@@ -171,7 +171,7 @@ const CrewJoinBoard = () => {
                     return crewId;
                 }).then(async (crewId)=>{
                     console.log("🛜 모든 크루 리스트 요청")
-                    await fetch("/CR/CrewAllData")
+                    await fetch("https://ridinganywhere.site/CR/CrewAllData")
                     .then(response => {
                         if(response.status==200){
                             console.log("✅ 서버 작업 완료")
@@ -196,7 +196,7 @@ const CrewJoinBoard = () => {
                         }})
                 }).then(async ()=>{
                 console.log("🛜 지역 데이터 요청");
-                await fetch("/RA/AddressData")
+                await fetch("https://ridinganywhere.site/RA/AddressData")
                 .then(response => {
                     if(response.status==200){
                         console.log("✅ 서버 작업 완료")
@@ -256,7 +256,7 @@ const CrewJoinBoard = () => {
     // 🛠️ 크루 가입 요청
     const requestJoin = async () => {
         console.log("🛜 크루 가입 요청중...")
-        await fetch("/CR/RequestCrewJoin",{
+        await fetch("https://ridinganywhere.site/CR/RequestCrewJoin",{
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"},

@@ -95,7 +95,7 @@ const RiderBoardWrite = () => {
     const onClickOkayBtn = async () => {
         if(checkData()){
             console.log("🛜 서버 요청");
-            await fetch("/RA/RequestWriteBoard",{
+            await fetch("https://ridinganywhere.site/RA/RequestWriteBoard",{
                 headers:{
                     "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                     "Content-Type": "application/json;charset=utf-8"},

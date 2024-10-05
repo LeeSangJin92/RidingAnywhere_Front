@@ -79,7 +79,7 @@ const CrewBoardDetail = () => {
     const onClickBoardChangeBtn = async (inputTag) => {
         console.log("🛜 데이터 수정 요청");
         console.log(changeData);
-        await fetch(`/CR/BoardChange/Board?type=${inputTag.target.id}`,{
+        await fetch(`https://ridinganywhere.site/CR/BoardChange/Board?type=${inputTag.target.id}`,{
             method:"POST",
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
@@ -115,7 +115,7 @@ const CrewBoardDetail = () => {
         if(!accessToken){
             console.log("✅ 접속자에게 엑세스 있음!")
             console.log("🛜 라이더 데이터 확인 중...")
-            await fetch("/RA/CheckRider",
+            await fetch("https://ridinganywhere.site/RA/CheckRider",
             {headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"}
@@ -188,7 +188,7 @@ const CrewBoardDetail = () => {
 
     const requestAttend = async (props) => {
         console.log("🛜 모임 참여 전달")
-        await fetch(`/CR/BoardTour/Attend?boardId=${boardId}&attend=${props.attend}`,{
+        await fetch(`https://ridinganywhere.site/CR/BoardTour/Attend?boardId=${boardId}&attend=${props.attend}`,{
             method:"Post",
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
@@ -211,7 +211,7 @@ const CrewBoardDetail = () => {
     // 🛜 모임 참석 명단 조회 요청
     const loadTourAttend = async () => {
         console.log("🛜 서버로 명단 조회 요청");
-        await fetch(`/CR/BoardDetail/TourAttend?boardId=${boardId}`,{
+        await fetch(`https://ridinganywhere.site/CR/BoardDetail/TourAttend?boardId=${boardId}`,{
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"
@@ -231,7 +231,7 @@ const CrewBoardDetail = () => {
     // 🛜 게시글 데이터 조회 요청
     const loadBoardData = async (props) => {
         console.log("🛜 서버로 게시글 조회 요청");
-        await fetch(`/CR/BoardDetail/Board?boardId=${boardId}`,{
+        await fetch(`https://ridinganywhere.site/CR/BoardDetail/Board?boardId=${boardId}`,{
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"
@@ -317,7 +317,7 @@ const CrewBoardDetail = () => {
     const upLoadComment = async (upLoadData) => {
         console.log(upLoadData);
         console.log("✏️ 댓글 등록 요청");
-        await fetch("/CR/BoardDetail/Comment",{
+        await fetch("https://ridinganywhere.site/CR/BoardDetail/Comment",{
             method:'POST',
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
@@ -357,7 +357,7 @@ const CrewBoardDetail = () => {
     const loadCommentList = async () => {
         console.log("🛜 댓글 리스트 호출");
         setBlockList(true);
-        await fetch(`/CR/BoardDetail/Comment?boardId=${boardId}`,{
+        await fetch(`https://ridinganywhere.site/CR/BoardDetail/Comment?boardId=${boardId}`,{
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"

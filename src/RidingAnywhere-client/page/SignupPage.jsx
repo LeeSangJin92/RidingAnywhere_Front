@@ -24,7 +24,7 @@ const SignupPage = () => {
     // 🛜 지역 데이터 설정
     useEffect(()=>{
         console.log("🛜지역 데이터 요청중...");
-        fetch("/RA/AddressData").then(response => {
+        fetch("https://ridinganywhere.site/RA/AddressData").then(response => {
             if(response.status==200){
                 console.log("✅ 서버 작업 완료")
                 return response.json();
@@ -116,7 +116,7 @@ const SignupPage = () => {
     const signUpPost = async (e) => {
         e.preventDefault();
         setUserData({...userData,authority:'1'})
-        await fetch("/RA/Signup",{
+        await fetch("https://ridinganywhere.site/RA/Signup",{
             method: "POST", 
             headers: {
                 "Content-Type": "application/json;charset=utf-8",       // 전송되는 데이터 타입 옵션 설정!
@@ -137,7 +137,7 @@ const SignupPage = () => {
 
     // 이메일 인증번호 전송 및 중복 체크
     const sendEmailAuth = async () => {
-        await fetch("/RA/SignUp/Email",{
+        await fetch("https://ridinganywhere.site/RA/SignUp/Email",{
             method: "POST",
             headers:{
                 "Content-Type": "application/json;charset=utf-8"},

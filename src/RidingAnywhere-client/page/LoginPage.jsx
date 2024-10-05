@@ -62,7 +62,7 @@ const LoginPage = () => {
     const login_start = async (e)=>{
         console.log(request);
         e.preventDefault();
-        await fetch("/RA/Login",{
+        await fetch("https://ridinganywhere.site/RA/Login",{
             method: "POST", 
             headers: {
                 // 전송되는 데이터 타입 옵션 설정!

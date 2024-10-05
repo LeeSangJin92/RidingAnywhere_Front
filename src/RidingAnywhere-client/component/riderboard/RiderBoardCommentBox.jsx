@@ -32,7 +32,7 @@ const RiderBoardCommentBox = (props) => {
             alert("⚠️ 변경되지 않거나 댓글 내용이 없습니다.");
         } else {
             console.log("🛜 댓글 수정 작업 요청");
-            await fetch(`/RA/BoardDetail/CommentChange?commentId=${commentData.commentId}`,{
+            await fetch(`https://ridinganywhere.site/RA/BoardDetail/CommentChange?commentId=${commentData.commentId}`,{
                 method:"POST",
                 headers:{
                     "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,

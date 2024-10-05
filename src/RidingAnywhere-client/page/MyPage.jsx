@@ -46,7 +46,7 @@ const MyPage = () => {
         if(!accessToken){
             console.log("✅접속자에게 엑세스 있음!")
             console.log("🛜라이더 데이터 확인 중...")
-            await fetch("/RA/CheckRider",
+            await fetch("https://ridinganywhere.site/RA/CheckRider",
             {headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"}
@@ -97,7 +97,7 @@ const MyPage = () => {
                 }}).then(crewId=>{
                 if(!crewId) return;
                 console.log("🛜 서버로 크루 데이터 로드 요청")
-                fetch("/CR/LoadCrewData",{
+                fetch("https://ridinganywhere.site/CR/LoadCrewData",{
                     method:"POST",
                     headers:{
                         "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
@@ -147,7 +147,7 @@ const MyPage = () => {
         console.log("🛜변경 내용 서버로 전달...")
         const imgData = new FormData()
         imgData.append('file',data);
-       await fetch("/RA/UpdateImage",
+       await fetch("https://ridinganywhere.site/RA/UpdateImage",
        {   
         method: "POST",
         headers:{
@@ -224,7 +224,7 @@ const MyPage = () => {
     // 🔎 지역 데이터 호출
     useEffect(()=>{
         console.log("🛜지역 데이터 요청중...")
-        fetch("/RA/AddressData").then(response => {
+        fetch("https://ridinganywhere.site/RA/AddressData").then(response => {
             if(response.status==200){
                 console.log("✅ 서버 작업 완료")
                 return response.json();
@@ -285,7 +285,7 @@ const MyPage = () => {
         {...riderInfo,userAddressCity:updateRider.userAddressCity,
         userAddressTown:updateRider.userAddressTown}
         console.log(requsetData);
-        await fetch("/RA/UpdateUser",
+        await fetch("https://ridinganywhere.site/RA/UpdateUser",
             {   
                 method: "POST",
                 headers:{
@@ -412,7 +412,7 @@ const MyPage = () => {
                 afterBikeId:bikeInfo[showBike].bike_id
             }
             console.log("🛜 서버 작업 진행중...")
-            await fetch("/RA/SelectBike",
+            await fetch("https://ridinganywhere.site/RA/SelectBike",
             {   
                 method: "POST",
                 headers:{
@@ -440,7 +440,7 @@ const MyPage = () => {
         if(bikeInfo[showBike].bike_select) alert("⚠️ 대표 바이크는 제거가 불가능합니다.⚠️")
         else {
             let deleteBikeId = {bikegarage_id:bikeInfo[showBike].bike_id}
-            await fetch("/RA/DeleteBike",
+            await fetch("https://ridinganywhere.site/RA/DeleteBike",
             {
                 method: "POST",
                 headers:{
