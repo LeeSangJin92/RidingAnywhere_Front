@@ -100,8 +100,7 @@ const AddBike = () => {
             body:JSON.stringify(addBikeData)
         }).then(response => {
             if(response.status==200){
-                console.log("✅ 서버 작업 완료")
-                return response.json();
+                console.log("✅ 서버 작업 완료");
             } else console.log("❌ 서버 통신 실패");
         }).then(()=>{
             alert('✅바이크 추가가 완료 되었습니다!');

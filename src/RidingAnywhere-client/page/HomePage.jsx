@@ -23,12 +23,11 @@ const HomePage = () => {
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"}
             }).then(response => {
-                if(response.status==200){
-                    console.log("✅ 서버 작업 완료")
+                console.log(response)
+                if(response.status===200) {
+                    console.log("✅ 서버 통신 완료");
                     return response.json();
-                } else console.log("❌ 서버 통신 실패");
-            }).then(response => {
-                if(response.status===200) return response.json();
+                }
                 else if(response.status===401){
                     console.log("❌ 토큰 데이터 만료");
                     alert("⚠️ 로그인 유지 시간 초과 \n - 로그인 페이지로 이동합니다. -");

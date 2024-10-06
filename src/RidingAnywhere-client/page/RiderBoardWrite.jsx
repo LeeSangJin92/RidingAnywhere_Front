@@ -104,7 +104,6 @@ const RiderBoardWrite = () => {
             }).then(response => {
                 if(response.status==200){
                     console.log("✅ 서버 작업 완료")
-                    return response.json();
                 } else console.log("❌ 서버 통신 실패");
             }).then((data)=>{
                 if(data){

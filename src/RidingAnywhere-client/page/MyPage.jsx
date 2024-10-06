@@ -292,18 +292,15 @@ const MyPage = () => {
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"},
                 body:JSON.stringify(requsetData)
-            }).then(response => {
+            }).then((response)=>{
                 if(response.status==200){
-                    console.log("✅ 서버 작업 완료")
-                    return response.json();
-                } else console.log("❌ 서버 통신 실패");
-            }).then(()=>{
                     console.log("✅데이터 변경 완료!");
                     console.log("🛜유저 데이터 재호출!");
                     checkData();
                     if(update!=="userGender"&&update!=="userAddress")
                         document.getElementById([update]).value = "";
                     setcheckBtn({...updateBtnAct,[update]:"/img/mypage/SaveBtnOff.png"});
+                }  else console.log("❌ 서버 통신 실패");
                 })
     }
 
@@ -419,13 +416,8 @@ const MyPage = () => {
                     "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                     "Content-Type": "application/json;charset=utf-8"},
                 body:JSON.stringify(requestData)
-            }).then(response => {
-                if(response.status==200){
-                    console.log("✅ 서버 작업 완료")
-                    return response.json();
-                } else console.log("❌ 서버 통신 실패");
-            }).then(data=>{
-                if(data) console.log("✅ 대표 바이크 수정 완료");
+            }).then(response=>{
+                if(response.status==200) console.log("✅ 대표 바이크 수정 완료");
                 else console.log("❌ 대표 바이크 수정 실패");
                 checkData();
                 setBikeSelectBtn({backgroundImage:"url('/img/mypage/BikeSelectBtnOff.png')"});
