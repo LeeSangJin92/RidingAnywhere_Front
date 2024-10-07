@@ -58,9 +58,9 @@ const MiniRiderBoardBox = ({riderBoardData}) => {
     }
 
     return (
-        <div>
+        <div className='MiniRiderBoardBox'>
             <input type='button' id={boardId} hidden onClick={onClickBox}/>
-            <label htmlFor={boardId} className='MiniRiderBoardBox'>
+            <label htmlFor={boardId}>
                 <h2 className='boardType'>{boardType}</h2>
                 <h2 className='boardTitle'>{boardTitle}</h2>
             </label>

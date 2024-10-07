@@ -57,7 +57,12 @@
             border-top: 2px solid gold;
             overflow-y: scroll;
             scrollbar-width: none;
-            .MiniCrewBoardBox, .MiniRiderBoardBox{
+            .MiniRiderBoardBox{
+                display: flex;
+                width: 100%;
+                height: max-content;
+            }
+            .MiniCrewBoardBox, .MiniRiderBoardBox>label{
                 display: flex;
                 align-items: center;
                 height: 50px;
