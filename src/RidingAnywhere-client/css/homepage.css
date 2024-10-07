@@ -72,7 +72,7 @@
                     box-sizing: border-box;
                     border-bottom: 1px dashed gray;
                 }
-                .MiniCrewBoardBox:hover, .MiniRiderBoardBox:hover{
+                .MiniCrewBoardBox:hover, .MiniRiderBoardBox>label:hover{
                     cursor: pointer;
                     background-color: gray;
                 }
