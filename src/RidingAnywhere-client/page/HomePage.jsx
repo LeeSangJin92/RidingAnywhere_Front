@@ -23,7 +23,6 @@ const HomePage = () => {
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"}
             }).then(response => {
-                console.log(response)
                 if(response.status===200) {
                     console.log("✅ 서버 통신 완료");
                     return response.json();
