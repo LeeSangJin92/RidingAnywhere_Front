@@ -36,7 +36,6 @@ const HomePage = () => {
                 }
             }).then(data => {
                 console.log("✅ 라이더 데이터 수집 완료!");
-                console.log(data);
                 if(data.bikeList.length===0){
                     console.log("⚠️ 입력된 바이크 정보가 없습니다.")
                     alert("⚠️ 등록된 바이크가 없습니다. ⚠️\n - 바이크 등록 페이지로 이동합니다 -")

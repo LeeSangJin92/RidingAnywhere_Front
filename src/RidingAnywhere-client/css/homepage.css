@@ -39,6 +39,8 @@
         }
         .ListHeader{
             height: 10%;
+            display: flex;
+            align-items: center;
         }
         .ListHeader{
             display: flex;

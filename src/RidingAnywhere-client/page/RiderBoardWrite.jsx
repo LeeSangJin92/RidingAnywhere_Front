@@ -103,13 +103,9 @@ const RiderBoardWrite = () => {
                 body:JSON.stringify(boardData)
             }).then(response => {
                 if(response.status==200){
-                    console.log("✅ 서버 작업 완료")
-                } else console.log("❌ 서버 통신 실패");
-            }).then((data)=>{
-                if(data){
                     alert("✅ 게시글이 등록되었습니다.");
                     navigate("/RA/Board");
-                }
+                } else alert("❌ 게시글 등록이 실패 했습니다.");
             })
         };
     }
