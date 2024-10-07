@@ -40,9 +40,11 @@
             align-items: center;
             gap: 10px;
             .boardType{
+                text-align: center;
                 width: 30%;
             }
             .boardTitle{
+                text-align: center;
                 width: 70%;
             }
         }
