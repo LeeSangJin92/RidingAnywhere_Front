@@ -1,12 +1,23 @@
 /* ✏️ 헤드라인 메인 css */
-.log_img{
+.header_log_img{
     display: flex;
-    width: 300px;
+    min-width: 180px;
     height: 100%;
     align-items: center;
-    justify-content: center;
+    box-sizing: border-box;
+    padding-left: 20px;
 }
 
+.header_log_img>a{
+    height: 100%;
+    min-height: 100px;
+    width: 50%;
+    min-width: 100px;
+}
+.log_img{
+    width: 100%;
+    height: 100%;
+}
 .log_img:hover{
     cursor: pointer;
 }
@@ -15,7 +26,8 @@
     display: flex;
     position: relative;
     flex-direction: column;
-    width: 100%;
+    width: 85%;
+    min-width: 500px;
     justify-content: space-between;
 }
 
@@ -73,47 +85,30 @@
 .topNav{
     width: 100%;
     height: 80px;
-    margin-top: 105px;
-    margin-bottom: 20px;
     display: flex;
-    align-items: end;
+    gap: 5px;
+    align-items: center;
     transition: height 1.5s ease;
-}
-
-.NavMain{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 95%;
-    height: max-content;
-    .TitleLine{
-        width: 95%;
-        display: flex;
-        justify-content: space-between;
-    }
-}
-
-.NavMenu{
-    width: 100%;
-    display: flex;
 }
 
 .NavCategory{
     text-decoration: none;
+    display: flex;
     width: auto;
+    height: 100%;
     flex-grow: 1;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    justify-items: center;
-    font-size: 30px;
+    font-size: 2.5vw;
     font-weight: bold;
     font-family: Hobo_BT;
     text-shadow: 2px 2px rgb(198, 198, 198);
-    transition: all 0.5s;
+    transition: color 0.5s;
     color: black;
 }
 
 .NavCategory:hover{
-    font-size: 30px;
     text-shadow: none;
     background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
     font-weight: bold;
@@ -123,4 +118,16 @@
     background-clip: text;
     color: transparent;
     cursor: pointer;
+}
+
+@media (max-width: 700px) {
+    .header_log_img{
+        display: none;
+    }
+    .top_line{
+        width: 100%;
+    }
+    .NavCategory{
+        font-size: 30px;
+    }
 }

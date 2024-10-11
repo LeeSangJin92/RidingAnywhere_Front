@@ -2,7 +2,9 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    height: 630px;
+    height: 85vh;
+    max-height: 85vh;
+    min-height: 330px;
 }
 
 .LoginImg{

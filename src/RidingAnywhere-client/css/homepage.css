@@ -1,12 +1,11 @@
 /*✏️ 홈 페이지의 section Line */
 .HomeSection{
-    width: 100%;
-    height: 590px;
     background-color: black;
-    display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    box-sizing: border-box;
+    gap: 10px;
     .CrewHome, .RiderHome{
-        width: 620px;
+        width: 45vw;
         display: flex;
         flex-direction: column;
         box-sizing: border-box;
@@ -27,7 +26,9 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                height: 100px;
+                max-height: 100px;
+                min-height: 50px;
+                height: auto;
                 width: 100%;
                 box-sizing: border-box;
                 border-bottom: 2px solid gold;
@@ -35,9 +36,12 @@
             .ListHeader{
                 width: 100%;
                 height: 10%;
+                max-height: 60px;
+                min-height: 40px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                box-sizing: border-box;
                 gap: 10px;
                 .boardType{
                     text-align: center;
@@ -83,12 +87,6 @@
                     width: 100%;
                     height: 85%;
                 }
-                h2{
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    height: 100%;
-                }
                 .boardType{
                     text-align: center;
                     width: 30%;
@@ -99,6 +97,19 @@
                 }
             }
         }
+
+        
+        h1{
+            font-size: 4vw;
+        }
+        h2{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5vw;
+            height: 100%;
+        }
+
     }
     .BlockCrewBoard{
         width: 90%;
@@ -111,5 +122,11 @@
         box-sizing: border-box;
         border: 8px solid rgb(66, 66, 66);
         border-radius: 20px;
+    }
+    .BlockCrewBoard>img{
+        width: 100%;
+    }
+    .BlockCrewBoard>h1{
+        font-size: 3.5vw;
     }
 }

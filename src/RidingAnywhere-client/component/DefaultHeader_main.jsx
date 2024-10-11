@@ -17,7 +17,7 @@ const DefaultHeader_main = () => {
         <>
             <header>    
                     {/* ✏️ 로고 이미지 클릭 시 홈 이동 */}    
-                    <div className='log_img'>
+                    <div className='header_log_img'>
                         <Link to="/RA/Home"><img className='log_img' src='/img/Log_img.png' alt=''/></Link>
                     </div>
                     <div className='top_line'>
@@ -28,14 +28,10 @@ const DefaultHeader_main = () => {
                             <input type="button" className='top_tag' name="accesslog_btn" style={{display:!accessToken?"flex":"none"}} value="log out" onClick={showLogoutBox}/>
                         </div>
                         <nav className='topNav'>
-                            <div className='NavMain'>
-                                <div className='NavMenu'>
-                                    <Link to="/CR/Manager" className='NavCategory'>CREW MANAGER</Link>     {/*크루원 관리*/}
-                                    <Link to="/CR/Board" className='NavCategory'>CREW BOARD</Link>       {/*크루 게시판*/}
-                                    <Link to="/CR/Join" className='NavCategory'>CREW JOIN</Link>        {/*크루원 모집*/}
-                                    <Link to="/RA/Board" className='NavCategory'>RIDER BOARD</Link>      {/*라이더 커뮤니티*/}
-                                </div>
-                            </div>
+                            <Link to="/CR/Manager" className='NavCategory'>CREW MANAGER</Link>     {/*크루원 관리*/}
+                            <Link to="/CR/Board" className='NavCategory'>CREW BOARD</Link>       {/*크루 게시판*/}
+                            <Link to="/CR/Join" className='NavCategory'>CREW JOIN</Link>        {/*크루원 모집*/}
+                            <Link to="/RA/Board" className='NavCategory'>RIDER BOARD</Link>      {/*라이더 커뮤니티*/}
                         </nav>
                     </div>
                 </header>
