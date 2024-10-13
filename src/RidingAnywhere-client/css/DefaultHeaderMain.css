@@ -2,7 +2,9 @@
 .header_log_img{
     display: flex;
     min-width: 180px;
-    height: 100%;
+    width: 20vw;
+    height: 50vh;
+    max-height: 180px;
     align-items: center;
     box-sizing: border-box;
     padding-left: 20px;
@@ -11,7 +13,7 @@
 .header_log_img>a{
     height: 100%;
     min-height: 100px;
-    width: 50%;
+    width: 100%;
     min-width: 100px;
 }
 .log_img{
@@ -28,6 +30,8 @@
     flex-direction: column;
     width: 85%;
     min-width: 500px;
+    height: 50vh;
+    max-height: 180px;
     justify-content: space-between;
 }
 
