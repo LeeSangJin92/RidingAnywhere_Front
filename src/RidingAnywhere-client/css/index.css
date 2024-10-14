@@ -3,19 +3,35 @@
   src: url(../css/font-family/Hobo_BT.ttf);
 }
 
-body {
+body, #root{
+
+  width: max-content;
+  height: max-content;
   margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  margin: 0 auto;
+ 
+}
+
+.container{
   overflow-y: auto;
   overflow-x: hidden;
   display: flex;
-  align-items: center;
-  flex-direction: column;
+  justify-content: center;
   width: 100vw;
+  height: 100vh;
   background-color: black;
 }
+
+main{
+  width: 100vw;
+  min-width: 500px;
+  max-width: 1200px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
 
 header{
   background-image: url(/public/img/Top_img.jpg);
@@ -25,32 +41,33 @@ header{
   align-items: center;
   margin: 0;
   width: 100%;
-  height: auto;
-  min-height: 100px; 
-  max-height: 200px;
+  height: 130px;
+  min-height: 130px;
 }
 
 section{
   display: flex;
   position: relative;
   width: 100%;
+  height: auto;
+  min-height: 400px;
   background-color: rgb(92, 92, 92, 0.185);
   color: white;
 }
 
 footer{
   display: flex;
-  position: relative;
   bottom: 0;
   flex-direction: column;
   width: 100vw;
-  min-width: 640px;
-  min-height: 100px;
+  height: 80px;
+  min-width: 500px;
+  min-height: 80px;
   background-color: rgba(92, 92, 92, 0.185);
 }
 
 footer *{
-  margin-bottom: 0;
+  margin : 0;
   padding-left: 10px;
   font-weight: bold;
   font-family: Hobo_BT;
@@ -61,6 +78,22 @@ footer *{
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-  text-decoration: none;
+  
   text-align: center;
   }
+
+footer>h3{
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+}
+footer a{
+  text-decoration: none;
+}
+
+@media (max-width: 700px) {
+  footer>h3{
+    font-size: 3vw;
+  }
+}

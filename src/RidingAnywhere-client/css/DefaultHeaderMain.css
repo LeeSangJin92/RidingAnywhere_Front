@@ -1,10 +1,8 @@
 /* ✏️ 헤드라인 메인 css */
 .header_log_img{
     display: flex;
-    min-width: 180px;
-    width: 20vw;
-    height: 50vh;
-    max-height: 180px;
+    width: 180px;
+    height: 100%;
     align-items: center;
     box-sizing: border-box;
     padding-left: 20px;
@@ -12,9 +10,7 @@
 
 .header_log_img>a{
     height: 100%;
-    min-height: 100px;
     width: 100%;
-    min-width: 100px;
 }
 .log_img{
     width: 100%;
@@ -30,7 +26,7 @@
     flex-direction: column;
     width: 85%;
     min-width: 500px;
-    height: 50vh;
+    height: 100%;
     max-height: 180px;
     justify-content: space-between;
 }
@@ -92,17 +88,18 @@
     display: flex;
     gap: 5px;
     align-items: center;
+    justify-content: center;
     transition: height 1.5s ease;
 }
 
 .NavCategory{
     text-decoration: none;
     display: flex;
-    width: auto;
     height: 100%;
     flex-grow: 1;
     justify-content: center;
     align-items: center;
+    text-wrap: wrap;
     text-align: center;
     font-size: 2.5vw;
     font-weight: bold;
@@ -132,6 +129,6 @@
         width: 100%;
     }
     .NavCategory{
-        font-size: 30px;
+        font-size: 3vw;
     }
 }
