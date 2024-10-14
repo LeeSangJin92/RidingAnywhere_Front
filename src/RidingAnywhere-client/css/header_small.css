@@ -1,16 +1,13 @@
 .Title{
     display: flex;
-    height: 100px;
+    width: 100%;
+    height: 130px;
+    min-height: 130px;
     align-items: center;
-    margin: 25px 0;
+    justify-content: center;
+    gap: 20px;
 }
 
 .Title>img{
-    height: 150%;
-    margin-left: -40px;
-}
-
-.Title>h1{
-    font-size: 60px;
-    margin-left: 20px;
+    height: 100%;
 }

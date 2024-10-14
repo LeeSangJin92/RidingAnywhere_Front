@@ -1,10 +1,12 @@
 .Section_login{
-    display: flex;
     align-items: center;
     flex-direction: column;
     height: 85vh;
-    max-height: 85vh;
-    min-height: 330px;
+    min-height: 440px;
+    background-color: black;
+    box-sizing: border-box;
+    padding-top: 20px;
+    gap: 20px;
 }
 
 .LoginImg{
@@ -15,14 +17,16 @@
 
 .Login_Box{
     display: flex;
-    flex-direction: column;
     align-items: center;
-    margin-top: 20px;
-    padding-top: 20px;
-    height: 130px;
-    width: 500px;
+    justify-content: center;
+    height: 150px;
+    min-height: 150px;
+    width: 470px;
+    min-width: 470px;
+    gap: 10px;
+    box-sizing: border-box;
     border: 5px solid rgb(255, 192, 0);
-    border-radius: 40px;
+    border-radius: 20px;
 }
 
 .Section_login h1{
@@ -51,13 +55,6 @@ input_row>h2{
     color: transparent;
 }
 
-.errorWord{
-    display: none;
-    color: rgb(248, 68, 68);
-    font-family: Hobo_BT;
-    margin: 15px;
-}
-
 .Login_InputLine{
     display: flex;
     padding: 0;
@@ -65,19 +62,22 @@ input_row>h2{
     width: 100%;
     justify-content: space-around;
 }
-
 .input_wrap{
-    display: inline-block;
-    width: 310px;
-    margin-left: 15px;
-
+    height: 100%;
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
 }
+
 
 .input_row{
     display: flex;
     justify-content: space-between;
     height: 50px;
-    margin-bottom: 10px;
+    min-height: 50px;
+    width: max-content;
     align-items: center;
 }
 
@@ -87,11 +87,13 @@ input_row>h2{
 }
 
 .login_textline{
-    width: 220px;
-    height: 75%;
+    width: 200px;
+    min-width: 200px;
+    height: 50px;
     display: flex;
     align-items: center;
     text-align: center;
+    box-sizing: border-box;
     font-size: 18px;
     border-radius: 10px;
 }
@@ -109,9 +111,9 @@ input_row>h2{
     background-clip: text;
     border: 3px solid orange;
     border-radius: 10px;
+    box-sizing: border-box;
     font-weight: bold;
     font-size: 35px;
-    margin-bottom: 5px;
     color: transparent;
     transition: all 0.3s;
 }
@@ -138,7 +140,22 @@ input_row>h2{
 }
 
 .OAuth_log{
-    margin-top: 5px;
     width: 140px;
     height: 50px;
+}
+.errorLine{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    height: max-content;
+}
+
+.errorWord{
+    display: none;
+    color: rgb(248, 68, 68);
+    font-family: Hobo_BT;
+    margin: 0;
 }

@@ -101,34 +101,33 @@ const LoginPage = () => {
             <section className='Section_login'>
             <DefaultHeader word={'로그인'}/>
                 <div className='Login_Box'>
-                    <div className='Login_InputLine'>
-                        <div className='input_wrap'>
-
-                            {/* ✅ 이메일 및 비밀번호 입력 라인 */}
-                            <div className='input_row'>
-                                <h2>Emaiil</h2>
-                                <input className='login_textline' name='userEmail' type='textbox' onChange={changeValue} onClick={showErrorWord}/>
-                            </div>
-                            <div className='input_row'>
-                                <h2>PW</h2>
-                                <input className='login_textline' name='userPassword' type='password' onChange={changeValue} onClick={showErrorWord}/>
-                            </div>
+                    <div className='input_wrap'>
+                        {/* ✅ 이메일 및 비밀번호 입력 라인 */}
+                        <div className='input_row'>
+                            <h2>Emaiil</h2>
+                            <input className='login_textline' name='userEmail' type='textbox' onChange={changeValue} onClick={showErrorWord}/>
                         </div>
-                        <div className='input_wrap'>
-
-                            {/* ✅ 로그인 버튼 */}
-                            <input type='button' className='Login_Button' value={'Login'} onClick={login_start} disabled={loginBtnAct}/>
-
-                            {/* ✅ 회원가입 버튼 */}
-                            <Link to={'/RA/SignUp'}><img className='OAuth_log' src='/img/RA_icon.png' alt=''/></Link>
+                        <div className='input_row'>
+                            <h2>PW</h2>
+                            <input className='login_textline' name='userPassword' type='password' onChange={changeValue} onClick={showErrorWord}/>
                         </div>
+                    </div>
+                    <div className='input_wrap'>
+
+                        {/* ✅ 로그인 버튼 */}
+                        <input type='button' className='Login_Button' value={'Login'} onClick={login_start} disabled={loginBtnAct}/>
+
+                        {/* ✅ 회원가입 버튼 */}
+                        <Link to={'/RA/SignUp'}><img className='OAuth_log' src='/img/RA_icon.png' alt=''/></Link>
                     </div>
                 </div>
 
                 {/*❌ 에러 워드 */}
-                <h3 className='errorWord' name='errorEmail' style={{display:errorWord.errorEmail?'none':'block'}}>❌ 이메일 정보가 정확하지 않습니다.</h3>
-                <h3 className='errorWord' name='errorPW' style={{display:errorWord.errorPW?'none':'block'}}>❌ 비밀번호가 정확하지 않습니다.</h3>
-                <h3 className='errorWord' name='errorUndefined' style={{display:errorWord.errorUndefined?'none':'block'}}>❌ 등록되지 않은 이메일 정보입니다.</h3>
+                <div className='errorLine'>
+                    <h3 className='errorWord' name='errorEmail' style={{display:errorWord.errorEmail?'none':'block'}}>❌ 이메일 정보가 정확하지 않습니다.</h3>
+                    <h3 className='errorWord' name='errorPW' style={{display:errorWord.errorPW?'none':'block'}}>❌ 비밀번호가 정확하지 않습니다.</h3>
+                    <h3 className='errorWord' name='errorUndefined' style={{display:errorWord.errorUndefined?'none':'block'}}>❌ 등록되지 않은 이메일 정보입니다.</h3>
+                </div>
             </section>
                 <DefaultFooter/>
         </main>
