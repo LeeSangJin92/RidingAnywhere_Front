@@ -55,7 +55,7 @@ const LoginPage = () => {
     }
 
     useEffect(()=>{
-        setLoginBtnAct(Object.values(errorWord).includes(false));
+        setLoginBtnAct(Object.values(errorWord).includes(false)||!request.userEmail||!request.userPassword);
     },[errorWord])
 
     // Request 보내는 작업 영역
