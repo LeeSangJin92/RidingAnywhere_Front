@@ -21,21 +21,21 @@
     box-sizing: border-box;
     border: 4px solid rgb(255, 192, 0);
     border-radius: 40px;
-    padding: 20px 0;
+    padding: 10px 0;
 }
 
 .Signup_line{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 340px;
+    width: 400px;
     height: 40px;
 }
 
 .Signup_line h2{
     font-size: 17px;
     text-align: center;
-    min-width: 100px;
+    width: 120px;
     margin: 0;
 }
 
@@ -47,36 +47,24 @@
 
 #Email_pass > [name='emailAuth']{
     font-size: 18px;
-    margin: 8px 0;
-    padding: 1px;
     min-width: 100px;
+    margin-left: 10px;
     text-align: center;
     border: 2px solid gray;
+    box-sizing: border-box;
     border-radius: 5px;
     text-shadow: 1px 1px whitesmoke;
-}
-
-.Section_Signup .selectCity,.Section_Signup .selectTown{
-    width: 200px;
-    height: 35px;
-    text-align: center;
-    font-size: 15px;
-    font-weight: bold;
-    border: 2px solid orange;
-    border-radius: 10px;
-    
 }
 
 .Gender_radio{
     display: flex;
     justify-content: space-around;
     width: 400px;
-    height: 30px;
+    height: 60px;
     border-radius: 10px;
     font-size: 20px;
     font-weight: bold;
     align-items: center;
-    margin: 20px 0px;
 }
 
 [name='userGender']{
@@ -86,19 +74,14 @@
 [name='userGender'] + label{
     display: flex;
     justify-content: center;
+    height: 45px;
     width: 33%;
     line-height: 50px;
     align-items: center;
     border: 2px solid gray;
-    height: 100%;
-}
-
-[name='userGender'] + label:first-of-type{
-    border-radius: 4px 0 0 4px;    
-}
-
-[name='userGender'] + label:last-of-type{
-    border-radius: 0 4px 4px 0;
+    border-radius: 5px;
+    height: 35px;
+    cursor: pointer;
 }
 
 input[type='radio']:checked + label{
@@ -107,6 +90,7 @@ input[type='radio']:checked + label{
     -webkit-text-stroke-width: 0.2px;
     -webkit-text-stroke-color: black;
     -webkit-background-clip: text;
+    border: 2px solid orange;
     background-clip: text;
     color: transparent;
 }
@@ -116,8 +100,19 @@ button:hover, .btn_submit_signup:hover{
 }
 
 .Signup_line>input, #Email_pass>input{
+    width: 180px;
     height: 60%;
-    margin-left: 10px;
+    margin-right: 40px;
+}
+
+.Signup_line>.selectCity,.Signup_line>.selectTown{
+    width: 130px;
+    height: 30px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+    border: 2px solid orange;
+    border-radius: 5px;
 }
 
 .btn_submit_signup:disabled{
@@ -125,7 +120,6 @@ button:hover, .btn_submit_signup:hover{
     color: gray;
     text-shadow: 1px 1px whitesmoke;
     border: 2px solid gray;
-    
 }
 
 .btn_submit_signup{
