@@ -117,21 +117,24 @@ const AddBike = () => {
 
                     {/* {/* 바이크 브랜드 설정 라인 */}
                     <div className='addbike_line'>
-                        <h2>바이크 브랜드</h2>
+                        <div className='box_Title'>
+                            <img className='title_img' src={brandlogo===""?"/img/DefaultBrandLogo.png":"/img/brand/"+brandlogo} alt=''/>
+                            <h2>바이크<br/>브랜드</h2>
+                        </div>
                         <div className='brandBtnLine'>
                             {!!brandList&&brandList.map((brand)=><AddbikeBrandBtn key={brand[0]} brandName={brand[0]} brandLogo={brand[1]} logo={brand[1]} onChange={selectBrand}/>)}
                         </div>
-                            <img className='brandlogo_img' src={brandlogo===""?"/img/DefaultBrandLogo.png":"/img/brand/"+brandlogo} alt=''/>
                     </div>
 
                     {/* 바이크 모델 설정 라인 */}
                     <div className='addbike_line'>
-                        <h2>바이크 모델</h2>
+                        <div className='box_Title'>
+                            <img className='title_img' src={brandlogo===""?"/img/DefaultModelLogo.png":"/img/brand/"+brandlogo} alt=''/>
+                            <h2>바이크<br/>모델</h2>
+                        </div>
                         <div className='modelBtnLine'>
                             {!addBikeData.bikeBrand&&<h2>브랜드를 선택해주세요!</h2>}
                             {!!addBikeData.bikeBrand&&modelList.filter((model)=>model.brand_name===addBikeData.bikeBrand).map((model)=><AddbikeModelBtn key={model.model_id} model={model.model_name} onChange={selectModel}/>)}
-                        </div>
-                        <div className='blockBox'>
                         </div>
                     </div>
                     <div className='bikeImfo_line'>
