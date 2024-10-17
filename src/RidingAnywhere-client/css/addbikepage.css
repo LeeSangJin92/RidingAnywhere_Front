@@ -86,7 +86,7 @@
     min-height: 200px;
     box-sizing: border-box;
     padding : 0 20px;
-    gap: 10px;
+    gap: 5px;
 }
 
 .modelBtnLine{
@@ -103,9 +103,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: max-content;
-    min-width: 90px;
+    width: 15vw;
+    min-width: 125px;
+    max-width: 175px;
     min-height: 40px;
+    overflow-x: hidden;
+    text-wrap: nowrap;
+    cursor: pointer;
 }
 
 .modelBtnLine>label{
