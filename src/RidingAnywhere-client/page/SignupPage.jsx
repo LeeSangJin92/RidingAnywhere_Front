@@ -157,8 +157,8 @@ const SignupPage = () => {
         }
 
     return (
-        <main>
-            <section className='Section_signup'>
+        <main className='Main_Signup'>
+            <section className='Section_Signup'>
             <DefaultHeader word={'회원가입'}/>
             <div className='Signup_Box'>
 
