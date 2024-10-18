@@ -104,15 +104,20 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    width: 850px;
+    width: 120vw;
+    min-width: 350px;
+    max-width: 880px;
     height: 400px;
     overflow-y: scroll;
     scrollbar-width: none;
-    gap: 10px 10px;
+    gap: 10px 5px;
+    padding-right: 10px;
 }
 
 .modelBtnLine>label{
     display: flex;
+    align-items: center;
+    justify-content: center;
     width: 15vw;
     min-width: 150px;
     height: 30px;
@@ -159,9 +164,9 @@
 }
 
 .brandBtn, .modelBtn{
-    font-size: 20px;
     color: gray;
     padding: 5px;
+    font-weight: bold;
     border: 2px solid orange;
     border-radius: 5px;
 }
