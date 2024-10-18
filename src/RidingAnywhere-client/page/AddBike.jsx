@@ -118,7 +118,7 @@ const AddBike = () => {
                     {/* {/* 바이크 브랜드 설정 라인 */}
                     <div className='addbike_line'>
                         <div className='box_Title'>
-                            <img className='title_img' src={brandlogo===""?"/img/DefaultBrandLogo.png":"/img/brand/"+brandlogo} alt=''/>
+                            <img className='title_img' src={"/img/DefaultBrandLogo.png"} alt=''/>
                             <h2>바이크<br/>브랜드</h2>
                         </div>
                         <div className='brandBtnLine'>
@@ -130,7 +130,8 @@ const AddBike = () => {
                     <div className='addbike_line'>
                         <div className='box_Title'>
                             <img className='title_img' src={brandlogo===""?"/img/DefaultModelLogo.png":"/img/brand/"+brandlogo} alt=''/>
-                            <h2>바이크<br/>모델</h2>
+                            {!addBikeData.bikeBrand&&<h2>바이크<br/>모델</h2>}
+                            {!!addBikeData.bikeBrand&&<h2>{addBikeData.bikeBrand}</h2>}
                         </div>
                         <div className='modelBtnLine'>
                             {!addBikeData.bikeBrand&&<h2>브랜드를 선택해주세요!</h2>}
