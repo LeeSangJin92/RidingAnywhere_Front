@@ -118,6 +118,9 @@
     height: 30px;
     min-height: 30px;
     max-height: 30px;
+    overflow-x: hidden;
+    text-wrap: nowrap;
+    cursor: pointer;
 }
 
 .bikeImfo_line{
