@@ -17,7 +17,7 @@
     margin-top: 20px;
     width: 90vw;
     max-width: 1100px;
-    min-width: 85vw;
+    min-width: 450px;
     height: 950px;
     border: 5px solid rgb(255, 192, 0);
     box-sizing: border-box;
@@ -27,6 +27,7 @@
 
 .addbike_line{
     width: 100%;
+    min-width: 450px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -67,14 +68,9 @@
     min-height: 80px;
 }
 
-@media (max-width: 1000px) {
-
-}
-
 .brandBtnLine{
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: space-between;
     overflow-y: scroll;
     scrollbar-width: none;
@@ -87,16 +83,6 @@
     box-sizing: border-box;
     padding : 0 20px;
     gap: 5px;
-}
-
-.modelBtnLine{
-    box-sizing: border-box;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    width: 850px;
-    height: 400px;
 }
 
 .brandBtnLine>label{
@@ -112,8 +98,26 @@
     cursor: pointer;
 }
 
+.modelBtnLine{
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 850px;
+    height: 400px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    gap: 10px 10px;
+}
+
 .modelBtnLine>label{
-    margin: 20px;
+    display: flex;
+    width: 15vw;
+    min-width: 150px;
+    height: 30px;
+    min-height: 30px;
+    max-height: 30px;
 }
 
 .bikeImfo_line{
