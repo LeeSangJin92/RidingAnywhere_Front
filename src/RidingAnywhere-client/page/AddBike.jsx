@@ -24,11 +24,11 @@ const AddBike = () => {
 
     useEffect(() => {
         const getData = async()=>{
-            // if(!accessToken){
-            //     alert("⚠️로그인이 필요한 페이지 입니다.⚠️\n - 로그인 페이지로 이동합니다. - ")
-            //     navigate("/RA/Login");
-            // }
-            // else
+            if(!accessToken){
+                alert("⚠️로그인이 필요한 페이지 입니다.⚠️\n - 로그인 페이지로 이동합니다. - ")
+                navigate("/RA/Login");
+            }
+            else
              await fetch("https://ridinganywhere.site/RA/BikeModel")
             .then(response => {
                 if(response.status==200){
