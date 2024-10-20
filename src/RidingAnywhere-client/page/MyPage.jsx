@@ -482,7 +482,7 @@ const MyPage = () => {
                             <h1>프로필</h1>
                             <div className='profile_changeLine'>
                                 {/* 수정, 취소 버튼 라인 */}
-                                <label id='profile_changeLine' htmlFor='profile_changebtn' backgroundImage={changeBtnAct}></label>
+                                <label id='profile_changeLine' htmlFor='profile_changebtn'><img src={changeBtnAct} alt=''></img></label>
                                 <input type='button' className='profile_changebtn' id='profile_changebtn' style={{display:'none'}} onClick={profileControl}/>
                             </div>
                         </div>

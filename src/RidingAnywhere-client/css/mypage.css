@@ -67,6 +67,12 @@
 }
 
 .profile_changeLine>label{
+    width: max-content;
+    height: max-content;
+    box-sizing: border-box;
+}
+
+#profile_changeLine>img{
     width: 70px;
     height: 70px;
     cursor: pointer;
@@ -196,15 +202,6 @@
 }
 
 .bikeInfoBtn:hover{
-    cursor: pointer;
-}
-/* 
-#profile_changeLine>img{
-    width: 70px;
-    height: 70px;
-} */
-
-#profile_changeLine>img:hover{
     cursor: pointer;
 }
 
