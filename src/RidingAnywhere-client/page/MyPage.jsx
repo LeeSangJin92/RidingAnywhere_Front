@@ -500,10 +500,12 @@ const MyPage = () => {
                                     <div className='userAddress_Line_Top'>
                                         <div className='block' />
                                         <h2>지역</h2>
-                                        <label style={showinput?{display:'flex'}:{display:'none'}} htmlFor='save_userAddress'><img src={updateBtnAct.userAddress} alt=''></img></label><input id='save_userAddress' name='userAddress' type='button' onClick={checkUpdata} style={{display:'none'}}/>
+                                        <div className='userAddress_changeBtnLine'>
+                                            <label style={showinput?{display:'flex'}:{display:'none'}} htmlFor='save_userAddress'><img src={updateBtnAct.userAddress} alt=''></img></label><input id='save_userAddress' name='userAddress' type='button' onClick={checkUpdata} style={{display:'none'}}/>
+                                        </div>
                                     </div>
-                                    <div className='userAddress_Line_Bottoom' style={showinput?{display:'none'}:{display:'flex'}}><h2>{riderInfo.userAddressCity} / {riderInfo.userAddressTown}</h2></div>
-                                    <div className='userAddress_Line_Bottoom' style={showinput?{display:'flex'}:{display:'none'}}>
+                                    <div className='userAddress_Line_Bottom' style={showinput?{display:'none'}:{display:'flex'}}><h2>{riderInfo.userAddressCity} / {riderInfo.userAddressTown}</h2></div>
+                                    <div className='userAddress_Line_Bottom' style={showinput?{display:'flex'}:{display:'none'}}>
                                         <select className='selectCity' value={updateRider.userAddressCity} onChange={selectCity}>
                                             {cityList.map((data,index)=>(<option key={index} value={data}>{data}</option>))}
                                         </select>

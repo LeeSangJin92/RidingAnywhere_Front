@@ -255,6 +255,7 @@
 }
 .profile_img>h4{
     margin: 0;
+    font-size: 14px;
 }
 
 .riderInfo_left>h4{
@@ -300,38 +301,41 @@
     text-align: center;
     align-items: center;
     height: 140px;
+    width: 100%;
     >.userAddress_Line_Top{
         justify-content: space-between;
         align-items: center;
         display: flex;
-        width: 200px;
         height: 70px;
     }
 
-    >.userAddress_Line_Bottoom{
+    >.userAddress_Line_Bottom{
         width: 200px;
         height: 70px;
         align-items: center;
         justify-content: center;
         gap: 10px;
-        .selectCity, .selectTown{
-            border: 2px solid orange;
-            border-radius: 10px;
-            background-color: gray;
-            text-align: center;
-            font-weight: bold;
-            font-size: 19px;
-            
-            height: 50px;
-        }
-        .selectCity{
-            width: 80px;
-        }
-        .selectTown{
-            width: 100px;
-        }
     }
 }
+.userAddress_Line_Bottom>select{
+    border: 2px solid orange;
+    border-radius: 10px;
+    background-color: gray;
+    text-align: center;
+    font-weight: bolder;
+    font-size: smaller;
+    width: 100vw;
+    height: 50px;
+}
+.userAddress_Line_Bottom>.selectCity{
+    min-width: 60px;
+    max-width: 70px;
+}
+.userAddress_Line_Bottom>.selectTown{
+    min-width: 80px;
+    max-width: 100px;
+}
+
 
 .userAddress_Line_Top>label{
     display: flex;
