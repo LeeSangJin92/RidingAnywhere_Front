@@ -467,7 +467,7 @@ const MyPage = () => {
 
 
     return (
-        <main>
+        <main className='Main_MyPage'>
             <DefaultHeader/>
             <section className='myPage'>
 
