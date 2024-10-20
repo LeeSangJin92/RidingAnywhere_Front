@@ -54,8 +54,8 @@
     color: transparent;
 }
 
-.profile_seccsion{
-    width: 700px;
+.profile_section{
+    width: 100%;
     height: 600px;
     display: flex;
     justify-content: space-between;
@@ -67,6 +67,7 @@
 }
 
 .profile_changeLine>label{
+    display: flex;
     width: max-content;
     height: max-content;
     box-sizing: border-box;
@@ -206,14 +207,17 @@
 }
 
 .riderInfo_left{
-    margin-left: 20px;
-    padding-top: 50px;
     display: flex;
     align-items: center;
     flex-direction: column;
+    width: 200px;
+    min-width: 200px;
 }
 
 .profile_img{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 200px;
     height: 330px;
 }
@@ -224,7 +228,11 @@
     align-items: center;
     justify-content: center;
     width: 200px;
+    min-width: 160px;
+    max-width: 200px;
     height: 200px;
+    max-height: 160px;
+    min-height: 200px;
     border-radius: 10%;
     border:3px solid orange;
     
@@ -232,6 +240,9 @@
         width: 200px;
         height: 200px;
     }
+}
+.profile_img>h4{
+    margin: 0;
 }
 
 .riderInfo_left>h4{

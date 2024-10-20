@@ -486,7 +486,7 @@ const MyPage = () => {
                                 <input type='button' className='profile_changebtn' id='profile_changebtn' style={{display:'none'}} onClick={profileControl}/>
                             </div>
                         </div>
-                        <div className='profile_seccsion'>
+                        <div className='profile_section'>
                             <div className='riderInfo_left'>
                                 <div className='profile_img'>
                                     <div className='profile_img_box'>
