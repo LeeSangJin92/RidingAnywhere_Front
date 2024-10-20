@@ -515,7 +515,7 @@ const MyPage = () => {
                                 </div>
                             </div>
                             <div className='riderInfo_right'>
-                                <table>
+                                {/* <table>
                                     <tbody>
                                     <tr>
                                         <td><h2>이메일</h2></td>
@@ -557,7 +557,7 @@ const MyPage = () => {
                                         <td className='saveBtn_Line'><label style={showinput?{display:'table-cell'}:{display:'none'}} htmlFor='save_userGender'><img src={updateBtnAct.userGender} alt=''></img></label><input id='save_userGender' name='userGender' type='button' onClick={checkUpdata} style={{display:'none'}}/></td>
                                     </tr>
                                     </tbody>
-                                </table>
+                                </table> */}
                             </div>
                         </div>
                     </div>
