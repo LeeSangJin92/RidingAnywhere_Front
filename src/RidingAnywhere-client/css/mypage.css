@@ -31,6 +31,12 @@
     height: max-content;
 }
 
+@media(max-width:1000px){
+    .myInfoLine{
+        flex-direction: column;
+    }
+}
+
 .profile{
     width: 50vw;
     max-width: 700px;
@@ -86,7 +92,8 @@
 .bikeData{
     display: flex;
     flex-direction: column;
-    width: 560px;
+    width: 500px;
+    min-width: 500px;
 }
 
 .bikeLine, .crewLine{
@@ -214,16 +221,17 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 200px;
-    min-width: 200px;
+    width: 16vw;
+    min-width: 180px;
+    max-width: 200px;
 }
 
 .profile_img{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 200px;
-    height: 330px;
+    width: 100%;
+    height: 280px;
 }
 
 .profile_img_box{
@@ -232,12 +240,12 @@
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    width: 16vw;
+    width: 14vw;
     min-width: 160px;
     max-width: 180px;
-    height: 16vw;
-    max-height: 160px;
-    min-height: 180px;
+    height: 14vw;
+    min-height: 160px;
+    max-height: 180px;
     border-radius: 10%;
     border:3px solid orange;
 }
@@ -293,27 +301,19 @@
     align-items: center;
     height: 140px;
     >.userAddress_Line_Top{
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         display: flex;
         width: 200px;
         height: 70px;
-        label{
-            position: absolute;
-            transform: translate(100%);
-            :hover{
-                cursor: pointer;
-            }
-        }
-        img{
-            width: 70px;
-        }
     }
 
     >.userAddress_Line_Bottoom{
+        width: 200px;
         height: 70px;
         align-items: center;
-        gap: 20px;
+        justify-content: center;
+        gap: 10px;
         .selectCity, .selectTown{
             border: 2px solid orange;
             border-radius: 10px;
@@ -331,6 +331,17 @@
             width: 100px;
         }
     }
+}
+
+.userAddress_Line_Top>label{
+    display: flex;
+    cursor: pointer;
+
+}
+
+.userAddress_Line_Top>label>img{
+    width: 70px;
+    height: 70px;
 }
 
 .riderInfo_right, .riderInfo_right>table{

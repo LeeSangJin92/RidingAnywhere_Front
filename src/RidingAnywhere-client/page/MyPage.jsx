@@ -498,8 +498,9 @@ const MyPage = () => {
                                 </div>
                                 <div className='userAddress_Line'>
                                     <div className='userAddress_Line_Top'>
+                                        <div className='block' />
                                         <h2>지역</h2>
-                                        <label style={showinput?{display:'block'}:{display:'none'}} htmlFor='save_userAddress'><img src={updateBtnAct.userAddress} alt=''></img></label><input id='save_userAddress' name='userAddress' type='button' onClick={checkUpdata} style={{display:'none'}}/>
+                                        <label style={showinput?{display:'flex'}:{display:'none'}} htmlFor='save_userAddress'><img src={updateBtnAct.userAddress} alt=''></img></label><input id='save_userAddress' name='userAddress' type='button' onClick={checkUpdata} style={{display:'none'}}/>
                                     </div>
                                     <div className='userAddress_Line_Bottoom' style={showinput?{display:'none'}:{display:'flex'}}><h2>{riderInfo.userAddressCity} / {riderInfo.userAddressTown}</h2></div>
                                     <div className='userAddress_Line_Bottoom' style={showinput?{display:'flex'}:{display:'none'}}>
