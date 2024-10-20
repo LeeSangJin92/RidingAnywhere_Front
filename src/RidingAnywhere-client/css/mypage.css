@@ -337,13 +337,13 @@
 }
 
 
-.userAddress_Line_Top>label{
+.userAddress_changeBtnLine>label{
     display: flex;
     cursor: pointer;
 
 }
 
-.userAddress_Line_Top>label>img{
+.userAddress_changeBtnLine>label>img{
     width: 70px;
     height: 70px;
 }
