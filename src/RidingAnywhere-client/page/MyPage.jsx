@@ -478,6 +478,7 @@ const MyPage = () => {
                     {/* ✏️ 라이더 프로필 범위 */}
                     <div className='profile'>
                         <div className='profile_top'>
+                            <div className='block'></div>
                             <h1>프로필</h1>
                             <div className='profile_changeLine'>
                                 {/* 수정, 취소 버튼 라인 */}
