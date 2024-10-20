@@ -1,12 +1,19 @@
 .myPage{
-    display: flex;
     flex-direction: column;
+    height: 600px;
 }
 
 .page_tile{
-    margin-top: 10px;
-    margin-left: 30px;
-    margin-bottom: 10px;
+    width: 100%;
+    height: 80px;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.page_tile>h1{
+    font-size: 40px;
 }
 
 .myInfoLine{
@@ -17,14 +24,16 @@
     width: 100%;
     justify-content: space-around;
     align-items: center;
-    height: 600px;
+    height: max-content;
 }
 
 .profile{
-    width: 700px;
+    width: 50vw;
+    max-width: 700px;
     height: 600px;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
     border-right: 2px dotted orange;
 }
 
@@ -57,7 +66,7 @@
     justify-content: end;
     padding-top: 10px;
     padding-right: 20px;
-    width: 700px;
+    width: 100%;
 }
 
 .bikeData{
