@@ -97,8 +97,8 @@
 .bikeData{
     display: flex;
     flex-direction: column;
-    width: 500px;
-    min-width: 500px;
+    width: 460px;
+    min-width: 460px;
 }
 
 .bikeLine, .crewLine{
@@ -343,8 +343,7 @@
 
 .userAddress_changeBtnLine{
     position: absolute;
-    margin-left: 10px;
-    transform : translateX(85%)
+    transform : translateX(100%)
 }
 .userAddress_changeBtnLine>label{
     display: flex;
@@ -353,23 +352,27 @@
 }
 
 .userAddress_changeBtnLine>label>img{
-    width: 70px;
+    width: 10vw;
     min-width: 50px;
     max-width: 70px;
-    height: 70px;
+    height: 10vw;
     min-width: 50px;
     max-height: 70px;
 }
 
-.riderInfo_right, .riderInfo_right>table{
-    width: 100vw;
-    min-width: 320px;
+.riderInfo_right{
+    width: 72vw;
+    min-width: 300px;
     max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
 }
 
-.riderInfo_right tr{
+.riderInfo_right>div{
     height: 80px;
     align-items: center;
+    display: flex;
 }
 
 .riderInfo_right h2{
