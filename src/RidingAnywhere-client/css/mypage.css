@@ -36,7 +36,7 @@
     height: max-content;
 }
 
-@media(max-width:999px){
+@media(max-width:1060px){
     .myInfoLine{
         flex-direction: column;
     }
@@ -375,9 +375,14 @@
     display: flex;
 }
 
+.riderInfo_right>div>h2:first-child{
+    width: 60vw;
+    min-width: 90px;
+    max-width: 100px;
+}
+
 .riderInfo_right h2{
     text-align: center;
-    margin: 10px 0;
 }
 
 .profile_inputLine{
