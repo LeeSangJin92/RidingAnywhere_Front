@@ -385,14 +385,13 @@ const MyPage = () => {
                                        {transform:'translateX(170px)'},
                                        {transform:'translateX(0)'},
                                        {transform:'translateX(-170px)'},
-                                       {transform:'translateX(340px)'}])
+                                       {transform:'translateX(-340px)'}])
             );
         }
     },[bikeInfo])
 
     // 🛠️ 바이크 박스 위치 설정
     useEffect(()=>{
-        console.log(boxPosition);
         setTransform(boxPosition[showBike])
     },[boxPosition,showBike])
 
