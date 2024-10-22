@@ -1,7 +1,5 @@
 .Main_MyPage{
     height: max-content;
-    width: 100vw;
-    min-width: 460px;
     max-width: 1100px;
 }
 
@@ -31,13 +29,25 @@
     display: flex;
     width: 100%;
     justify-content: space-around;
-    align-items: center;
+    height: max-content;
+}
+
+.myInfoLine>div{
     height: max-content;
 }
 
 @media(max-width:1060px){
     .myInfoLine{
         flex-direction: column;
+        align-items: center;
+    }
+    .profile{
+        border-right: none;
+        border-bottom : 2px dotted orange;
+    }
+    .bikeData{
+        max-width: 660px;
+        width: 75vw;
     }
 }
 
@@ -45,11 +55,12 @@
     width: 75vw;
     max-width: 660px;
     min-width: 460px;
-    height: 600px;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
     border-right: 2px dotted orange;
+    margin-top: 20px;
+    padding-bottom: 20px;
 }
 
 .profile_top{
@@ -96,15 +107,22 @@
 .bikeData{
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 460px;
     min-width: 460px;
 }
 
-.bikeLine, .crewLine{
-    width: 560px;
+.bikeData>div{
+    width: 100%;
     height: 300px;
     text-align: center;
-    border-bottom: 1px dotted orange;
+    box-sizing: border-box;
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.bikeData>div:first-child{
+    border-bottom: 2px dotted orange;
 }
 
 .bikeInfo{
