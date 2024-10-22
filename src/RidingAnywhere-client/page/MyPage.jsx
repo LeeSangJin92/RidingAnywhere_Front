@@ -409,7 +409,7 @@ const MyPage = () => {
                 setTransform(boxPosition[4])
                 break;
             default :
-        }},[boxPosition,showBike])
+        }},[showBike])
 
     // ➕ 바이크 추가하기
     const bikeAdd = () => {
