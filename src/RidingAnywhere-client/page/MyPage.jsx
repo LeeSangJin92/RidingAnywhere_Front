@@ -345,8 +345,11 @@ const MyPage = () => {
 
     // 🛠️ 바이크 관련 정보 설정 범위
     // 보여지고 있는 바이크 index
+    const [boxPosition, setBoxPosition] = useState([{transform:'translateX(0)'}])
     const [showBike,setShowBike] = useState(0)
-    const [boxtransform,setTransform] = useState({transform:'translateX(40%)'})
+    const [boxtransform,setTransform] = useState({transform:'translateX(0)'})
+
+
     // 대표 바이크의 index
     const [selectBike, setSelectBike] = useState(0)
     
@@ -369,6 +372,21 @@ const MyPage = () => {
             setBikeAddBtn(bikeInfo.length<5?{backgroundImage:"url('/img/mypage/BikeAddBtnOn.png')"}:{backgroundImage:"url('/img/mypage/BikeAddBtnOff.png')"})
             setShowBike(bikeInfo.map(data=>data.bike_select).indexOf(true));
             setSelectBike(bikeInfo.map(data=>data.bike_select).indexOf(true))
+            if(bikeInfo.length<3) setBoxPosition([{transform:'translateX(0)'},{transform:'translateX(0)'}]);
+            else setBoxPosition(Array(bikeInfo.length).fill().map(_=>
+                (bikeInfo.length===3&&[{transform:'translateX(170px)'},
+                                       {transform:'translateX(0)'},
+                                       {transform:'translateX(-170px)'},])||
+                (bikeInfo.length===4&&[{transform:'translateX(255px)'},
+                                       {transform:'translateX(85px)'},
+                                       {transform:'translateX(-85px)'},
+                                       {transform:'translateX(-255px)'}])||
+                (bikeInfo.length===5&&[{transform:'translateX(340px)'},
+                                       {transform:'translateX(170px)'},
+                                       {transform:'translateX(0)'},
+                                       {transform:'translateX(-170px)'},
+                                       {transform:'translateX(340px)'}])
+            ));
         }
     },[bikeInfo])
 
@@ -376,22 +394,22 @@ const MyPage = () => {
     useEffect(()=>{
         switch(showBike){
             case 0 :
-                setTransform({transform:'translateX(40%)'})
+                setTransform(boxPosition[0])
                 break;
             case 1 :
-                setTransform({transform:'translateX(20%)'})
+                setTransform(boxPosition[1])
                 break;
             case 2 :
-                setTransform({transform:'translateX(0%)'})
+                setTransform(boxPosition[2])
                 break;
             case 3 :
-                setTransform({transform:'translateX(-20%)'})
+                setTransform(boxPosition[3])
                 break;
             case 4 :
-                setTransform({transform:'translateX(-40%)'})
+                setTransform(boxPosition[4])
                 break;
             default :
-        }},[showBike])
+        }},[boxPosition,showBike])
 
     // ➕ 바이크 추가하기
     const bikeAdd = () => {

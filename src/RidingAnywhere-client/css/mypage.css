@@ -149,13 +149,14 @@
     height: 150px;
     display: flex;
     justify-content: center;
+    align-content: center;
     overflow: hidden;
 }
 
 .bikeBoxLine{
-    position: absolute;
     width: max-content;
     display: flex;
+    align-items: center;
     gap: 20px;
     transition: 1s;
 }
