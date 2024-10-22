@@ -373,7 +373,7 @@ const MyPage = () => {
             setShowBike(bikeInfo.map(data=>data.bike_select).indexOf(true));
             setSelectBike(bikeInfo.map(data=>data.bike_select).indexOf(true))
             if(bikeInfo.length<3) setBoxPosition([{transform:'translateX(0)'},{transform:'translateX(0)'}]);
-            else setBoxPosition(Array(bikeInfo.length).fill().map(_=>
+            else setBoxPosition(
                 (bikeInfo.length===3&&[{transform:'translateX(170px)'},
                                        {transform:'translateX(0)'},
                                        {transform:'translateX(-170px)'},])||
@@ -386,31 +386,15 @@ const MyPage = () => {
                                        {transform:'translateX(0)'},
                                        {transform:'translateX(-170px)'},
                                        {transform:'translateX(340px)'}])
-            ));
+            );
         }
     },[bikeInfo])
 
     // 🛠️ 바이크 박스 위치 설정
     useEffect(()=>{
         console.log(boxPosition);
-        switch(showBike){
-            case 0 :
-                setTransform({transform:'translateX(40%)'})
-                break;
-            case 1 :
-                setTransform({transform:'translateX(20%)'})
-                break;
-            case 2 :
-                setTransform({transform:'translateX(0%)'})
-                break;
-            case 3 :
-                setTransform({transform:'translateX(-20%)'})
-                break;
-            case 4 :
-                setTransform({transform:'translateX(-40%)'})
-                break;
-            default :
-        }},[boxPosition,showBike])
+        setTransform(boxPosition[showBike])
+    },[boxPosition,showBike])
 
     // ➕ 바이크 추가하기
     const bikeAdd = () => {
