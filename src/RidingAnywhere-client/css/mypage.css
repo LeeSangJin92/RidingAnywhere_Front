@@ -7,7 +7,7 @@
 
 .myPage{
     flex-direction: column;
-    height: 600px;
+    height: max-content;
     padding: 0 20px;
     box-sizing: border-box;
 }
@@ -70,7 +70,7 @@
 
 .profile_section{
     width: 100%;
-    height: 600px;
+    height: max-content;
     display: flex;
     justify-content: space-between;
 }
@@ -377,7 +377,6 @@
     display: flex;
     width: 100%;
     height: 100%;
-    justify-content: center;
     align-items: center;
 }
 
@@ -408,23 +407,19 @@
     box-sizing: border-box;
 }
 
-[name='changeGender']{
-    padding-top: 15px;
-}
-
 .saveBtn_Line{
-    padding: 0;
-    width: 70px;
-    height: 70px;
+    width: max-content;
+    height: max-content;
+    cursor: pointer;
 }
 
 .saveBtn_Line img{
-    width: 70px;
-    height: 70px;
-}
-
-.saveBtn_Line *:hover{
-    cursor: pointer;
+    width: 10vw;
+    height: 10vw;
+    min-width: 60px;
+    max-width: 70px;
+    min-height: 60px;
+    max-height: 70px;
 }
 
 .profile_inputLine>input{
