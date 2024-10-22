@@ -102,8 +102,10 @@
     height: max-content;
     text-align: center;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
     margin-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
 
 .bikeData>div:first-child{
@@ -114,7 +116,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70px;
+    height: 60px;
 }
 
 .bikeInfo{
@@ -169,6 +171,8 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
 .infobox_Star{
@@ -196,7 +200,6 @@
 }
 
 .InfoBox h4{
-    width: 140px;
     margin: 0;
     text-wrap: wrap;
 }
@@ -208,11 +211,12 @@
 
 .bikeInfo_btnLine{
     gap: 40px;
-    align-items: center;
     justify-content: center;
     display: flex;
-    width: 560px;
-    height: 70px;
+    width: 100%;
+    height: max-content;
+    margin-top: 10px;
+    box-sizing: border-box;
 }
 
 .bikeInfo_btnLine input{
@@ -500,8 +504,8 @@
 
 .crewBlockBox{
     display: flex;
-    width: 550px;
-    height: 200px;
+    width: 100%;
+    height: max-content;
     justify-content: center;
     align-items: center;
     font-size: 25px;
@@ -512,7 +516,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 550px;
+    align-items: center;
+    width: 100%;
     height: 200px;
     h2{
         display: flex;
