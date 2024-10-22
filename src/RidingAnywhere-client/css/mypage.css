@@ -384,14 +384,25 @@
 .riderInfo_right>div>.info_Box>h2:first-child{
     width: 100px;
     min-width: 100px;
+}
+
+.info_Box>h2{
     height: 35px;
+    box-sizing: border-box;
+    padding-left: 20px;
+}
+
+.info_Box h3{
+    margin: 0;
 }
 
 .profile_inputLine{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 250px;
+    width: 35vw;
+    max-width: 250px;
+    min-width: 240px;
     height: 35px;
     gap: 20px;
     box-sizing: border-box;
@@ -424,6 +435,7 @@
     font-weight: bold;
     border-radius: 5px;
     border: 2px solid orange;
+    box-sizing: border-box;
     text-shadow: none;
     background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
     font-weight: bold;
@@ -432,12 +444,12 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    cursor: pointer;
 }
 
 #userBirthday{
     text-align: center;
     width: 150px;
-    height: 40px;
     font-size: 20px;
     font-weight: bold;
 }
@@ -447,17 +459,15 @@
     align-items: center;
     justify-content: center;
     width: 80px;
-    height: 45px;
+    height: 35px;
     border-radius: 10px;
+    box-sizing: border-box;
     background-color: black;
     font-weight: bold;
     color: gray;
     text-shadow: 1px 1px whitesmoke;
     border: 2px solid gray;
     font-size: 20px;
-}
-
-.profile_inputLine>label:hover{
     cursor: pointer;
 }
 
