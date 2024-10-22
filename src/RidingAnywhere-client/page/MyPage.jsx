@@ -392,24 +392,25 @@ const MyPage = () => {
 
     // 🛠️ 바이크 박스 위치 설정
     useEffect(()=>{
+        console.log(boxPosition);
         switch(showBike){
             case 0 :
-                setTransform(boxPosition[0])
+                setTransform({transform:'translateX(40%)'})
                 break;
             case 1 :
-                setTransform(boxPosition[1])
+                setTransform({transform:'translateX(20%)'})
                 break;
             case 2 :
-                setTransform(boxPosition[2])
+                setTransform({transform:'translateX(0%)'})
                 break;
             case 3 :
-                setTransform(boxPosition[3])
+                setTransform({transform:'translateX(-20%)'})
                 break;
             case 4 :
-                setTransform(boxPosition[4])
+                setTransform({transform:'translateX(-40%)'})
                 break;
             default :
-        }},[showBike])
+        }},[boxPosition,showBike])
 
     // ➕ 바이크 추가하기
     const bikeAdd = () => {
