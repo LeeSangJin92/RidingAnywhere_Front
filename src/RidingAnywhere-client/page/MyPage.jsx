@@ -13,7 +13,7 @@ const MyPage = () => {
      const [accessToken] = useState(!sessionStorage.getItem('accessToken'))
 
     // 😎 라이더 정보
-     const [riderInfo, setriderInfo] = useState({
+     const [riderInfo, setRiderInfo] = useState({
         userEmail : "",
         userName : "",
         userNickname : "",
@@ -42,24 +42,33 @@ const MyPage = () => {
 
      // ✏️ 토큰으로 라이더 정보 가져오기
      const checkData = async () => {
-        console.log("🛜라이더 엑세스 체크 중...")
+        console.log("🔍라이더 엑세스 체크")
         if(!accessToken){
-            console.log("✅접속자에게 엑세스 있음!")
-            console.log("🛜라이더 데이터 확인 중...")
+            console.log("✅라이더 액세스 발견")
+            console.log("🛜라이더 서버 요청")
             await fetch("https://ridinganywhere.site/RA/CheckRider",
             {headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"}
             }).then(response => {
                 if(response.status==200){
-                    console.log("✅ 서버 작업 완료")
+                    console.log("✅라이더 서버 응답")
                     return response.json();
-                } else console.log("❌ 서버 통신 실패");
+                } else if(response.status==401){
+                    console.log("❗서버 접근 오류");
+                    alert("❗서버 접속 실패로 로그인 페이지로 이동합니다.")
+                    navigate("/RA/Login");
+                } 
+                else {
+                    console.log("❌서버 통신 실패");
+                    alert("❗서버 이상 문제로 메인 페이지로 이동합니다.")
+                    navigate("/RA/Home");
+                }
             }).then(data => {
                 if(data){
-                    console.log("✅라이더 데이터 수집 완료!");
+                    console.log("💾라이더 정보 수집");
                     let userData = data.userData;
-                    setriderInfo({...riderInfo,
+                    setRiderInfo({...riderInfo,
                         userEmail : userData.userEmail,
                         userName : userData.userName,
                         userNickname : userData.userNickname,
@@ -69,14 +78,15 @@ const MyPage = () => {
                         userAddressCity : userData.address.city,
                         userAddressTown : userData.address.town,
                     });
-                    !!userData.userProfile&&setprofile('data:image/png;base64,'+userData.userProfile);
+                    !!userData.userProfile&&setProfile('data:image/png;base64,'+userData.userProfile);
+                    console.log("🔍바이크 정보 조회");
                     if(data.bikeList.length===0){
-                        console.log("⛔ 바이크 저장 이력 없음")
+                        console.log("⛔바이크 데이터 없음")
                         alert("⚠️입력된 바이크 정보가 없습니다.⚠️\n - 바이크 추가 페이지로 이동합니다. - ")
-                        console.log("🛠️ 바이크 추가 페이지로 이동")
+                        console.log("↩️바이크 페이지 이동")
                         navigate("/RA/Addbike");
-                    }
-                    else {
+                    } else {
+                        console.log("💾바이크 정보 수집")
                         setbikeInfo(data.bikeList.map((data,index)=>{
                             const bikeData = {
                                 bike_index:index,
@@ -89,14 +99,22 @@ const MyPage = () => {
                             }
                             return bikeData
                         }))
-                        console.log("바이크 데이터 수집 완료")}
+                    }
+                    console.log("🔍크루 ID 조회")
                     if(!!data.crewId) {
-                        console.log("🔎 크루 데이터 감지")
+                        console.log("💾 크루 ID 수집")
                         return data.crewId;}
-                    else {console.log("❌ 가입된 크루 없음"); return;}
-                }}).then(crewId=>{
+                    else {
+                        console.log("❌크루 ID 없음");
+                    }
+                } else{
+                    console.log("❗라이더 정보 없음")
+                    alert("❗서버 접속 실패로 로그인 페이지로 이동합니다.")
+                    navigate("/RA/Login");
+                }
+            }).then(crewId=>{
                 if(!crewId) return;
-                console.log("🛜 서버로 크루 데이터 로드 요청")
+                console.log("🛜크루 정보 요청")
                 fetch("https://ridinganywhere.site/CR/LoadCrewData",{
                     method:"POST",
                     headers:{
@@ -106,12 +124,16 @@ const MyPage = () => {
                     body:JSON.stringify(crewId)
                 }).then(response => {
                     if(response.status==200){
-                        console.log("✅ 서버 작업 완료")
+                        console.log("✅크루 정보 응답");
                         return response.json();
-                    } else console.log("❌ 서버 통신 실패");
+                    } else {
+                        console.log("❌서버 통신 실패");
+                        alert("❗서버 이상 문제로 메인 페이지로 이동합니다.")
+                        navigate("/RA/Home");
+                    }
                 }).then(data=>{
                     if(data){
-                        console.log("수신 받은 데이터");
+                        console.log("💾크루 정보 수집")
                         setCrewInfo({
                             crew_context:data.crew_context,
                             crew_count:data.crew_count,
@@ -125,44 +147,44 @@ const MyPage = () => {
                 })
             })
         } else {
-            console.log("⛔ 접속자에게 엑세스 없음");
+            console.log("⛔라이더 엑세스 없음");
             alert("⚠️로그인이 필요합니다.⚠️\n - 로그인 페이지로 이동합니다. - ")
-            console.log("🛠️ 로그인 페이지로 이동")
-            navigate("/RA/login");
+            console.log("↩️로그인 페이지 이동")
+            navigate("/RA/Login");
         }
     }
 
     // 📷 프로필 이미지 관련 라인
-    const [profile,setprofile] = useState(null)
+    const [profile,setProfile] = useState(null)
     const profileimg = data => {
-       const imagefile = data.target.files[0];
-       const imageUrl = URL.createObjectURL(imagefile);
-       setprofile(imageUrl);
-       console.log(imagefile)
-       updateImg(imagefile);
-   }
+       console.log("🛠️프로필 이미지 수정")
+       const imageFile = data.target.files[0];
+       const imageUrl = URL.createObjectURL(imageFile);
+       setProfile(imageUrl);
+       updateImg(imageFile);
+    }
 
-   const updateImg = async (data) => {
-        console.log("🛜변경 내용 서버로 전달...")
+    // 🛠️ 프로필 이미지 수정
+    const updateImg = async (data) => {
+        console.log("🛜프로필 수정 요청");
         const imgData = new FormData()
         imgData.append('file',data);
-       await fetch("https://ridinganywhere.site/RA/UpdateImage",
-       {   
-        method: "POST",
-        headers:{
-            "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`},
-        body:imgData
-    }).then(response => {
-        if(response.status==200){
-            console.log("✅ 서버 작업 완료")
-            return response.json();
-        } else console.log("❌ 서버 통신 실패");
-    }).then(data=>{
-        if(data){
-            console.log(data);
-        }
-    })
-   }
+        await fetch("https://ridinganywhere.site/RA/UpdateImage",
+        {   
+            method: "POST",
+            headers:{
+                "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`},
+            body:imgData
+        }).then(response => {
+            if(response.status==200){
+                console.log("✅프로필 수정 응답")
+                alert("✅프로필 이미지 수정을 완료했습니다.")
+            } else {
+                console.log("❌프로필 수정 실패");
+                alert("✅프로필 이미지 수정이 실패했습니다.")
+            }
+        })
+    }
     
     // 🛠️ 수정되는 라이더 정보
     const [updateRider, setUpdateRider] = useState({
