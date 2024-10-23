@@ -1,6 +1,7 @@
 .Main_MyPage{
     height: max-content;
     max-width: 1100px;
+    gap: 0;
 }
 
 .myPage{
@@ -505,7 +506,7 @@
 .crewBlockBox{
     display: flex;
     width: 100%;
-    height: max-content;
+    height: 230px;
     justify-content: center;
     align-items: center;
     font-size: 25px;
@@ -519,20 +520,21 @@
     align-items: center;
     width: 100%;
     height: max-content;
-    h2{
-        display: flex;
-        margin: 0;
-        width: 250px;
-        height: 50px;
-        justify-content: center;
-        align-items: center;
-    }
-    .crewInfoLine{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-    }
+}
+
+.crewInfo h2{
+    display: flex;
+    margin: 0;
+    width: 200px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+.crewInfo>.crewInfoLine{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @media(max-width:1060px){

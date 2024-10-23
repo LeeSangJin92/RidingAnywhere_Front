@@ -25,7 +25,7 @@ const MyPage = () => {
      })
 
     // 🤝 크루 정보
-    const [crewInfo, setcrewInfo] = useState({
+    const [crewInfo, setCrewInfo] = useState({
         crew_context:"",
         crew_count:0,
         crew_city:"",
@@ -112,8 +112,7 @@ const MyPage = () => {
                 }).then(data=>{
                     if(data){
                         console.log("수신 받은 데이터");
-                        console.log(data)
-                        setcrewInfo({
+                        setCrewInfo({
                             crew_context:data.crew_context,
                             crew_count:data.crew_count,
                             crew_city:data.crew_location.city,
