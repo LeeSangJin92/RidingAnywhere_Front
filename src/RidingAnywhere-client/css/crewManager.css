@@ -3,7 +3,7 @@
     display: flex;
 }
 
-.crewInfoLine{
+.crewManager>.crewInfoLine{
     width: 550px;
     height: 600px;
     display: flex;
@@ -40,13 +40,13 @@
 
 
 
-.crewInfoBox{
+.crewManager>.crewInfoLine>.crewInfoBox{
     height: 600px;
     display: flex;
     flex-direction: column;
 }
 
-.crewInfoBox_Line{
+.crewInfoBox>.crewInfoBox_Line{
     display: flex;
     flex-direction: column;
     justify-content: center;
