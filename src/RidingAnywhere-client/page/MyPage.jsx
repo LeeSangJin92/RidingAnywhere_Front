@@ -169,7 +169,6 @@ const MyPage = () => {
         console.log("🛜프로필 수정 요청");
         const imgData = new FormData()
         imgData.append('file',data);
-        console.log(data)
         try {
             await fetch("https://ridinganywhere.site/RA/UpdateImage",
                 {   
@@ -187,7 +186,8 @@ const MyPage = () => {
                     }
                 })
         } catch (e) {
-            console.log(e);
+            console.log("❌이미지 용량 초과");
+            alert("❌적정 이미지 용량이 초과했습니다. \n ⚠️이미지 용량은 10MB 이하만 가능합니다.");
         }
     }
     
