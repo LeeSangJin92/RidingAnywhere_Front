@@ -13,43 +13,45 @@ const HomePage = () => {
     const navigate = useNavigate();
 
     // 🪙토큰 확인
-    const [accessToken, setAccessToken] = useState(!sessionStorage.getItem('accessToken'))
+    const [accessToken, _] = useState(!sessionStorage.getItem('accessToken'))
     const checkData = async () => {
-        console.log("🛜 라이더 엑세스 체크 중...")
+        console.log("🔍라이더 토큰 체크")
         if(!accessToken){
-            console.log("✅ 접속자에게 엑세스 있음!")
-            console.log("🛜 라이더 데이터 확인 중...")
+            console.log("✅라이더 토큰 발견")
+            console.log("🛜라이더 서버 요청")
             await fetch("https://ridinganywhere.site/RA/CheckRider",{headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"}
             }).then(response => {
                 if(response.status===200) {
-                    console.log("✅ 서버 통신 완료");
+                    console.log("✅라이더 서버 응답")
                     return response.json();
                 }
                 else if(response.status===401){
-                    console.log("❌ 토큰 데이터 만료");
-                    alert("⚠️ 로그인 유지 시간 초과 \n - 로그인 페이지로 이동합니다. -");
+                    console.log("❌라이더 토큰 만료");
+                    alert("⚠️로그인 유지 시간 초과 \n - 로그인 페이지로 이동합니다. -");
                     sessionStorage.removeItem('accessToken');
                     navigate('/RA/Login');
                 }
             }).then(data => {
-                console.log("✅ 라이더 데이터 수집 완료!");
+                console.log("✅라이더 서버 응답");
+                console.log("🔍바이크 정보 조회")
                 if(data.bikeList.length===0){
-                    console.log("⚠️ 입력된 바이크 정보가 없습니다.")
-                    alert("⚠️ 등록된 바이크가 없습니다. ⚠️\n - 바이크 등록 페이지로 이동합니다 -")
+                    console.log("❌바이크 정보 없음")
+                    alert("⚠️등록된 바이크가 없습니다.⚠️\n - 바이크 등록 페이지로 이동합니다 -")
                     navigate("/RA/AddBike")
                 }
-                console.log("🔎 가입된 크루 조회 중...");
+                console.log("✅바이크 정보 확인")
+                console.log("🔎크루 ID 조회");
                 if(data.userData.authorityId.authorityId===1){
-                    console.log("⚠️ 가입된 크루 없음");
+                    console.log("❌크루 ID 없음");
                 }else{
-                    console.log("✅ 가입된 크루 존재");
+                    console.log("✅크루 ID 확인");
                     setJoinCrew(true);
                     loadCrewBoard();
                 }
             })
-        } else console.log("⛔접속자에게 엑세스 없음")
+        } else console.log("⛔라이더 토큰 없음")
         loadRiderBoard();
     }
 
@@ -69,34 +71,40 @@ const HomePage = () => {
 
     // 🛜 크루 게시글 호출
     const loadCrewBoard = async() => {
-        console.log("🛜 크루 게시글 호출중...");
+        console.log("🛜크루 게시글 요청");
         await fetch("https://ridinganywhere.site/CR/LoadCrewBoard",{
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"}
             }).then(response=>{
-                if(response.status===200) return response.json();
-                else return null;
+                if(response.status===200) {
+                    console.log("✅크루 게시글 응답");
+                    return response.json();
+                }
+                else {
+                    console.log("❌크루 게시글 실패");
+                }
             }).then(data=>{
-                setCrewBoardList(data);
-                setShowCrewBoard(true);
-                console.log(data);
-                console.log("✅ 크루 게시글 로드 완료");
+                if(data){
+                    setCrewBoardList(data);
+                    console.log("💾크루 게시글 수집")
+                    setShowCrewBoard(true);
+                }
             })
     }
 
     // 🛜 라이더 게시글 호출
     const loadRiderBoard = async() => {
-        console.log("🛜 라이더 게시글 호출중...");
+        console.log("🛜라이더 게시글 요청");
         await fetch("https://ridinganywhere.site/RA/LoadRiderBoard",{
             headers:{"Content-Type": "application/json;charset=utf-8"}
         }).then(response=>{
             if(response.status===200) {
-              console.log("✅ 서버 연결 완료");
+              console.log("✅라이더 게시글 응답");
               return response.json();
             }
             else if(response.status===401){
-              console.log("⚠️ 로그인 토큰 만료");
+                console.log("❌라이더 토큰 만료");
               alert("🚨 토큰이 만료 되었습니다. \n - 로그인 페이지로 이동합니다. -")
               sessionStorage.removeItem('accessToken');
               navigate("/RA/Login");
@@ -104,10 +112,9 @@ const HomePage = () => {
           })
           .then(data=>{
             if(data){
-                console.log("✅ 라이더 게시글 호출 완료");
-                setShowRiderBoard(true);
                 setRiderBoardList(data);
-                console.log(data);
+                console.log("💾라이더 게시글 수집");
+                setShowRiderBoard(true);
             }
         });
     }

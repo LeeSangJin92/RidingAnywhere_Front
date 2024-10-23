@@ -42,21 +42,21 @@ const MyPage = () => {
 
      // ✏️ 토큰으로 라이더 정보 가져오기
      const checkData = async () => {
-        console.log("🔍라이더 엑세스 체크")
+        console.log("🔍라이더 토큰 체크")
         if(!accessToken){
-            console.log("✅라이더 액세스 발견")
+            console.log("✅라이더 토큰 발견")
             console.log("🛜라이더 서버 요청")
             await fetch("https://ridinganywhere.site/RA/CheckRider",
             {headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"}
             }).then(response => {
-                if(response.status==200){
+                if(response.status===200){
                     console.log("✅라이더 서버 응답")
                     return response.json();
-                } else if(response.status==401){
-                    console.log("❗서버 접근 오류");
-                    alert("❗서버 접속 실패로 로그인 페이지로 이동합니다.")
+                } else if(response.status===401){
+                    console.log("❌라이더 토큰 만료");
+                    alert("⚠️ 로그인 유지 시간 초과 \n - 로그인 페이지로 이동합니다. -");
                     navigate("/RA/Login");
                 } 
                 else {
@@ -102,7 +102,7 @@ const MyPage = () => {
                     }
                     console.log("🔍크루 ID 조회")
                     if(!!data.crewId) {
-                        console.log("💾 크루 ID 수집")
+                        console.log("💾크루 ID 수집")
                         return data.crewId;}
                     else {
                         console.log("❌크루 ID 없음");
