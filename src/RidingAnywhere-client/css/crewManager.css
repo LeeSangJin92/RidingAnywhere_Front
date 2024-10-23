@@ -22,10 +22,14 @@
     box-sizing: border-box;
     padding-left: 10px;
 }
-.crewInfoLine_Top>.crewTopBtnLine{
+.crewInfoLine_Top>*{
     display: flex;
-    width: max-content;
-    height: max-content;
+    flex-grow: 1;
+    height: 100%;
+}
+
+.crewInfoLine_Top>.crewTopBtnLine{
+    justify-content: end;
 }
 
 .crewTopBtnLine>.CrewBtn{
