@@ -199,12 +199,12 @@ const MyPage = () => {
      })
 
     // 🛠️ 라이더 정보 수정
-    const [changeBtnAct, setchangeBtn] = useState("/img/mypage/ChangeBtn.png"); // 수정, 취소 버튼 설정 변수
-    const [updateBtnAct, setcheckBtn] = useState({});     // 저장On, 저장Off, 불가 버튼 설정 변수
+    const [changeBtnAct, setChangeBtn] = useState("/img/mypage/ChangeBtn.png"); // 수정, 취소 버튼 설정 변수
+    const [updateBtnAct, setCheckBtn] = useState({});     // 저장On, 저장Off, 불가 버튼 설정 변수
 
      // 🛠️ 라이더 정보 리셋
     const resetBtnAct = () => {
-        setcheckBtn({
+        setCheckBtn({
             userNickname:"/img/mypage/SaveBtnOff.png",
             userName:"/img/mypage/SaveBtnOff.png",
             userPhone:"/img/mypage/SaveBtnOff.png",
@@ -215,24 +215,24 @@ const MyPage = () => {
     }
 
     // 프로필 수정 관련 태그 출력 설정 변수
-    const [showinput, setinput] = useState(false)       
+    const [showInput, setInput] = useState(false)       
     const profileControl = () => {
         switch(changeBtnAct){
 
             // ✏️ 라이더 정보 수정 시작
             case "/img/mypage/ChangeBtn.png" : 
-                console.log("🛠️개인정보 수정 중...");
-                setinput(true)
-                reSetData();
+                console.log("🕹️라이더 정보 수정");
+                setInput(true)
+                resetData();
                 resetBtnAct();
-                setchangeBtn("/img/mypage/CancelBtn.png");
+                setChangeBtn("/img/mypage/CancelBtn.png");
                 break;
 
              // ✏️ 라이더 정보 수정 취소
             case "/img/mypage/CancelBtn.png" : 
-                console.log("❌개인정보 수정 취소!");
-                setinput(false)
-                setchangeBtn("/img/mypage/ChangeBtn.png");
+                console.log("❌라이더 수정 취소");
+                setInput(false)
+                setChangeBtn("/img/mypage/ChangeBtn.png");
                 break;
             default :
         }
@@ -244,55 +244,54 @@ const MyPage = () => {
 
     // 🔎 지역 데이터 호출
     useEffect(()=>{
-        console.log("🛜지역 데이터 요청중...")
+        console.log("🛜지역 정보 요청")
         fetch("https://ridinganywhere.site/RA/AddressData").then(response => {
             if(response.status==200){
-                console.log("✅ 서버 작업 완료")
+                console.log("✅지역 정보 응답")
                 return response.json();
-            } else console.log("❌ 서버 통신 실패");
+            } else console.log("❌지역 정보 실패");
         }).then((data)=>{
             if(data){
-                console.log("🛠️지역 데이터 저장중...");
+                console.log("💾지역 정보 수집");
                 setAddressList(data);
                 setCityList([...new Set(data.map(data=>data.city))]);
-                console.log("✅지역 데이터 작업 완료")
             }})
     },[])
 
-    // 🛠️ 지역 설정 범위
+    // 🛠️ 라이더 도시 설정
     const selectCity = (props) => {
-        console.log("✅ 라이더의 도시 변경");
+        console.log("🛠️라이더 도시 변경");
         setUpdateRider({...updateRider,userAddressCity:props.target.value,userAddressTown:""});
-        setcheckBtn({...updateBtnAct,userAddress:"/img/mypage/SaveBtnOff.png"});
+        setCheckBtn({...updateBtnAct,userAddress:"/img/mypage/SaveBtnOff.png"});
     }
 
+    // 🛠️ 라이더 마을 설정
     const selectTown = (props) => {
-        console.log("✅ 라이더의 마을 변경");
-        console.log(updateRider);
+        console.log("🛠️라이더 마을 변경");
         setUpdateRider({...updateRider,userAddressTown:props.target.value});
-        setcheckBtn({...updateBtnAct,userAddress:riderInfo.userAddressTown!==props.target.value?"/img/mypage/SaveBtnOn.png":"/img/mypage/SaveBtnOff.png"});
+        setCheckBtn({...updateBtnAct,userAddress:riderInfo.userAddressTown!==props.target.value?"/img/mypage/SaveBtnOn.png":"/img/mypage/SaveBtnOff.png"});
     }
 
-
-    const checkUpdata = (line) => {
-        console.log("✏️ 변경 내용 체크 중...");
+    const checkUpData = (line) => {
+        console.log("🔍라이더 수정 체크");
         switch(updateBtnAct[line.target.name]){
+
             // ✏️ 라이더 정보 수정 불가
             case "/img/mypage/DeniedBtn.png" :
-                console.log("❌변경 불가판정!")
+                console.log("❌라이더 수정 불가")
                 alert("❌변경 내용이 적절하지 않습니다!")
                 break;
 
             // ✏️ 라이더 정보 수정 가능
             case "/img/mypage/SaveBtnOn.png" :
-                console.log("✅검수 완료!")
+                console.log("✅라이더 수정 가능")
                 riderDataUpdate(line.target.name);
                 break;
 
             // ✏️ 라이더 정보 수정 사항 없음
             case "/img/mypage/SaveBtnOff.png" :
-                console.log("⚠️수정 사항 없음!")
-                alert("⚠️수정되지 않았습니다.")
+                console.log("⚠️수정 사항 없음")
+                alert("⚠️수정된 사항이 없습니다.")
                 break;
             default :
         }
@@ -300,34 +299,30 @@ const MyPage = () => {
 
     // ✏️ 변경된 유저데이터 서버로 전송
     const riderDataUpdate = async (update) => {
-        console.log("🛜변경 내용 서버로 전달...")
-        let requsetData = update!=="userAddress"?
+        console.log("🛜라이더 수정 요청")
+        let requestData = update!=="userAddress"?
         {...riderInfo,[update]:updateRider[update]}:
         {...riderInfo,userAddressCity:updateRider.userAddressCity,
         userAddressTown:updateRider.userAddressTown}
-        console.log(requsetData);
         await fetch("https://ridinganywhere.site/RA/UpdateUser",
             {   
                 method: "POST",
                 headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"},
-                body:JSON.stringify(requsetData)
+                body:JSON.stringify(requestData)
             }).then((response)=>{
-                if(response.status==200){
-                    console.log("✅데이터 변경 완료!");
-                    console.log("🛜유저 데이터 재호출!");
+                if(response.status===200){  
+                    console.log("✅라이더 수정 응답");
                     checkData();
-                    if(update!=="userGender"&&update!=="userAddress")
-                        document.getElementById([update]).value = "";
-                    setcheckBtn({...updateBtnAct,[update]:"/img/mypage/SaveBtnOff.png"});
-                }  else console.log("❌ 서버 통신 실패");
-                })
+                    if(update!=="userGender"&&update!=="userAddress") document.getElementById([update]).value = "";
+                    setCheckBtn({...updateBtnAct,[update]:"/img/mypage/SaveBtnOff.png"});
+                } else console.log("❌라이더 수정 실패");
+        })
     }
 
-
     // ✏️ 수정 시 모든 업데이트 데이터 초기화
-    const reSetData = () => {
+    const resetData = () => {
         setUpdateRider(riderInfo);
         document.getElementById('userName').value = "";
         document.getElementById('userNickname').value = "";
@@ -348,17 +343,17 @@ const MyPage = () => {
         let key = inputData.target.name;
         let value = inputData.target.value;
         setUpdateRider({...updateRider,[key]:value});
-        if(value===riderInfo[key]) setcheckBtn({...updateBtnAct,[key]:"/img/mypage/SaveBtnOff.png"});
-        else if(mapRegExp[key].test(value)) setcheckBtn({...updateBtnAct,[key]:"/img/mypage/SaveBtnOn.png"});
-        else setcheckBtn({...updateBtnAct,[key]:"/img/mypage/DeniedBtn.png"});
+        if(value===riderInfo[key]) setCheckBtn({...updateBtnAct,[key]:"/img/mypage/SaveBtnOff.png"});
+        else if(mapRegExp[key].test(value)) setCheckBtn({...updateBtnAct,[key]:"/img/mypage/SaveBtnOn.png"});
+        else setCheckBtn({...updateBtnAct,[key]:"/img/mypage/DeniedBtn.png"});
     }
 
     // 🛠️ 성별 데이터 설정하기
     const insertGender = (genderBtn) => {
         let data = genderBtn.target.value==='true'
         setUpdateRider({...updateRider,userGender:data});
-        if(data===riderInfo.userGender) setcheckBtn({...updateBtnAct,userGender:"/img/mypage/SaveBtnOff.png"});
-        else setcheckBtn({...updateBtnAct,userGender:"/img/mypage/SaveBtnOn.png"});
+        if(data===riderInfo.userGender) setCheckBtn({...updateBtnAct,userGender:"/img/mypage/SaveBtnOff.png"});
+        else setCheckBtn({...updateBtnAct,userGender:"/img/mypage/SaveBtnOn.png"});
     }
 
     // 🏍️ 오토바이 정보
@@ -419,19 +414,22 @@ const MyPage = () => {
     // ➕ 바이크 추가하기
     const bikeAdd = () => {
         if(bikeInfo.length+1<=5) navigate("/RA/Addbike");
-        else alert("⚠️신규 바이크를 추가 하실 수 없습니다.⚠️\n- 바이크는 최대 5개까지만 저장이 가능합니다. - ");
+        else {
+            console.log("❌바이크 한도 초과")
+            alert("⚠️신규 바이크를 추가 하실 수 없습니다.⚠️\n- 바이크는 최대 5개까지만 저장이 가능합니다. - ");
+        }
     }
 
     // 🛠️ 대표 바이크로 선택하기
     const bikeSelect = async () => {
         if(bikeInfo[selectBike].bike_id===bikeInfo[showBike].bike_id) alert("⚠️이미 대표로 선정된 바이크 입니다.⚠️")
         else {
-            console.log("🛠️ 대표 바이크 수정 작업")
+            console.log("🛠️대표 바이크 수정")
             let requestData = {
                 beforBikeId:bikeInfo[selectBike].bike_id,
                 afterBikeId:bikeInfo[showBike].bike_id
             }
-            console.log("🛜 서버 작업 진행중...")
+            console.log("🛜대표 바이크 요청")
             await fetch("https://ridinganywhere.site/RA/SelectBike",
             {   
                 method: "POST",
@@ -440,8 +438,14 @@ const MyPage = () => {
                     "Content-Type": "application/json;charset=utf-8"},
                 body:JSON.stringify(requestData)
             }).then(response=>{
-                if(response.status==200) console.log("✅ 대표 바이크 수정 완료");
-                else console.log("❌ 대표 바이크 수정 실패");
+                if(response.status==200) {
+                    console.log("✅대표 바이크 응답");
+                    alert("✅대표 바이크 수정을 완료했습니다.")
+                }
+                else {
+                    console.log("❌대표 바이크 실패");
+                    alert("❌대표 바이크 수정이 실패했습니다.")
+                }
                 checkData();
                 setBikeSelectBtn({backgroundImage:"url('/img/mypage/BikeSelectBtnOff.png')"});
                 setBikeDeleteBtn({backgroundImage:"url('/img/mypage/BikeDeleteBtnOff.png')"});
@@ -451,9 +455,12 @@ const MyPage = () => {
 
     // 🗑️ 바이크 제거
     const bikeDelete = async () => {
-        console.log("🛠️ 바이크 제거 작업 중...")
-        if(bikeInfo[showBike].bike_select) alert("⚠️ 대표 바이크는 제거가 불가능합니다.⚠️")
-        else {
+        console.log("🛠️바이크 제거 작업")
+        if(bikeInfo[showBike].bike_select){
+            console.log("❌대표 바이크 제거")
+            alert("⚠️ 대표 바이크는 제거가 불가능합니다.⚠️")
+        } else {
+            console.log("🛜바이크 제거 요청");
             let deleteBikeId = {bikegarage_id:bikeInfo[showBike].bike_id}
             await fetch("https://ridinganywhere.site/RA/DeleteBike",
             {
@@ -463,12 +470,13 @@ const MyPage = () => {
                 "Content-Type": "application/json;charset=utf-8"},
                 body:JSON.stringify(deleteBikeId)
             }).then(response => {
-                if(response.status==200){
-                    console.log("✅ 서버 작업 완료")
+                if(response.status===200){
+                    console.log("✅바이크 제거 응답")
                     return response.json();
-                } else console.log("❌ 서버 통신 실패");
+                } else console.log("❌바이크 제거 실패");
             }).then(data=>{
                 if(data){
+                    console.log("💾바이크 정보 수집")
                     setbikeInfo(data.map((data,index)=>{
                         const bikeData = {
                             bike_index:index,
@@ -515,19 +523,19 @@ const MyPage = () => {
                                     <div className='profile_img_box'>
                                         <img src={profile===null?'/img/mypage/DefaultProfileImg.png':profile} alt=''/>
                                     </div>
-                                    <label id='prfile_btnLline' htmlFor="profilebtn" style={showinput?{display:'block'}:{display:'none'}}><h3>이미지 변경</h3></label>
+                                    <label id='prfile_btnLline' htmlFor="profilebtn" style={showInput?{display:'block'}:{display:'none'}}><h3>이미지 변경</h3></label>
                                     <input className='profile_btn' type='file' id="profilebtn" style={{display:'none'}} accept='.jpg, .png' onChange={profileimg}/>
-                                    <h4 style={showinput?{display:'block'}:{display:'none'}}>⚠️크기 : 200px x 200px</h4>
+                                    <h4 style={showInput?{display:'block'}:{display:'none'}}>⚠️크기 : 200px x 200px</h4>
                                 </div>
                                 <div className='userAddress_Line'>
                                     <div className='userAddress_Line_Top'>
                                         <h2>지역</h2>
                                         <div className='userAddress_changeBtnLine'>
-                                            <label style={showinput?{display:'flex'}:{display:'none'}} htmlFor='save_userAddress'><img src={updateBtnAct.userAddress} alt=''></img></label><input id='save_userAddress' name='userAddress' type='button' onClick={checkUpdata} style={{display:'none'}}/>
+                                            <label style={showInput?{display:'flex'}:{display:'none'}} htmlFor='save_userAddress'><img src={updateBtnAct.userAddress} alt=''></img></label><input id='save_userAddress' name='userAddress' type='button' onClick={checkUpData} style={{display:'none'}}/>
                                         </div>
                                     </div>
-                                    <div className='userAddress_Line_Bottom' style={showinput?{display:'none'}:{display:'flex'}}><h2>{riderInfo.userAddressCity} / {riderInfo.userAddressTown}</h2></div>
-                                    <div className='userAddress_Line_Bottom' style={showinput?{display:'flex'}:{display:'none'}}>
+                                    <div className='userAddress_Line_Bottom' style={showInput?{display:'none'}:{display:'flex'}}><h2>{riderInfo.userAddressCity} / {riderInfo.userAddressTown}</h2></div>
+                                    <div className='userAddress_Line_Bottom' style={showInput?{display:'flex'}:{display:'none'}}>
                                         <select className='selectCity' value={updateRider.userAddressCity} onChange={selectCity}>
                                             {cityList.map((data,index)=>(<option key={index} value={data}>{data}</option>))}
                                         </select>
@@ -548,47 +556,47 @@ const MyPage = () => {
                                 <div className='riderInfo_NickName'>
                                     <div className='info_Box'>
                                         <h2>닉네임</h2>
-                                        <div style={showinput?{display:'none'}:{display:'flex'}} className='profile_inputLine'><h2>{riderInfo.userNickname}</h2></div>
-                                        <div style={showinput?{display:'flex'}:{display:'none'}} className='profile_inputLine'><input className='profile_text' name='userNickname' id='userNickname' placeholder={riderInfo.userNickname} type='text' onChange={insertData}/></div>
+                                        <div style={showInput?{display:'none'}:{display:'flex'}} className='profile_inputLine'><h2>{riderInfo.userNickname}</h2></div>
+                                        <div style={showInput?{display:'flex'}:{display:'none'}} className='profile_inputLine'><input className='profile_text' name='userNickname' id='userNickname' placeholder={riderInfo.userNickname} type='text' onChange={insertData}/></div>
                                     </div>
-                                    <div className='saveBtn_Line'><label style={showinput?{display:'flex'}:{display:'none'}} htmlFor='save_userNickname'><img src={updateBtnAct.userNickname} alt=''></img></label><input id='save_userNickname' name='userNickname' type='button' onClick={checkUpdata} style={{display:'none'}}/></div>
+                                    <div className='saveBtn_Line'><label style={showInput?{display:'flex'}:{display:'none'}} htmlFor='save_userNickname'><img src={updateBtnAct.userNickname} alt=''></img></label><input id='save_userNickname' name='userNickname' type='button' onClick={checkUpData} style={{display:'none'}}/></div>
                                 </div>
                                 <div className='riderInfo_Name'>
                                     <div className='info_Box'>
                                         <h2>이름</h2>
-                                        <div style={showinput?{display:'none'}:{display:'flex'}} className='profile_inputLine'><h2>{riderInfo.userName}</h2></div>
-                                        <div style={showinput?{display:'flex'}:{display:'none'}} className='profile_inputLine'><input className='profile_text' name='userName' id='userName' placeholder={riderInfo.userName} type='text' onChange={insertData}/></div>
+                                        <div style={showInput?{display:'none'}:{display:'flex'}} className='profile_inputLine'><h2>{riderInfo.userName}</h2></div>
+                                        <div style={showInput?{display:'flex'}:{display:'none'}} className='profile_inputLine'><input className='profile_text' name='userName' id='userName' placeholder={riderInfo.userName} type='text' onChange={insertData}/></div>
                                     </div>
-                                    <div className='saveBtn_Line'><label style={showinput?{display:'flex'}:{display:'none'}} htmlFor='save_userName'><img src={updateBtnAct.userName} alt=''></img></label><input id='save_userName' name='userName' type='button' onClick={checkUpdata} style={{display:'none'}}/></div>
+                                    <div className='saveBtn_Line'><label style={showInput?{display:'flex'}:{display:'none'}} htmlFor='save_userName'><img src={updateBtnAct.userName} alt=''></img></label><input id='save_userName' name='userName' type='button' onClick={checkUpData} style={{display:'none'}}/></div>
                                 </div>
                                 <div className='riderInfo_Phone'>
                                     <div className='info_Box'>
                                         <h2>연락처</h2>
-                                        <div style={showinput?{display:'none'}:{display:'flex'}} className='profile_inputLine'><h2>{riderInfo.userPhone}</h2></div>
-                                        <div style={showinput?{display:'flex'}:{display:'none'}} className='profile_inputLine'><input className='profile_text' name='userPhone' id='userPhone' placeholder={riderInfo.userPhone} type='text' maxLength={11} onChange={insertData}/></div>
+                                        <div style={showInput?{display:'none'}:{display:'flex'}} className='profile_inputLine'><h2>{riderInfo.userPhone}</h2></div>
+                                        <div style={showInput?{display:'flex'}:{display:'none'}} className='profile_inputLine'><input className='profile_text' name='userPhone' id='userPhone' placeholder={riderInfo.userPhone} type='text' maxLength={11} onChange={insertData}/></div>
                                     </div>
-                                    <div className='saveBtn_Line'><label style={showinput?{display:'flex'}:{display:'none'}} htmlFor='save_userPhone'><img src={updateBtnAct.userPhone} alt=''></img></label><input id='save_userPhone' name='userPhone' type='button' onClick={checkUpdata} style={{display:'none'}}/></div>
+                                    <div className='saveBtn_Line'><label style={showInput?{display:'flex'}:{display:'none'}} htmlFor='save_userPhone'><img src={updateBtnAct.userPhone} alt=''></img></label><input id='save_userPhone' name='userPhone' type='button' onClick={checkUpData} style={{display:'none'}}/></div>
                                 </div>
                                 <div className='riderInfo_Birthday'>
                                     <div className='info_Box'>
                                         <h2>생일</h2>
-                                        <div style={showinput?{display:'none'}:{display:'flex'}} className='profile_inputLine'><h2>{riderInfo.userBirthday}</h2></div>
-                                        <div style={showinput?{display:'flex'}:{display:'none'}} className='profile_inputLine'><input name='userBirthday' id='userBirthday' placeholder={riderInfo.userBirthday} type='text' maxLength={8} onChange={insertData}/></div>
+                                        <div style={showInput?{display:'none'}:{display:'flex'}} className='profile_inputLine'><h2>{riderInfo.userBirthday}</h2></div>
+                                        <div style={showInput?{display:'flex'}:{display:'none'}} className='profile_inputLine'><input name='userBirthday' id='userBirthday' placeholder={riderInfo.userBirthday} type='text' maxLength={8} onChange={insertData}/></div>
                                     </div>
-                                    <div className='saveBtn_Line'><label style={showinput?{display:'flex'}:{display:'none'}} htmlFor='save_userBirthday'><img src={updateBtnAct.userBirthday} alt=''></img></label><input id='save_userBirthday' name='userBirthday' type='button' onClick={checkUpdata} style={{display:'none'}}/></div>
+                                    <div className='saveBtn_Line'><label style={showInput?{display:'flex'}:{display:'none'}} htmlFor='save_userBirthday'><img src={updateBtnAct.userBirthday} alt=''></img></label><input id='save_userBirthday' name='userBirthday' type='button' onClick={checkUpData} style={{display:'none'}}/></div>
                                 </div>
                                 <div className='riderInfo_Gender'>
                                     <div className='info_Box'>
                                         <h2>성별</h2>
-                                        <div style={showinput?{display:'none'}:{display:'flex'}} className='profile_inputLine'><h2>{riderInfo.userGender?"여성 ♀️":"남성 ♂️"}</h2></div>
-                                        <div style={showinput?{display:'flex'}:{display:'none'}} className='profile_inputLine' name='changeGender'>
+                                        <div style={showInput?{display:'none'}:{display:'flex'}} className='profile_inputLine'><h2>{riderInfo.userGender?"여성 ♀️":"남성 ♂️"}</h2></div>
+                                        <div style={showInput?{display:'flex'}:{display:'none'}} className='profile_inputLine' name='changeGender'>
                                             <input id='gender1' name='genderBtn' type='radio' value={false} style={{display:'none'}} onClick={insertGender} defaultChecked={!updateRider.userGender}/>
                                             <label htmlFor='gender1'><h3>남자 ♂️</h3></label>
                                             <input id='gender2' name='genderBtn' type='radio' value={true} style={{display:'none'}}  onClick={insertGender} defaultChecked={updateRider.userGender}/>    
                                             <label htmlFor='gender2'><h3>여자 ♀️</h3></label> 
                                         </div>
                                     </div>
-                                    <div className='saveBtn_Line'><label style={showinput?{display:'flex'}:{display:'none'}} htmlFor='save_userGender'><img src={updateBtnAct.userGender} alt=''></img></label><input id='save_userGender' name='userGender' type='button' onClick={checkUpdata} style={{display:'none'}}/></div>
+                                    <div className='saveBtn_Line'><label style={showInput?{display:'flex'}:{display:'none'}} htmlFor='save_userGender'><img src={updateBtnAct.userGender} alt=''></img></label><input id='save_userGender' name='userGender' type='button' onClick={checkUpData} style={{display:'none'}}/></div>
                                 </div>
                             </div>
                         </div>
