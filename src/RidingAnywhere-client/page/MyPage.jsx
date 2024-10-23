@@ -169,7 +169,7 @@ const MyPage = () => {
         console.log("🛜프로필 수정 요청");
         const imgData = new FormData()
         imgData.append('file',data);
-        console.log(imgData)
+        console.log(data)
         try {
             await fetch("https://ridinganywhere.site/RA/UpdateImage",
                 {   
