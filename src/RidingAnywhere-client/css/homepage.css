@@ -4,6 +4,7 @@
     justify-content: center;
     box-sizing: border-box;
     gap: 10px;
+    min-height: 400px;
     .CrewHome, .RiderHome{
         width: 45vw;
         min-width: 225px;

@@ -50,8 +50,7 @@ section{
   display: flex;
   position: relative;
   width: 100%;
-  height: auto;
-  min-height: 400px;
+  height: max-content;
   background-color: rgb(92, 92, 92, 0.185);
   color: white;
 }
