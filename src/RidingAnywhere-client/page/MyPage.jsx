@@ -169,21 +169,25 @@ const MyPage = () => {
         console.log("🛜프로필 수정 요청");
         const imgData = new FormData()
         imgData.append('file',data);
-        await fetch("https://ridinganywhere.site/RA/UpdateImage",
-        {   
-            method: "POST",
-            headers:{
-                "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`},
-            body:imgData
-        }).then(response => {
-            if(response.status==200){
-                console.log("✅프로필 수정 응답")
-                alert("✅프로필 이미지 수정을 완료했습니다.")
-            } else {
-                console.log("❌프로필 수정 실패");
-                alert("✅프로필 이미지 수정이 실패했습니다.")
-            }
-        })
+        try {
+            await fetch("https://ridinganywhere.site/RA/UpdateImage",
+                {   
+                    method: "POST",
+                    headers:{
+                        "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`},
+                    body:imgData
+                }).then(response => {
+                    if(response.status==200){
+                        console.log("✅프로필 수정 응답")
+                        alert("✅프로필 이미지 수정을 완료했습니다.")
+                    } else {
+                        console.log("❌프로필 수정 실패");
+                        alert("✅프로필 이미지 수정이 실패했습니다.")
+                    }
+                })
+        } catch (e) {
+            console.log(e);
+        }
     }
     
     // 🛠️ 수정되는 라이더 정보
