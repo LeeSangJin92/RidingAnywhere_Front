@@ -501,11 +501,14 @@ const CrewManager = () => {
                 <div className='crewInfoLine'>
                     {/* 크루 정보 탑 */}
                     <div className='crewInfoLine_Top'>
+                        <div className='block'/>
                         <h1 className='crewName'> {crewInfo.CrewName} </h1>
-                        <label htmlFor='saveAddressBtn' className='CrewBtn' name='save' style={crewInfoBtn.SaveBtnAddress} />
-                        <input id="saveAddressBtn" type='button' style={{display:'none'}} onClick={saveAddressData}/>
-                        <label htmlFor='changeModeBtn' className='CrewBtn' name='change' style={crewInfoBtn.ChangeBtn}/>
-                        <input id="changeModeBtn" type='button' style={{display:'none'}} onClick={clickChangeBtn}/>
+                        <div className='crewTopBtnLine'>
+                            <label htmlFor='saveAddressBtn' className='CrewBtn' name='save' style={crewInfoBtn.SaveBtnAddress} />
+                            <input id="saveAddressBtn" type='button' style={{display:'none'}} onClick={saveAddressData}/>
+                            <label htmlFor='changeModeBtn' className='CrewBtn' name='change' style={crewInfoBtn.ChangeBtn}/>
+                            <input id="changeModeBtn" type='button' style={{display:'none'}} onClick={clickChangeBtn}/>
+                        </div>
                         
                     </div>
                     <div className='crewInfoBox'>

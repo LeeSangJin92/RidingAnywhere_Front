@@ -16,30 +16,25 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     height: 60px;
     min-height: 60px;
-    .CrewBtn{
-        z-index: 0;
-        width: 70px;
-        height: 70px;
-        position: absolute;
-        cursor: pointer;
-    }
-    [name='save']{
-        transform: translate(160px);
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-    [name='change']{
-        transform: translate(220px);
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-    
+    box-sizing: border-box;
+    padding-left: 10px;
+}
+.crewInfoLine_Top>.crewTopBtnLine{
+    display: flex;
+    width: max-content;
+    height: max-content;
 }
 
-
+.crewTopBtnLine>.CrewBtn{
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
 
 .crewInfoLine>.crewInfoBox{
     height: 600px;
