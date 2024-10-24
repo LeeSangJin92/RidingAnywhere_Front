@@ -23,7 +23,7 @@ const CrewMember = (props) => {
     const clickMember = ()=>{
         console.log("🕹️ 멤버 정보 클릭");
         props.controller({block:true,up:"Detail"});
-        props.setcrewMemberInfo({
+        props.setCrewMemberInfo({
             ListIndex : memberInfo.ListIndex,           // 멤버 리스트 Index
             UserId : memberInfo.UserId,                 // 멤버 라이더 ID
             UserName : memberInfo.UserName,             // 멤버 이름
@@ -45,25 +45,30 @@ const CrewMember = (props) => {
     return (
         <>
             <label className='crewMemberBox' htmlFor={memberInfo.UserId}>
-                <img src={!memberInfo.UserProfile?'/img/mypage/DefaultProfileImg.png':('data:image/png;base64,'+memberInfo.UserProfile)} alt=''/>
-                <div className='crewMemberInfoLine'>
-                    <div className='memberDataLine_Top'>
-                        <h2 className='memberAuthority'>{memberAuth}</h2>
-                        <h2 className='memberNickName'>{"닉네임 : " + memberInfo.UserNickname}</h2>
+                {/* 크루 멤버 박스 우측 => 크루 권한 / 크루 프로필 이미지 */}
+                <div className='memberDataLine_Profile'>
+                    <div className='memberAuthority'>
+                        <h2>{memberAuth}</h2>
                     </div>
-                    <div className='memberDataLine_Bottom'>
-                        <div className='Bottom_Title'>
-                            <h2>지역</h2>
-                            <h2>나이</h2>
-                        </div>
-                        <div className='Bottom_Data'>
-                            <h2 className='memberLocation'>{memberInfo.UserCity} / {memberInfo.UserTown}</h2>
-                            <h2 className='memberAge'>{(memberInfo.UserBirthday+"").substring(2,4)+" . "+(memberInfo.UserBirthday+"").substring(4,6)}</h2>
-                        </div>
-                        <div className='Bottom_Bike'>
-                            <h2 className='memberBikeData'>{memberInfo.UserBike.bikeModel.bikebrand_id.bikebrand_name}</h2>
-                            <h2 className='memberBikeData'>{memberInfo.UserBike.bikeModel.model_name}</h2>
-                        </div>
+                    <img src={!memberInfo.UserProfile?'/img/mypage/DefaultProfileImg.png':('data:image/png;base64,'+memberInfo.UserProfile)} alt=''/>
+                </div>
+
+                {/* 크루 멤버 박스 좌측 라인 */}
+                <div className='crewMemberInfoLine'>                    
+                    
+                    <div className='memberDataLine_Top'>    {/* 크루 멤버 박스 상단 => 닉네임 / 라이더 닉네임 */}
+                        <h2>닉네임</h2>
+                        <h2 className='memberNickName'>{memberInfo.UserNickname}</h2>
+                    </div>
+                    
+                    <div className='memberDataLine_Middle'> {/* 크루 멤버 박스 중단 => 활동 지역 / 생년월일 */}
+                        <h2 className='memberLocation'>{memberInfo.UserCity} / {memberInfo.UserTown}</h2>
+                        <h2 className='memberAge'>{(memberInfo.UserBirthday+"").substring(2,4)+" . "+(memberInfo.UserBirthday+"").substring(4,6)}</h2>
+                    </div>
+
+                    <div className='memberDataLine_Bottom'>  {/* 크루 멤버 박스 하단 => 바이크 브랜듯 / 바이크 모델 */}
+                        <h2 className='memberBikeBrand'>{memberInfo.UserBike.bikeModel.bikebrand_id.bikebrand_name}</h2>
+                        <h2 className='memberBikeModel'>{memberInfo.UserBike.bikeModel.model_name}</h2>
                     </div>
                 </div>
             </label>

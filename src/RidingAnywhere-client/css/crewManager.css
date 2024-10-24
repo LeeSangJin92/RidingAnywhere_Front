@@ -179,34 +179,6 @@
     >h1{
         text-align: center;
     }
-    >.crewMemberBoxLine{
-        width: 100%;
-        height: 500px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        overflow-y: scroll;
-        scrollbar-width: none;
-        border: 2px solid orange;
-        border-radius: 10px;
-
-        .PrivateBlock{
-            position: absolute;
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            height: 100%;
-            border :2px solid orange;
-            border-radius: 10px;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-            background-color: black;
-            box-sizing: border-box;
-        }
-
-    }
     h2{
         margin: 0;
         background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
@@ -216,11 +188,36 @@
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent; 
+        text-align: center;
     }
 }
 
+.crewListLine>div{
+    flex-direction: column;
+    width: 100%;
+    height: 500px;
+    border :2px solid orange;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.crewListLine>.PrivateBlock{
+    background-color: black;
+    gap: 30px;
+}
+
+.crewListLine>.crewMemberBoxLine{
+    overflow-y: scroll;
+    scrollbar-width: none;
+    padding: 10px;
+    gap: 10px;
+}
+
+
+/* 크루 멤버 정보 박스 */
 .crewMemberBox{
-    margin-top: 10px;
     border: 2px solid gray;
     border-radius: 10px;
     display: flex;
@@ -229,78 +226,9 @@
     min-width: 440px;
     height: 200px;
     gap: 10px;
-    justify-content: center;
+    padding: 10px;
+    box-sizing: border-box;
     align-items: center;
-    >img{
-        border-radius: 10px;
-        width: 150px;
-        min-width: 150px;
-        height: 150px;
-        min-height: 150px;
-    }
-    >.crewMemberInfoLine{
-        width: 500px;
-        max-width: 460px;
-        min-width: 300px;
-        height: 180px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        h2{
-            text-align: center;
-            align-content: center;
-            margin: 0;
-        }
-        >.memberDataLine_Top{
-            width: 100%;
-            height: 70px;
-            display: flex;
-            gap: 20px;
-            align-items: center;
-            .memberAuthority{
-                border: 2px solid orange;
-                border-radius: 10px;
-                width: 100px;
-                height: 50px;
-            }
-            .memberNickName{
-                width: 220px;
-                text-align: left;
-            }
-            .memberLocation{
-                width: 150px;
-            }
-        }
-        >.memberDataLine_Bottom{
-            width: 100%;
-            height: 105px;
-            display: flex;
-            gap: 10px;
-            border-top: 2px solid gray;
-
-            .Bottom_Title{
-                width: 80px;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-around;
-            }
-            .Bottom_Data{
-                display: flex;
-                flex-direction: column;
-                justify-content: space-around;
-                width: 150px;
-                border-right: 2px solid gray;
-            }
-            .Bottom_Bike{
-                display: flex;
-                width: 250px;
-                flex-direction: column;
-                align-items: center;
-                justify-content: space-around;
-            }
-        }
-            
-    }   
 }
 
 .crewMemberBox:hover{
@@ -308,8 +236,93 @@
     border: 2px solid orange;
 }
 
-/* ✏️ 크루 생성 창 범위 */
+/* 크루 정보 박스 ( 크루 권한 / 크루 프로필 이미지 ) */
+.crewMemberBox>.memberDataLine_Profile{
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    min-width: 150px;
+    height: 180px;
+    min-height: 180px;
+    gap: 10px;
+}
 
+.memberDataLine_Profile>.memberAuthority{
+    width: 100px;
+    min-width: 100px;
+    height: 35px;
+    min-height: 35px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-50%);
+    background: black;
+    box-sizing: border-box;
+    border: 2px solid orange;
+    border-radius: 10px;
+}
+
+.memberDataLine_Profile>img{
+    width: 150px;
+    min-width: 150px;
+    height: 150px;
+    min-height: 150px;
+    display: flex;
+    border-radius: 10px;
+}
+
+.crewMemberBox>.crewMemberInfoLine{
+    width: 70vw;
+    min-width: 260px;
+    max-width: 460px;
+    height: 180px;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+}
+.crewMemberInfoLine>div{
+    display: flex;
+    width: 100%;
+    height: 60px;
+    justify-content: space-between;
+}
+
+.crewMemberInfoLine h2{
+    height: 100%;
+}
+
+.memberDataLine_Top>h2:first-child{
+    width: 80px;
+    min-width: 80px;
+}
+.memberDataLine_Top>.memberNickName{
+    flex-grow: 1;
+}
+
+.memberDataLine_Middle>.memberLocation{
+    width: 180px;
+    min-width: 180px;
+}
+
+.memberDataLine_Middle>.memberAge{
+    width: 80px;
+    min-width: 80px;
+}
+
+.memberDataLine_Bottom>.memberBikeBrand{
+    width: 100px;
+    min-width: 100px;
+}   
+.memberDataLine_Bottom>.memberBikeModel{
+    flex-grow: 1;
+}
+
+.crewMemberInfoLine>.memberDataLine_Bottom{
+    overflow-x: hidden;
+}
+
+/* ✏️ 크루 생성 창 범위 */
 .LayoutBlock{
     position: absolute;
     width: 100%;
