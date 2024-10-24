@@ -557,7 +557,6 @@ const CrewManager = () => {
                     <div className='crewMemberBoxLine'>
                         {/* 크루 가입 요청자 비공개용 */}
                         <div className='PrivateBlock' style={privateBlock?{display:'flex'}:{display:'none'}}>
-                            
                             <h1>{riderInfo.userAuthority==="ROLE_RA_Member"?"⚠️ 크루 가입 대기 ⚠️":"🛠️ 크루 멤버 로드 중.."}</h1>
                             <h2>{riderInfo.userAuthority==="ROLE_RA_Member"?"- 크루 마스터가 수락 후 이용 가능합니다 -":""}</h2>
                         </div>

@@ -171,38 +171,40 @@
 .crewListLine{
     width: 55vw;
     max-width: 680px;
-    min-width: 480px;
+    min-width: 460px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 10px;
+    >h1{
+        text-align: center;
+    }
     >.crewMemberBoxLine{
         width: 100%;
         height: 500px;
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         overflow-y: scroll;
         scrollbar-width: none;
         border: 2px solid orange;
         border-radius: 10px;
 
         .PrivateBlock{
+            position: absolute;
             display: flex;
             flex-direction: column;
-            width: 700px;
-            height: 510px;
+            width: 100%;
+            height: 100%;
             border :2px solid orange;
             border-radius: 10px;
-            position: absolute;
             justify-content: center;
             align-items: center;
             gap: 30px;
-            z-index: 1;
             background-color: black;
+            box-sizing: border-box;
         }
-
-
 
     }
     h2{
@@ -222,7 +224,9 @@
     border: 2px solid gray;
     border-radius: 10px;
     display: flex;
-    width: 680px;
+    width: 95%;
+    max-width: 640px;
+    min-width: 440px;
     height: 200px;
     gap: 10px;
     justify-content: center;
@@ -230,11 +234,14 @@
     >img{
         border-radius: 10px;
         width: 150px;
+        min-width: 150px;
         height: 150px;
-        margin-left: 10px;
+        min-height: 150px;
     }
     >.crewMemberInfoLine{
         width: 500px;
+        max-width: 460px;
+        min-width: 300px;
         height: 180px;
         display: flex;
         flex-direction: column;
@@ -245,7 +252,7 @@
             margin: 0;
         }
         >.memberDataLine_Top{
-            width: 500px;
+            width: 100%;
             height: 70px;
             display: flex;
             gap: 20px;
@@ -265,7 +272,7 @@
             }
         }
         >.memberDataLine_Bottom{
-            width: 500px;
+            width: 100%;
             height: 105px;
             display: flex;
             gap: 10px;
@@ -312,6 +319,13 @@
     justify-content: center;
     align-items: center;
     z-index: 4;
+}
+
+@media(max-width:999px){
+    .crewManager{
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .CreateCrew{
