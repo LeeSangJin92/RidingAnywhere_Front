@@ -114,15 +114,6 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-     h1{
-        text-align: center;
-    }
-    label{
-        transform: translate(440px, -100%);
-        width: 70px;
-        height: 70px;
-        position: absolute;
-    }
 
     .crewContextBox{
         width: 100%;
@@ -160,6 +151,7 @@
 .crewContext>.crewContext_Top{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .crewContext_Top>.block, .crewContext_Top>.contextBtnLine{
