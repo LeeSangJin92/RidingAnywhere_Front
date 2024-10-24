@@ -36,7 +36,7 @@ const CrewManager = () => {
      })
 
      // 😎 크루 멤버 라이더 정보(디테일 컴포넌트용)
-     const [crewMemberInfo, setcrewMemberInfo] = useState({
+     const [crewMemberInfo, setCrewMemberInfo] = useState({
         ListIndex : "",         // 멤버 리스트 Index
         UserId : "",            // 멤버 라이더 ID
         UserName : "",          // 멤버 이름
@@ -554,7 +554,7 @@ const CrewManager = () => {
                 {/* 🛠️ 크루원 관리 라인 */}
                 <div className='crewListLine'>
                     <h1>크루 리스트</h1>
-                    <div className='crewMenberBoxLine'>
+                    <div className='crewMemberBoxLine'>
                         {/* 크루 가입 요청자 비공개용 */}
                         <div className='PrivateBlock' style={privateBlock?{display:'flex'}:{display:'none'}}>
                             
@@ -563,7 +563,7 @@ const CrewManager = () => {
                         </div>
                         {/* 크루 멤버 목록 */}
                         {!!crewMember&&crewMember.map((memberInfo,index)=>
-                        <CrewMember key={index} memberInfo={memberInfo} setcrewMemberInfo={setcrewMemberInfo} controller={showUpController}/>)}
+                        <CrewMember key={index} memberInfo={memberInfo} setCrewMemberInfo={setCrewMemberInfo} controller={showUpController}/>)}
                     </div>
                 </div>
             </section>
