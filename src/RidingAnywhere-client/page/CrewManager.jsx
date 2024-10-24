@@ -536,9 +536,12 @@ const CrewManager = () => {
                         </div>
                         <div className='crewContext'>
                             <div className='crewContext_Top'>
+                                <div className="block"/>
                                 <h1>크루 소개</h1>
-                                <label htmlFor='saveContext' className='CrewBtn' name='save' style={crewInfoBtn.SaveBtnContext}/>
-                                <input id="saveContext" type='button' style={{display:'none'}} onClick={saveContext}/>
+                                <div className='contextBtnLine'>
+                                    <label htmlFor='saveContext' className='CrewBtn' name='save' style={crewInfoBtn.SaveBtnContext}/>
+                                    <input id="saveContext" type='button' style={{display:'none'}} onClick={saveContext}/>
+                                </div>
                             </div>
                             <div className='crewContextBox'>
                                 <h2 style={crewInfoBtn.ChangeMode?{display:'none'}:{display:"flex"}}>{crewInfo.CrewContext}</h2>
