@@ -1,8 +1,15 @@
+.Main_CrewManager{
+    height: max-content;
+    gap: 0;
+}
+
 .crewManager{
     display: flex;
+    align-items: center;
+    justify-content: center;
     box-sizing: border-box;
     gap: 20px;
-    padding: 20px 20px 0 20px;
+    padding: 20px;
 }
 
 .crewManager>.crewInfoLine{
@@ -342,7 +349,6 @@
 @media(max-width:999px){
     .crewManager{
         flex-direction: column;
-        align-items: center;
     }
 
     .crewListLine>.crewMemberBoxLine{
@@ -508,11 +514,15 @@
     border: 2px solid orange;
     background-color: black;
     border-radius: 20px;
-    width: 600px;
-    height: 600px;
+    width: 460px;
+    min-width: 460px;
+    height: max-content;
+    padding: 10px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 10px;
     h2{
         background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
         font-weight: bold;
@@ -528,45 +538,36 @@
         background-color: rgba(0, 0, 0, 0);
         border: none;
         position: absolute;
-        transform: translate(270px,10px);
-        background-size: cover;
+        transform: translate(215px, -20px);
+        background-size: 50px;
         background-image: url("/public/img/crewmanager/CloseDetailBtnOff.png");
+        cursor: pointer;
     }
     .CloseDetailBtn:hover{
-        cursor: pointer;
         background-image: url("/public/img/crewmanager/CloseDetailBtnOn.png");
     }
     
     .Detail_Top{
-        margin: 10px 0;
-        display: flex;
-        width: 100%;
         align-items: center;
+        border: none;
+        padding: 0;
         img{
             margin: 0px 20px;
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             border-radius: 20px;
         }
         .MemberInfoBox{
+            flex-grow: 1;
             display: flex;
+            flex-direction: column;
             text-align: center;
             gap: 10px;
-            .MemberInfoTitle{
-                width: 120px;
-            }
-            .MemberInfoData{
-                width: 200px;
-            }
         }
     }
     .Detail_Mid{
-        display: flex;
         flex-direction: column;
         justify-content: center;
-        border-top: 2px solid orange;
-        width: 100%;
-        height: 160px;
 
         /* 멤버 크루 참여 수락 라인 */
         .JoinAcceptLine{
@@ -635,12 +636,7 @@
     }
     /* 멤버 바이크 정보 라인 */
     .Detail_Bottom{
-        display: flex;
         align-items: center;
-        border-top: 2px solid orange;
-        width: 100%;
-        height: 200px;
-        gap: 20px;
         >img{
             margin-left: 10px;
             width: 180px;
@@ -667,5 +663,14 @@
 
         }
     }
+}
 
+.CrewMemberDetail>.div{
+    width: 440px;
+    min-width: 440px;
+    height: max-content;
+    display: flex;
+    box-sizing: border-box;
+    border: 2px solid orange;
+    padding-top: 10px;
 }

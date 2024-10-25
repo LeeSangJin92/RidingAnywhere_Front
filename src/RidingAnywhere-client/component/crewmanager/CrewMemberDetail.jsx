@@ -34,18 +34,10 @@ const CrewMemberDetail = (props) => {
                     <div className='Detail_Top'>
                     <img src={!memberData.UserProfile?'/img/mypage/DefaultProfileImg.png':('data:image/png;base64,'+memberData.UserProfile)} alt=''></img>
                     <div className='MemberInfoBox'>
-                        <div className='MemberInfoTitle'>
-                            <h2>닉네임</h2>
-                            <h2>지역</h2>
-                            <h2>생년월</h2>
-                            <h2>성별</h2>
-                        </div>
-                        <div className='MemberInfoData'>
-                            <h2>{memberData.UserNickname}</h2>
-                            <h2>{memberData.UserCity} / {memberData.UserTown}</h2>
-                            <h2>{memberData.UserBirthday.slice(2,4)} . {memberData.UserBirthday.slice(4,6)}</h2>
-                            <h2>{memberData.UserGender?"여성":"남성"}</h2>
-                        </div>
+                        <h2>{memberData.UserNickname}</h2>
+                        <h2>{memberData.UserCity} / {memberData.UserTown}</h2>
+                        <h2>{memberData.UserBirthday.slice(2,4)}.{memberData.UserBirthday.slice(4,6)}</h2>
+                        <h2>{memberData.UserGender?"여성":"남성"}</h2>
                     </div>            
                 </div>
                 <div className='Detail_Mid'>

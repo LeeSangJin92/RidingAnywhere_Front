@@ -482,7 +482,7 @@ const CrewManager = () => {
     }
 
     return (
-        <main>
+        <main className='Main_CrewManager'>
             <DefaultHeader/>
             <section className='crewManager'>
                 {/* 🛠️ 백그라운드 클릭 방지용 */}
