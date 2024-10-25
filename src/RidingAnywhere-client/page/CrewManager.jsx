@@ -22,7 +22,7 @@ const CrewManager = () => {
     const [accessToken] = useState(!sessionStorage.getItem('accessToken'))
 
      // 😎 로그인 라이더 정보
-     const [riderInfo, setriderInfo] = useState({
+     const [riderInfo, setRiderInfo] = useState({
         userEmail : "",
         userName : "",
         userNickname : "",
@@ -54,10 +54,10 @@ const CrewManager = () => {
     })
 
      // 📷 프로필 이미지 정보
-    const [profile,setprofile] = useState(null)
+    const [profile,setProfile] = useState(null)
 
      // 🏍️ 바이크 정보
-    const [bikeInfo, setbikeInfo] = useState()
+    const [bikeInfo, setBikeInfo] = useState()
 
     // 🛠️ 페이지 블록 관리용
     const [showUpControl,setShowup] = useState([false,""])  // 박스 사용 시 [백그라운드 블록 on/off, "창 종류"]
@@ -74,15 +74,24 @@ const CrewManager = () => {
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"}
             }).then(response => {
-                if(response.status==200){
+                if(response.status===200){
                     console.log("✅ 서버 작업 완료")
                     return response.json();
-                } else console.log("❌ 서버 통신 실패");
+                } else if(response.status===401){
+                    console.log("❌라이더 토큰 만료");
+                    alert("⚠️ 로그인 유지 시간 초과 \n - 로그인 페이지로 이동합니다. -");
+                    navigate("/RA/Login");
+                } 
+                else {
+                    console.log("❌서버 통신 실패");
+                    alert("❗서버 이상 문제로 메인 페이지로 이동합니다.")
+                    navigate("/RA/Home");
+                }
             }).then(data => {
                 if(data){
                     console.log("✅ 라이더 데이터 수집 완료!");
                     let userData = data.userData;
-                    setriderInfo({...riderInfo,
+                    setRiderInfo({...riderInfo,
                         userEmail : userData.userEmail,
                         userName : userData.userName,
                         userNickname : userData.userNickname,
@@ -98,7 +107,7 @@ const CrewManager = () => {
                     if(userData.authorityId.authorityName==="ROLE_CREW_Master"||userData.authorityId.authority_name==="ROLE_RA_ADMIN"){
                         setInfoBtn({...crewInfoBtn,ChangeBtn:{display:'flex', backgroundImage:"url('/img/crewmanager/ChangeBtn.png')"}})
                     }
-                !!userData.userProfile&&setprofile('data:image/png;base64,'+userData.userProfile);
+                !!userData.userProfile&&setProfile('data:image/png;base64,'+userData.userProfile);
                 if(data.bikeList.length===0){
                     console.log("⛔ 바이크 저장 이력 없음")
                     alert("⚠️입력된 바이크 정보가 없습니다.⚠️\n - 바이크 추가 페이지로 이동합니다. - ")
@@ -106,7 +115,7 @@ const CrewManager = () => {
                     navigate("/RA/Addbike");
                 }
                 else {
-                        setbikeInfo(data.bikeList.map((data,index)=>{
+                        setBikeInfo(data.bikeList.map((data,index)=>{
                             const bikeData = {
                                 bike_index:index,
                                 bike_id:data.bikegarage_id,

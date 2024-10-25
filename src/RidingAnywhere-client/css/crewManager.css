@@ -665,7 +665,7 @@
     }
 }
 
-.CrewMemberDetail>.div{
+.CrewMemberDetail>div{
     width: 440px;
     min-width: 440px;
     height: max-content;
