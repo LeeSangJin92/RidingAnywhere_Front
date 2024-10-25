@@ -63,7 +63,7 @@ const CrewMember = (props) => {
                     
                     <div className='memberDataLine_Middle'> {/* 크루 멤버 박스 중단 => 활동 지역 / 생년월일 */}
                         <h2 className='memberLocation'>{memberInfo.UserCity} / {memberInfo.UserTown}</h2>
-                        <h2 className='memberAge'>{(memberInfo.UserBirthday+"").substring(2,4)+" . "+(memberInfo.UserBirthday+"").substring(4,6)}</h2>
+                        <h2 className='memberAge'>{(memberInfo.UserBirthday+"").substring(2,4)+"."+(memberInfo.UserBirthday+"").substring(4,6)}</h2>
                     </div>
 
                     <div className='memberDataLine_Bottom'>  {/* 크루 멤버 박스 하단 => 바이크 브랜듯 / 바이크 모델 */}
