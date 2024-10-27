@@ -608,13 +608,18 @@
     }
 
     /* 멤버 디테일 정보 라인 */
+    
+    .Detail_Mid>.MemberInfoLine:first-child{
+        flex-direction: column;
+    }
+
     .Detail_Mid>.MemberInfoLine{
             display: flex;
             width: 100%;
     }
 
-    .Detail_Mid>.MemberInfoLine:first-child{
-        flex-direction: column;
+    .MemberInfoLine>div{
+        display: flex;
     }
 
     /* 멤버 디테일 이메일 */
