@@ -681,11 +681,13 @@
             }
             .MemberBikeDetail>div{
                 text-align: center;
-                gap: 20px;
             }
 
             .MemberBikeCC>h2:first-child, .MemberBikeYear>h2:first-child{
                 width: 90px;
+            }
+            .MemberBikeCC>h2:last-child, .MemberBikeYear>h2:last-child{
+                width: 110px;
             }
         }
     }
