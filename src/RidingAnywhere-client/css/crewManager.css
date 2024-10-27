@@ -677,14 +677,14 @@
             .MemberBikeDetail{
                 flex-direction: column;
                 box-sizing: border-box;
-                padding: 0 20px;
+                padding: 0 20px 0 50px;
             }
             .MemberBikeDetail>div{
                 text-align: center;
                 gap: 20px;
             }
 
-            .MemberBikeCC>h2:first, .MemberBikeYear>h2:first{
+            .MemberBikeCC>h2:first-child, .MemberBikeYear>h2:first-child{
                 width: 100px;
             }
         }
