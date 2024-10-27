@@ -74,10 +74,9 @@ const CrewMemberDetail = (props) => {
                     <img className='MemberBikeBrandImg' src={bikeImgUrl} alt=''/>
                     <div className='MemberBikeInfoLine'>
                         <div className='MemberBikeName'>
-                            <h2>모델</h2>
                             <h2 className='MemberBikeModelData'>{memberBike.bikeModel.model_name}</h2>
                         </div>
-                        <div>
+                        <div className='MemberBikeDetail'>
                             <div>
                                 <h2>배기량</h2>
                                 <h2 className='MemberBikeCC'>{memberBike.bikeModel.model_cc}</h2>
