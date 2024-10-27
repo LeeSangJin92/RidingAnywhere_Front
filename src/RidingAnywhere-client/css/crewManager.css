@@ -568,6 +568,8 @@
     .Detail_Mid{
         flex-direction: column;
         justify-content: center;
+        padding: 10px 0;
+
 
         /* 멤버 크루 참여 수락 라인 */
         .JoinAcceptLine{
@@ -606,40 +608,39 @@
             }
         }
     }
-
+}
     /* 멤버 디테일 정보 라인 */
-    
-    .Detail_Mid>.MemberInfoLine:first-child{
+    .Detail_Mid>.MemberInfoLineTop{
+        width: 100%;
         flex-direction: column;
     }
 
-    .Detail_Mid>.MemberInfoLine{
-            display: flex;
-            width: 100%;
+    .Detail_Mid>.MemberInfoLineBottom{
+        width: 100%;
+        justify-content: space-between;
     }
 
     .MemberInfoLine>div{
         display: flex;
+        gap: 20px;
+        height: 50px;
+        align-items: center;
     }
 
-    /* 멤버 디테일 이메일 */
-    .MemberInfoLine>.MemberInfoEmail{
-        width: 370px;
+    /* 멤버 디테일 이메일 / 멤버 디테일 연락처 */
+    .MemberInfoLine>.MemberInfoEmail, .MemberInfoLine>.MemberInfoPhone{
+        width: 100%;
     }
 
     /* 멤버 디테일 출석 */
     .MemberInfoLine>.MemberInfoCnt{
-        width: 140px;
+        width: 130px;
     }
-    /* 멤버 디테일 연락처 */
-    .MemberInfoLine>.MemberInfoPhone{
-        width: 280px;
-    }
+
     /* 멤버 디테일 가입일자 */
     .MemberInfoLine> .MemberInfoJoin{
         width: 250px;
     }
-}
 
 
 

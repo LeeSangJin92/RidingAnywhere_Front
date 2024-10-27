@@ -48,7 +48,7 @@ const CrewMemberDetail = (props) => {
                             <input type='button' className='JoinRefuseBtn' onClick={onClickOkay}/>
                         </div>
                     </div>
-                    <div className='MemberInfoLine' style={memberData.UserState!=="CrewJoiner"?{display:'flex'}:{display:'none'}}>
+                    <div className='MemberInfoLineTop' style={memberData.UserState!=="CrewJoiner"?{display:'flex'}:{display:'none'}}>
                         <div className='MemberInfoEmail'>
                             <h2>이메일</h2>
                             <h2>{memberData.UserEmail}</h2>
@@ -59,7 +59,7 @@ const CrewMemberDetail = (props) => {
                         </div>
                         
                     </div>
-                    <div className='MemberInfoLine' style={memberData.UserState!=="CrewJoiner"?{display:'flex'}:{display:'none'}}>
+                    <div className='MemberInfoLineBottom' style={memberData.UserState!=="CrewJoiner"?{display:'flex'}:{display:'none'}}>
                         <div className='MemberInfoCnt'>
                             <h2>출석</h2>
                             <h2>{memberData.UserCnt}</h2>
