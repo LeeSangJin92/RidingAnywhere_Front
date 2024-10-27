@@ -77,9 +77,9 @@ const CrewMemberDetail = (props) => {
                             <h2 className='MemberBikeModelData'>{memberBike.bikeModel.model_name}</h2>
                         </div>
                         <div className='MemberBikeDetail'>
-                            <div>
+                            <div className='MemberBikeCC'>
                                 <h2>배기량</h2>
-                                <h2 className='MemberBikeCC'>{memberBike.bikeModel.model_cc}</h2>
+                                <h2>{memberBike.bikeModel.model_cc}</h2>
                             </div>
                             <div className='MemberBikeYear'>
                                 <h2>연식</h2>
