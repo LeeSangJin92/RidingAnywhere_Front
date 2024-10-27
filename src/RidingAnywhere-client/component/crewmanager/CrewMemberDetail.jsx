@@ -53,15 +53,16 @@ const CrewMemberDetail = (props) => {
                             <h2>이메일</h2>
                             <h2>{memberData.UserEmail}</h2>
                         </div>
-                        <div className='MemberInfoCnt'>
-                            <h2>출석일</h2>
-                            <h2>{memberData.UserCnt}</h2>
-                        </div>
-                    </div>
-                    <div className='MemberInfoLine' style={memberData.UserState!=="CrewJoiner"?{display:'flex'}:{display:'none'}}>
                         <div className='MemberInfoPhone'>
                             <h2>연락처</h2>
                             <h2>{memberData.UserPhone.slice(0,3)+"-"+memberData.UserPhone.slice(3,7)+"-****"}</h2>
+                        </div>
+                        
+                    </div>
+                    <div className='MemberInfoLine' style={memberData.UserState!=="CrewJoiner"?{display:'flex'}:{display:'none'}}>
+                        <div className='MemberInfoCnt'>
+                            <h2>출석</h2>
+                            <h2>{memberData.UserCnt}</h2>
                         </div>
                         <div className='MemberInfoJoin'>
                             <h2>가입일</h2>

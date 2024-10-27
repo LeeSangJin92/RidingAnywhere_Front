@@ -605,35 +605,39 @@
                 background-image: url("/public/img/crewmanager/RefuseBtnOn.png");
             }
         }
-
-        /* 멤버 개인 정보 라인 */
-        .MemberInfoLine{
-            display: flex;
-            gap: 30px;
-            div{
-                display: flex;
-                gap: 25px;
-            }
-            /* 이메일 */
-            .MemberInfoEmail{
-                width: 370px;
-                margin-left: 20px;
-            }
-            /* 출석수 */
-            .MemberInfoCnt{
-                width: 140px;
-            }
-            /* 연락처 */
-            .MemberInfoPhone{
-                width: 280px;
-                margin-left: 20px;
-            }
-            /* 가입일자 */
-            .MemberInfoJoin{
-                width: 250px;
-            }
-        }
     }
+
+    /* 멤버 디테일 정보 라인 */
+    .Detail_Mid>.MemberInfoLine{
+            display: flex;
+            width: 100%;
+    }
+
+    .Detail_Mid>.MemberInfoLine:first-child{
+        flex-direction: column;
+    }
+
+    /* 멤버 디테일 이메일 */
+    .MemberInfoLine>.MemberInfoEmail{
+        width: 370px;
+    }
+
+    /* 멤버 디테일 출석 */
+    .MemberInfoLine>.MemberInfoCnt{
+        width: 140px;
+    }
+    /* 멤버 디테일 연락처 */
+    .MemberInfoLine>.MemberInfoPhone{
+        width: 280px;
+    }
+    /* 멤버 디테일 가입일자 */
+    .MemberInfoLine> .MemberInfoJoin{
+        width: 250px;
+    }
+}
+
+
+
     /* 멤버 바이크 정보 라인 */
     .Detail_Bottom{
         align-items: center;
@@ -663,7 +667,6 @@
 
         }
     }
-}
 
 .CrewMemberDetail>div{
     width: 440px;
@@ -671,6 +674,4 @@
     height: max-content;
     display: flex;
     box-sizing: border-box;
-    border: 2px solid orange;
-    padding-top: 10px;
 }
