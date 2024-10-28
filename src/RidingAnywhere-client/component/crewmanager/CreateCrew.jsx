@@ -88,7 +88,7 @@ const CreateCrew = (props) => {
                     </div>
                 </div>
                 <div className='CreateInputLine'>
-                    <div>
+                    <div className='CrewContextTitle'>
                         <h2>인사말</h2>
                         <h4>(✏️ {crewData.crew_context.length} / 100 )</h4>
                     </div>
