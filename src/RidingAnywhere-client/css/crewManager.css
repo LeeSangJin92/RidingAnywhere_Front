@@ -483,45 +483,46 @@
         align-items: center;
         justify-content: center;
     }
-    .BtnLine{
-        width: 100%;
-        height: max-content;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        padding-bottom: 20px;
-        box-sizing: border-box;
-        label{
-            display: flex;
-            background-size: 100%;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
-        }
-        .Create>label:hover{
-            background-image: url('/public/img/crewmanager/CrewCreateOn.png');
-        }
-        .Create>label{
-            background-image: url('/public/img/crewmanager/CrewCreateOff.png');
-            
-        }
-        .Join>label:hover{
-            background-image: url('/public/img/crewmanager/CrewJoinOn.png');
-        }
-        .Join>label{
-            background-image: url('/public/img/crewmanager/CrewJoinOff.png');
-            
-        }
-    }
+}
 
-    .BtnLine>div{
-        width: 25vw;
-        height: 25vw;
-        min-width: 150px;
-        max-width: 200px;
-        min-height: 150px;
-        max-height: 200px;
-    }
+.CheckCrew>.BtnLine{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.BtnLine>.Create, .BtnLine>.Join{
+    width: 25vw;
+    height: 25vw;
+    min-width: 150px;
+    max-width: 200px;
+    min-height: 150px;
+    max-height: 200px;
+}
+
+.Create>label, .Join>label{
+    display: flex;
+    background-size: 100%;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.Create>label:hover{
+    background-image: url('/public/img/crewmanager/CrewCreateOn.png');
+}
+.Create>label{
+    background-image: url('/public/img/crewmanager/CrewCreateOff.png');
+}
+.Join>label:hover{
+    background-image: url('/public/img/crewmanager/CrewJoinOn.png');
+}
+.Join>label{
+    background-image: url('/public/img/crewmanager/CrewJoinOff.png');
 }
 
 /* 크루 멤버 디테일 박스 범위 */
