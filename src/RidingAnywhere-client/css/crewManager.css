@@ -378,7 +378,7 @@
     height: max-content;
     justify-content: center;
     text-align: center;
-    gap: 30px;
+    gap: 20px;
 }
 
 .CreateInputLine>h2{
@@ -398,13 +398,9 @@
     min-width: 280px;
     max-width: 360px;
     height: 10vw;
-    min-height: 40px;
+    min-height: 50px;
     max-height: 60px;
     margin-right: 10px;
-}
-
-.CreateInputLine>.SelectLine{
-    
 }
 
 /* 크루 이름 입력 라인 */
@@ -425,8 +421,16 @@
 /* 크루 도시 선택 라인 */
 .CreateInputLine>.SelectLine{
     justify-content: space-between;
+    width: 30vw; 
+    min-width: 280px;
+    max-width: 360px;
     select{
-        width: 150px;
+        width: 30vw;
+        min-width: 130px;
+        max-width: 160px;
+        height: 10vw;
+        min-height: 50px;
+        max-height: 60px;
         text-align: center;
         font-size: 25px;
         font-weight: bold;
