@@ -10,6 +10,7 @@
     justify-content: center;
     gap: 30px;
     position: relative;
+    background-color: black;
 }
 
 /* 크루 모집 페이지 h2 폰트 설정 */
@@ -261,6 +262,10 @@
     .CrewJoinBoard>.CrewInfoBox{
         display: none;
         position: absolute;
+        background-color: black;
+        border: 2px solid orange;
+        border-radius: 10px;
+        box-sizing: border-box;
     }
 
     .CrewInfoBox.CrewInfoBox_Block{
