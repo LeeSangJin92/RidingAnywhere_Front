@@ -11,6 +11,17 @@
     gap: 30px;
 }
 
+/* 크루 모집 페이지 h2 폰트 설정 */
+.CrewJoinBoard h2{
+    background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
+    font-weight: bold;
+    -webkit-text-stroke-width: 0.1px;
+    -webkit-text-stroke-color: black;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
  /* 크루 모집 페이지 클릭 방지용 블럭 */
 .CrewJoinBoard>.CrewJoinBoardBlock{
     position: absolute;
@@ -20,137 +31,133 @@
     justify-content: center;
 }
 
-.CrewJoinBoard{
-    
-    h2{
-        background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
-        font-weight: bold;
-        -webkit-text-stroke-width: 0.1px;
-        -webkit-text-stroke-color: black;
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+/* 크루 신청 체크 박스 */
+.CrewJoinBoardBlock>.CrewJoinOk{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin-top: 200px;
+    z-index: 3;
+    width: 600px;
+    height: 300px;
+    background-color: black;
+    border: 4px solid orange;
+    border-radius: 20px;
+}
+
+/* 크루 신청 체크 박스의 OK / 취소 버튼 라인 */
+.CrewJoinOk>.CrewJoinOkBtnLine{
+    display: flex;
+    justify-content: center;
+    width: 400px;
+    height: 70px;
+    gap: 50px;
+    input{
+        width: 150px;
+        background-size: cover;
+        background-color: rgba(0, 0, 0, 0);
+        cursor: pointer;
+        border: 0;
     }
+    #JoinOkBtn{
+        background-image: url("/public/img/crewjoin/RequestBtnOff.png");
+    }
+    #JoinOkBtn:hover{
+        background-image: url("/public/img/crewjoin/RequestBtnOn.png");
+    }
+    #JoinCancelBtn{
+        background-image: url("/public/img/crewjoin/CancelBtnOff.png");
+    }
+    #JoinCancelBtn:hover{
+        background-image: url("/public/img/crewjoin/CancelBtnOn.png");
+    }
+}
 
-   
-    
+/* 선택된 크루 정보 박스 */
+.CrewJoinBoard>.CrewInfoBox{
+    width: 500px;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-    /* 크루 가입 신청 확인 버튼 */
-    .CrewJoinOk{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+/* 크루 정보 박스 클릭 방지용 블록 */
+.CrewInfoBox>.CrewInfoBox_Block{
+    position: absolute;
+    display: flex;
+    width: 500px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    border: 2px solid orange;
+    border-radius: 20px;
+    z-index: 2;
+ }
+
+ /* 선택된 크루 정보 박스 탑 */
+ .CrewInfoBox>.CrewInfoBox_Top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    margin: 20px 0;
+    h1{
+        height: max-content;
+    }
+    .JoinBtnLabel{
+        cursor: pointer;
         position: absolute;
-        margin-top: 200px;
-        z-index: 3;
-        width: 600px;
-        height: 300px;
-        background-color: black;
-        border: 4px solid orange;
+        background-image: url("/public/img/crewjoin/JoinBtnOn.png");
+        width: 80px;
+        height: 80px;
+        background-size: cover;
+        transform: translate(200px);
+    }
+}
+
+/* 선택된 크루 정보 박스 메인 */
+.CrewInfoBox>.CrewInfoBox_Main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid orange;
+    border-radius: 20px;
+    div{
+        width: 450px;
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+        h2{
+            width: 220px;
+        }
+    }
+}
+
+/* 선택된 크루 정보 박스 바텀 */
+.CrewInfoBox>.CrewInfoBox_Botton{
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    h1{
+        margin-top: 20px;
+        text-align: center;
+    }
+    h2{
+        border: 2px solid orange;
         border-radius: 20px;
-        .CrewJoinOkBtnLine{
-            display: flex;
-            justify-content: center;
-            width: 400px;
-            height: 70px;
-            gap: 50px;
-            input{
-                width: 150px;
-                background-size: cover;
-                background-color: rgba(0, 0, 0, 0);
-                cursor: pointer;
-                border: 0;
-            }
-            #JoinOkBtn{
-                background-image: url("/public/img/crewjoin/RequestBtnOff.png");
-            }
-            #JoinOkBtn:hover{
-                background-image: url("/public/img/crewjoin/RequestBtnOn.png");
-            }
-            #JoinCancelBtn{
-                background-image: url("/public/img/crewjoin/CancelBtnOff.png");
-            }
-            #JoinCancelBtn:hover{
-                background-image: url("/public/img/crewjoin/CancelBtnOn.png");
-            }
-            
-        }
-
-
+        height: 300px;
+        padding: 20px;
     }
+}
 
-    /* 선택된 크루 정보 */
-    .CrewInfoBox{
-        width: 500px;
-        height: 100%;
-        .CrewInfoBox_Block{
-            position: absolute;
-            display: flex;
-            width: 500px;
-            height: 100%;
-            justify-content: center;
-            align-items: center;
-            background-color: black;
-            border: 2px solid orange;
-            border-radius: 20px;
-            z-index: 2;
-         }
-        .CrewInfoBox_Top{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 80px;
-            margin: 20px 0;
-            h1{
-                height: max-content;
-            }
-            .JoinBtnLabel{
-                cursor: pointer;
-                position: absolute;
-                background-image: url("/public/img/crewjoin/JoinBtnOn.png");
-                width: 80px;
-                height: 80px;
-                background-size: cover;
-                transform: translate(200px);
-            }
-        }
-        .CrewInfoBox_Main{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border: 2px solid orange;
-            border-radius: 20px;
-            div{
-                width: 450px;
-                display: flex;
-                justify-content: space-between;
-                text-align: center;
-                h2{
-                    width: 220px;
-                }
-            }
-        }
-
-        .CrewInfoBox_Botton{
-            width: 100%;
-            height: 400px;
-            display: flex;
-            flex-direction: column;
-            h1{
-                margin-top: 20px;
-                text-align: center;
-            }
-            h2{
-                border: 2px solid orange;
-                border-radius: 20px;
-                height: 300px;
-                padding: 20px;
-            }
-        }
-    }
-
+.CrewJoinBoard{
     .CrewListBox{
         width: 700px;
         margin-top: 20px;
