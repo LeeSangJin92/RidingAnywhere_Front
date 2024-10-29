@@ -424,6 +424,7 @@
     width: 30vw; 
     min-width: 280px;
     max-width: 360px;
+    margin-right: 10px;
     select{
         width: 30vw;
         min-width: 130px;
