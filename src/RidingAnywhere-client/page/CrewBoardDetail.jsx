@@ -59,22 +59,6 @@ const CrewBoardDetail = () => {
             ...changeData,boardContext:data
         })
     }
-    // useEffect(()=>{
-    //     if(quillRef.current){
-    //         let saveInputTag = document.createElement('input');
-    //         console.log(saveInputTag);
-    //         Object.assign(saveInputTag,{
-    //             type:'button',
-    //             id:'boardContext',
-    //             className:'boardContextChangeBtn',
-    //             onClick:{onClickBoardChangeBtn},
-    //             style:`${changeMode?{display:'flex'}:{display:'none'}}`
-    //         });
-    //         // saveInputTag.type='button'
-    //         //  saveInputTag.setAttribute({type:'button',id:'boardContext',className:'boardContextChangeBtn',style:`{changeMode?{display:'flex'}:{display:'none'}}`,onClick:{onClickBoardChangeBtn}});
-    //         document.getElementsByClassName("quill")[0].children[0].append(saveInputTag)
-    //     }
-    // },[])
 
     const onClickBoardChangeBtn = async (inputTag) => {
         console.log("🛜 데이터 수정 요청");

@@ -7,6 +7,7 @@ const CrewJoiner = (props) => {
         console.log("🕹️ 크루 선택")
         props.setCrewInfo(crewData);
         props.setShowUpInfoBlock(false);
+        document.getElementsByClassName("CrewInfoBox").style({display:"flex"});
     }
 
     return (

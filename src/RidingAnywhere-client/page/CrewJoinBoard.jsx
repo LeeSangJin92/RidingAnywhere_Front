@@ -276,6 +276,14 @@ const CrewJoinBoard = () => {
         })    
     }
 
+    // 🛠️ 크루 정보 박스 닫기 (브러우저 사이즈가 1200 미만 시 활성화)
+    const closeInfoBoxBtn = () => {
+        console.log("🕹️크루 정보 박스 닫기");
+        document.getElementsByClassName("CrewInfoBox").style({display:"none"});
+    }
+
+
+
     return (
         <main className='Main_CrewJoinBoard'>
             <DefaultHeader/>
@@ -284,6 +292,7 @@ const CrewJoinBoard = () => {
                     <CrewJoinOk setShowUpBox={setShowUpBox} crewName={crewInfo.CrewName} requestJoin={requestJoin}/>
                 </div>
                 <div className='CrewInfoBox'>
+                    <input type='button' className='CrewInfoBoxCloseBtn' onClick={closeInfoBoxBtn}/>
                     <div className='CrewInfoBox_Block' style={showUpInfoBlock?{display:"flex"}:{display:"none"}}>
                         <h1>크루를 선택해주세요</h1>
                     </div>
