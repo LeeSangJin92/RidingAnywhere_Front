@@ -109,6 +109,14 @@
      height: 50px;
      right: 0;
      display: none;
+     border: none;
+     background-color: rgba(0, 0, 0, 0);
+     background-image: url("/public/img/crewmanager/CloseDetailBtnOff.png");
+     cursor: pointer;
+ }
+
+ .CrewInfoBox>.CrewInfoBoxCloseBtn:hover{
+    background-image: url("/public/img/crewmanager/CloseDetailBtnOn.png");
  }
 
  /* 선택된 크루 정보 박스 탑 */
@@ -274,5 +282,9 @@
 
     .CrewInfoBox>.CrewInfoBoxCloseBtn{
         display: flex;
+    }
+
+    .CrewInfoBox_Top>.JoinBtnLabel{
+        transform: translate(160px);
     }
 }
