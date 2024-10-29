@@ -279,7 +279,7 @@ const CrewJoinBoard = () => {
     // 🛠️ 크루 정보 박스 닫기 (브러우저 사이즈가 1200 미만 시 활성화)
     const closeInfoBoxBtn = () => {
         console.log("🕹️크루 정보 박스 닫기");
-        document.getElementsByClassName("CrewInfoBox").style({display:"none"});
+        document.getElementsByClassName("CrewInfoBox")[0].style.display="none";
     }
 
 
