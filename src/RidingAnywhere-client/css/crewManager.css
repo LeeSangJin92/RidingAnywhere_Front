@@ -351,6 +351,7 @@
     text-align: center;
     align-items: center;
     flex-direction: column;
+    gap: 10px;
     width: 70vw;
     max-width: 800px;
     min-width: 440px;
@@ -380,17 +381,30 @@
     gap: 30px;
 }
 
-.CreateInputLine>.TextLine{
-    width: 300px;
-}
-
 .CreateInputLine>h2{
-    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    height: 100%;
 }
 
 .CreateInputLine>.TextLine, .CreateInputLine>.SelectLine, .CreateInputLine>.CrewContext_input{
     display: flex;
-    width: 350px;
+}
+
+.CreateInputLine>.TextLine{
+    width: 30vw;
+    min-width: 280px;
+    max-width: 360px;
+    height: 10vw;
+    min-height: 40px;
+    max-height: 60px;
+    margin-right: 10px;
+}
+
+.CreateInputLine>.SelectLine{
+    
 }
 
 /* 크루 이름 입력 라인 */
