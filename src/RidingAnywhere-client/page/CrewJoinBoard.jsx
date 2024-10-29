@@ -315,7 +315,7 @@ const CrewJoinBoard = () => {
                             <h2>{crewInfo.CrewCity} / {crewInfo.CrewTown}</h2>
                         </div>
                     </div>
-                    <div className='CrewInfoBox_Botton'>
+                    <div className='CrewInfoBox_Bottom'>
                         <h1>크루 인사말</h1>
                         <h2 className='CrewContextBox'>{crewInfo.CrewContext}</h2>
                     </div>
