@@ -129,14 +129,15 @@
     h1{
         height: max-content;
     }
-    .JoinBtnLabel{
-        cursor: pointer;
-        position: absolute;
-        width: 80px;
-        height: 80px;
-        background-size: cover;
-        transform: translate(200px);
-    }
+}
+
+.CrewInfoBox_Top>.JoinBtnLabel{
+    cursor: pointer;
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    transform: translate(200px);
+    background-size: cover;
 }
 
 /* 선택된 크루 정보 박스 메인 */
