@@ -277,7 +277,7 @@ const CrewJoinBoard = () => {
     }
 
     return (
-        <main>
+        <main className='Main_CrewJoinBoard'>
             <DefaultHeader/>
             <section className='CrewJoinBoard'>
                 <div className='CrewJoinBoardBlock' style={showUpOkBox?{display:'flex'}:{display:'none'}}>

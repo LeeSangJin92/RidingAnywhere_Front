@@ -1,9 +1,27 @@
-.CrewJoinBoard{
+.Main_CrewJoinBoard{
+    height: max-content;
+}
+
+/* 크루 모집 페이지 섹션 */
+.Main_CrewJoinBoard>.CrewJoinBoard{
     width: 100%;
+    height: max-content;
     display: flex;
     justify-content: center;
     gap: 30px;
+}
 
+ /* 크루 모집 페이지 클릭 방지용 블럭 */
+.CrewJoinBoard>.CrewJoinBoardBlock{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.CrewJoinBoard{
+    
     h2{
         background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
         font-weight: bold;
@@ -14,15 +32,8 @@
         color: transparent;
     }
 
-    /* 크루 모집 페이지 블럭 */
-    .CrewJoinBoardBlock{
-        z-index: 2;
-        position: absolute;
-        display: flex;
-        width: 1280px;
-        height: 100%;
-        justify-content: center;
-    }
+   
+    
 
     /* 크루 가입 신청 확인 버튼 */
     .CrewJoinOk{
