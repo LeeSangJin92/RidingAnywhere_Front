@@ -342,6 +342,7 @@
         flex-direction: column;
     }
     .CrewListBox_Top>div{
+        width: 100%;
         max-width: 440px;
     }
 }
