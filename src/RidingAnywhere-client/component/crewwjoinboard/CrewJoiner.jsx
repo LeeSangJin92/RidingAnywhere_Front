@@ -14,8 +14,8 @@ const CrewJoiner = (props) => {
             <>
                 <label className='CrewJoiner' htmlFor='CrewInfo'>
                     <div className='Data'>
-                        <h2>크루 네임</h2>
-                        <h2>크루 마스터</h2>
+                        <h2>크루명</h2>
+                        <h2>마스터</h2>
                     </div>
                     <div className='Data'>
                         <h2>{crewData.CrewName}</h2>
