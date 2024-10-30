@@ -322,14 +322,18 @@ const CrewJoinBoard = () => {
                 </div>
                 <div className='CrewListBox'>
                     <div className='CrewListBox_Top'>
-                        <input type='text' className='CrewNameSuchBox' placeholder='✏️ 찾고 싶은 크루 이름을 입력하세요'/>
-                        <input type='button' className='CrewNameSearchBtn'/>
-                        <select name='CrewCity' className='selectCity' value={crewAddress.CrewCity} onChange={changeFilter}>
-                            {cityList.map((data,index)=>(<option key={index} value={data}>{data}</option>))}</select>
-                        <select name='CrewTown' className='selectTown' value={crewAddress.CrewTown} onChange={changeFilter}>
-                            <option value={""}>전체</option>
-                            {addressList.filter(data=>data.city===crewAddress.CrewCity).map((data,index)=>(<option key={index} value={data.town}>{data.town}</option>))}
-                        </select>
+                        <div className='CrewNameSearchBoxLine'>
+                            <input type='text' className='CrewNameSearchBox' placeholder='✏️ 찾고 싶은 크루 이름을 입력하세요'/>
+                            <input type='button' className='CrewNameSearchBtn'/>
+                        </div>
+                        <div className='CrewAddressBoxLine'>
+                            <select name='CrewCity' className='selectCity' value={crewAddress.CrewCity} onChange={changeFilter}>
+                                {cityList.map((data,index)=>(<option key={index} value={data}>{data}</option>))}</select>
+                            <select name='CrewTown' className='selectTown' value={crewAddress.CrewTown} onChange={changeFilter}>
+                                <option value={""}>전체</option>
+                                {addressList.filter(data=>data.city===crewAddress.CrewCity).map((data,index)=>(<option key={index} value={data.town}>{data.town}</option>))}
+                            </select>
+                        </div>
                     </div>
                     <div className='CrewListBox_Section'>
                         {/* ✏️ 가입되어 있는 크루가 맨위로 올라오도록 설정 */}
