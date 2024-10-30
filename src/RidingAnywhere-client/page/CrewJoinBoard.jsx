@@ -321,7 +321,7 @@ const CrewJoinBoard = () => {
                     </div>
                 </div>
                 <div className='CrewListBox'>
-                    <div className='CrewListBoxt_Top'>
+                    <div className='CrewListBox_Top'>
                         <input type='text' className='CrewNameSuchBox' placeholder='✏️ 찾고 싶은 크루 이름을 입력하세요'/>
                         <input type='button' className='CrewNameSearchBtn'/>
                         <select name='CrewCity' className='selectCity' value={crewAddress.CrewCity} onChange={changeFilter}>
