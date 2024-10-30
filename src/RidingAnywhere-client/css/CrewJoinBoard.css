@@ -284,9 +284,9 @@
     box-sizing: border-box;
     border-radius: 10px;
     width: 100%;
-    height: max-content;
+    height: 570px;
     max-height: 570px;
-    min-height: 490px;
+    min-height: 570px;
     padding: 18px 8px;
     overflow-y: scroll;
     scrollbar-width: none;
