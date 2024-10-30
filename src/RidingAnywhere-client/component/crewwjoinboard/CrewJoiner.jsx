@@ -13,19 +13,19 @@ const CrewJoiner = (props) => {
     return (
             <>
                 <label className='CrewJoiner' htmlFor='CrewInfo'>
-                    <div className='Data'>
+                    <div className='TitleA'>
                         <h2>크루명</h2>
                         <h2>마스터</h2>
                     </div>
-                    <div className='Data'>
+                    <div className='DataA'>
                         <h2>{crewData.CrewName}</h2>
                         <h2>{crewData.CrewMaster}</h2>
                     </div>
-                    <div className='Data'>
+                    <div className='TitleB'>
                         <h2>활동 지역</h2>
                         <h2>크루 인원</h2>
                     </div>
-                    <div className='Data'>
+                    <div className='DataB'>
                         <h2>{crewData.CrewCity} / {crewData.CrewTown}</h2>
                         <h2>😎 {crewData.CrewCount} 명</h2>
                     </div>

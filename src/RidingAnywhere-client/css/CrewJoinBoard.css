@@ -286,7 +286,7 @@
     width: 100%;
     height: max-content;
     max-height: 570px;
-    min-height: 380px;
+    min-height: 490px;
     padding: 18px 8px;
     overflow-y: scroll;
     scrollbar-width: none;
@@ -307,6 +307,7 @@
     align-items: center;
     text-align: center;
     cursor: pointer;
+    position: relative;
     h2{
         margin: 0;
     }
@@ -315,15 +316,35 @@
 .CrewListBox_Section>.CrewJoiner:hover{
     border: 2px solid orange;
 }
-.CrewJoiner>.Data{
+.CrewJoiner>div{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
-    width: 150px;
     gap: 5px;
 }
+
+.CrewJoiner>.TitleA{
+    width: 90px;
+    min-width: 90px;
+}
+
+.CrewJoiner>.TitleB{
+    width: 120px;
+    min-width: 120px;
+}
+
+.CrewJoiner>.DataA{
+    width: 100%;
+}
+
+.CrewJoiner>.DataB{
+    width: 130px;
+    min-width: 130px;
+}
+
+
 
 @media(max-width:1199px) {
     .CrewJoinBoard>.CrewInfoBox{
@@ -358,5 +379,9 @@
     .CrewListBox_Top>div{
         width: 100%;
         max-width: 440px;
+    }
+
+    .CrewJoiner>.TitleB{
+        display: none;
     }
 }
