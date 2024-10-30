@@ -213,7 +213,7 @@
 /* 크루 리스트 탑 라인 (크루 이름 조회 라인 + 크루 도시 조회 라인) */
 .CrewListBox_Top>div{
     display: flex;
-    width: 100%;
+    width: 50%;
     max-width: 320px;
     min-width: 270px;
     height: 80px;
@@ -315,6 +315,7 @@
     .CrewJoinBoard>.CrewInfoBox{
         display: none;
         position: absolute;
+        z-index: 1;
         background-color: black;
         border: 2px solid orange;
         border-radius: 10px;
