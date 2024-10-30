@@ -17,7 +17,7 @@ const CrewJoinOk = (data) => {
     return (
         <div className='CrewJoinOk'>
             <h1>{data.crewName}</h1>
-            <h2>{"선택하신 크루에 가입 요청을 보내겠습니까?"}</h2>
+            <h2>{"크루 가입 요청을 보내겠습니까?"}</h2>
             <div className='CrewJoinOkBtnLine'>
                 <input type='button' id='JoinOkBtn' onClick={ClickBtn}/>
                 <input type='button' id='JoinCancelBtn' onClick={ClickBtn}/>
