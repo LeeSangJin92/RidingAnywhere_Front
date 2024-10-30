@@ -414,15 +414,11 @@ const CrewManager = () => {
                     body:JSON.stringify(dataJoinAccept)
             }).then(response => {
                 if(response.status==200){
-                    console.log("✅ 서버 작업 완료")
-                    return response.json();
-                } else console.log("❌ 서버 통신 실패");
-            }).then(data=>{
-                if(data){
                     console.log("✅ 크루 가입 요청 수락 완료");
                     alert("😁 가입을 수락하셨습니다")
+                    return response.json();
                 } else console.log("❌ 크루 가입 요청 수락 실패");
-            })
+            });
         } else{
             await fetch("https://ridinganywhere.site/CR/RequestJoinRefuse",{
                 method:"POST",
@@ -432,11 +428,6 @@ const CrewManager = () => {
                 body:JSON.stringify(dataJoinAccept)
             }).then(response => {
                 if(response.status==200){
-                    console.log("✅ 서버 작업 완료")
-                    return response.json();
-                } else console.log("❌ 서버 통신 실패");
-            }).then(data=>{
-                if(data){
                     console.log("✅ 크르 가입 요청 거절 완료");
                     alert("😓 가입을 거절하셨습니다.");
                 } else console.log("❌ 크루 가입 요청 거절 실패");

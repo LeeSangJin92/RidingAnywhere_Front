@@ -192,7 +192,7 @@ const CrewJoinBoard = () => {
                                  }
                              })
                             setCrewList(crewList);
-                            console.log("✅ 크루 리스틑 저장 완료");
+                            console.log("✅ 크루 리스트 저장 완료");
                         }})
                 }).then(async ()=>{
                 console.log("🛜 지역 데이터 요청");
@@ -263,17 +263,16 @@ const CrewJoinBoard = () => {
             method:"POST",
             body:JSON.stringify(crewInfo.CrewId)
         }).then(response => {
-            if(response.status==200){
-                console.log("✅ 서버 작업 완료")
-                return response.json();
-            } else console.log("❌ 서버 통신 실패");
-        }).then(data=>{
-            if(data){
+            if(response.status===200){
                 console.log("✅ 크루 가입 응답 성공");
-                setShowUpBox(false);
+                alert("✅가입 요청이 완료되었습니다.");
                 checkData();
-            } else console.log("❌ 크루 가입 응답 실패");
-        })    
+            } else {
+                console.log("❌ 크루 가입 응답 실패");
+                alert("⚠️가입 요청이 실패했습니다.");
+            }
+        });
+        setShowUpBox(false);
     }
 
     // 🛠️ 크루 정보 박스 닫기 (브러우저 사이즈가 1200 미만 시 활성화)
@@ -281,8 +280,6 @@ const CrewJoinBoard = () => {
         console.log("🕹️크루 정보 박스 닫기");
         document.getElementsByClassName("CrewInfoBox")[0].style.display="none";
     }
-
-
 
     return (
         <main className='Main_CrewJoinBoard'>
