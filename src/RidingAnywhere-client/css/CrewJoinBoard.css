@@ -256,7 +256,7 @@
     box-sizing: border-box;
 }
 
-.CrewAddressBoxLine>.CrewNameSearchBtn:hover{
+.CrewNameSearchBoxLine>.CrewNameSearchBtn:hover{
     background-image: url("/public/img/crewjoin/SearchBtnOn.png");
 }
 
