@@ -416,7 +416,6 @@ const CrewManager = () => {
                 if(response.status==200){
                     console.log("✅ 크루 가입 요청 수락 완료");
                     alert("😁 가입을 수락하셨습니다")
-                    return response.json();
                 } else console.log("❌ 크루 가입 요청 수락 실패");
             });
         } else{
