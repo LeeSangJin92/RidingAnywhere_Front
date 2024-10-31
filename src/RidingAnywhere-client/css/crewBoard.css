@@ -13,8 +13,8 @@
 
 .CrewBoard>.boardTopLine{
     display: flex;
-    width: 60vw;
-    max-width: 900px;
+    width: 100vw;
+    max-width: 960px;
     min-width: 460px;
     height: max-content;
     justify-content: center;
@@ -36,7 +36,7 @@
     min-height: 150px;
 }
 
-.boardTopLine>.boardWriteBtn{
+.boardTopLine>.WriteBtnNormal{
     width: 100px;
     min-width: 100px;
     height: 120px;
@@ -67,16 +67,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 10px;
 }
 
 .filterTop>.boardTextBox{
     width: 25vw;
-    min-width: 250px;
+    min-width: 170px;
     max-width: 350px;
     height: 50px;
     border-radius: 10px;
-    margin-left: 60px;
-    margin-right: 10px;
     font-size: 20px;
     text-align: center;
     font-weight: bolder;
@@ -87,11 +86,12 @@
     min-width: 60px;
     height: 60px;
     min-height: 60px;
+    padding : 0;
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0);
     border: none;
     background-image: url("/public/img/crewboard/SearchBtnOn.png");
-    background-size: 60px 60px;
+    background-size: cover;
     box-sizing: border-box;
 }
 
@@ -104,12 +104,23 @@
     border-radius: 10px;
 }
 
-.boardFilterLine>.filterBottom{
-    gap: 20px;
+.filterTop>.WriteBtnSmall{
+    display: none;
+    width: 100px;
+    min-width: 100px;
+    height: 50px;
+    box-sizing: border-box;
+    border: 2px solid orange;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
 .filterBottom>.filterCheckBox{
     width: 150px;
+    max-width: 150px;
+    min-width: 100px;
     height: 50px;
     display: flex;
     align-items: center;
@@ -118,13 +129,14 @@
     font-weight: bolder;
     color: rgb(138, 138, 138);
     background-color: rgb(18, 18, 18);
-    border: 5px solid rgb(84, 84, 84);
+    border: 2px solid rgb(84, 84, 84);
     border-radius: 20px;
+    box-sizing: border-box;
     cursor: pointer;
 }
 
 .filterBottom>.filterCheckBox:hover, .filterBottom>.filterInput:checked+label{
-    border: 5px gold solid;
+    border: 2px gold solid;
     span{
         background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
         font-weight: bold;
@@ -224,4 +236,19 @@
         display: flex;
         gap: 10px;
     }
+}
+
+@media(max-width:900px){
+    .boardTopLine>.WriteBtnNormal{
+        display: none;
+    }
+
+    .filterTop>.WriteBtnSmall{
+        display: flex;
+    }
+
+    .filterTop>h1, .filterBottom>h1{
+        display: none;
+    }
+
 }

@@ -154,6 +154,7 @@ const CrewBoard = () => {
                                 <option value={"title"}>제목</option>
                                 <option value={"context"}>내용</option>
                             </select>
+                            <label htmlFor='writeBtn' className='WriteBtnSmall'>게시글 작성</label>
                         </div>
                         <div className='filterBottom'>
                             <h1>필터</h1>
@@ -167,7 +168,7 @@ const CrewBoard = () => {
                             <label htmlFor='Greetings' className='filterCheckBox'><span>인사말</span></label>
                         </div>
                     </div>
-                    <label htmlFor='writeBtn' className='boardWriteBtn'><span>게시글<br/>작성</span></label>
+                    <label htmlFor='writeBtn' className='WriteBtnNormal'><span>게시글<br/>작성</span></label>
                     <input id='writeBtn' type='button' onClick={onClickWriteBtn} disabled={viewBlock} hidden/>
                 </div>
                 
