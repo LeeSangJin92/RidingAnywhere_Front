@@ -140,7 +140,7 @@ const CrewBoard = () => {
     }
 
     return (
-        <main>
+        <main className='Main_CrewBoard'>
             <DefaultHeader/>
             <section className='CrewBoard'>
                 <div className='boardTopLine'>
