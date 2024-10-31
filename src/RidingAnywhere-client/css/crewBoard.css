@@ -158,7 +158,8 @@
 /* 크루 게시글 리스트 라인 */
 .CrewBoard>.boardListLine{
     width: 100%;
-    height: max-content;
+    height: 380px;
+    min-height: 370px;
     max-height: 370px;
     border: 2px solid orange;
     border-radius: 10px;
@@ -198,6 +199,7 @@
             }
             .boardWriter{
                 width: 180px;
+                min-width: 180px;
             }
             .boardLevel{
                 width: 100px;
@@ -268,4 +270,17 @@
         display: none;
     }
 
+    .boardListLine .boardLevel, .boardListLine .boardCount{
+        display: none;
+    }
+}
+
+@media(max-width:780px){
+    .boardListLine .boardWriter{
+        display: none;
+    }
+
+    .boardListLine .boardTitle{
+        width: 100%;
+    }
 }
