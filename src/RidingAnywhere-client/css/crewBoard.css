@@ -20,7 +20,7 @@
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    gap: 20px;
+    gap: 10px;
     position: relative;
     padding-top: 10px;
 }
@@ -244,7 +244,7 @@
     }
 }
 
-@media(max-width:900px){
+@media(max-width:950px){
     .boardTopLine>.WriteBtnNormal{
         display: none;
     }
