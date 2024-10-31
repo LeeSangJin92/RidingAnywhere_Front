@@ -159,13 +159,13 @@ const CrewBoard = () => {
                         <div className='filterBottom'>
                             <h1>필터</h1>
                             <input type='checkbox' id='Note' className='filterInput' checked={filterList.Note} onClick={onClickFilterBtn} disabled={viewBlock} hidden/>
-                            <label htmlFor='Note' className='filterCheckBox'><span>공지글</span></label>
+                            <label htmlFor='Note' className='filterCheckBox'>공지글</label>
                             <input type='checkbox' id='Tour' className='filterInput' checked={filterList.Tour} onClick={onClickFilterBtn} disabled={viewBlock} hidden/>
-                            <label htmlFor='Tour' className='filterCheckBox'><span>모임글</span></label>
+                            <label htmlFor='Tour' className='filterCheckBox'>모임글</label>
                             <input type='checkbox' id='Free' className='filterInput' checked={filterList.Free} onClick={onClickFilterBtn} disabled={viewBlock} hidden/>
-                            <label htmlFor='Free' className='filterCheckBox'><span>자유글</span></label>
+                            <label htmlFor='Free' className='filterCheckBox'>자유글</label>
                             <input type='checkbox' id='Greetings' className='filterInput' checked={filterList.Greetings} onClick={onClickFilterBtn} disabled={viewBlock} hidden/>
-                            <label htmlFor='Greetings' className='filterCheckBox'><span>인사말</span></label>
+                            <label htmlFor='Greetings' className='filterCheckBox'>인사말</label>
                         </div>
                     </div>
                     <label htmlFor='writeBtn' className='WriteBtnNormal'><span>게시글<br/>작성</span></label>
