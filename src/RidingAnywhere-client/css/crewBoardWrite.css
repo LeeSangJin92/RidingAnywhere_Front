@@ -1,10 +1,46 @@
-.CrewBoardWrite{
-    height: 580px;
+.Main_CrewBoardWrite>.CrewBoardWrite{
+    width: 90vw;
+    max-width: 900px;
+    min-width: 460px;
+    height: max-content;
     background-color: black;
-    border: 2px solid orange;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 10px;
+}
+
+.CrewBoardWrite>.WriteTop{
+    width: 100%;
+    display: flex;
+    height: 60px;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding-top: 10px;
+}
+
+.WriteTop>.WriteOptionLine{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    .BoardType{
+        width: 100px;
+        height: 60px;
+        border-radius: 20px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bolder;
+    }
+}
+
+@media(max-width:530px){
+    .WriteOptionLine>h2{
+        display: none;
+    }
+}
+
+.CrewBoardWrite{
     h2{
         background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
         font-weight: bold;
@@ -14,29 +50,7 @@
         background-clip: text;
         color: transparent;
     }
-    .WriteTop{
-        width: 70%;
-        display: flex;
-        height: 100px;
-        align-items: center;
-        justify-content: space-between;
-        h1{
-            margin-right: 30px;
-        }
-        .WriteOptionLine{
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            .BoardType{
-                width: 100px;
-                height: 60px;
-                border-radius: 20px;
-                text-align: center;
-                font-size: 18px;
-                font-weight: bolder;
-            }
-        }
-    }
+    
     .WriteBody{
         width: 900px;
         height: 450px;

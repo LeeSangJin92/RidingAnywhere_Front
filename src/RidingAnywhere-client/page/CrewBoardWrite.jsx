@@ -178,11 +178,11 @@ const CrewBoardWrite = () => {
 
 
     return (
-        <main>
+        <main className='Main_CrewBoardWrite'>
             <DefaultHeader/>
                     <section className='CrewBoardWrite'>
                         <div className='WriteTop'>
-                            <h1>크루 게시판</h1>
+                            <h1>크루<br/>게시판</h1>
                             <div className='WriteOptionLine'>
                                 <h2>게시글 종류</h2>
                                 <select value={optionControl} className='BoardType' onChange={changeType}>
