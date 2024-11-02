@@ -194,6 +194,12 @@ const CrewBoardWrite = () => {
                             </div>
                         </div>
                         <div className='WriteBody'>
+                            <input type='button' id='BoardUploadBtn' onClick={clickOkayBtn} hidden/>
+                            <input type='button' id='BoardCancelBtn' onClick={onClickCancelBtn} hidden/>
+                            <div className='OkayBtnLine_Slim'>
+                                <label htmlFor='BoardUploadBtn'><h2>등록</h2></label>
+                                <label htmlFor='BoardCancelBtn'><h2>취소</h2></label>
+                            </div> 
                             <div className='BoardWriteBox'>
                                 <input type='text' className='WriteTitle' placeholder='제목을 입력하세요' value={boardData.boardTitle} onChange={insertBoardData}/>
                                 <QuillEditor value={boardData.boardContext} onChange={insertBoardContext}/>
@@ -241,11 +247,9 @@ const CrewBoardWrite = () => {
                                 <div className='Option' id='Greetings' style={optionControl==='Greetings'?{display:'flex'}:{display:'none'}}>
                                     <h2>설정 가능 옵션 없음</h2>
                                 </div> 
-                                <div className='OkayBtnLine'>
+                                <div className='OkayBtnLine_Wide'>
                                     <label htmlFor='BoardUploadBtn'><h2>등록</h2></label>
-                                    <input type='button' id='BoardUploadBtn' onClick={clickOkayBtn} hidden/>
                                     <label htmlFor='BoardCancelBtn'><h2>취소</h2></label>
-                                    <input type='button' id='BoardCancelBtn' onClick={onClickCancelBtn} hidden/>
                                 </div> 
                             </div>
                         </div>
