@@ -66,14 +66,6 @@
     }
     
     .WriteBody{
-        width: 900px;
-        height: 450px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border: 4px solid orange;
-        border-radius: 20px;
-
         .BoardWriteBox{
             width: 650px;
             height: 400px;
