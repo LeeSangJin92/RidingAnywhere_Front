@@ -193,19 +193,20 @@
     min-height: 60px;
     display: flex;
     align-items: center;
+    text-align: center;
     justify-content: space-between;
     gap: 10px;
     border-bottom: 2px solid gold;
     box-sizing: border-box;
+}
 
-    /* 텍스트 배치 */
-    h2{
-        display: flex;
-        height: 100%;
-        margin:0;
-        justify-content: center;
-        align-items: center;
-    }
+/* 텍스트 배치 */
+.boardListHeader>h2, .RiderBoardBox>h2{
+    display: flex;
+    height: 100%;
+    margin:0;
+    justify-content: center;
+    align-items: center;
 }
 
 .boardList>.boardListBody{
@@ -226,10 +227,12 @@
 .boardListBody>div{
     width: 100%;
     .RiderBoardBox{
+        gap: 10px;
         height: 40px;
         display: flex;
         justify-content: space-around;
         align-items: center;
+        text-align: center;
         cursor: pointer;
     }
     .RiderBoardBox:hover{
@@ -239,10 +242,12 @@
 
 .boardList>.boardListHeader, .boardListBody>div>.RiderBoardBox{
     .boardNo{
-        width: 80px;
+        width: 70px;
+        min-width: 70px;
     }
     .boardType{
         width: 120px;
+        min-width: 120px;
     }
     .boardTitle{
         width: 380px;
@@ -282,5 +287,20 @@
 
     .RB_TopLine>.RB_BoardWriteBtn{
         display: none;    
+    }
+}
+
+@media(max-width:850px){
+    .boardList>.boardListHeader, .boardListBody>div>.RiderBoardBox{
+        .boardCount{
+            display: none;
+        }
+    }
+}
+@media(max-width:700px){
+    .boardList>.boardListHeader, .boardListBody>div>.RiderBoardBox{
+        .boardLevel{
+            display: none;
+        }
     }
 }
