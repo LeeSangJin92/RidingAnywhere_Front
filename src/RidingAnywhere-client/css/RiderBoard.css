@@ -248,11 +248,9 @@
     .boardWriter{
         width: 180px;
     }
-    .boardLevel{
-        width: 100px;
-    }
     .boardCount{
         width: 100px;
+        min-width: 100px;
     }
 }
 
@@ -298,7 +296,7 @@
 }
 @media(max-width:700px){
     .boardList>.boardListHeader, .boardListBody>div>.RiderBoardBox{
-        .boardLevel{
+        .boardWriter{
             display: none;
         }
     }
