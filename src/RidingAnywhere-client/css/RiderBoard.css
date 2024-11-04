@@ -107,10 +107,6 @@
     cursor: pointer;
 }
 
-.RB_FilterBottom>.filterCheckBox:hover{
-    box-shadow: inset 2px 2px 10px gray, inset -2px -2px 10px gray;
-}
-
 .RB_FilterBottom>.filterInput:checked+label{
     border: 2px gold solid;
     span{
@@ -235,9 +231,6 @@
         text-align: center;
         cursor: pointer;
     }
-    .RiderBoardBox:hover{
-        box-shadow: inset 2px 2px 10px gray, inset -2px -2px 10px gray;
-    }
 }
 
 .boardList>.boardListHeader, .boardListBody>div>.RiderBoardBox{
@@ -263,6 +256,12 @@
     }
 }
 
+/* 커서 호버 반응 CSS */
+
+.RB_BoardWriteBtn:hover, .boardListBody>div>.RiderBoardBox:hover, 
+.RB_FilterBottom>.filterCheckBox:hover{
+        box-shadow: inset 2px 2px 10px gray, inset -2px -2px 10px gray;
+}
 @media(max-width:1050px){
 
     .RB_FilterLine>.RB_FilterTop{
