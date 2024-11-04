@@ -259,6 +259,11 @@
 }
 
 @media(max-width:1050px){
+
+    .RB_FilterLine>.RB_FilterTop{
+        justify-content: center;
+    }
+
     .RB_FilterTop>h1{
         display: none;
     }
