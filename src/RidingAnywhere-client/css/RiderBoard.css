@@ -1,7 +1,7 @@
 /* 라이더 보드 메인 라인 */
 
 .Main_RiderBoard>.RiderBoard{
-    width: 90%;
+    width: 90vw;
     max-width: 1100px;
     min-width: 440px;
     height: 600px;
@@ -23,7 +23,7 @@
     box-sizing: border-box;
 }
 
-.RiderBoardTopLine>.RB_FilterLine{
+.RB_TopLine>.RB_FilterLine{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -47,30 +47,38 @@
 
 .RB_FilterLine>.RB_FilterTop{
     gap: 10px;
-    /* 검색어 입력 창 */
-    >.boardTextBox{
-        width: 350px;
-        height: 50px;
-        border-radius: 10px;
-        margin-left: 40px;
-        margin-right: 10px;
-        font-size: 20px;
-        text-align: center;
-        font-weight: bolder;
-    }
-
-    /* 검색 버튼 */
-    >.boardSearchBtn{
-        width: 60px;
-        height: 60px;
-        margin-right: 20px;
-        cursor: pointer;
-        background-color: rgba(0, 0, 0, 0);
-        border: none;
-        background-image: url("/public/img/crewboard/SearchBtnOn.png");
-        background-size: 60px 60px;
-    }
 }
+
+/* 검색어 입력 창 */
+.RB_FilterTop>.boardTextBox{
+    width: 350px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bolder;
+}
+
+/* 검색 버튼 */
+.RB_FilterTop>.boardSearchBtn{
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    background-image: url("/public/img/crewboard/SearchBtnOn.png");
+    background-size: 60px 60px;
+}
+
+.RB_FilterTop>.boardSearchType{
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
 
 .RB_FilterLine>.RB_FilterBottom{
     gap: 20px;
@@ -218,7 +226,7 @@
 
 }
 
-@media(max-width:1120px){
+@media(max-width:1200px){
     .RB_FilterTop>h1{
         display: none;
     }
