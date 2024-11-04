@@ -39,13 +39,13 @@
     width: 100%;
     min-width: 440px;
     gap: 10px;
-    height: 70px;
-    min-height: 70px;
     align-items: center;
 }
 
 .RB_FilterLine>.RB_FilterTop{
     gap: 10px;
+    height: 70px;
+    min-height: 70px;
 }
 
 /* 검색어 입력 창 */
@@ -61,6 +61,7 @@
 /* 검색 버튼 */
 .RB_FilterTop>.boardSearchBtn{
     width: 60px;
+    min-width: 60px;
     height: 60px;
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0);
@@ -71,6 +72,7 @@
 
 .RB_FilterTop>.boardSearchType{
     width: 100px;
+    min-width: 100px;
     height: 50px;
     text-align: center;
     font-size: 15px;
@@ -78,48 +80,35 @@
     border-radius: 10px;
 }
 
-.RB_FilterTop>.RB_BoardWriteBtn{
-    display: none;
-    width: 100px;
-    min-width: 100px;
+.RB_FilterLine>.RB_FilterBottom{
+    justify-content: center;
+    height: 60px;
+    min-height: 60px;
+    gap: 20px;
+}
+
+ /* 목록 필터 버튼 */
+.RB_FilterBottom>.filterCheckBox{
+    width: 14vw;
+    min-width: 70px;
+    max-width: 130px;
+    min-width: 130px;
     height: 50px;
-    border: 2px solid gold;
-    border-radius: 10px;
-    color: gold;
-    font-size: medium;
-    font-weight: bolder;
-    text-align: center;
+    display: flex;
     align-items: center;
     justify-content: center;
+    font-size: larger;
+    font-weight: bolder;
+    color: rgb(138, 138, 138);
+    background-color: rgb(18, 18, 18);
+    border: 2px solid rgb(84, 84, 84);
     box-sizing: border-box;
+    border-radius: 10px;
     cursor: pointer;
 }
 
-
-.RB_FilterLine>.RB_FilterBottom{
-    justify-content: center;
-    gap: 20px;
-
-    /* 목록 필터 버튼 */
-    >.filterCheckBox{
-        width: 150px;
-        height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 30px;
-        font-weight: bolder;
-        color: rgb(138, 138, 138);
-        background-color: rgb(18, 18, 18);
-        border: 5px solid rgb(84, 84, 84);
-        box-sizing: border-box;
-        border-radius: 20px;
-        cursor: pointer;
-    }
-}
-
 .RB_FilterBottom>.filterCheckBox:hover, .RB_FilterBottom>.filterInput:checked+label{
-    border: 5px gold solid;
+    border: 2px gold solid;
     span{
         background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
         font-weight: bold;
@@ -129,6 +118,23 @@
         background-clip: text;
         color: transparent;
     }
+}
+
+.RB_FilterBottom>.RB_BoardWriteBtn{
+    display: none;
+    width: 100px;
+    min-width: 100px;
+    height: 50px;
+    border: 2px solid gold;
+    border-radius: 10px;
+    color: gold;
+    font-size: larger;
+    font-weight: bolder;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    cursor: pointer;
 }
 
 .RB_TopLine>.RB_BoardWriteBtn{
@@ -142,19 +148,18 @@
     justify-content: center;
     text-align: center;
     cursor: pointer;
-}
 
-.RB_BoardWriteBtn>span{
-    background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
-    -webkit-text-stroke-width: 0.1px;
-    -webkit-text-stroke-color: black;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-size: 25px;
-    font-weight: bolder;
+    >span{
+        background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
+        -webkit-text-stroke-width: 0.1px;
+        -webkit-text-stroke-color: black;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-size: 25px;
+        font-weight: bolder;
+    }
 }
-
 
 .RiderBoard{
 
@@ -248,11 +253,19 @@
         display: none;
     }
 
-    .RB_FilterTop>.RB_BoardWriteBtn{
+    .RB_FilterLine>.RB_FilterBottom{
+        gap: 10px;
+    }
+
+    .RB_FilterBottom>h1{
+        display: none;
+    }
+
+    .RB_FilterBottom>.RB_BoardWriteBtn{
         display: flex;
     }
 
     .RB_TopLine>.RB_BoardWriteBtn{
-    display: none;    
+        display: none;    
     }
 }
