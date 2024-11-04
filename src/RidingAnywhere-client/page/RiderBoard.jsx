@@ -136,6 +136,7 @@ const RiderBoard = () => {
                                 <option value={"title"}>제목</option>
                                 <option value={"context"}>내용</option>
                             </select>
+                            <label htmlFor='writeBtn' className='RB_BoardWriteBtn'>게시글 작성</label>
                         </div>
                         <div className='RB_FilterBottom'>
                             <h1>필터</h1>

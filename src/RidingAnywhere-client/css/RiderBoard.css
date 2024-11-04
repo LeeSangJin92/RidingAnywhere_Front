@@ -42,7 +42,6 @@
     height: 70px;
     min-height: 70px;
     align-items: center;
-    justify-content: center;
 }
 
 .RB_FilterLine>.RB_FilterTop{
@@ -77,6 +76,19 @@
     font-size: 15px;
     font-weight: bold;
     border-radius: 10px;
+}
+
+.RB_FilterTop>.RB_BoardWriteBtn{
+    display: none;
+    width: 100px;
+    min-width: 100px;
+    height: 50px;
+    border: 2px solid orange;
+    color: goldenrod;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
 }
 
 
@@ -229,5 +241,13 @@
 @media(max-width:1200px){
     .RB_FilterTop>h1{
         display: none;
+    }
+
+    .RB_FilterTop>.RB_BoardWriteBtn{
+        display: flex;
+    }
+
+    .RB_TopLine>.RB_BoardWriteBtn{
+    display: none;    
     }
 }
