@@ -83,16 +83,21 @@
     width: 100px;
     min-width: 100px;
     height: 50px;
-    border: 2px solid orange;
-    color: goldenrod;
+    border: 2px solid gold;
+    border-radius: 10px;
+    color: gold;
+    font-size: medium;
+    font-weight: bolder;
     text-align: center;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 
 .RB_FilterLine>.RB_FilterBottom{
+    justify-content: center;
     gap: 20px;
 
     /* 목록 필터 버튼 */
