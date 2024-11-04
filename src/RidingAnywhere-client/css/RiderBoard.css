@@ -1,123 +1,137 @@
 /* 라이더 보드 메인 라인 */
-.RiderBoard{
+
+.Main_RiderBoard>.RiderBoard{
+    width: 90%;
+    max-width: 1100px;
+    min-width: 440px;
     height: 600px;
     border: 2px solid orange;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
 
-    /* 라이더 보드 탑 라인 */
-    .boardTopLine{
+.RiderBoard>.RB_TopLine{
+    display: flex;
+    width: 100%;
+    height: max-content;
+    gap: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.RiderBoardTopLine>.RB_FilterLine{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: max-content;
+    width: 100%;
+    position: relative;
+}
+
+.RB_FilterLine>div{
+    display: flex;
+    width: 100%;
+    min-width: 440px;
+    gap: 10px;
+    height: 70px;
+    min-height: 70px;
+    align-items: center;
+    justify-content: center;
+}
+
+.RB_FilterLine>.RB_FilterTop{
+    gap: 10px;
+    /* 검색어 입력 창 */
+    >.boardTextBox{
+        width: 350px;
+        height: 50px;
+        border-radius: 10px;
+        margin-left: 40px;
+        margin-right: 10px;
+        font-size: 20px;
+        text-align: center;
+        font-weight: bolder;
+    }
+
+    /* 검색 버튼 */
+    >.boardSearchBtn{
+        width: 60px;
+        height: 60px;
+        margin-right: 20px;
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0);
+        border: none;
+        background-image: url("/public/img/crewboard/SearchBtnOn.png");
+        background-size: 60px 60px;
+    }
+}
+
+.RB_FilterLine>.RB_FilterBottom{
+    gap: 20px;
+
+    /* 목록 필터 버튼 */
+    >.filterCheckBox{
+        width: 150px;
+        height: 50px;
         display: flex;
-        width: 80vw;
-        min-width: 1024px;
+        align-items: center;
         justify-content: center;
+        font-size: 30px;
+        font-weight: bolder;
+        color: rgb(138, 138, 138);
+        background-color: rgb(18, 18, 18);
+        border: 5px solid rgb(84, 84, 84);
         box-sizing: border-box;
-
-        /* 라이더 보드 필터 라인 */
-        .boardFilterLine{
-
-            /* 필터 탑 라인 */
-            .filterTop{
-                display: flex;
-                margin-top: 10px;
-
-
-                /* 검색어 입력 창 */
-                .boardTextBox{
-                    width: 350px;
-                    height: 50px;
-                    border-radius: 10px;
-                    margin-left: 40px;
-                    margin-right: 10px;
-                    font-size: 20px;
-                    text-align: center;
-                    font-weight: bolder;
-                }
-
-                /* 검색 버튼 */
-                .boardSearchBtn{
-                    width: 60px;
-                    height: 60px;
-                    margin-right: 20px;
-                    cursor: pointer;
-                    background-color: rgba(0, 0, 0, 0);
-                    border: none;
-                    background-image: url("/public/img/crewboard/SearchBtnOn.png");
-                    background-size: 60px 60px;
-                }
-            }
-
-            /* 필터 바텀 라인 */
-            .filterBottom{
-                display: flex;
-                margin-top: 10px;
-                gap: 20px;
-
-                /* 목록 필터 버튼 */
-                .filterCheckBox{
-                    width: 150px;
-                    height: 50px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 30px;
-                    font-weight: bolder;
-                    color: rgb(138, 138, 138);
-                    background-color: rgb(18, 18, 18);
-                    border: 5px solid rgb(84, 84, 84);
-                    border-radius: 20px;
-                }
-
-                /* 목록 필터 버튼 마우스 호버, 체크 */
-                .filterCheckBox:hover, .filterInput:checked+label{
-                    cursor: pointer;
-                    border: 5px gold solid;
-                    span{
-                        background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
-                        font-weight: bold;
-                        -webkit-text-stroke-width: 0.1px;
-                        -webkit-text-stroke-color: black;
-                        -webkit-background-clip: text;
-                        background-clip: text;
-                        color: transparent;
-                    }
-                }
-            }
-        }
-
-        /* 게시글 작성 버튼 */
-        .boardWriteBtn{
-            width: 100px;
-            height: 120px;
-            box-sizing: border-box;
-            border: 5px solid gold;
-            border-radius: 20px;
-            margin-top: 10px;
-            margin-left: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            cursor: pointer;
-            span{
-                background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
-                -webkit-text-stroke-width: 0.1px;
-                -webkit-text-stroke-color: black;
-                -webkit-background-clip: text;
-                background-clip: text;
-                color: transparent;
-                font-size: 25px;
-                font-weight: bolder;
-            }
-        }
+        border-radius: 20px;
+        cursor: pointer;
     }
-    
-    @media (max-width:1024px){
-        .boardTopLine{
-            width: 100%;
-        }
+}
+
+.RB_FilterBottom>.filterCheckBox:hover, .RB_FilterBottom>.filterInput:checked+label{
+    border: 5px gold solid;
+    span{
+        background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
+        font-weight: bold;
+        -webkit-text-stroke-width: 0.1px;
+        -webkit-text-stroke-color: black;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
     }
+}
+
+.RB_TopLine>.RB_BoardWriteBtn{
+    width: 100px;
+    height: 120px;
+    border: 5px solid gold;
+    border-radius: 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+.RB_BoardWriteBtn>span{
+    background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
+    -webkit-text-stroke-width: 0.1px;
+    -webkit-text-stroke-color: black;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+
+.RiderBoard{
 
     /* 라이더 보드 목록 영역 */
 
@@ -204,3 +218,8 @@
 
 }
 
+@media(max-width:1120px){
+    .RB_FilterTop>h1{
+        display: none;
+    }
+}

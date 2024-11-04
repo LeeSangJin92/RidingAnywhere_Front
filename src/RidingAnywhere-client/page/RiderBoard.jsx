@@ -120,14 +120,14 @@ const RiderBoard = () => {
 
 
     return (
-        <main>
+        <main className='Main_RiderBoard'>
             <DefaultHeader/>
             <section className='RiderBoard'>
 
                 {/* 검색 및 필터 영역 */}
-                <div className='boardTopLine'>
-                    <div className='boardFilterLine'>
-                        <div className='filterTop'>
+                <div className='RB_TopLine'>
+                    <div className='RB_FilterLine'>
+                        <div className='RB_FilterTop'>
                             <h1>라이더 게시판</h1>
                             <input type='text' className='boardTextBox' value={searchData.Text} placeholder='찾고 싶은 키워드를 입력하세요!' onChange={changeSearchData} disabled={viewBlock}/>
                             <input type='button' className='boardSearchBtn' disabled={viewBlock} onClick={onClickSearchBtn}/>
@@ -137,7 +137,7 @@ const RiderBoard = () => {
                                 <option value={"context"}>내용</option>
                             </select>
                         </div>
-                        <div className='filterBottom'>
+                        <div className='RB_FilterBottom'>
                             <h1>필터</h1>
                             <input type='checkbox' id='Free' className='filterInput' checked={filterList.Free} onClick={onClickFilterBtn} disabled={viewBlock} hidden/>
                             <label htmlFor='Free' className='filterCheckBox'><span>자유글</span></label>
@@ -149,7 +149,7 @@ const RiderBoard = () => {
                             <label htmlFor='Mechanic' className='filterCheckBox'><span>정비글</span></label>
                         </div>
                     </div>
-                    <label htmlFor='writeBtn' className='boardWriteBtn'><span>게시글<br/>작성</span></label>
+                    <label htmlFor='writeBtn' className='RB_BoardWriteBtn'><span>게시글<br/>작성</span></label>
                     <input type='button' id='writeBtn' onClick={onClickWriteBtn} hidden/>
                 </div>
 
