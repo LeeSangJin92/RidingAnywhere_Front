@@ -50,7 +50,9 @@
 
 /* 검색어 입력 창 */
 .RB_FilterTop>.boardTextBox{
-    flex-grow: 1;
+    width: 40%;
+    min-width: 250px;
+    max-width: 400px;
     height: 50px;
     border-radius: 10px;
     font-size: 20px;
@@ -122,19 +124,27 @@
 
 .RB_FilterBottom>.RB_BoardWriteBtn{
     display: none;
-    width: 100px;
+    width: 14vw;
     min-width: 100px;
+    max-width: 130px;
     height: 50px;
     border: 2px solid gold;
     border-radius: 10px;
-    color: gold;
-    font-size: larger;
-    font-weight: bolder;
     text-align: center;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
     cursor: pointer;
+    span{
+        background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
+        font-size: medium;
+        font-weight: bolder;
+        -webkit-text-stroke-width: 0.1px;
+        -webkit-text-stroke-color: black;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
 }
 
 .RB_TopLine>.RB_BoardWriteBtn{

@@ -147,7 +147,7 @@ const RiderBoard = () => {
                             <label htmlFor='Driving' className='filterCheckBox'><span>번개글</span></label>
                             <input type='checkbox' id='Mechanic' className='filterInput' checked={filterList.Mechanic} onClick={onClickFilterBtn} disabled={viewBlock} hidden/>
                             <label htmlFor='Mechanic' className='filterCheckBox'><span>정비글</span></label>
-                            <label htmlFor='writeBtn' className='RB_BoardWriteBtn'>게시글 작성</label>
+                            <label htmlFor='writeBtn' className='RB_BoardWriteBtn'><span>게시글 작성</span></label>
                         </div>
                     </div>
                     <label htmlFor='writeBtn' className='RB_BoardWriteBtn'><span>게시글<br/>작성</span></label>
