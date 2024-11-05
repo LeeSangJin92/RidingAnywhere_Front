@@ -13,15 +13,15 @@ const RiderBoardDetail = () => {
     // ✏️ 게시글 데이터
     const [boardData, setBoardData] = useState({
         boardId:0,                  // 게시글 Id
-        boardTitle : "테스트 제목라인",            // 게시글 제목
-        boardType:"🆓 자유글",      // 게시글 타입
+        boardTitle : "",            // 게시글 제목
+        boardType:"",      // 게시글 타입
         boardContext:"",            // 게시글 내용
         boardWriter:{               // 게시글 작성자 정보
             userId:null,               // 작성자 ID
-            userNickName:"테스트닉"         // 작성자 닉네임
+            userNickName:""         // 작성자 닉네임
         },
-        boardDate:"2024년 12월 31일 금요일",               // 게시글 날짜
-        address:"서울시 관악구 신림동 87-28",              // 게시글 장소
+        boardDate:"",               // 게시글 날짜
+        address:"",              // 게시글 장소
         boardViewCont : 0,          // 게시글 조회수
         boardLimit : true           // 게시글 댓글 제한
     });
@@ -75,7 +75,7 @@ const RiderBoardDetail = () => {
             },
             body:JSON.stringify(upLoadData)
         }).then(response => {
-            if(response.status==200){
+            if(response.status===200){
                 console.log("✅ 서버 작업 완료")
                 return response.json();
             } else console.log("❌ 서버 통신 실패");
@@ -151,7 +151,7 @@ const RiderBoardDetail = () => {
         console.log("🛜 게시글 댓글 요청");
         await fetch(`https://ridinganywhere.site/RA/BoardDetail/CommentList?board=${boardId}`,{
         }).then(response => {
-                if(response.status==200){
+                if(response.status===200){
                     console.log("✅ 서버 작업 완료")
                     return response.json();
                 } else console.log("❌ 서버 통신 실패");
@@ -219,7 +219,7 @@ const RiderBoardDetail = () => {
                         <div className='TitleTopLine'>
                             <input type='button' id='writerInfoBtn' hidden/>
                             <label htmlFor='writerInfoBtn' className='BoardWriterInfo'>
-                                <h2>✏️ {boardData.boardWriter.userNickName}</h2>
+                                <h1>✏️ {boardData.boardWriter.userNickName}</h1>
                             </label>
                             <div className='BoardInfoBox'>
                                 <div className='BoardInfoBox_Top'>
@@ -235,7 +235,7 @@ const RiderBoardDetail = () => {
                                 </label>
                             </div>
                         </div>
-                        <h2>{boardData.boardTitle}</h2>
+                        <h1>{boardData.boardTitle}</h1>
                     </div>
                 </div>
                 <div className='PageBodyLine'>
