@@ -207,7 +207,7 @@ const RiderBoardDetail = () => {
     }
 
     return (
-        <main>
+        <main className='Main_RiderBoardDetail'>
              <DefaultHeader/>
             <section className='RiderBoardDetail'>
                 <div className='PageTopLine'>

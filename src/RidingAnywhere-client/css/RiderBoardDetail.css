@@ -1,100 +1,116 @@
-.RiderBoardDetail{
-    width: 100%;
-    height: 1000px;
-    padding: 0 20px 20px 10px;
+.Main_RiderBoardDetail>.RiderBoardDetail{
+    width: 90vw;
+    max-width: 1200px;
+    min-width: 440px;
+    height: max-content;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    .PageTopLine{
+}
+
+.RiderBoardDetail>.PageTopLine{
+    display: flex;
+    width: 100%;
+    height: 160px;
+    min-height: 160px;
+    box-sizing: border-box;
+    align-items: center;
+    gap: 10px;
+}
+
+.PageTopLine>.PageTitle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    min-width: 300px;
+    box-sizing: border-box;
+}
+
+.PageTopLine>.BoardTitleLine{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    min-width: 320px;
+    max-width: 800px;
+    height: 160px;
+    min-height: 160px;
+    max-height: 160px;
+    gap: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 2px solid orange;
+    border-radius: 10px;
+    >div{
         display: flex;
         width: 100%;
-        height: 180px;
+        height: 50%;
+        padding: 5px;
         box-sizing: border-box;
-        align-items: center;
-        margin-top: 10px;
-        .PageTitle{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 320px;
-            box-sizing: border-box;
+        #writerInfoBtn+label{
+            cursor: pointer;
         }
-        .BoardTitleLine{
+        >div{
+            position: absolute;
+            transform: translateX(-30px);
+            right: 0;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            width: 450px;
+            height: max-content;
             justify-content: center;
-            flex-grow: 1;
-            height: 160px;
-            gap: 10px;
-            margin: 0;
-            box-sizing: border-box;
-            border: 2px solid orange;
-            border-radius: 10px;
-            >div{
+            text-wrap: nowrap;
+            overflow: hidden;
+            .RightTopBox{
                 display: flex;
-                width: 100%;
-                height: 50%;
-                padding: 5px;
+                justify-content: right;
                 box-sizing: border-box;
-                #writerInfoBtn+label{
+            }
+            .boardControl{
+                display: flex;
+                width: max-content;
+                height: max-content;
+                align-items: center;
+                justify-content: center;
+                input{
+                    width: 40px;
+                    height: 40px;
+                    background-color: rgba(0, 0, 0, 0);
+                    background-size: 40px;
+                    border: none;
                     cursor: pointer;
                 }
-                >div{
-                    position: absolute;
-                    transform: translateX(-30px);
-                    right: 0;
-                    display: flex;
-                    flex-direction: column;
-                    width: 450px;
-                    height: max-content;
-                    justify-content: center;
-                    text-wrap: nowrap;
-                    overflow: hidden;
-                    .RightTopBox{
-                        display: flex;
-                        justify-content: right;
-                        box-sizing: border-box;
-                    }
-                    .boardControl{
-                        display: flex;
-                        width: max-content;
-                        height: max-content;
-                        align-items: center;
-                        justify-content: center;
-                        input{
-                            width: 40px;
-                            height: 40px;
-                            background-color: rgba(0, 0, 0, 0);
-                            background-size: 40px;
-                            border: none;
-                            cursor: pointer;
-                        }
-                        #boardChangeBtn{
-                            margin-left: 5px;
-                            background-image: url(../../../public/img/ChangeBtnImg.png);
-                            
-                        }
-                        #boardDeleteBtn{
-                            background-image: url(../../../public/img/DeleteImg.png);
-                        }
-                    }
-                    #boardAddressBtn+label{
-                        justify-content: right;
-                        cursor: pointer;
-                    }
+                #boardChangeBtn{
+                    margin-left: 5px;
+                    background-image: url(../../../public/img/ChangeBtnImg.png);
+                    
+                }
+                #boardDeleteBtn{
+                    background-image: url(../../../public/img/DeleteImg.png);
                 }
             }
-            >h1{
-                width: 100%;
-                padding: 0 10px;
-                overflow: hidden;
-                box-sizing: border-box;
+            #boardAddressBtn+label{
+                justify-content: right;
+                cursor: pointer;
             }
         }
+    }
+    >h1{
+        width: 100%;
+        padding: 0 10px;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+}
+
+
+.RiderBoardDetail{
+    .PageTopLine{
 
     }
     .PageBodyLine{
