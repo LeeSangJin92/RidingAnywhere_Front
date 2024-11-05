@@ -11,6 +11,7 @@
     gap: 10px;
 }
 
+/* 게시글 상단 영역 */
 .RiderBoardDetail>.PageTopLine{
     display: flex;
     width: 100%;
@@ -123,8 +124,6 @@
     }
 }
 
-
-
 .BoardInfoBox>.BoardAddressInfo{
     display: none;
     width: 100%;
@@ -134,53 +133,73 @@
     cursor: pointer;
 }
 
+
+
+
+/* 게시글 내용 영역 */
+
+.RiderBoardDetail>.PageBodyLine{
+    width: 100%;
+    height: max-content;
+    min-height: 200px;
+    max-height: 450px;
+    padding: 10px;
+    border: 2px solid orange;
+    border-radius: 10px;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.RiderBoardDetail>.PageCommentLine{
+    width: 100%;
+    height: max-content;
+    min-height: 200px;
+    max-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid orange;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 10px;
+    gap: 10px;
+}
+
+.PageCommentLine>.commentList{
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.commentList>.loadingBlock,.commentList>.commentEmptyNote{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(31, 31, 31);
+}
+
+.commentList>.commentListLine{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
 .RiderBoardDetail{
-    .PageBodyLine{
-        width: 100%;
-        height: 450px;
-        padding: 10px;
-        border: 2px solid orange;
-        border-radius: 10px;
-        box-sizing: border-box;
-        overflow-y: scroll;
-        scrollbar-width: none;
-    }
     .PageCommentLine{
-        width: 100%;
-        height: 600px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        border: 2px solid orange;
-        border-radius: 10px;
-        box-sizing: border-box;
-        padding: 10px;
-        gap: 10px;
         .commentList{
-            width: 100%;
-            height: 400px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            .loadingBlock,commentEmptyNote{
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                box-sizing: border-box;
-                width: 100%;
-                height: 100%;
-                align-items: center;
-                justify-content: center;
-                background-color: rgb(31, 31, 31);
-            }
             .commentListLine{
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-                height: 100%;
                 .commentBox{
                     width: 100%;
                     height: max-content;

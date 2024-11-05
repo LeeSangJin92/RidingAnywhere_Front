@@ -248,11 +248,11 @@ const RiderBoardDetail = () => {
                     <div className='PageCommentLine'>
                         <div className='commentList'> {/* 댓글 목록 */}
                             <div className='loadingBlock' style={blockComment?{display:"flex"}:{display:"none"}}>
-                                <h1>🔎 댓글을 불러오는 중입니다.</h1>
-                                <h1>- 잠시만 기달려 주세요 -</h1>
+                                <h2>🔎 댓글을 불러오는 중입니다.</h2>
+                                <h2>- 잠시만 기달려 주세요 -</h2>
                             </div>
                             <div className='commentEmptyNote' style={emptyComment?{display:'flex'}:{display:'none'}}>
-                                <h1>⚠️ 등록된 댓글이 없습니다.</h1>
+                                <h2>⚠️ 등록된 댓글이 없습니다.</h2>
                             </div>
                             <div className='commentListLine' style={!emptyComment?{display:'flex'}:{display:'none'}}>
                                 {commentList.map((commentData,index) => {
