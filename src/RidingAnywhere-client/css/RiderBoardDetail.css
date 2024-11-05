@@ -42,8 +42,7 @@
     min-width: 320px;
     max-width: 800px;
     height: max-content;
-    min-height: 160px;
-    max-height: 160px;
+    max-height: 230px;
     gap: 10px;
     padding: 10px;
     box-sizing: border-box;
@@ -110,6 +109,10 @@
     #boardDeleteBtn{
         background-image: url(../../../public/img/DeleteImg.png);
     }
+}
+
+.boardControl>.BoardType_Short{
+    display: none;
 }
 
 .BoardInfoBox>.BoardAddressInfo{
@@ -370,8 +373,22 @@
     .PageTopLine>.PageTitle{
         display: none;
     }
+    
+    .boardControl>.BoardType_Short{
+        display: flex;
+    }
 
+}
+
+@media(max-width:850px){
     .BoardTitleLine>.TitleTopLine{
         flex-direction: column;
+    }
+    .BoardInfoBox>.BoardAddressInfo{
+        justify-content: flex-start;
+    }
+
+    .BoardInfoBox>.BoardInfoBox_Top{
+        justify-content: space-between;
     }
 }
