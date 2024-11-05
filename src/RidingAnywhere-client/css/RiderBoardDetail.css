@@ -41,7 +41,6 @@
     justify-content: center;
     flex-grow: 1;
     min-width: 320px;
-    max-width: 800px;
     height: max-content;
     max-height: 230px;
     gap: 10px;
@@ -202,205 +201,204 @@
     gap: 10px;
 }
 
-.RiderBoardDetail{
-    .PageCommentLine{
-        .commentList{
-            .commentListLine{
-                .commentBox{
-                    width: 100%;
-                    height: max-content;
-                    display: flex;
-                    box-sizing: border-box;
-                    padding: 0 10px;
-                    border: 2px solid orange;
-                    border-radius: 10px;
-                    gap: 10px;
-                    .profileImg{
-                        width: 100px;
-                        height: 100px;
-                        border-radius: 10px;
-                        margin: 10px 0;
-                    }
-                    >div{
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        height: max-content;
-                        flex-grow: 1;
-                        margin: 10px 0;
-                        .TopLine, .BottomLine{
-                            display: flex;
-                            height: 50px;
-                            align-items: center;
-                            justify-content: space-between;
-                        }
-                        .TopLine{
-                            .TopRight{
-                                display: flex;
-                                width: max-content;
-                                height: 100%;
-                                align-items: center;
-                                justify-content: right;
-                                input{
-                                    width: 40px;
-                                    height: 40px;
-                                    background-size: cover;
-                                    background-color: rgba(0, 0, 0, 0);
-                                    border: none;
-                                    cursor: pointer;
-                                }
-                                .commentChangeBtn{
-                                    margin-left: 5px;
-                                    background-image: url(../../../public/img/ChangeBtnImg.png);
-                                    
-                                }
-                                .commentDeleteBtn{
-                                    background-image: url(../../../public/img/DeleteImg.png);
-                                }
-                            }
-                        }
-                        .BottomLine{
-                            margin-bottom: 10px;
-                            .ChangeCommentContext{
-                                width: 60%;
-                                height: 80%;
-                                font-size: 25px;
-                                font-weight: bold;
-                                box-sizing: border-box;
-                                padding: 0 10px;
-                            }
-                            .commentBtnLine{
-                                display: flex;
-                                gap: 10px;
-                                label{
-                                    width: max-content;
-                                    border: 2px solid orange;
-                                    border-radius: 10px;
-                                    box-sizing: border-box;
-                                    padding: 5px;
-                                    cursor: pointer;
-                                }
-                            }
-                        }
-                        .BoardReplyInsertBox{
-                            margin-top: 10px;
-                            height: 50px;
-                            align-items: center;
-                            >h2{
-                                display: flex;
-                                align-items: center;
-                                width: 300px;
-                                height: 100%;
-                            }
-                            >div{
-                                display: flex;
-                                margin-left: 10px;
-                                justify-content: right;
-                                gap: 10px;
-                                width: 80%;
-                                height: 100%;
-                            }
-                            .ReplyContextBox{
-                                width: 60%;
-                                height: 80%;
-                                font-size: 25px;
-                                font-weight: bold;
-                                box-sizing: border-box;
-                                padding: 0 10px;
-                            }
-                            .uploadReplyBtn{
-                                display: flex;
-                                width: 100px;
-                                height: 80%;
-                                justify-content: center;
-                                align-items: center;
-                                border: 2px solid orange;
-                                border-radius: 10px;
-                                cursor: pointer;
-                            }
-                            .replyCancelBtn{
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                width: 40px;
-                                height: 40px;
-                                background-color: rgba(0, 0, 0, 0);
-                                border: none;
-                                background-size: cover;
-                                background-image: url(../../../public/img/DeleteImg.png);
-                            }
-                        }
-                        .ReplyBox{
-                            display: flex;
-                            height: max-content;
-                            align-items: center;
-                            border-top:2px dashed orange;
-                            gap: 10px;
-                            >div{
-                                flex-grow: 1;
-                            }
-                            .TopLine{
-                                display: flex;
-                                width: 100%;
-                            }
-                            .commentChangeBtn,.commentDeleteBtn{
-                                width: 40px;
-                                height: 40px;
-                                background-size: cover;
-                                background-color: rgba(0, 0, 0, 0);
-                                border: none;
-                                cursor: pointer;
-                            }
-                            .commentChangeBtn{
-                                margin-left: 5px;
-                                background-image: url(../../../public/img/ChangeBtnImg.png);
-                                
-                            }
-                            .commentDeleteBtn{
-                                background-image: url(../../../public/img/DeleteImg.png);
-                            }
-                            .ReplyChangeUpLabel{
-                                cursor: pointer;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                border: 2px solid orange;
-                                border-radius: 10px;
-                                width: 110px;
-                                height: 90%;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        .commentInputLine{
-            width: 100%;
-            height: 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+.commentListLine>.commentBox{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    box-sizing: border-box;
+    padding: 0 10px;
+    border: 2px solid orange;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.commentBox>.profileImg{
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.commentBox>.CommentInfoLine{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: max-content;
+    flex-grow: 1;
+    margin: 10px 0;
+}
+
+.CommentInfoLine>.TopLine, .CommentInfoLine>.BottomLine{
+    display: flex;
+    height: 50px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.CommentInfoLine>.TopLine>.TopRight{
+    display: flex;
+    width: max-content;
+    height: 100%;
+    align-items: center;
+    justify-content: right;
+    input{
+        width: 40px;
+        height: 40px;
+        background-size: cover;
+        background-color: rgba(0, 0, 0, 0);
+        border: none;
+        cursor: pointer;
+    }
+    .commentChangeBtn{
+        margin-left: 5px;
+        background-image: url(../../../public/img/ChangeBtnImg.png);
+        
+    }
+    .commentDeleteBtn{
+        background-image: url(../../../public/img/DeleteImg.png);
+    }
+}
+
+.CommentInfoLine>.BottomLine{
+    margin-bottom: 10px;
+        .ChangeCommentContext{
+            width: 60%;
+            height: 80%;
+            font-size: 25px;
+            font-weight: bold;
             box-sizing: border-box;
-            padding: 10px;
+            padding: 0 10px;
+        }
+        .commentBtnLine{
+            display: flex;
             gap: 10px;
-            .commentTextBox{
-                flex-grow: 1;
-                height: 100%;
-                box-sizing: border-box;
-                padding: 10px;
-                font-weight: bold;
-                font-size: 20px;
-            }
             label{
                 width: max-content;
-                height: max-content;
-                padding: 10px;
-                box-sizing: border-box;
                 border: 2px solid orange;
                 border-radius: 10px;
+                box-sizing: border-box;
+                padding: 5px;
                 cursor: pointer;
             }
         }
+}
+
+.CommentInfoLine>.BoardReplyInsertBox{
+    margin-top: 10px;
+    height: 50px;
+    align-items: center;
+    >h2{
+        display: flex;
+        align-items: center;
+        width: 300px;
+        height: 100%;
+    }
+    >div{
+        display: flex;
+        margin-left: 10px;
+        justify-content: right;
+        gap: 10px;
+        width: 80%;
+        height: 100%;
+    }
+    .ReplyContextBox{
+        width: 60%;
+        height: 80%;
+        font-size: 25px;
+        font-weight: bold;
+        box-sizing: border-box;
+        padding: 0 10px;
+    }
+    .uploadReplyBtn{
+        display: flex;
+        width: 100px;
+        height: 80%;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid orange;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+    .replyCancelBtn{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(0, 0, 0, 0);
+        border: none;
+        background-size: cover;
+        background-image: url(../../../public/img/DeleteImg.png);
+    }
+}
+
+.CommentInfoLine>.ReplyBox{
+    display: flex;
+    height: max-content;
+    align-items: center;
+    border-top:2px dashed orange;
+    gap: 10px;
+    >div{
+        flex-grow: 1;
+    }
+    .TopLine{
+        display: flex;
+        width: 100%;
+    }
+    .commentChangeBtn,.commentDeleteBtn{
+        width: 40px;
+        height: 40px;
+        background-size: cover;
+        background-color: rgba(0, 0, 0, 0);
+        border: none;
+        cursor: pointer;
+    }
+    .commentChangeBtn{
+        margin-left: 5px;
+        background-image: url(../../../public/img/ChangeBtnImg.png);
+        
+    }
+    .commentDeleteBtn{
+        background-image: url(../../../public/img/DeleteImg.png);
+    }
+    .ReplyChangeUpLabel{
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid orange;
+        border-radius: 10px;
+        width: 110px;
+        height: 90%;
+    }
+}
+
+
+.PageCommentLine>.commentInputLine{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 10px;
+    gap: 10px;
+    .commentTextBox{
+        flex-grow: 1;
+        height: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .commentUploadBtn{
+        width: max-content;
+        height: max-content;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 2px solid orange;
+        border-radius: 10px;
+        cursor: pointer;
     }
 }
 
@@ -429,4 +427,9 @@
     .BoardInfoBox>.BoardInfoBox_Top{
         justify-content: space-between;
     }
+
+    .commentInputLine>h2{
+        display: none;
+    }
+
 }

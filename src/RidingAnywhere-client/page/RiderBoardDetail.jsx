@@ -267,8 +267,8 @@ const RiderBoardDetail = () => {
                         <div className='commentInputLine'>
                             <h2>댓글 내용 : </h2>
                             <input type='text' className='commentTextBox' onChange={onChangeContext} value={commentData.comment_context}/>
-                            <input id='commentUploadBtn' type='button' className='commentUploadBtn' onClick={onClickUploadBtn} hidden/>
-                            <label htmlFor='commentUploadBtn'><h2>댓글 등록</h2></label>
+                            <input id='commentUploadBtn' type='button' onClick={onClickUploadBtn} hidden/>
+                            <label htmlFor='commentUploadBtn' className='commentUploadBtn'>댓글 등록</label>
                         </div>
                     </div>
             </section>

@@ -58,7 +58,7 @@ const RiderBoardCommentBox = (props) => {
     return (
         <div className='commentBox' >
             <img className='profileImg' src={profileImg} alt=''/>
-            <div>
+            <div className='CommentInfoLine'>
                 <div className='TopLine'>
                     <h2 className='commentNickName'>✏️ {commentData.user.userNickname}</h2>
                     <div className='TopRight'>
