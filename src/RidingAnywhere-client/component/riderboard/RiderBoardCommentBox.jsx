@@ -75,10 +75,10 @@ const RiderBoardCommentBox = (props) => {
                     <h2 className='commentContext' hidden={changeMode}>{commentData.commentContext}</h2>
                     <input type='text' placeholder={commentData.commentContext} value={changeContext} className='ChangeCommentContext' onChange={insertContext} hidden={!changeMode}/>
                     <div className='commentBtnLine'>
-                        <input id={'CommentChangeUpBtn'+commentData.commentId} className='CommentChangeUpBtn' onClick={onClickChangeUpBtn} hidden/>
-                        <label htmlFor={'CommentChangeUpBtn'+commentData.commentId} className='commentChangeUpLabel' style={!changeMode?{display:'none'}:{display:'flex'}}><h2>수정하기</h2></label>
-                        <input id= {"commentReplyBtn"+commentData.commentId} type='button' className='commentReplyBtn' onClick={onClickReplyShowBtn} hidden/>
-                        <label htmlFor={"commentReplyBtn"+commentData.commentId}><h2>댓글 작성</h2></label>
+                        <input id={'CommentChangeUpBtn'+commentData.commentId} onClick={onClickChangeUpBtn} hidden/>
+                        <label htmlFor={'CommentChangeUpBtn'+commentData.commentId} className='CommentChangeUpBtn' style={!changeMode?{display:'none'}:{display:'flex'}}>수정하기</label>
+                        <input id= {"CommentReplyBtn"+commentData.commentId} type='button' onClick={onClickReplyShowBtn} hidden/>
+                        <label htmlFor={"CommentReplyBtn"+commentData.commentId} className='CommentReplyBtn'>댓글 작성</label>
                     </div>
                 </div>
                 <RiderBoardReplyInsertBox setReplyShow={setReplyShow} replyShow={replyShow} commentId={commentData.commentId} loadBoardCommentList={props.loadBoardCommentList} boardId={boardId}/>

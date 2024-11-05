@@ -152,10 +152,14 @@ const RiderBoardDetail = () => {
                 if(response.status===200){
                     console.log("✅ 서버 작업 완료")
                     return response.json();
-                } else console.log("❌ 서버 통신 실패");
+                } else {
+                    alert("⚠️ 댓글 등록을 실패했습니다.");
+                    console.log("❌ 서버 통신 실패");
+                };
         }).then(data=>{
             if(data){
-                console.log("✅ 게시글 댓글 요청");
+                alert("✅댓글 등록을 완료했습니다")
+                console.log("✅ 게시글 댓글 등록");
                 setCommentList(data);
                 setBlockComment(false);
                 setEmptyComment(false);

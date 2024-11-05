@@ -402,6 +402,10 @@
     }
 }
 
+.commentInputLine>.commentUploadBtn:hover, .commentBtnLine>label:hover{
+    box-shadow: inset 2px 2px 10px gray, inset -2px -2px 10px gray;
+}
+
 @media(max-width:1120px){
     .PageTopLine>.PageTitle{
         display: none;
