@@ -224,10 +224,12 @@ const RiderBoardDetail = () => {
                             <div className='BoardInfoBox'>
                                 <div className='BoardInfoBox_Top'>
                                     <h2>🗓️{boardData.boardDate}</h2>
-                                    <div className='boardControl' style={riderId===boardData.boardWriter.userId?{display:"flex"}:{display:"none"}}>
+                                    <div className='BoardInfoBox_Right'>
                                         <h2 className='BoardType_Short'>{boardData.boardType}</h2>
-                                        <input type='button' id='boardChangeBtn' onClick={onClickChangeBtn}/>
-                                        <input type='button' id='boardDeleteBtn' onClick={onClickDeleteBtn}/>
+                                        <div className='boardControl' style={riderId===boardData.boardWriter.userId?{display:"flex"}:{display:"none"}}>
+                                            <input type='button' id='boardChangeBtn' onClick={onClickChangeBtn}/>
+                                            <input type='button' id='boardDeleteBtn' onClick={onClickDeleteBtn}/>
+                                        </div>
                                     </div>
                                 </div>
                                 <input type='button' id='boardAddressBtn' hidden/>

@@ -86,7 +86,19 @@
     gap: 5px;
 }
 
-.BoardInfoBox_Top>.boardControl{
+.BoardInfoBox_Top>.BoardInfoBox_Right{
+    display: flex;
+    width: max-content;
+    height: max-content;
+    gap: 5px;
+    justify-content: center;
+}
+
+.BoardInfoBox_Right>.BoardType_Short{
+    display: none;
+}
+
+.BoardInfoBox_Right>.boardControl{
     display: flex;
     width: max-content;
     height: max-content;
@@ -111,9 +123,7 @@
     }
 }
 
-.boardControl>.BoardType_Short{
-    display: none;
-}
+
 
 .BoardInfoBox>.BoardAddressInfo{
     display: none;
@@ -369,12 +379,12 @@
     }
 }
 
-@media(max-width:1080px){
+@media(max-width:1120px){
     .PageTopLine>.PageTitle{
         display: none;
     }
     
-    .boardControl>.BoardType_Short{
+    .BoardInfoBox_Right>.BoardType_Short{
         display: flex;
     }
 
