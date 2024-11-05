@@ -71,7 +71,7 @@
 .TitleTopLine>.BoardInfoBox{
     display: flex;
     flex-direction: column;
-    width: max-content;
+    width: 100%;
     max-width: 330px;
     min-width: 300px;
 }
@@ -386,6 +386,9 @@
     
     .BoardInfoBox_Right>.BoardType_Short{
         display: flex;
+    }
+    .TitleTopLine>.BoardInfoBox{
+        max-width: 440px;
     }
 
 }
