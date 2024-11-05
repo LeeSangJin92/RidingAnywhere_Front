@@ -219,7 +219,7 @@ const RiderBoardDetail = () => {
                         <div>
                             <input type='button' id='writerInfoBtn' hidden/>
                             <label htmlFor='writerInfoBtn'>
-                                <h1>✏️ {boardData.boardWriter.userNickName}</h1>
+                                <h2>✏️ {boardData.boardWriter.userNickName}</h2>
                             </label>
                             <div>
                                 <div className='RightTopBox'>
@@ -235,7 +235,7 @@ const RiderBoardDetail = () => {
                                 </label>
                             </div>
                         </div>
-                        <h1>{boardData.boardTitle}</h1>
+                        <h2>{boardData.boardTitle}</h2>
                     </div>
                 </div>
                 <div className='PageBodyLine'>
