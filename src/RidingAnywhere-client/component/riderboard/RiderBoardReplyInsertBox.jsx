@@ -23,11 +23,6 @@ const BoardReplyInsertBox = (props) => {
                 },
                 body:replyContext
             }).then(response => {
-                if(response.status==200){
-                    console.log("✅ 서버 작업 완료")
-                    return response.json();
-                } else console.log("❌ 서버 통신 실패");
-            }).then(response => {
                 if(response.status===200){
                     console.log("✅ 대댓글 등록 완료");
                     alert("✅ 댓글 등록이 완료 되었습니다.")

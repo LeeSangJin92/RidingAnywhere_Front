@@ -158,8 +158,7 @@ const RiderBoardDetail = () => {
                 };
         }).then(data=>{
             if(data){
-                alert("✅댓글 등록을 완료했습니다")
-                console.log("✅ 게시글 댓글 등록");
+                console.log("💾 게시글 댓글 수집");
                 setCommentList(data);
                 setBlockComment(false);
                 setEmptyComment(false);
