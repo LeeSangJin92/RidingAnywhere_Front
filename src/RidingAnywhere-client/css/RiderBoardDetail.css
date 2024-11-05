@@ -34,7 +34,6 @@
 .PageTopLine>.BoardTitleLine{
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
     flex-grow: 1;
     min-width: 320px;
@@ -51,6 +50,7 @@
 
 .BoardTitleLine>.TitleTopLine{
     display: flex;
+    justify-content: space-between;
     width: 100%;
     height: 50%;
     box-sizing: border-box;
@@ -60,7 +60,8 @@
 .TitleTopLine>.BoardWriterInfo{
     display: flex;
     cursor: pointer;
-    width: 320px;
+    align-items: center;
+    width: 280px;
     min-width: 200px;
     max-width: 280px;
 }
@@ -68,17 +69,18 @@
 .TitleTopLine>.BoardInfoBox{
     display: flex;
     flex-direction: column;
-    width: 30vw;
-    max-width: 290px;
-    min-width: 200px;
+    width: max-content;
+    max-width: 320px;
+    min-width: 250px;
 }
 
 .BoardInfoBox>.BoardInfoBox_Top{
     display: flex;
     width: 100%;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
     height: max-content;
+    text-wrap: nowrap;
     gap: 5px;
 }
 
