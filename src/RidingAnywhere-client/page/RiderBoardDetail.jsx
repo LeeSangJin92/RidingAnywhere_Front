@@ -76,16 +76,14 @@ const RiderBoardDetail = () => {
             body:JSON.stringify(upLoadData)
         }).then(response => {
             if(response.status===200){
-                console.log("✅ 서버 작업 완료")
-                return response.json();
-            } else console.log("❌ 서버 통신 실패");
-        }).then(data => {
-            if(data){
-                if(data){
+                console.log("✅ 댓글 등록 완료")
                 alert("✅ 등록이 완료 되었습니다..");
                 setCommentData({...commentData, comment_context:''});
                 loadBoardCommentList();
-            }}
+            } else {
+                console.log("❌ 서버 통신 실패")
+                alert("⚠️ 댓글 등록을 실패 했습니다.")
+            };
         })
     }
 
