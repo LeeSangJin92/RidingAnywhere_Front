@@ -64,10 +64,12 @@ const RiderBoardCommentBox = (props) => {
                     <img className='profileImg' src={profileImg} alt=''/>
                     <div className='CommentInfo'>
                         <div className='TopLine'>
-                            <h2 className='commentNickName'>✏️ {commentData.user.userNickname}</h2>
+                            {/* 작성자 닉네임 */}
+                            ✏️{commentData.user.userNickname}
                             <div className='TopRight'>
                                 <div className='commentDateLine'> 
-                                    <h2 className='commentRegDate'>{format(new Date(commentData.commentRegdate), "yyyy년 MM월 dd일")}</h2>
+                                    {/* 댓글 작성 날짜 */}
+                                    🗓️{format(new Date(commentData.commentRegdate), "yyyy년 MM월 dd일")}
                                 </div>
                                 <div className='commentBtnLine'>
                                     <input className='commentChangeBtn' type='button' hidden={userId!==writer.userId} onClick={onClickChangeBtn}/>
@@ -76,7 +78,7 @@ const RiderBoardCommentBox = (props) => {
                             </div>
                         </div>
                         <div className='BottomLine'>
-                            <h2 className='commentContext' hidden={changeMode}>{commentData.commentContext}</h2>
+                            <text hidden={changeMode}>{commentData.commentContext}</text>
                             <input type='text' placeholder={commentData.commentContext} value={changeContext} className='ChangeCommentContext' onChange={insertContext} hidden={!changeMode}/>
                             <div className='commentBtnLine'>
                                 <input id={'CommentChangeUpBtn'+commentData.commentId} onClick={onClickChangeUpBtn} hidden/>
