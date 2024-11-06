@@ -211,28 +211,48 @@
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    padding: 0 10px;
+    padding: 10px;
     border: 2px solid orange;
     border-radius: 10px;
     gap: 10px;
 }
 
-/* 댓글 작성자 프로필 이미지 */
-.CommentInfoLine>.profileImg{
-    width: 100px;
-    height: 100px;
-    border-radius: 10px;
-    margin: 10px 0;
+/* 댓글 박스 안에 댓글 정보 영역 (프로필 이미지, 댓글 작성자, 날짜, 댓글 내용 등...) */
+.CommentBox>.CommentInfoLine{
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    width: 100%;
+    gap: 10px;
 }
 
-/* 댓글 내용 */
-.CommentInfoLine>.CommentInfo{
+/* 댓글 */
+.CommentInfoLine>.Comment{
+    display: flex;
+    width: 100%;
+    height: max-content;
+    max-height: 120px;
+    align-items: center;
+}
+
+/* 댓글 작성자 프로필 이미지 */
+.Comment>.profileImg{
+    width: 12vw;
+    min-width: 70px;
+    max-width: 80px;
+    height: 12vw;
+    min-height: 70px;
+    max-height: 80px;
+    border-radius: 10px;
+}
+
+/* 댓글 정보 (댓글 내용, 댓글 작성자, 댓글 작성날 등...) */
+.Comment>.CommentInfo{
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: max-content;
     flex-grow: 1;
-    margin: 10px 0;
 }
 
 .CommentInfo>.TopLine, .CommentInfo>.BottomLine{
@@ -292,56 +312,60 @@
         }
 }
 
-/* 대댓글 작성 영역 */
-.CommentInfo>.BoardReplyInsertBox{
-    margin-top: 10px;
+/* 댓글 영역에서 대댓글 입력하는 박스 (댓글 정보 바로 아래) */
+
+.CommentInfoLine>.BoardReplyInsertBox{
     height: 50px;
     align-items: center;
-    >h2{
-        display: flex;
-        align-items: center;
-        width: 300px;
-        height: 100%;
-    }
-    >div{
-        display: flex;
-        margin-left: 10px;
-        justify-content: right;
-        gap: 10px;
-        width: 80%;
-        height: 100%;
-    }
-    .ReplyContextBox{
-        width: 60%;
-        height: 80%;
-        font-size: 25px;
-        font-weight: bold;
-        box-sizing: border-box;
-        padding: 0 10px;
-    }
-    .uploadReplyBtn{
-        display: flex;
-        width: 100px;
-        height: 80%;
-        justify-content: center;
-        align-items: center;
-        border: 2px solid orange;
-        border-radius: 10px;
-        cursor: pointer;
-    }
-    .replyCancelBtn{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        background-color: rgba(0, 0, 0, 0);
-        border: none;
-        background-size: cover;
-        background-image: url(../../../public/img/DeleteImg.png);
-    }
 }
 
+.BoardReplyInsertBox>h2{
+    display: flex;
+    align-items: center;
+    width: 300px;
+    height: 100%;
+}
+
+.BoardReplyInsertBox>.BoardReplyInputLine{
+    display: flex;
+    margin-left: 10px;
+    justify-content: right;
+    gap: 10px;
+    width: 80%;
+    height: 100%;
+}
+
+.BoardReplyInsertBox>.ReplyContextBox{
+    width: 60%;
+    height: 80%;
+    font-size: 25px;
+    font-weight: bold;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+.BoardReplyInsertBox>.uploadReplyBtn{
+    display: flex;
+    width: 100px;
+    height: 80%;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid orange;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.BoardReplyInsertBox>.replyCancelBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    background-size: cover;
+    background-image: url(../../../public/img/DeleteImg.png);
+}
 
 /* 대댓글 목록 영역 */
 .CommentBox>.CommentReplyLine{
@@ -357,6 +381,7 @@
 .CommentReplyLine>.ReplyBox{
     display: flex;
     height: max-content;
+    width: 100%;
     min-height: 120px;
     max-height: 120px;
     align-items: center;
