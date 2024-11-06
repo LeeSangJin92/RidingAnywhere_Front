@@ -56,32 +56,40 @@ const RiderBoardCommentBox = (props) => {
     }
 
     return (
-        <div className='commentBox' >
-            <img className='profileImg' src={profileImg} alt=''/>
+        <div className='CommentBox'>
+            {/* 첫 댓글 */}
             <div className='CommentInfoLine'>
-                <div className='TopLine'>
-                    <h2 className='commentNickName'>✏️ {commentData.user.userNickname}</h2>
-                    <div className='TopRight'>
-                        <div className='commentDateLine'> 
-                            <h2 className='commentRegDate'>{format(new Date(commentData.commentRegdate), "yyyy년 MM월 dd일")}</h2>
+                {/* 댓글 작성자 프로필 이미지 */}
+                <img className='profileImg' src={profileImg} alt=''/>
+                <div className='CommentInfo'>
+                    <div className='TopLine'>
+                        <h2 className='commentNickName'>✏️ {commentData.user.userNickname}</h2>
+                        <div className='TopRight'>
+                            <div className='commentDateLine'> 
+                                <h2 className='commentRegDate'>{format(new Date(commentData.commentRegdate), "yyyy년 MM월 dd일")}</h2>
+                            </div>
+                            <div className='commentBtnLine'>
+                                <input className='commentChangeBtn' type='button' hidden={userId!==writer.userId} onClick={onClickChangeBtn}/>
+                                <input id="Comment" className='commentDeleteBtn' type='button' hidden={userId!==writer.userId} onClick={props.onClickDeleteBtn} value={commentData.commentId}/>
+                            </div>
                         </div>
+                    </div>
+                    <div className='BottomLine'>
+                        <h2 className='commentContext' hidden={changeMode}>{commentData.commentContext}</h2>
+                        <input type='text' placeholder={commentData.commentContext} value={changeContext} className='ChangeCommentContext' onChange={insertContext} hidden={!changeMode}/>
                         <div className='commentBtnLine'>
-                            <input className='commentChangeBtn' type='button' hidden={userId!==writer.userId} onClick={onClickChangeBtn}/>
-                            <input id="Comment" className='commentDeleteBtn' type='button' hidden={userId!==writer.userId} onClick={props.onClickDeleteBtn} value={commentData.commentId}/>
+                            <input id={'CommentChangeUpBtn'+commentData.commentId} onClick={onClickChangeUpBtn} hidden/>
+                            <label htmlFor={'CommentChangeUpBtn'+commentData.commentId} className='CommentChangeUpBtn' style={!changeMode?{display:'none'}:{display:'flex'}}>수정하기</label>
+                            <input id= {"CommentReplyBtn"+commentData.commentId} type='button' onClick={onClickReplyShowBtn} hidden/>
+                            <label htmlFor={"CommentReplyBtn"+commentData.commentId} className='CommentReplyBtn'>댓글 작성</label>
                         </div>
                     </div>
+                    <RiderBoardReplyInsertBox setReplyShow={setReplyShow} replyShow={replyShow} commentId={commentData.commentId} loadBoardCommentList={props.loadBoardCommentList} boardId={boardId}/>
                 </div>
-                <div className='BottomLine'>
-                    <h2 className='commentContext' hidden={changeMode}>{commentData.commentContext}</h2>
-                    <input type='text' placeholder={commentData.commentContext} value={changeContext} className='ChangeCommentContext' onChange={insertContext} hidden={!changeMode}/>
-                    <div className='commentBtnLine'>
-                        <input id={'CommentChangeUpBtn'+commentData.commentId} onClick={onClickChangeUpBtn} hidden/>
-                        <label htmlFor={'CommentChangeUpBtn'+commentData.commentId} className='CommentChangeUpBtn' style={!changeMode?{display:'none'}:{display:'flex'}}>수정하기</label>
-                        <input id= {"CommentReplyBtn"+commentData.commentId} type='button' onClick={onClickReplyShowBtn} hidden/>
-                        <label htmlFor={"CommentReplyBtn"+commentData.commentId} className='CommentReplyBtn'>댓글 작성</label>
-                    </div>
-                </div>
-                <RiderBoardReplyInsertBox setReplyShow={setReplyShow} replyShow={replyShow} commentId={commentData.commentId} loadBoardCommentList={props.loadBoardCommentList} boardId={boardId}/>
+            </div>
+
+            {/* 대댓글 라인 */}
+            <div className='CommentReplyLine'>
                 {replyList.map((replyData,index)=><RiderBoardReplyBox key={index} replyData={replyData} loadBoardCommentList={props.loadBoardCommentList} onClickDeleteBtn={props.onClickDeleteBtn}/>)}
             </div>
         </div>

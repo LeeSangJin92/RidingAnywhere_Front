@@ -136,7 +136,6 @@
 
 
 /* 게시글 내용 영역 */
-
 .RiderBoardDetail>.PageBodyLine{
     width: 100%;
     height: max-content;
@@ -150,6 +149,7 @@
     scrollbar-width: none;
 }
 
+/* 게시글 댓글 영역 */
 .RiderBoardDetail>.PageCommentLine{
     width: 100%;
     height: max-content;
@@ -166,7 +166,8 @@
     gap: 10px;
 }
 
-.PageCommentLine>.commentList{
+/* 댓글 목록 라인 */
+.PageCommentLine>.CommentListLine{
     width: 100%;
     height: max-content;
     min-height: 400px;
@@ -178,7 +179,8 @@
     position: relative;
 }
 
-.commentList>.loadingBlock,.commentList>.commentEmptyNote{
+/* 댓글 블록 관련 (로딩, 빈 댓글) */
+.CommentListLine>.loadingBlock,.CommentListLine>.commentEmptyNote{
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -190,7 +192,8 @@
     background-color: rgb(31, 31, 31);
 }
 
-.commentList>.commentListLine{
+/* 댓글 목록 */
+.CommentListLine>.CommentList{
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -201,10 +204,12 @@
     gap: 10px;
 }
 
-.commentListLine>.commentBox{
+/* 댓글 박스 */
+.CommentList>.CommentBox{
     width: 100%;
     height: max-content;
     display: flex;
+    flex-direction: column;
     box-sizing: border-box;
     padding: 0 10px;
     border: 2px solid orange;
@@ -212,14 +217,16 @@
     gap: 10px;
 }
 
-.commentBox>.profileImg{
+/* 댓글 작성자 프로필 이미지 */
+.CommentInfoLine>.profileImg{
     width: 100px;
     height: 100px;
     border-radius: 10px;
     margin: 10px 0;
 }
 
-.commentBox>.CommentInfoLine{
+/* 댓글 내용 */
+.CommentInfoLine>.CommentInfo{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -228,19 +235,21 @@
     margin: 10px 0;
 }
 
-.CommentInfoLine>.TopLine, .CommentInfoLine>.BottomLine{
+.CommentInfo>.TopLine, .CommentInfo>.BottomLine{
     display: flex;
     height: 50px;
     align-items: center;
     justify-content: space-between;
 }
 
-.CommentInfoLine>.TopLine>.TopRight{
+.CommentInfo>.TopLine>.TopRight{
     display: flex;
     width: max-content;
     height: 100%;
     align-items: center;
     justify-content: right;
+    
+    /* 댓글 삭제 또는 수정 관련 버튼 */
     input{
         width: 40px;
         height: 40px;
@@ -259,7 +268,7 @@
     }
 }
 
-.CommentInfoLine>.BottomLine{
+.CommentInfo>.BottomLine{
     margin-bottom: 10px;
         .ChangeCommentContext{
             width: 60%;
@@ -283,7 +292,8 @@
         }
 }
 
-.CommentInfoLine>.BoardReplyInsertBox{
+/* 대댓글 작성 영역 */
+.CommentInfo>.BoardReplyInsertBox{
     margin-top: 10px;
     height: 50px;
     align-items: center;
@@ -332,7 +342,19 @@
     }
 }
 
-.CommentInfoLine>.ReplyBox{
+
+/* 대댓글 목록 영역 */
+.CommentBox>.CommentReplyLine{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: max-content;
+    gap: 10px;
+}
+
+/* 대댓글 박스 */
+.CommentReplyLine>.ReplyBox{
     display: flex;
     height: max-content;
     min-height: 120px;
@@ -345,7 +367,7 @@
         display: flex;
         width: 100%;
     }
-    .commentChangeBtn,.commentDeleteBtn{
+    input{
         width: 40px;
         height: 40px;
         background-size: cover;
@@ -373,7 +395,8 @@
     }
 }
 
-.CommentInfoLine>.ReplyBox>.profileImg{
+/* 대댓글 작성자 프로필 이미지 */
+.CommentReplyLine>.ReplyBox>.profileImg{
     width: 12vw;
     min-width: 70px;
     max-height: 80px;
@@ -383,7 +406,7 @@
     border-radius: 10px;
 }
 
-.CommentInfoLine>.ReplyBox>.ReplyInfoLine{
+.CommentReplyLine>.ReplyBox>.ReplyInfoLine{
     display: flex;
     flex-direction: column;
     width: 100%;
