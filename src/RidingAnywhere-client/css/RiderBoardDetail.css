@@ -335,7 +335,7 @@
     height: 100%;
 }
 
-.BoardReplyInsertBox>.ReplyContextBox{
+.BoardReplyInputLine>.ReplyContextBox{
     width: 60%;
     height: 80%;
     font-size: 25px;
@@ -344,7 +344,7 @@
     padding: 0 10px;
 }
 
-.BoardReplyInsertBox>.uploadReplyBtn{
+.BoardReplyInputLine>.uploadReplyBtn{
     display: flex;
     width: 100px;
     height: 80%;
@@ -355,7 +355,7 @@
     cursor: pointer;
 }
 
-.BoardReplyInsertBox>.replyCancelBtn{
+.BoardReplyInputLine>.replyCancelBtn{
     display: flex;
     align-items: center;
     justify-content: center;
