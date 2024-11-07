@@ -52,18 +52,18 @@ const RiderBoardReplyBox = (props) => {
                 <div className='TopLine'>
                     {replyData.user.userNickname}
                     <div className='TopRight'>
-                        <div className='commentDateLine'>
+                        <div className='ReplyDateLine'>
                             🗓️{format(new Date(replyData.commentRegdate), "yyyy년 MM월 dd일")}
                         </div>
-                        <div className='commentBtnLine'>
-                            <input className='commentChangeBtn' type='button' hidden={showOption} onClick={onClickChangeBtn}/>
-                            <input id='Comment' className='commentDeleteBtn' type='button' hidden={showOption} onClick={props.onClickDeleteBtn} value={replyData.commentId}/>
+                        <div className='ReplyBtnLine'>
+                            <input className='ReplyChangeBtn' type='button' hidden={showOption} onClick={onClickChangeBtn}/>
+                            <input id='Comment' className='ReplyDeleteBtn' type='button' hidden={showOption} onClick={props.onClickDeleteBtn} value={replyData.commentId}/>
                         </div>
                     </div>
                 </div>
                 <div className='BottomLine'>
                     <text hidden={changeMode}>{replyData.commentContext}</text>
-                    <input type='text' placeholder={replyData.commentContext} value={changeContext} className='ChangeCommentContext' onChange={insertContext} hidden={!changeMode}/>
+                    <input type='text' placeholder={replyData.commentContext} value={changeContext} className='ChangeReplyContext' onChange={insertContext} hidden={!changeMode}/>
                     <input id={'ReplyChangeUpBtn'+replyData.commentId} className='ReplyChangeUpBtn' onClick={onClickChangeUpBtn} hidden/>
                     <label htmlFor={'ReplyChangeUpBtn'+replyData.commentId} className='ReplyChangeUpLabel' style={!changeMode?{display:'none'}:{display:'flex'}}>수정하기</label>
                 </div>

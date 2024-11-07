@@ -97,7 +97,6 @@ const RiderBoardDetail = () => {
 
     // 🔎 게시글 내용 가져오기
     const loadBoardData = async () => {
-        console.log(boardId);
         console.log("🛜 서버로 게시글 데이터 호출")
         await fetch(`https://ridinganywhere.site/RA/BoardDetail/Board?boardId=${boardId}`,{
         }).then(response => {
@@ -189,7 +188,6 @@ const RiderBoardDetail = () => {
      }
 
     useEffect(()=>{
-        console.log(boardId);
         loadBoardData();
     },[])
 
