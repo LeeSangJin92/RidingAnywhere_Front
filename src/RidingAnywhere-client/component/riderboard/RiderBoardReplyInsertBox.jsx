@@ -40,7 +40,7 @@ const BoardReplyInsertBox = (props) => {
 
     return (
         <div className='BoardReplyInsertBox' style={props.replyShow?{display:'flex'}:{display:'none'}}>
-                <h2>테스트닉</h2>
+                테스트닉
                 <div className='BoardReplyInputLine'>
                     <input type='text' className='ReplyContextBox' onChange={dataInsert} value={replyContext}/>
                     <input id={'uploadReplyBtn'+props.commentId} onClick={onClickUpLoadBtn} hidden/>

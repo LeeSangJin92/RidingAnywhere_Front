@@ -50,10 +50,10 @@ const RiderBoardReplyBox = (props) => {
             <img className='profileImg' src={profileImg} alt=''/>
             <div className='ReplyInfoLine'>
                 <div className='TopLine'>
-                    <h2 className='commentNickName'>{replyData.user.userNickname}</h2>
+                    {replyData.user.userNickname}
                     <div className='TopRight'>
-                        <div className='commentDateLine'> 
-                            <h2 className='commentRegDate'>{format(new Date(replyData.commentRegdate), "yyyy년 MM월 dd일")}</h2>
+                        <div className='commentDateLine'>
+                            🗓️{format(new Date(replyData.commentRegdate), "yyyy년 MM월 dd일")}
                         </div>
                         <div className='commentBtnLine'>
                             <input className='commentChangeBtn' type='button' hidden={showOption} onClick={onClickChangeBtn}/>
@@ -62,10 +62,10 @@ const RiderBoardReplyBox = (props) => {
                     </div>
                 </div>
                 <div className='BottomLine'>
-                    <h2 className='ReplyContext' hidden={changeMode}>{replyData.commentContext}</h2>
+                    <text hidden={changeMode}>{replyData.commentContext}</text>
                     <input type='text' placeholder={replyData.commentContext} value={changeContext} className='ChangeCommentContext' onChange={insertContext} hidden={!changeMode}/>
                     <input id={'ReplyChangeUpBtn'+replyData.commentId} className='ReplyChangeUpBtn' onClick={onClickChangeUpBtn} hidden/>
-                    <label htmlFor={'ReplyChangeUpBtn'+replyData.commentId} className='ReplyChangeUpLabel' style={!changeMode?{display:'none'}:{display:'flex'}}><h2>수정하기</h2></label>
+                    <label htmlFor={'ReplyChangeUpBtn'+replyData.commentId} className='ReplyChangeUpLabel' style={!changeMode?{display:'none'}:{display:'flex'}}>수정하기</label>
                 </div>
             </div>
         </div>
