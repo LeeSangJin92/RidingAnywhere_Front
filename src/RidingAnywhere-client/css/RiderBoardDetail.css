@@ -353,6 +353,7 @@
 .Comment>.ShortCommentBox{
     display: none;
     align-items: center;
+    justify-content: space-between;
     height: 60px;
     min-height: 60px;
     width: 100%;
@@ -371,7 +372,7 @@
 /* 댓글 축소모드 댓글 수정 확인 버튼, 댓글 등록 버튼 */
 .ShortCommentBox>label{
     display: flex;
-    width: 85px;
+    width: max-content;
     height: 50px;
     justify-content: center;
     align-items: center;
@@ -578,10 +579,6 @@
         display: none;
     }
 
-    .BoardReplyInsertBox>h2{
-        display: none;
-    }
-
     .Comment>.DefaultCommentBox{
         height: 50%;
     }
@@ -593,15 +590,23 @@
     .Comment>.ShortCommentBox{
         display: flex;
     }
+
+    .BoardReplyInsertBox>text{
+        display: none;
+    }
 }
 
 @media(max-width:600px){
-    .CommentInfo>.TopLine{
+    .CommentInfo>.CommentInfo_Top{
         flex-direction: column-reverse;
     }
 
-    .CommentInfo>.TopLine>*{
+    .CommentInfo>.CommentInfo_Top>*{
         width: 100%;
         height: 50%;
+    }
+
+    .CommentInfo>.CommentInfo_Top>.CommentInfo_TopSub{
+        justify-content: space-between;
     }
 }
