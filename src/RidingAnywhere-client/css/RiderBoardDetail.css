@@ -180,7 +180,7 @@
 }
 
 /* 댓글 블록 관련 (로딩, 빈 댓글) */
-.CommentListLine>.loadingBlock,.CommentListLine>.commentEmptyNote{
+.CommentListLine>.LoadingBlock,.CommentListLine>.CommentEmptyNote{
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -229,105 +229,189 @@
 /* 댓글 */
 .CommentInfoLine>.Comment{
     display: flex;
+    flex-direction: column;
     width: 100%;
-    height: max-content;
-    max-height: 120px;
+    height: 120px;
+    min-height: 120px;
     align-items: center;
     gap: 10px;
 }
 
-/* 댓글 작성자 프로필 이미지 */
-.Comment>.profileImg{
-    width: 12vw;
-    min-width: 70px;
-    max-width: 80px;
-    height: 12vw;
-    min-height: 70px;
-    max-height: 80px;
-    border-radius: 10px;
-}
-
-/* 댓글 정보 (댓글 내용, 댓글 작성자, 댓글 작성날 등...) */
-.Comment>.CommentInfo{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: max-content;
-    flex-grow: 1;
-}
-
-.CommentInfo>.TopLine, .CommentInfo>.BottomLine{
+/* 댓글 기본 박스 */
+.Comment>.DefaultCommentBox{
     display: flex;
     width: 100%;
-    height: 60px;
+    height: max-content;
+    max-height: 120px;
+    gap: 10px;
     align-items: center;
     justify-content: space-between;
 }
 
-.CommentInfo>.TopLine>*{
+/* 댓글 작성자 프로필 이미지 */
+.DefaultCommentBox>.ProfileImg{
+    width: 10vw;
+    min-width: 60px;
+    max-width: 100px;
+    height: 10vw;
+    min-height: 60px;
+    max-height: 100px;
+    border-radius: 10px;
+}
+
+/* 댓글 정보 영역 */
+.DefaultCommentBox>.CommentInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 120px;
+    min-height: 120px;
+    width: 100%;
+}
+
+/* 댓글 정보 영역 자식 태그 */
+.DefaultCommentBox>.CommentInfo>*{
+    display: flex;
+    width: 100%;
+    height: 50%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* 댓글 정보 영역 탑라인 */
+.CommentInfo>.CommentInfo_Top>*{
     display: flex;
     height: 100%;
     width: max-content;
     align-items: center;
 }
 
-.CommentInfo>.TopLine>.TopRight{
-    justify-content: right;
+/* 댓글 날짜 및 버튼 라인 */
+.CommentInfo_Top>.CommentInfo_TopSub{
+    display: flex;
+    width: max-content;
     min-width: 240px;
-    
-    /* 댓글 삭제 또는 수정 관련 버튼 */
+    height: 100%;
+    align-items: center;
+    justify-content: right;
+    gap: 10px;
+}
+
+/* 댓글 수정 및 삭제 버튼 */
+.CommentInfo_TopSub>.CommentBtnLine{
+    display: flex;
+    align-items: center;
+    width: max-content;
+    height: 100%;
+    gap: 5px;
     input{
         width: 40px;
+        min-width: 40px;
         height: 40px;
-        background-size: cover;
-        background-color: rgba(0, 0, 0, 0);
+        min-height: 40px;
+        margin: 0;
+        padding: 0;
+        background-size: 40px 40px;
         border: none;
         cursor: pointer;
     }
-    .commentChangeBtn{
-        margin-left: 5px;
+
+    /* 댓글 수정 버튼 */
+    .ChangeBtn{
         background-image: url(../../../public/img/ChangeBtnImg.png);
-        
     }
-    .commentDeleteBtn{
+
+    /* 댓글 삭제 버튼 */
+    .DeleteBtn{
         background-image: url(../../../public/img/DeleteImg.png);
     }
 }
 
-.CommentInfo>.BottomLine{
-        .ChangeCommentContext{
-            width: 60%;
-            height: 80%;
-            font-size: 25px;
-            font-weight: bold;
-            box-sizing: border-box;
-            padding: 0 10px;
-        }
-        .commentBtnLine{
-            display: flex;
-            gap: 10px;
-            label{
-                width: max-content;
-                border: 2px solid orange;
-                border-radius: 10px;
-                box-sizing: border-box;
-                padding: 5px;
-                cursor: pointer;
-            }
-        }
+/* 댓글 내용 수정 박스 */
+.CommentInfo>.CommentInfo_Bottom>.ChangeCommentContext{
+    width: 100%;
+    height: 80%;
+    font-size: 25px;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+/* 댓글 내용 수정 확인 버튼, 댓글 등록 버튼 */
+.CommentInfo>.CommentInfo_Bottom>.CommentBtnLine{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    height: 100%;
+    width: max-content;
+    min-width: 85px;
+    label{
+        width: max-content;
+        height: max-content;
+        border: 2px solid orange;
+        border-radius: 10px;
+        padding: 5px;
+        box-sizing: border-box;
+        cursor: pointer;
+    }
+}
+
+/* 댓글 축소모드 박스 */
+.Comment>.ShortCommentBox{
+    display: none;
+    flex-direction: column;
+    height: 50%;
+    width: 100%;
+}
+
+/* 댓글 축소모드 내용 수정 박스 */
+.ShortCommentBox>.ChangeCommentContext{
+    display: flex;
+    width: 100%;
+    height: 80%;
+    font-size: 15px;
+    box-sizing: border-box;
+    padding: 5px
+}
+
+/* 댓글 축소모드 댓글 수정 확인 버튼, 댓글 등록 버튼 */
+.ShortCommentBox>.CommentBtnLine{
+    display: flex;
+    align-self: flex-end;
+    width: max-content;
+    gap: 10px;
+    height: 20px;
+    label{
+        width: max-content;
+        height: max-content;
+        border: 2px solid orange;
+        border-radius: 10px;
+        padding: 5px;
+        box-sizing: border-box;
+        cursor: pointer;
+    }
 }
 
 /* 댓글 영역에서 대댓글 입력하는 박스 (댓글 정보 바로 아래) */
-
 .CommentInfoLine>.BoardReplyInsertBox{
     display: flex;
     width: 100%;
     height: 50px;
+    min-height: 50px;
     align-items: center;
-    justify-content: end;
     gap: 10px;
 }
 
+/* 대댓글 작성자(로그인 유저 닉네임) */
+.BoardReplyInsertBox>text{
+    display: flex;
+    width: max-content;
+    min-width: 160px;
+    height: 100%;
+    text-align: center;
+    align-items: center;
+}
+
+/* 대댓글 입력 라인 */
 .BoardReplyInsertBox>.BoardReplyInputLine{
     display: flex;
     align-items: center;
@@ -337,6 +421,7 @@
     height: 100%;
 }
 
+/* 대댓글 내용 */
 .BoardReplyInputLine>.ReplyContextBox{
     width: 100%;
     height: 40px;
@@ -346,33 +431,26 @@
     box-sizing: border-box;
 }
 
-.BoardReplyInputLine>.uploadReplyBtn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid orange;
-    box-sizing: border-box;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: medium;
-    width: 60px;
-    min-width: 60px;
-    height: 35px;
-    min-height: 35px;
-}
-
-.BoardReplyInputLine>.replyCancelBtn{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
+/* 대댓글 등록 확인 및 취소 버튼 */
+.BoardReplyInputLine>input[type='button']{
     height: 40px;
+    min-height: 40px;
+    width: 40px;
+    min-width: 40px;
     background-color: rgba(0, 0, 0, 0);
     border: none;
-    background-size: cover;
-    background-image: url(../../../public/img/DeleteImg.png);
+    background-size: 40px 40px;
 }
 
+/* 대댓글 등록 확인 버튼 */
+.BoardReplyInputLine>.ReplyUploadBtn{
+    background-image: url(../../../public/img/CheckImg.png);
+}
+
+/* 대댓글 취소 버튼 */
+.BoardReplyInputLine>.ReplyCancelBtn{
+    background-image: url(../../../public/img/DeleteImg.png);
+}
 
 /* 대댓글 목록 영역 */
 .CommentBox>.CommentReplyLine{
@@ -385,13 +463,13 @@
 }
 
 /* 대댓글 작성자 프로필 이미지 */
-.CommentReplyLine>.ReplyBox>.profileImg{
-    width: 12vw;
-    min-width: 70px;
-    max-height: 80px;
-    height: 12vw;
-    min-height: 70px;
-    max-height: 80px;
+.CommentReplyLine>.ReplyBox>.ProfileImg{
+    width: 10vw;
+    min-width: 60px;
+    max-height: 100px;
+    height: 10vw;
+    min-height: 60px;
+    max-height: 100px;
     border-radius: 10px;
 }
 
@@ -450,7 +528,7 @@
     }
 }
 
-.PageCommentLine>.commentInputLine{
+.PageCommentLine>.CommentInputLine{
     width: 100%;
     height: 60px;
     display: flex;
@@ -508,7 +586,7 @@
         justify-content: space-between;
     }
 
-    .commentInputLine>h2{
+    .CommentInputLine>h2{
         display: none;
     }
 
@@ -528,7 +606,8 @@
         height: 50%;
     }
 
-    .CommentInfo>.TopLine>.TopRight{
-        justify-content: space-between;
+    .CommentInfo>.CommentInfo_Bottom{
+        display: none;
     }
+
 }

@@ -55,37 +55,59 @@ const RiderBoardCommentBox = (props) => {
         }
     }
 
+
+    // 댓글 박스 영역
     return (
         <div className='CommentBox'>
-            {/* 첫 댓글 */}
             <div className='CommentInfoLine'>
                 <div className='Comment'>
-                    {/* 댓글 작성자 프로필 이미지 */}
-                    <img className='profileImg' src={profileImg} alt=''/>
-                    <div className='CommentInfo'>
-                        <div className='TopLine'>
-                            {/* 작성자 닉네임 */}
-                            <text>✏️{commentData.user.userNickname}</text>
-                            <div className='TopRight'>
-                                <div className='commentDateLine'> 
+
+                    {/* 댓글 옵션 버튼 label용 input 태그 */}
+                    <input id={'CommentChangeUpBtn'+commentData.commentId} onClick={onClickChangeUpBtn} hidden/>
+                    <input id= {"CommentReplyBtn"+commentData.commentId} type='button' onClick={onClickReplyShowBtn} hidden/>
+
+                    {/* 기본 댓글 박스 */}
+                    <div className='DefaultCommentBox'>
+                        {/* 댓글 작성자 프로필 이미지 */}
+                        <img className='ProfileImg' src={profileImg} alt=''/>
+                        
+                        {/* 댓글 정보 영역 */}
+                        <div className='CommentInfo'>
+                            
+                            {/* 댓글 박스 탑라인 */}
+                            <div className='CommentInfo_Top'>
+                                {/* 작성자 닉네임 */}
+                                <text>✏️{commentData.user.userNickname}</text>
+                                <div className='CommentInfo_TopSub'>
                                     {/* 댓글 작성 날짜 */}
                                     <text>🗓️{format(new Date(commentData.commentRegdate), "yyyy년 MM월 dd일")}</text>
+                                    {/* 댓글 옵션 버튼 라인 */}
+                                    <div className='CommentBtnLine'>
+                                        <input className='ChangeBtn' type='button' hidden={userId!==writer.userId} onClick={onClickChangeBtn}/>
+                                        <input id="Comment" className='DeleteBtn' type='button' hidden={userId!==writer.userId} onClick={props.onClickDeleteBtn} value={commentData.commentId}/>
+                                    </div>
                                 </div>
-                                <div className='commentBtnLine'>
-                                    <input className='commentChangeBtn' type='button' hidden={userId!==writer.userId} onClick={onClickChangeBtn}/>
-                                    <input id="Comment" className='commentDeleteBtn' type='button' hidden={userId!==writer.userId} onClick={props.onClickDeleteBtn} value={commentData.commentId}/>
+                            </div>
+
+                            {/* 댓글 박스 바텀라인 */}
+                            <div className='CommentInfo_Bottom'>
+                                <text hidden={changeMode}>{commentData.commentContext}</text>
+                                <input type='text' placeholder={commentData.commentContext} value={changeContext} className='ChangeCommentContext' onChange={insertContext} hidden={!changeMode}/>
+                                <div className='CommentBtnLine'>
+                                    <label htmlFor={'CommentChangeUpBtn'+commentData.commentId} className='CommentChangeUpBtn' style={!changeMode?{display:'none'}:{display:'flex'}}>수정하기</label>
+                                    <label htmlFor={"CommentReplyBtn"+commentData.commentId} className='CommentReplyBtn'>댓글 작성</label>
                                 </div>
                             </div>
                         </div>
-                        <div className='BottomLine'>
-                            <text hidden={changeMode}>{commentData.commentContext}</text>
-                            <input type='text' placeholder={commentData.commentContext} value={changeContext} className='ChangeCommentContext' onChange={insertContext} hidden={!changeMode}/>
-                            <div className='commentBtnLine'>
-                                <input id={'CommentChangeUpBtn'+commentData.commentId} onClick={onClickChangeUpBtn} hidden/>
-                                <label htmlFor={'CommentChangeUpBtn'+commentData.commentId} className='CommentChangeUpBtn' style={!changeMode?{display:'none'}:{display:'flex'}}>수정하기</label>
-                                <input id= {"CommentReplyBtn"+commentData.commentId} type='button' onClick={onClickReplyShowBtn} hidden/>
-                                <label htmlFor={"CommentReplyBtn"+commentData.commentId} className='CommentReplyBtn'>댓글 작성</label>
-                            </div>
+                    </div>
+
+                    {/* 축소모드 댓글 박스 */}
+                    <div className='ShortCommentBox'>
+                        <text hidden={changeMode}>{commentData.commentContext}</text>
+                        <input type='text' placeholder={commentData.commentContext} value={changeContext} className='ChangeCommentContext' onChange={insertContext} hidden={!changeMode}/>
+                        <div className='CommentBtnLine'>
+                            <label htmlFor={'CommentChangeUpBtn'+commentData.commentId} className='CommentChangeUpBtn' style={!changeMode?{display:'none'}:{display:'flex'}}>수정하기</label>
+                            <label htmlFor={"CommentReplyBtn"+commentData.commentId} className='CommentReplyBtn'>댓글 작성</label>
                         </div>
                     </div>
                 </div>

@@ -252,17 +252,17 @@ const RiderBoardDetail = () => {
                         <div className='CommentListLine'>
 
                             {/* 댓글 클릭 방지용 블록 */}
-                            <div className='loadingBlock' style={blockComment?{display:"flex"}:{display:"none"}}>
+                            <div className='LoadingBlock' style={blockComment?{display:"flex"}:{display:"none"}}>
                                 <h2>🔎 댓글을 불러오는 중입니다.</h2>
                                 <h2>- 잠시만 기달려 주세요 -</h2>
                             </div>
 
                             {/* 등록 댓글 없을 경우 표시 되는 블록 */}
-                            <div className='commentEmptyNote' style={emptyComment?{display:'flex'}:{display:'none'}}>
+                            <div className='CommentEmptyNote' style={emptyComment?{display:'flex'}:{display:'none'}}>
                                 <h2>⚠️ 등록된 댓글이 없습니다.</h2>
                             </div>
 
-                            {/* 게시글 댓글 목록 라인 */}
+                            {/* 게시글 댓글 목록 */}
                             <div className='CommentList' style={!emptyComment?{display:'flex'}:{display:'none'}}>
                                 {commentList.map((commentData,index) => {
                                 if(!commentData.commentReply) 
@@ -275,7 +275,7 @@ const RiderBoardDetail = () => {
                         </div>
 
                         {/* 게시글 댓글 입력 라인 */}
-                        <div className='commentInputLine'>
+                        <div className='CommentInputLine'>
                             <h2>댓글 내용 : </h2>
                             <input type='text' className='commentTextBox' onChange={onChangeContext} value={commentData.comment_context}/>
                             <input id='commentUploadBtn' type='button' onClick={onClickUploadBtn} hidden/>

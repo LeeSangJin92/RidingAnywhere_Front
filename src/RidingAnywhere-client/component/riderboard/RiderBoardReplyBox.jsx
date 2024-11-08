@@ -47,7 +47,7 @@ const RiderBoardReplyBox = (props) => {
 
     return (
         <div className='ReplyBox'>
-            <img className='profileImg' src={profileImg} alt=''/>
+            <img className='ProfileImg' src={profileImg} alt=''/>
             <div className='ReplyInfoLine'>
                 <div className='TopLine'>
                     {replyData.user.userNickname}

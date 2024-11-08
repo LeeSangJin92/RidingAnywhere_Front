@@ -43,9 +43,8 @@ const BoardReplyInsertBox = (props) => {
                 <text>테스트닉</text>
                 <div className='BoardReplyInputLine'>
                     <input type='text' className='ReplyContextBox' onChange={dataInsert} value={replyContext}/>
-                    <input id={'uploadReplyBtn'+props.commentId} onClick={onClickUpLoadBtn} hidden/>
-                    <label htmlFor={'uploadReplyBtn'+props.commentId} className='uploadReplyBtn'>등록</label>
-                    <input type='button' className='replyCancelBtn' onClick={onClickCancelBtn}/>
+                    <input type='button' className='ReplyUploadBtn' onClick={onClickUpLoadBtn}/>
+                    <input type='button' className='ReplyCancelBtn' onClick={onClickCancelBtn}/>
                 </div>
         </div>
     );
