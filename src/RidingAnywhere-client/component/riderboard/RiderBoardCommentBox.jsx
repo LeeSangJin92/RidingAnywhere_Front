@@ -65,11 +65,11 @@ const RiderBoardCommentBox = (props) => {
                     <div className='CommentInfo'>
                         <div className='TopLine'>
                             {/* 작성자 닉네임 */}
-                            ✏️{commentData.user.userNickname}
+                            <text>✏️{commentData.user.userNickname}</text>
                             <div className='TopRight'>
                                 <div className='commentDateLine'> 
                                     {/* 댓글 작성 날짜 */}
-                                    🗓️{format(new Date(commentData.commentRegdate), "yyyy년 MM월 dd일")}
+                                    <text>🗓️{format(new Date(commentData.commentRegdate), "yyyy년 MM월 dd일")}</text>
                                 </div>
                                 <div className='commentBtnLine'>
                                     <input className='commentChangeBtn' type='button' hidden={userId!==writer.userId} onClick={onClickChangeBtn}/>

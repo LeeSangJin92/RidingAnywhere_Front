@@ -258,17 +258,23 @@
 
 .CommentInfo>.TopLine, .CommentInfo>.BottomLine{
     display: flex;
-    height: 50px;
+    width: 100%;
+    height: 60px;
     align-items: center;
     justify-content: space-between;
 }
 
+.CommentInfo>.TopLine>*{
+    display: flex;
+    height: 100%;
+    width: max-content;
+}
+
 .CommentInfo>.TopLine>.TopRight{
     display: flex;
-    width: max-content;
-    height: 100%;
     align-items: center;
     justify-content: right;
+    min-width: 240px;
     
     /* 댓글 삭제 또는 수정 관련 버튼 */
     input{
@@ -511,4 +517,19 @@
         display: none;
     }
 
+}
+
+@media(max-width:600px){
+    .CommentInfo>.TopLine{
+        flex-direction: column-reverse;
+    }
+
+    .CommentInfo>.TopLine>*{
+        width: 100%;
+        height: 50%;
+    }
+    
+    .CommentInfo>.TopLine>.TopRight{
+        justify-content: space-between;
+    }
 }
