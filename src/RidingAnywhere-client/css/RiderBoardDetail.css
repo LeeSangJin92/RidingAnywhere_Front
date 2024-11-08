@@ -72,7 +72,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 330px;
+    max-width: 420px;
     min-width: 300px;
 }
 
@@ -310,6 +310,7 @@
         margin: 0;
         padding: 0;
         background-size: 40px 40px;
+        background-color: rgba(0, 0, 0, 0);
         border: none;
         cursor: pointer;
     }
@@ -359,7 +360,6 @@
 
 /* 댓글 축소모드 내용 수정 박스 */
 .ShortCommentBox>.ChangeCommentContext{
-    display: flex;
     width: 100%;
     height: 50px;
     font-size: 15px;
@@ -559,9 +559,6 @@
     .BoardInfoBox_Right>.BoardType_Short{
         display: flex;
     }
-    .TitleTopLine>.BoardInfoBox{
-        max-width: 440px;
-    }
 
 }
 
@@ -588,6 +585,10 @@
     .Comment>.DefaultCommentBox{
         height: 50%;
     }
+    
+    .CommentInfo>.CommentInfo_Bottom{
+        display: none;
+    }
 
     .Comment>.ShortCommentBox{
         display: flex;
@@ -602,13 +603,5 @@
     .CommentInfo>.TopLine>*{
         width: 100%;
         height: 50%;
-    }
-
-    .CommentInfo>.CommentInfo_Bottom{
-        display: none;
-    }
-
-    .Comment>.ShortCommentBox>text{
-        display: none;
     }
 }
