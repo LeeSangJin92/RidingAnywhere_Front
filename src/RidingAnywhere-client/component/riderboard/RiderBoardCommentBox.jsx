@@ -93,10 +93,8 @@ const RiderBoardCommentBox = (props) => {
                             <div className='CommentInfo_Bottom'>
                                 <text hidden={changeMode}>{commentData.commentContext}</text>
                                 <input type='text' placeholder={commentData.commentContext} value={changeContext} className='ChangeCommentContext' onChange={insertContext} hidden={!changeMode}/>
-                                <div className='CommentBtnLine'>
-                                    <label htmlFor={'CommentChangeUpBtn'+commentData.commentId} className='CommentChangeUpBtn' style={!changeMode?{display:'none'}:{display:'flex'}}>수정하기</label>
-                                    <label htmlFor={"CommentReplyBtn"+commentData.commentId} className='CommentReplyBtn'>댓글 작성</label>
-                                </div>
+                                <label htmlFor={'CommentChangeUpBtn'+commentData.commentId} className='CommentChangeUpBtn' style={!changeMode?{display:'none'}:{display:'flex'}}>수정하기</label>
+                                <label htmlFor={"CommentReplyBtn"+commentData.commentId} className='CommentReplyBtn' style={!changeMode?{display:'flex'}:{display:'none'}}>댓글 작성</label>
                             </div>
                         </div>
                     </div>
@@ -105,10 +103,8 @@ const RiderBoardCommentBox = (props) => {
                     <div className='ShortCommentBox'>
                         <text hidden={changeMode}>{commentData.commentContext}</text>
                         <input type='text' placeholder={commentData.commentContext} value={changeContext} className='ChangeCommentContext' onChange={insertContext} hidden={!changeMode}/>
-                        <div className='CommentBtnLine'>
-                            <label htmlFor={'CommentChangeUpBtn'+commentData.commentId} className='CommentChangeUpBtn' style={!changeMode?{display:'none'}:{display:'flex'}}>수정하기</label>
-                            <label htmlFor={"CommentReplyBtn"+commentData.commentId} className='CommentReplyBtn'>댓글 작성</label>
-                        </div>
+                        <label htmlFor={'CommentChangeUpBtn'+commentData.commentId} className='CommentChangeUpBtn' style={!changeMode?{display:'none'}:{display:'flex'}}>수정하기</label>
+                        <label htmlFor={"CommentReplyBtn"+commentData.commentId} className='CommentReplyBtn' style={!changeMode?{display:'flex'}:{display:'none'}}>댓글 작성</label>
                     </div>
                 </div>
                 <RiderBoardReplyInsertBox setReplyShow={setReplyShow} replyShow={replyShow} commentId={commentData.commentId} loadBoardCommentList={props.loadBoardCommentList} boardId={boardId}/>
