@@ -460,6 +460,9 @@
     align-items: center;
     width: 100%;
     height: max-content;
+    padding: 10px 0;
+    box-sizing: border-box;
+    border-top: 2px dashed orange;
     gap: 10px;
 }
 
@@ -473,7 +476,7 @@
     min-height: 120px;
     max-height: 500px;
     align-items: center;
-    border-top:2px dashed orange;
+    border-bottom:2px dashed orange;
     box-sizing: border-box;
     gap: 10px;
 }
