@@ -47,26 +47,34 @@ const RiderBoardReplyBox = (props) => {
 
     return (
         <div className='ReplyBox'>
-            <img className='ProfileImg' src={profileImg} alt=''/>
-            <div className='ReplyInfoLine'>
-                <div className='TopLine'>
-                    {replyData.user.userNickname}
-                    <div className='TopRight'>
-                        <div className='ReplyDateLine'>
-                            🗓️{format(new Date(replyData.commentRegdate), "yyyy년 MM월 dd일")}
-                        </div>
-                        <div className='ReplyBtnLine'>
-                            <input className='ReplyChangeBtn' type='button' hidden={showOption} onClick={onClickChangeBtn}/>
-                            <input id='Comment' className='ReplyDeleteBtn' type='button' hidden={showOption} onClick={props.onClickDeleteBtn} value={replyData.commentId}/>
+            <div className='DefaultReply'>
+                <img className='ProfileImg' src={profileImg} alt=''/>
+                <div className='ReplyInfoLine'>
+                    <div className='TopLine'>
+                        {replyData.user.userNickname}
+                        <div className='TopRight'>
+                            <div className='ReplyDateLine'>
+                                🗓️{format(new Date(replyData.commentRegdate), "yyyy년 MM월 dd일")}
+                            </div>
+                            <div className='ReplyBtnLine'>
+                                <input className='ReplyChangeBtn' type='button' hidden={showOption} onClick={onClickChangeBtn}/>
+                                <input id='Comment' className='ReplyDeleteBtn' type='button' hidden={showOption} onClick={props.onClickDeleteBtn} value={replyData.commentId}/>
+                            </div>
                         </div>
                     </div>
+                    <div className='BottomLine'>
+                        <text hidden={changeMode}>{replyData.commentContext}</text>
+                        <input type='text' placeholder={replyData.commentContext} value={changeContext} className='ChangeReplyContext' onChange={insertContext} hidden={!changeMode}/>
+                        <input id={'ReplyChangeUpBtn'+replyData.commentId} className='ReplyChangeUpBtn' onClick={onClickChangeUpBtn} hidden/>
+                        <label htmlFor={'ReplyChangeUpBtn'+replyData.commentId} className='ReplyChangeUpLabel' style={!changeMode?{display:'none'}:{display:'flex'}}>수정하기</label>
+                    </div>
                 </div>
-                <div className='BottomLine'>
-                    <text hidden={changeMode}>{replyData.commentContext}</text>
-                    <input type='text' placeholder={replyData.commentContext} value={changeContext} className='ChangeReplyContext' onChange={insertContext} hidden={!changeMode}/>
-                    <input id={'ReplyChangeUpBtn'+replyData.commentId} className='ReplyChangeUpBtn' onClick={onClickChangeUpBtn} hidden/>
-                    <label htmlFor={'ReplyChangeUpBtn'+replyData.commentId} className='ReplyChangeUpLabel' style={!changeMode?{display:'none'}:{display:'flex'}}>수정하기</label>
-                </div>
+            </div>
+            <div className='ShortReply'>
+                <text hidden={changeMode}>{replyData.commentContext}</text>
+                <input type='text' placeholder={replyData.commentContext} value={changeContext} className='ChangeReplyContext' onChange={insertContext} hidden={!changeMode}/>
+                <input id={'ReplyChangeUpBtn'+replyData.commentId} className='ReplyChangeUpBtn' onClick={onClickChangeUpBtn} hidden/>
+                <label htmlFor={'ReplyChangeUpBtn'+replyData.commentId} className='ReplyChangeUpLabel' style={!changeMode?{display:'none'}:{display:'flex'}}>수정하기</label>
             </div>
         </div>
     );
