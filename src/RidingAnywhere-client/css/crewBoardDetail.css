@@ -260,7 +260,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5px;
 }
 
 .CrewBoardDetail_SettingBtnLine>input{
@@ -319,6 +318,7 @@
 .CrewBoardDetail_InfoLine>.CrewBoardDetail_AddressLine{
     display: none;
     flex-direction: column;
+    justify-content: center;
     width: 420px;
     height: 100%;
     gap: 5px;
@@ -860,5 +860,15 @@
                     }
             }
         }
+    }
+}
+
+@media(max-width:1170px){
+    .CrewBoardDetail>.CrewBoardDetail_TopLine{
+        justify-content: center;
+    }
+
+    .CrewBoardDetail_TopLine>.CrewBoardDetail_Title{
+        display: none;
     }
 }

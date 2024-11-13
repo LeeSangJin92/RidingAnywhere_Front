@@ -85,16 +85,14 @@ const CrewBoardDetail = () => {
             body:JSON.stringify(changeData)
         }).then(response => {
             if(response.status==200){
-                console.log("✅ 서버 작업 완료")
-                return response.json();
-            } else console.log("❌ 서버 통신 실패");
-        }).then(data=>{
-            if(!data){
                 console.log("✅ 수정 완료")
                 alert("✅ 데이터 수정이 완료 했습니다.")
                 setChangeMode(false);
                 loadBoardData();
                 loadCommentList();
+            } else {
+                alert("❌ 데이터 수정이 실패 했습니다.")
+                console.log("❌ 서버 통신 실패");
             }
         });
     }

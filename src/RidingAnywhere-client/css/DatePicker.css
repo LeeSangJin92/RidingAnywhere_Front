@@ -10,23 +10,3 @@
     height: 100%;
     box-sizing: border-box;
 }
-
-input::placeholder{
-    font-size: medium;
-}
-
-input::-webkit-input-placeholder {
-    font-size: medium;
-}
-
-input::-moz-placeholder {
-    font-size: medium;
-}
-
-input:-ms-input-placeholder {
-    font-size: medium;
-}
-
-input::-ms-input-placeholder {
-    font-size: medium;
-}
