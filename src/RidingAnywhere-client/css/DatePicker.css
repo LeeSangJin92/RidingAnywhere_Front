@@ -11,22 +11,22 @@
     box-sizing: border-box;
 }
 
-.DatePicker::placeholder{
+input::placeholder{
     font-size: medium;
 }
 
-.DatePicker::-webkit-input-placeholder {
+input::-webkit-input-placeholder {
     font-size: medium;
 }
 
-.DatePicker::-moz-placeholder {
+input::-moz-placeholder {
     font-size: medium;
 }
 
-.DatePicker:-ms-input-placeholder {
+input:-ms-input-placeholder {
     font-size: medium;
 }
 
-.DatePicker::-ms-input-placeholder {
+input::-ms-input-placeholder {
     font-size: medium;
 }
