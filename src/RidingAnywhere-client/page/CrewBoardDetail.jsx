@@ -375,7 +375,7 @@ const CrewBoardDetail = () => {
                     </div>
                     <div className='CrewBoardDetail_TopLine'>
                         <div className='CrewBoardDetail_Title'>
-                            <h1>크루</h1>
+                            <h1>크루 게시판</h1>
                             <h1>{crewBoardData.boardType}</h1>
                         </div>
                         <div className='CrewBoardDetail_Info'>
@@ -385,7 +385,7 @@ const CrewBoardDetail = () => {
                                     <h2 className='WriterLevel'>{crewBoardData.writerLevel}</h2>
                                 </div>
                                 <div className='CrewBoardDetail_Date_SettingBtn'>
-                                    <h2 style={!changeMode?{display:'flex'}:{display:'none'}}>{crewBoardData.startDate+" ~ "+crewBoardData.endDate}</h2>
+                                    <h2 style={!changeMode?{display:'flex'}:{display:'none'}}>🗓️시작:{crewBoardData.startDate}<br/>🗓️종료:{crewBoardData.endDate}</h2>
                                     <div style={changeMode?{display:'flex'}:{display:'none'}} className='CrewBoardDate_ChangeLine'>
                                         <input type='button' id='boardDate' className='CrewBoardDate_ChangeBtn' value={"기간 변경"} onClick={onClickBoardChangeBtn}/>
                                         <h2>시작 </h2>
