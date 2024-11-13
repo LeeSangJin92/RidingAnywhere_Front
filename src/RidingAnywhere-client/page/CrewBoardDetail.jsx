@@ -366,51 +366,53 @@ const CrewBoardDetail = () => {
     }
 
     return (
-        <main>
+        <main className="Main_CrewBoardDetail">
             <DefaultHeader/>
                 <section className='CrewBoardDetail'>
-                    <CrewBoardDeleteCheckBox setShowDeleteBox={setShowDeleteBox} showDeleteBox={showDeleteBox} deleteData={deleteData} setDeleteData={setDeleteData} loadCommentList={loadCommentList}/>
-                    <CrewTourAttendCheck setShowAttendCheck={setShowAttendCheck} showAttendCheck={showAttendCheck} setCheckAttend={setCheckAttend} textData="" />
-                    <div className='BoardTopLine'>
-                        <div className='boardTypeLine'>
+                    <div className='BlockPageLine' style={showAttendCheck||showDeleteBox?{display:'flex'}:{display:"none"}}>
+                        <CrewBoardDeleteCheckBox setShowDeleteBox={setShowDeleteBox} showDeleteBox={showDeleteBox} deleteData={deleteData} setDeleteData={setDeleteData} loadCommentList={loadCommentList}/>
+                        <CrewTourAttendCheck setShowAttendCheck={setShowAttendCheck} showAttendCheck={showAttendCheck} setCheckAttend={setCheckAttend} textData="" />
+                    </div>
+                    <div className='CrewBoardDetail_TopLine'>
+                        <div className='CrewBoardDetail_Title'>
                             <h1>크루</h1>
                             <h1>{crewBoardData.boardType}</h1>
                         </div>
-                        <div className='TopLine1'>
-                            <div className='TopLine2'>
-                                <div className='BoardInfoTop'>
-                                    <h2>✏️{crewBoardData.boardWriter}</h2>
-                                    <span><h2>{crewBoardData.writerLevel}</h2></span>
+                        <div className='CrewBoardDetail_Info'>
+                            <div className='CrewBoardDetail_InfoLine'>
+                                <div className='CrewBoardDetail_Writer'>
+                                    <h2 className='WriterName'>✏️{crewBoardData.boardWriter}</h2>
+                                    <h2 className='WriterLevel'>{crewBoardData.writerLevel}</h2>
                                 </div>
-                                <div className='BoardInfoTop'>
+                                <div className='CrewBoardDetail_Date_SettingBtn'>
                                     <h2 style={!changeMode?{display:'flex'}:{display:'none'}}>{crewBoardData.startDate+" ~ "+crewBoardData.endDate}</h2>
-                                    <div style={changeMode?{display:'flex'}:{display:'none'}} className='boardDateChangeLine'>
-                                        <input type='button' id='boardDate' className='BoardChangeUpBtn' value={"기간 변경"} onClick={onClickBoardChangeBtn}/>
+                                    <div style={changeMode?{display:'flex'}:{display:'none'}} className='CrewBoardDate_ChangeLine'>
+                                        <input type='button' id='boardDate' className='CrewBoardDate_ChangeBtn' value={"기간 변경"} onClick={onClickBoardChangeBtn}/>
                                         <h2>시작 </h2>
                                         <DatePicker placeholderText={crewBoardData.startDate} boardData={changeData} isStartDate={true} setBoardData={setChangeData} dateEqual={false}/>
                                         <h2>종료 </h2>
                                         <DatePicker placeholderText={crewBoardData.endDate} boardData={changeData} isStartDate={false} setBoardData={setChangeData} dateEqual={false}/>
                                     </div>
-                                    <div className='BoardOptionLine' style={crewBoardData.writerId===userId?{display:'flex'}:{display:'none'}}>
+                                    <div className='CrewBoardDetail_SettingBtnLine' style={crewBoardData.writerId===userId?{display:'flex'}:{display:'none'}}>
                                         <input type='button' className='BoardChangeBtn' onClick={onClickChangeModeBtn}/>
                                         <input type='button' id='Board'  className='BoardDeleteBtn' onClick={onClickDeleteBtn} value={boardId}/>
                                     </div>
                                 </div>
                                 
                             </div>
-                            <div className='TopLine2'>
+                            <div className='CrewBoardDetail_InfoLine'>
                                 <h1 style={!changeMode?{display:'flex'}:{display:'none'}}>{crewBoardData.boardTitle}</h1>
-                                <div className='boardTitleOptionLine'>
-                                    <input className='boardTitleChangeInput' type='text' id='boardTitle' style={changeMode?{display:'flex'}:{display:'none'}} placeholder={crewBoardData.boardTitle} value={changeData.boardTitle} onChange={onChangeBoardData}/>
-                                    <input type='button' id='boardTitle' className='BoardTitleChangeBtn' style={changeMode?{display:'flex'}:{display:'none'}} value={"제목 변경"} onClick={onClickBoardChangeBtn}/>
+                                <div className='CrewBoardDetail_TitleSettingLine'>
+                                    <input className='CrewBoardDetail_TitleInputBox' type='text' id='boardTitle' style={changeMode?{display:'flex'}:{display:'none'}} placeholder={crewBoardData.boardTitle} value={changeData.boardTitle} onChange={onChangeBoardData}/>
+                                    <input className='CrewBoardDetail_TitleChangeBtn' type='button' id='boardTitle'  style={changeMode?{display:'flex'}:{display:'none'}} value={"제목 변경"} onClick={onClickBoardChangeBtn}/>
                                 </div>
-                                <div className='TourAddressLine' style={crewBoardData.boardType==='🚩모임글'?{display:'flex'}:{display:'none'}}>
+                                <div className='CrewBoardDetail_AddressLine' style={crewBoardData.boardType==='🚩모임글'?{display:'flex'}:{display:'none'}}>
                                     <div>
-                                        <h3 id='address'>장소🚩</h3>
-                                        <input type='button' id='boardAddress' className='addressChangeUp'style={changeMode?{display:'flex'}:{display:'none'}} value={"장소 변경"} onClick={onClickBoardChangeBtn}/>
+                                        <h3>장소🚩</h3>
+                                        <input type='button' id='boardAddress' className='CrewBoardDetail_AddressChangeBtn'style={changeMode?{display:'flex'}:{display:'none'}} value={"장소 변경"} onClick={onClickBoardChangeBtn}/>
                                     </div>
                                     <h3 style={!changeMode?{display:'flex'}:{display:'none'}}>{crewBoardData.tourAddress}</h3>
-                                    <input type='text' id='address' className='addressInput' placeholder={crewBoardData.tourAddress} value={changeData.tourAddress} style={changeMode?{display:'flex'}:{display:'none'}} onChange={onChangeBoardData}/>
+                                    <input type='text' id='address' className='CrewBoardDetail_AddressInputBox' placeholder={crewBoardData.tourAddress} value={changeData.tourAddress} style={changeMode?{display:'flex'}:{display:'none'}} onChange={onChangeBoardData}/>
                                 </div>
                             </div>
                         </div>

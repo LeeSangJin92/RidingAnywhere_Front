@@ -19,17 +19,14 @@ const CrewTourAttendCheck = (props) => {
 
 
     return (
-        <div className='blockPageLine' style={showAttendCheck?{display:'flex'}:{display:'none'}} >
-            <div className='CrewTourAttendCheck'>
-
-                <h1>해당 모임에 참여하시겠습니까?</h1>
-                    <div>
-                        <input type='button' id='TourAttendOkBtn' value={true} onClick={onClickBtn} hidden/>
-                        <label htmlFor='TourAttendOkBtn' className='TourAttendOkLabel'><h1>참여</h1></label>
-                        <input type='button' id='TourAttendCancelBtn' value={false} onClick={onClickBtn} hidden/>
-                        <label htmlFor='TourAttendCancelBtn' className='TourAttendCancelLabel'><h1>취소</h1></label>
-                    </div>
-            </div>
+        <div className='CrewTourAttendCheck' style={showAttendCheck?{display:'flex'}:{display:'none'}}>
+            <h1>해당 모임에 참여하시겠습니까?</h1>
+                <div className='CrewTourAttendBtnLine'>
+                    <input type='button' id='TourAttendOkBtn' value={true} onClick={onClickBtn} hidden/>
+                    <label htmlFor='TourAttendOkBtn' className='TourAttendOkLabel'><h1>참여</h1></label>
+                    <input type='button' id='TourAttendCancelBtn' value={false} onClick={onClickBtn} hidden/>
+                    <label htmlFor='TourAttendCancelBtn' className='TourAttendCancelLabel'><h1>취소</h1></label>
+                </div>
         </div>
     );
 };

@@ -41,19 +41,17 @@ const CrewBoardDeleteCheckBox = (props) => {
     }
 
     return (
-        <div className='blockPageLine' style={props.showDeleteBox?{display:'flex'}:{display:'none'}}>
-            <div className='CrewBoardDeleteCheckBox'>
-                <h1>⚠️ 해당 글을 삭제 하시겠습니까?</h1>
-                <div className='DeleteBoxBtnLine'>
-                    {/* 삭제 */}
-                    <input id='deleteOkayBtn' type='button' onClick={onClickOkayBtn} hidden/>
-                    <label htmlFor='deleteOkayBtn' className='deleteBtnOkayLabel'><h1>삭제</h1></label>
+        <div className='CrewBoardDeleteCheckBox' style={props.showDeleteBox?{display:'flex'}:{display:'none'}}>
+            <h1>⚠️ 해당 글을 삭제 하시겠습니까?</h1>
+            <div className='DeleteBoxBtnLine'>
+                {/* 삭제 */}
+                <input id='deleteOkayBtn' type='button' onClick={onClickOkayBtn} hidden/>
+                <label htmlFor='deleteOkayBtn' className='deleteBtnOkayLabel'><h1>삭제</h1></label>
 
-                    {/* 취소 */}
-                    <input id='deleteCancelBtn' type='button' onClick={onClickCancelBtn} hidden/>
-                    <label htmlFor='deleteCancelBtn' className='deleteBtnCancelLabel'><h1>취소</h1></label>
+                {/* 취소 */}
+                <input id='deleteCancelBtn' type='button' onClick={onClickCancelBtn} hidden/>
+                <label htmlFor='deleteCancelBtn' className='deleteBtnCancelLabel'><h1>취소</h1></label>
 
-                </div>
             </div>
         </div>
     );

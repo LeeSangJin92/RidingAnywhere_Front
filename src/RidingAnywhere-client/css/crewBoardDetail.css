@@ -1,12 +1,77 @@
-.CrewBoardDetail{
+.Main_CrewBoardDetail>.CrewBoardDetail{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    min-width: 440px;
+    max-width: 1200px;
+    height: max-content;
+    gap: 10px;
+    box-sizing: border-box;
+    background-color: black;
+}
+
+.CrewBoardDetail h1,.CrewBoardDetail h3{
+    background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
+    -webkit-text-stroke-width: 0.1px;
+    -webkit-text-stroke-color: black;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.CrewBoardDetail>.BlockPageLine{
+    position: absolute;
+    display: none;
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 800px;
+    height: 100%;
+    background-color: rgba(33, 33, 33, 0.788);
+}
 
-    h2, h3{
+/* 투어 참여 체크 박스 */
+.CrewBoardDetail>.BlockPageLine>.CrewTourAttendCheck{
+    flex-direction: column;
+    background-color: black;
+    border: 2px solid orange;
+    border-radius: 10px;
+    width: 20vw;
+    min-width: 440px;
+    max-width: 700px;
+    height: 300px;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.BlockPageLine>.CrewTourAttendCheck>.CrewTourAttendBtnLine{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.CrewTourAttendCheck>.CrewTourAttendBtnLine>label{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 80px;
+    border: 2px solid gray;
+    border-radius: 20px;
+    cursor: pointer;
+    box-sizing: border-box;
+    h1{
+        color: gray;
+    }
+}
+
+.CrewTourAttendCheck>.CrewTourAttendBtnLine>label:hover{
+    border: 2px solid gold;
+    box-shadow: inset 2px 2px 10px gray, inset -2px -2px 10px gray;
+    h1{
         background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
         -webkit-text-stroke-width: 0.1px;
         -webkit-text-stroke-color: black;
@@ -14,271 +79,271 @@
         background-clip: text;
         color: transparent;
     }
+}
 
-    .blockPageLine{
-        position: absolute;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(33, 33, 33, 0.788);
-        z-index: 11;
+/* 크루 게시글 삭제 확인 박스 */
+.CrewBoardDetail>.BlockPageLine>.CrewBoardDeleteCheckBox{
+    flex-direction: column;
+    width: 20vw;
+    min-width: 440px;
+    max-width: 700px;
+    height: 300px;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    background-color: black;
+    border: 2px solid orange;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.BlockPageLine>.CrewBoardDeleteCheckBox>.DeleteBoxBtnLine{
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    width: 100%;
+}
+
+.CrewBoardDeleteCheckBox>.DeleteBoxBtnLine>label{
+    display: flex;
+    width: 150px;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid gray;
+    border-radius: 10px;
+    cursor: pointer;
+    h1{
+        color: gray;
     }
+}
 
-    /* 투어 참여 확인 박스 */
-    .CrewTourAttendCheck{
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        background-color: black;
-        border: 2px solid orange;
-        border-radius: 20px;
-        width: 800px;
-        height: 300px;
-        align-items: center;
-        justify-content: center;
-        gap: 30px;
-        >div{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
-        }
-        label{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 150px;
-            height: 80px;
-            border: 4px solid gray;
-            border-radius: 20px;
-            cursor: pointer;
-            box-sizing: border-box;
-            h1{
-                color: gray;
-            }
-        }
-        label:hover{
-            border: 4px solid gold;
-            h1{
-                background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
-                -webkit-text-stroke-width: 0.1px;
-                -webkit-text-stroke-color: black;
-                -webkit-background-clip: text;
-                background-clip: text;
-                color: transparent;
-            }
-        }
+.CrewBoardDeleteCheckBox>.DeleteBoxBtnLine>label:hover{
+    border: 2px solid gold;
+    box-shadow: inset 2px 2px 10px gray, inset -2px -2px 10px gray;
+    h1{
+        background-image: linear-gradient(to right bottom,Orange, Yellow, Orange);
+        -webkit-text-stroke-width: 0.1px;
+        -webkit-text-stroke-color: black;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
     }
+}
 
+/* 크루 게시글 상단 라인 */
 
-    /* 삭제 확인 박스 */
-    .CrewBoardDeleteCheckBox{
-        position: absolute;
-        left: auto;
-        width: 800px;
-        height: 300px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+.CrewBoardDetail>.CrewBoardDetail_TopLine{
+    display: flex;
+    height: 180px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
 
-        gap: 40px;
-        background-color: black;
-        border: 2px solid orange;
-        border-radius: 20px;
-        box-sizing: border-box;
-        >div{
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            width: 100%;
-            label{
-                display: flex;
-                width: 150px;
-                height: 70px;
-                align-items: center;
-                justify-content: center;
-                border: 2px solid orange;
-                border-radius: 10px;
-                cursor: pointer;
-            }
-        }
+/* 크루 게시글 타이틀 및 타입 */
+.CrewBoardDetail_TopLine>.CrewBoardDetail_Title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 200px;
+    min-width: 200px;
+    height: 100%;
+}
 
-        
+/* 크루 게시글 정보 영역 */
+.CrewBoardDetail_TopLine>.CrewBoardDetail_Info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 980px;
+    height: 100%;
+    border: 2px solid orange;
+    border-radius: 20px;
+    gap: 5px;
+}
+
+/* 크루 게시글 정보 라인 */
+.CrewBoardDetail_Info>.CrewBoardDetail_InfoLine{
+    display: flex;
+    width: 100%;
+    height: 50%;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+/* 크루 게시글 작성자 */
+.CrewBoardDetail_InfoLine>.CrewBoardDetail_Writer{
+    display: flex;
+    width: max-content;
+    align-items: center;
+    height: 70px;
+    gap: 10px;
+}
+
+/* 작성자 등급 */
+.CrewBoardDetail_Writer>.WriterLevel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 50px;
+    border: 2px solid orange;
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/* 크루 게시글 지정 날짜 및 설정 버튼 */
+.CrewBoardDetail_InfoLine>.CrewBoardDetail_Date_SettingBtn{
+    display: flex;
+    align-items: center;
+    width: max-content;
+    height: 100%;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.CrewBoardDetail_Date_SettingBtn>.CrewBoardDate_ChangeLine{
+    display: none;
+    align-items: center;
+    justify-content: right;
+    width: max-content;
+    gap: 10px;
+}
+
+.CrewBoardDate_ChangeLine>.CrewBoardDate_ChangeBtn{
+    width: 100px;
+    height: 50px;
+    display: flex;
+    font-size: medium;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0);
+    color: gray;
+    border: 2px solid gray;
+    border-radius: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.CrewBoardDate_ChangeLine>.CrewBoardDate_ChangeBtn:hover{
+    color: orange;
+    box-shadow: inset 2px 2px 10px gray, inset -2px -2px 10px gray;
+    border: 2px solid orange;
+}
+
+.CrewBoardDate_ChangeLine>.DatePicker{
+    width: 140px;
+    min-width: 140px;
+}
+
+.CrewBoardDetail_Date_SettingBtn>.CrewBoardDetail_SettingBtnLine{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.CrewBoardDetail_SettingBtnLine>input{
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    border: 0px;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+}
+
+.CrewBoardDetail_SettingBtnLine>.BoardChangeBtn{
+    background-image: url("/public/img/ChangeBtnImg.png");
+}
+
+.CrewBoardDetail_SettingBtnLine>.BoardDeleteBtn{
+    background-image: url("/public/img/DeleteImg.png");
+}
+
+.CrewBoardDetail_InfoLine>.CrewBoardDetail_TitleSettingLine{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.CrewBoardDetail_TitleSettingLine>.CrewBoardDetail_TitleInputBox{
+    display: flex;
+    align-items: center;
+    border: 2px solid orange;
+    border-radius: 10px;
+    box-sizing: border-box;
+    height: 60px;
+    width: 400px;
+    font-size: medium;
+    font-weight: bolder;
+}
+
+.CrewBoardDetail_TitleSettingLine>.CrewBoardDetail_TitleChangeBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid orange;
+    color: orange;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    width: 100px;
+    height: 50px;
+}
+
+.CrewBoardDetail_InfoLine>.CrewBoardDetail_AddressLine{
+    display: none;
+    flex-direction: column;
+    width: 420px;
+    height: 100%;
+    gap: 5px;
+    h3{
+        margin: 0;
     }
+}
+
+.CrewBoardDetail_AddressLine>div{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.CrewBoardDetail_AddressLine>div>.CrewBoardDetail_AddressChangeBtn{
+    display: none;display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 30px;
+    border: 2px solid orange;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0);
+    color: orange;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.CrewBoardDetail_AddressLine>.CrewBoardDetail_AddressInputBox{
+    width: 400px;
+    min-width: 400px;
+}
 
 
-    .BoardTopLine{
-        display: flex;
-        height: 180px;
-        width: 100%;
-        align-items: center;
-        justify-content: space-between;
-        .boardTypeLine{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            width: 200px;
-            height: 100%;
-            margin-left: 30px;
-        }
-        
-        .TopLine1{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 980px;
-            height: 85%;
-            margin-right: 15px;
-            border: 2px solid orange;
-            border-radius: 20px;
-            gap: 5px;
-        }
-        .TopLine2{
-            display: flex;
-            width: 100%;
-            height: 60px;
-            align-items: center;
-            justify-content: space-between;
-            box-sizing: border-box;
-            padding: 10px;
-            .boardTitleOptionLine{
-                display: flex;
-                gap: 10px;
-                align-items: center;
-                justify-content: center;
-            }
-            .boardTitleChangeInput{
-                border: 2px solid orange;
-                border-radius: 10px;
-                box-sizing: border-box;
-                padding-left: 10px;
-                height: 60px;
-                width: 400px;
-                font-size: 25px;
-                font-weight: bold;
-            }
-            .BoardTitleChangeBtn{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: rgba(0, 0, 0, 0);
-                border: 2px solid orange;
-                color: orange;
-                font-size: 20px;
-                font-weight: bold;
-                border-radius: 10px;
-                box-sizing: border-box;
-                cursor: pointer;
-                width: 100px;
-                height: 50px;
-            }
-            .BoardInfoTop{
-                display: flex;
-                align-items: center;
-                gap: 15px;
-                span{
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    width: 90px;
-                    height: 50px;
-                    border: 3px solid orange;
-                    border-radius: 20px;
-                    h2{
-                        margin: 0;
-                    }
-                }
-                .boardDateChangeLine{
-                    display: flex;
-                    align-items: center;
-                    justify-content: right;
-                    width: max-content;
-                    gap: 10px;
-                    .BoardChangeUpBtn{
-                        width: 100px;
-                        height: 50px;
-                        display: flex;
-                        font-size: 20px;
-                        font-weight: bold;
-                        align-items: center;
-                        justify-content: center;
-                        background-color: rgba(0, 0, 0, 0);
-                        color: orange;
-                        border: 2px solid orange;
-                        border-radius: 10px;
-                        box-sizing: border-box;
-                        cursor: pointer;
-                    }
-                    .DatePicker{
-                        width: 140px;
-                    }
-                }
-            }
 
-            .BoardOptionLine{
-                display: flex;
-                gap: 5px;
-                input{
-                    width: 40px;
-                    height: 40px;
-                    background-size: cover;
-                    border: 0px;
-                    background-color: rgba(0, 0, 0, 0);
-                    color: rgba(0, 0, 0, 0);
-                    cursor: pointer;
-                }
-                .BoardChangeBtn{
-                    background-image: url("/public/img/ChangeBtnImg.png");
-                }
-                .BoardDeleteBtn{
-                    background-image: url("/public/img/DeleteImg.png");
-                }
-            }
-
-            .TourAddressLine{
-                display: flex;
-                flex-direction: column;
-                width: 420px;
-                height: 100%;
-                gap: 5px;
-                h3{
-                    margin: 0;
-                }
-                >div{
-                    display: flex;
-                    align-items: center;
-                    gap: 20px;
-                    .addressChangeUp{
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        width: 100px;
-                        height: 30px;
-                        border: 2px solid orange;
-                        border-radius: 10px;
-                        box-sizing: border-box;
-                        background-color: rgba(0, 0, 0, 0);
-                        color: orange;
-                        font-size: 15px;
-                        font-weight: bold;
-                        cursor: pointer;
-                    }
-                }
-                .addressInput{
-                    width: 400px;
-                }
-            }
-        }
-        
-    }
-
-
+.CrewBoardDetail{
     .BoardBottomLine{
         display: flex;
         width: 100%;
