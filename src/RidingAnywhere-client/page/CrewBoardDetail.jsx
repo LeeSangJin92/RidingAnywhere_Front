@@ -60,6 +60,20 @@ const CrewBoardDetail = () => {
         })
     }
 
+    // 🕹️ 게시글 종료 날짜 변경
+    const onChangeBoardEndDate = (date) => {
+        setChangeData({
+            ...changeData,endDate:date
+        })
+    }
+
+    // 🕹️ 게시글 시작 날짜 변경
+    const onChangeBoardStartDate = (date) => {
+        setChangeData({
+            ...changeData,startDate:date
+        })
+    }
+
     const onClickBoardChangeBtn = async (inputTag) => {
         console.log("🛜 데이터 수정 요청");
         console.log(changeData);
@@ -391,11 +405,11 @@ const CrewBoardDetail = () => {
                                         <div className='CrewBoardDate_InputBoxLine'>
                                             <div>
                                                 🗓️시작 
-                                                <DatePicker placeholderText={crewBoardData.startDate} boardData={changeData} isStartDate={true} setBoardData={setChangeData} dateEqual={false}/>
+                                                <DatePicker placeholderText={crewBoardData.startDate} value={changeData.startDate} onChange={onChangeBoardStartDate}/>
                                             </div>
                                             <div>
                                                 🗓️종료
-                                                <DatePicker placeholderText={crewBoardData.endDate} boardData={changeData} isStartDate={false} setBoardData={setChangeData} dateEqual={false}/>
+                                                <DatePicker placeholderText={crewBoardData.endDate} value={changeData.endDate} onChange={onChangeBoardEndDate}/>
                                             </div>
                                         </div>
                                     </div>
