@@ -388,10 +388,16 @@ const CrewBoardDetail = () => {
                                     <h2 style={!changeMode?{display:'flex'}:{display:'none'}}>🗓️시작:{crewBoardData.startDate}<br/>🗓️종료:{crewBoardData.endDate}</h2>
                                     <div style={changeMode?{display:'flex'}:{display:'none'}} className='CrewBoardDate_ChangeLine'>
                                         <input type='button' id='boardDate' className='CrewBoardDate_ChangeBtn' value={"기간 변경"} onClick={onClickBoardChangeBtn}/>
-                                        <h2>시작 </h2>
-                                        <DatePicker placeholderText={crewBoardData.startDate} boardData={changeData} isStartDate={true} setBoardData={setChangeData} dateEqual={false}/>
-                                        <h2>종료 </h2>
-                                        <DatePicker placeholderText={crewBoardData.endDate} boardData={changeData} isStartDate={false} setBoardData={setChangeData} dateEqual={false}/>
+                                        <div className='CrewBoardDate_InputBoxLine'>
+                                            <div>
+                                                🗓️시작 
+                                                <DatePicker placeholderText={crewBoardData.startDate} boardData={changeData} isStartDate={true} setBoardData={setChangeData} dateEqual={false}/>
+                                            </div>
+                                            <div>
+                                                🗓️종료
+                                                <DatePicker placeholderText={crewBoardData.endDate} boardData={changeData} isStartDate={false} setBoardData={setChangeData} dateEqual={false}/>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div className='CrewBoardDetail_SettingBtnLine' style={crewBoardData.writerId===userId?{display:'flex'}:{display:'none'}}>
                                         <input type='button' className='BoardChangeBtn' onClick={onClickChangeModeBtn}/>
