@@ -11,6 +11,10 @@
     box-sizing: border-box;
 }
 
+.DatePicker::placeholder{
+    font-size: medium;
+}
+
 .DatePicker::-webkit-input-placeholder {
     font-size: medium;
 }
