@@ -247,7 +247,6 @@
     flex-direction: column;
     width: max-content;
     height: 100%;
-    gap: 5px;
 }
 
 .CrewBoardDate_ChangeLine>.CrewBoardDate_InputBoxLine>div{
