@@ -145,12 +145,7 @@ const CrewBoardWrite = () => {
             method:"POST",
             body:JSON.stringify(boardData)
         }).then(response => {
-            if(response.status==200){
-                console.log("✅ 서버 작업 완료")
-                return response.json();
-            } else console.log("❌ 서버 통신 실패");
-        }).then(data=>{
-            if(data){
+            if(response.status===200){
                 switch(optionControl){
                     case "Note":
                         alert("😁 공지글이 등록되었습니다")
@@ -166,9 +161,13 @@ const CrewBoardWrite = () => {
                         break;
                     default:
                 }
-            console.log("✅ 게시글 등록 완료")
-            navigate("/CR/Board");
-            }
+                console.log("✅ 게시글 등록 완료");
+                navigate("/CR/Board");
+            } else {
+                alert("❌게시글 등록이 실패 했습니다.");
+                console.log("❌ 에러코드 : ",response.status);
+                console.log("❌ 서버 통신 실패");
+            };
         });
     }
 
