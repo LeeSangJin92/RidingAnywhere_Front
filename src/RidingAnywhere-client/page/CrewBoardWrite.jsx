@@ -217,8 +217,8 @@ const CrewBoardWrite = () => {
                                     </label>
                                     </div>
                                     <div className='TimeLine'>
-                                        <DatePicker className={"DatePicker"} placeholderText='시작 날짜' onChange={onChangeStartDate} value={boardData.startDate}/>
-                                        <DatePicker className={"DatePicker"} placeholderText='종료 날짜' onChange={onChangeEndDate} value={boardData.endDate} disabled={dateEqual}/>
+                                        <DatePicker placeholderText='시작 날짜' onChange={onChangeStartDate} value={boardData.startDate}/>
+                                        <DatePicker placeholderText='종료 날짜' onChange={onChangeEndDate} value={boardData.endDate} disabled={dateEqual}/>
                                     </div>
                                 </div>
                                 <div className='Option' id='Tour' style={optionControl==='Tour'?{display:'flex'}:{display:'none'}}>
@@ -229,8 +229,8 @@ const CrewBoardWrite = () => {
                                         </label>
                                     </div>
                                     <div className='TimeLine'>
-                                        <DatePicker className={"DatePicker"} placeholderText='시작 날짜' onChange={onChangeStartDate} value={boardData.startDate}/>
-                                        <DatePicker className={"DatePicker"} placeholderText='종료 날짜' onChange={onChangeEndDate} value={boardData.endDate} disabled={dateEqual}/>
+                                        <DatePicker placeholderText='시작 날짜' onChange={onChangeStartDate} value={boardData.startDate}/>
+                                        <DatePicker placeholderText='종료 날짜' onChange={onChangeEndDate} value={boardData.endDate} disabled={dateEqual}/>
                                     </div>
                                     <div className='CountMemberLine'>
                                         <h2>참석 인원</h2>

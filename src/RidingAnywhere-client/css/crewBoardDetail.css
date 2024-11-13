@@ -256,11 +256,6 @@
     align-items: center;
     height: 50%;
     gap: 5px;
-    .DatePicker{
-        width: 130px;
-        min-width: 130px;
-        height: 100%;
-    }
 }
 .CrewBoardDetail_Date_SettingBtn>.CrewBoardDetail_SettingBtnLine{
     display: flex;

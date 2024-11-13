@@ -5,4 +5,8 @@
     font-size: medium;
     font-weight: bolder;
     cursor: pointer;
+    width: 200px;
+    min-width: 200px;
+    height: 100%;
+    box-sizing: border-box;
 }
