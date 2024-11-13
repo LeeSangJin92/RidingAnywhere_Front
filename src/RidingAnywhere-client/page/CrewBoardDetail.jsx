@@ -405,11 +405,11 @@ const CrewBoardDetail = () => {
                                         <div className='CrewBoardDate_InputBoxLine'>
                                             <div>
                                                 🗓️시작 
-                                                <DatePicker placeholderText={crewBoardData.startDate} value={changeData.startDate} onChange={onChangeBoardStartDate}/>
+                                                <DatePicker className={"DatePicker"} placeholderText={crewBoardData.startDate} value={changeData.startDate} onChange={onChangeBoardStartDate}/>
                                             </div>
                                             <div>
                                                 🗓️종료
-                                                <DatePicker placeholderText={crewBoardData.endDate} value={changeData.endDate} onChange={onChangeBoardEndDate}/>
+                                                <DatePicker className={"DatePicker"} placeholderText={crewBoardData.endDate} value={changeData.endDate} onChange={onChangeBoardEndDate}/>
                                             </div>
                                         </div>
                                     </div>
