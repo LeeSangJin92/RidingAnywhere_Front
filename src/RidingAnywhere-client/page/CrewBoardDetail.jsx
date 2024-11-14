@@ -393,8 +393,12 @@ const CrewBoardDetail = () => {
                         <div className='CrewBoardDetail_Info'>
                             <div className='CrewBoardDetail_InfoLine'>
                                 <div className='CrewBoardDetail_Writer'>
-                                    <h2 className='WriterName'>✏️{crewBoardData.boardWriter}</h2>
+                                    <h2 className='WriterName'>{crewBoardData.boardWriter}</h2>
                                     <h2 className='WriterLevel'>{crewBoardData.writerLevel}</h2>
+                                    <div className='CrewBoardDetail_SettingBtnLine'>
+                                        <input type='button' className='BoardChangeBtn' onClick={onClickChangeModeBtn}/>
+                                        <input type='button' id='Board' className='BoardDeleteBtn' onClick={onClickDeleteBtn} value={boardId}/>
+                                    </div>
                                 </div>
                                 <div className='CrewBoardDetail_Date_SettingBtn'>
                                     <h2 style={!changeMode?{display:'flex'}:{display:'none'}}>🗓️시작:{crewBoardData.startDate}<br/>🗓️종료:{crewBoardData.endDate}</h2>
@@ -413,13 +417,13 @@ const CrewBoardDetail = () => {
                                     </div>
                                     <div className='CrewBoardDetail_SettingBtnLine' style={crewBoardData.writerId===userId?{display:'flex'}:{display:'none'}}>
                                         <input type='button' className='BoardChangeBtn' onClick={onClickChangeModeBtn}/>
-                                        <input type='button' id='Board'  className='BoardDeleteBtn' onClick={onClickDeleteBtn} value={boardId}/>
+                                        <input type='button' id='Board' className='BoardDeleteBtn' onClick={onClickDeleteBtn} value={boardId}/>
                                     </div>
                                 </div>
                                 
                             </div>
                             <div className='CrewBoardDetail_InfoLine'>
-                                <h1 style={!changeMode?{display:'flex'}:{display:'none'}}>{crewBoardData.boardTitle}</h1>
+                                <h2 style={!changeMode?{display:'flex'}:{display:'none'}}>{crewBoardData.boardTitle}</h2>
                                 <div className='CrewBoardDetail_TitleSettingLine'>
                                     <input className='CrewBoardDetail_TitleInputBox' type='text' id='boardTitle' style={changeMode?{display:'flex'}:{display:'none'}} placeholder={crewBoardData.boardTitle} value={changeData.boardTitle} onChange={onChangeBoardData}/>
                                     <input className='CrewBoardDetail_TitleChangeBtn' type='button' id='boardTitle'  style={changeMode?{display:'flex'}:{display:'none'}} value={"제목 변경"} onClick={onClickBoardChangeBtn}/>
