@@ -39,8 +39,8 @@ const CrewBoardDetail = () => {
         boardTitle : "",            // 게시글 제목
         boardContext : "",          // 게시글 내용
         emergencyNote : false,      // 게시글 긴급 여부
-        endDate : "",               // 게시글 일정 종료날짜
-        startDate : "",             // 게시글 일정 시작날짜
+        endDate : "2020년 01월 01일 수요일",               // 게시글 일정 종료날짜
+        startDate : "2020년 01월 01일 수요일",             // 게시글 일정 시작날짜
         address : "",           // 게시글 모임 장소
     })
 
@@ -110,7 +110,7 @@ const CrewBoardDetail = () => {
             }
         });
     }
-    
+
     const navigate = useNavigate();
 
     // 접속한 유저 정보
@@ -137,7 +137,6 @@ const CrewBoardDetail = () => {
                 else return Promise.reject(response.status);
             }).then(riderData=>{
                 console.log("🔍가입된 크루 조회")
-                console.log(riderData)
                 if(!riderData.crewId){
                     console.log("❌가입된 크루 없음");
                     alert("⚠️가입된 크루가 없습니다.\n - 가입 또는 생성 후 이용해주세요! -");
@@ -168,8 +167,8 @@ const CrewBoardDetail = () => {
         writerLevel : "",           // 작성자 등급
         boardViewCnt : "",          // 게시글 조회수
         emergencyNote : false,      // 게시글 긴급 여부
-        endDate : "",               // 게시글 일정 종료날짜
-        startDate : "",             // 게시글 일정 시작날짜
+        endDate : "2020년 01월 01일 수요일", // 게시글 일정 종료날짜
+        startDate : "2020년 01월 01일 수요일", // 게시글 일정 시작날짜
         regDate : "",               // 게시글 생성 날짜
         tourAddress : "",           // 게시글 모임 장소
     });
@@ -239,15 +238,17 @@ const CrewBoardDetail = () => {
                 "Content-Type": "application/json;charset=utf-8"
             }
         }).then(response => {
-            if(response.status==200){
+            if(response.status===200){
                 console.log("✅ 서버 작업 완료")
                 return response.json();
-            } else console.log("❌ 서버 통신 실패");
+            } else return Promise.reject(response.status);
         }).then(data=>{
             if(data){
                 setTourAttendData(data);
             }
-        })
+        }).catch(error=>{
+            rejectPromise(error);
+        });
     }
 
     // 🛜 게시글 데이터 조회 요청
