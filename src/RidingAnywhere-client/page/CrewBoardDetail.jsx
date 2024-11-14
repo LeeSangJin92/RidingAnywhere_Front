@@ -146,10 +146,10 @@ const CrewBoardDetail = () => {
                     setUserId(riderData.userData.userId);
                     return true;
                 }
-            }).then(()=>{
-                loadBoardData();
-            }).then(()=>{
-                loadCommentList();
+            }).then(async()=>{
+                await loadBoardData();
+            }).then(async()=>{
+                await loadCommentList();
             }).catch(error=>{
                 rejectPromise(error);
             });
