@@ -39,8 +39,8 @@ const CrewBoardDetail = () => {
         boardTitle : "",            // 게시글 제목
         boardContext : "",          // 게시글 내용
         emergencyNote : false,      // 게시글 긴급 여부
-        endDate : "2020년 01월 01일 수요일",               // 게시글 일정 종료날짜
-        startDate : "2020년 01월 01일 수요일",             // 게시글 일정 시작날짜
+        endDate : "",               // 게시글 일정 종료날짜
+        startDate : "",             // 게시글 일정 시작날짜
         address : "",           // 게시글 모임 장소
     })
 
@@ -167,8 +167,8 @@ const CrewBoardDetail = () => {
         writerLevel : "",           // 작성자 등급
         boardViewCnt : "",          // 게시글 조회수
         emergencyNote : false,      // 게시글 긴급 여부
-        endDate : "2020년 01월 01일 수요일", // 게시글 일정 종료날짜
-        startDate : "2020년 01월 01일 수요일", // 게시글 일정 시작날짜
+        endDate : "", // 게시글 일정 종료날짜
+        startDate : "", // 게시글 일정 시작날짜
         regDate : "",               // 게시글 생성 날짜
         tourAddress : "",           // 게시글 모임 장소
     });
@@ -264,7 +264,7 @@ const CrewBoardDetail = () => {
                 console.log("✅ 서버 작업 완료")
                 return response.json();
             } else return Promise.reject(response.status)
-        }).then(boardData=>{
+        }).then(async boardData=>{
             if(boardData){
                 // 🛠️ 게시글 타입 설정
                 let resultBoardType = "";
@@ -274,7 +274,7 @@ const CrewBoardDetail = () => {
                         break;
                     case "Tour" : 
                         resultBoardType = "🚩모임글"
-                        loadTourAttend();
+                        await loadTourAttend();
                         break;
                     case "Free" : 
                         resultBoardType = "🆓자유글"
@@ -315,10 +315,10 @@ const CrewBoardDetail = () => {
                     regDate : new Date(boardData.regDate).toLocaleDateString('ko-KR',dateformatte),
                     tourAddress : boardData.address
                 }
-                if(resultBoardType==="🚩모임글") {
-                    if(boardData.writer.userId===userId){setCheckAttend(true)};
-                    loadTourAttend();
-                };
+                // if(resultBoardType==="🚩모임글") {
+                //     if(boardData.writer.userId===userId){setCheckAttend(true)};
+                //     loadTourAttend();
+                // };
                 setCrewBoardData(resultBoardData);
             }
         }).catch(error=>{
