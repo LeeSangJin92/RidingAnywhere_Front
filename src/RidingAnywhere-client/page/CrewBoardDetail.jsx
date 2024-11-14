@@ -116,10 +116,13 @@ const CrewBoardDetail = () => {
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"}
             }).then(response => {
-                if(response.status==200){
+                if(response.status===200){
                     console.log("✅ 서버 작업 완료")
                     return response.json();
-                } else console.log("❌ 서버 통신 실패");
+                } else {
+                    alert("⚠️서버 접근 에러가 발생했습니다.");
+                    console.log("에러 코드 : "+response.status)
+                    console.log("❌ 서버 통신 실패")};
             }).then(data => {
                 if(!!data){
                     if(!data.crewId){
