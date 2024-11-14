@@ -122,6 +122,7 @@ const CrewBoardDetail = () => {
                     console.log("✅라이더 정보 확인")
                     let riderData = response.json();
                     console.log("🔍가입된 크루 조회")
+                    console.log(riderData)
                     if(!riderData.crewId){
                         console.log("❌가입된 크루 없음");
                         alert("⚠️가입된 크루가 없습니다.\n - 가입 또는 생성 후 이용해주세요! -");
