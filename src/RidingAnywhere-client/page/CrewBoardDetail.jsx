@@ -15,8 +15,6 @@ const CrewBoardDetail = () => {
 
     useEffect(()=>{
         checkData();
-        loadCommentList();
-        loadBoardData();
     },[])
 
     // 게시글 ID
@@ -84,7 +82,7 @@ const CrewBoardDetail = () => {
                 "Content-Type": "application/json;charset=utf-8"},
             body:JSON.stringify(changeData)
         }).then(response => {
-            if(response.status==200){
+            if(response.status===200){
                 console.log("✅ 수정 완료")
                 alert("✅ 데이터 수정이 완료 했습니다.")
                 setChangeMode(false);
@@ -99,48 +97,57 @@ const CrewBoardDetail = () => {
 
 
     const navigate = useNavigate();
-    // 토큰 체크
-    const [accessToken] = useState(!sessionStorage.getItem('accessToken'));
 
     // 접속한 유저 정보
     const [userId, setUserId] = useState(0);
 
      // 접속한 유저 정보 가져오기
      const checkData = async () => {
-        console.log("🛜 라이더 엑세스 체크 중...")
-        if(!accessToken){
-            console.log("✅ 접속자에게 엑세스 있음!")
-            console.log("🛜 라이더 데이터 확인 중...")
+        console.log("🛜로그인 라이더 정보 요청")
+        // 🔍 토근 정보 확인
+        if(!sessionStorage.getItem('accessToken')){
+            console.log("⛔접근 권한 없음");
+            alert("⚠️로그인이 필요합니다.⚠️\n - 로그인 페이지로 이동합니다. - ")
+            console.log("🛠️로그인 페이지 이동")
+            navigate("/RA/login");
+        } else {
+            console.log("✅접근 권한 확인");;
+            console.log("🛜라이더 정보 요청");
             await fetch("https://ridinganywhere.site/RA/CheckRider",
             {headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"}
             }).then(response => {
                 if(response.status===200){
-                    console.log("✅ 서버 작업 완료")
-                    return response.json();
-                } else {
-                    alert("⚠️서버 접근 에러가 발생했습니다.");
-                    console.log("에러 코드 : "+response.status)
-                    console.log("❌ 서버 통신 실패")};
-            }).then(data => {
-                if(!!data){
-                    if(!data.crewId){
-                    console.log("❌ 가입된 크루 없음")
-                    alert("⚠️가입된 크루가 없습니다.\n - 가입 또는 생성 후 이용해주세요! -");
-                    navigate("/RA/Home");
+                    console.log("✅라이더 정보 확인")
+                    let riderData = response.json();
+                    console.log("🔍가입된 크루 조회")
+                    if(!riderData.crewId){
+                        console.log("❌가입된 크루 없음");
+                        alert("⚠️가입된 크루가 없습니다.\n - 가입 또는 생성 후 이용해주세요! -");
+                        navigate("/RA/Home");
+                    } else{
+                        console.log("✅가입된 크루 확인");
+                        setUserId(riderData.userData.userId);
+                        return true;
                     }
-                    console.log("✅ 라이더 데이터 수집 완료!");
-                    setUserId(data.userData.userId);
-                    return data.userData.userId;
-                }
-            })}else{
-                console.log("⛔ 접속자에게 엑세스 없음");
-                alert("⚠️로그인이 필요합니다.⚠️\n - 로그인 페이지로 이동합니다. - ")
-                console.log("🛠️ 로그인 페이지로 이동")
-                navigate("/RA/login");
-            }
-        };
+                } 
+                else if(response.status===401) {
+                    alert("⚠️서버 접근 권한이 없습니다.\n - 로그인 페이지로 이동합니다. -");
+                    console.log("❌접근 토큰 만료");
+                    navigate("/RA/login");
+                } else{
+                    alert("⚠️서버 연결에 실패했습니다.\n - 로그인 페이지로 이동합니다. -");
+                    console.log("❌에러 코드 : " + response.status);
+                    navigate("/RA/login");
+                };
+            }).then(()=>{
+                loadBoardData();
+            }).then(()=>{
+                loadCommentList();
+            })
+        }
+    };
 
     // ✏️ 게시글 데이터
     const [crewBoardData, setCrewBoardData] = useState({
@@ -197,7 +204,15 @@ const CrewBoardDetail = () => {
             if(response.status==200){
                 console.log("✅ 서버 작업 완료")
                 return response.json();
-            } else console.log("❌ 서버 통신 실패");
+            } else if(response.status===401) {
+                alert("⚠️서버 접근 권한이 없습니다.\n - 로그인 페이지로 이동합니다. -");
+                console.log("❌접근 토큰 만료");
+                navigate("/RA/login");
+            } else{
+                alert("⚠️서버 연결에 실패했습니다.\n - 로그인 페이지로 이동합니다. -");
+                console.log("❌에러 코드 : " + response.status);
+                navigate("/RA/login");
+            };
         }).then(data=>{
             if(data){
                 console.log("✅ 모임 참석 데이터 저장 완료");
@@ -228,18 +243,26 @@ const CrewBoardDetail = () => {
     }
 
     // 🛜 게시글 데이터 조회 요청
-    const loadBoardData = async (props) => {
-        console.log("🛜 서버로 게시글 조회 요청");
+    const loadBoardData = async () => {
+        console.log("🛜게시글 데이터 요청");
         await fetch(`https://ridinganywhere.site/CR/BoardDetail/Board?boardId=${boardId}`,{
             headers:{
                 "Authorization": `Bearer ${sessionStorage.getItem('accessToken')}`,
                 "Content-Type": "application/json;charset=utf-8"
             }
         }).then(response => {
-            if(response.status==200){
+            if(response.status===200){
                 console.log("✅ 서버 작업 완료")
                 return response.json();
-            } else console.log("❌ 서버 통신 실패");
+            } else if(response.status===401) {
+                alert("⚠️서버 접근 권한이 없습니다.\n - 로그인 페이지로 이동합니다. -");
+                console.log("❌접근 토큰 만료");
+                navigate("/RA/login");
+            } else{
+                alert("⚠️서버 연결에 실패했습니다.\n - 로그인 페이지로 이동합니다. -");
+                console.log("❌에러 코드 : " + response.status);
+                navigate("/RA/login");
+            };
         }).then(boardData=>{
             if(boardData){
                 // 🛠️ 게시글 타입 설정
@@ -295,7 +318,6 @@ const CrewBoardDetail = () => {
                     if(boardData.writer.userId===userId){setCheckAttend(true)};
                     loadTourAttend();
                 };
-
                 setCrewBoardData(resultBoardData);
             }
         })
@@ -327,7 +349,15 @@ const CrewBoardDetail = () => {
             if(response.status==200){
                 console.log("✅ 서버 작업 완료")
                 return response.json();
-            } else console.log("❌ 서버 통신 실패");
+            } else if(response.status===401) {
+                alert("⚠️서버 접근 권한이 없습니다.\n - 로그인 페이지로 이동합니다. -");
+                console.log("❌접근 토큰 만료");
+                navigate("/RA/login");
+            } else{
+                alert("⚠️서버 연결에 실패했습니다.\n - 로그인 페이지로 이동합니다. -");
+                console.log("❌에러 코드 : " + response.status);
+                navigate("/RA/login");
+            };
         }).then(data => {
             if(data){
                 alert("✅ 등록이 완료 되었습니다..");
@@ -362,10 +392,18 @@ const CrewBoardDetail = () => {
                 "Content-Type": "application/json;charset=utf-8"
             }
         }).then(response => {
-            if(response.status==200){
+            if(response.status===200){
                 console.log("✅ 서버 작업 완료")
                 return response.json();
-            } else console.log("❌ 서버 통신 실패");
+            } else if(response.status===401) {
+                alert("⚠️서버 접근 권한이 없습니다.\n - 로그인 페이지로 이동합니다. -");
+                console.log("❌접근 토큰 만료");
+                navigate("/RA/login");
+            } else{
+                alert("⚠️서버 연결에 실패했습니다.\n - 로그인 페이지로 이동합니다. -");
+                console.log("❌에러 코드 : " + response.status);
+                navigate("/RA/login");
+            };
         }).then(commentListData=>{
             !!commentListData&&setCommentList(commentListData);
             setBlockList(false);
