@@ -424,15 +424,17 @@ const CrewBoardDetail = () => {
                         </div>
                         <div className='CrewBoardDetail_Info'>
                             <div className='CrewBoardDetail_InfoLine'>
-                                <div className='CrewBoardDetail_Writer'>
-                                    <h2 className='WriterName'>{crewBoardData.boardWriter}</h2>
-                                    <h2 className='WriterLevel'>{crewBoardData.writerLevel}</h2>
+                                <div className='CrewBoardDetail_First'>
+                                    <div className='CrewBoardDetail_Writer'>
+                                        <h2 className='WriterName'>{crewBoardData.boardWriter}</h2>
+                                        <h2 className='WriterLevel'>{crewBoardData.writerLevel}</h2>
+                                    </div>
                                     <div className='CrewBoardDetail_SettingBtnLine'>
                                         <input type='button' className='BoardChangeBtn' onClick={onClickChangeModeBtn} style={crewBoardData.writerId===userId?{display:'flex'}:{display:'none'}}/>
                                         <input type='button' id='Board' className='BoardDeleteBtn' onClick={onClickDeleteBtn} value={boardId} style={crewBoardData.writerId===userId?{display:'flex'}:{display:'none'}}/>
                                     </div>
                                 </div>
-                                <div className='CrewBoardDetail_Date_SettingBtn'>
+                                <div className='CrewBoardDetail_Second'>
                                     <h2 style={!changeMode?{display:'flex'}:{display:'none'}}>🗓️시작:{crewBoardData.startDate}<br/>🗓️종료:{crewBoardData.endDate}</h2>
                                     <div style={changeMode?{display:'flex'}:{display:'none'}} className='CrewBoardDate_ChangeLine'>
                                         <input type='button' id='boardDate' className='CrewBoardDate_ChangeBtn' value={"기간 변경"} onClick={onClickBoardChangeBtn}/>

@@ -181,7 +181,7 @@
 }
 
 /* 크루 게시글 작성자 */
-.CrewBoardDetail_InfoLine>.CrewBoardDetail_Writer{
+.CrewBoardDetail_InfoLine>.CrewBoardDetail_First{
     display: flex;
     width: max-content;
     align-items: center;
@@ -215,14 +215,14 @@
     margin: 0;
 }
 
-.CrewBoardDetail_Writer>.CrewBoardDetail_SettingBtnLine{
+.CrewBoardDetail_First>.CrewBoardDetail_SettingBtnLine{
     display: none;
     align-items: center;
     justify-content: center;
 }
 
 /* 크루 게시글 지정 날짜 및 설정 버튼 */
-.CrewBoardDetail_InfoLine>.CrewBoardDetail_Date_SettingBtn{
+.CrewBoardDetail_InfoLine>.CrewBoardDetail_Second{
     display: flex;
     align-items: center;
     width: max-content;
@@ -232,7 +232,7 @@
     justify-content: space-between;
 }
 
-.CrewBoardDetail_Date_SettingBtn>h2{
+.CrewBoardDetail_Second>h2{
     width: 370px;
     min-width: 370px;
     height: 100%;
@@ -240,7 +240,7 @@
     justify-content: center;
 }
 
-.CrewBoardDetail_Date_SettingBtn>.CrewBoardDate_ChangeLine{
+.CrewBoardDetail_Second>.CrewBoardDate_ChangeLine{
     display: none;
     align-items: center;
     justify-content: right;
@@ -285,7 +285,7 @@
     height: 50%;
     gap: 5px;
 }
-.CrewBoardDetail_Date_SettingBtn>.CrewBoardDetail_SettingBtnLine{
+.CrewBoardDetail_Second>.CrewBoardDetail_SettingBtnLine{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -915,12 +915,21 @@
     .CrewBoardDetail_Info>.CrewBoardDetail_InfoLine{
         flex-direction: column;
     }
+
+    .CrewBoardDetail_InfoLine>.CrewBoardDetail_First{
+        width: 100%;
+    }
+
+    .CrewBoardDetail_InfoLine>.CrewBoardDetail_Second{
+        width: 100%;
+        justify-content: flex-end;
+    }
     
-    .CrewBoardDetail_Writer>.CrewBoardDetail_SettingBtnLine{
+    .CrewBoardDetail_First>.CrewBoardDetail_SettingBtnLine{
         display: flex;
     }
 
-    .CrewBoardDetail_Date_SettingBtn>.CrewBoardDetail_SettingBtnLine{
+    .CrewBoardDetail_Second>.CrewBoardDetail_SettingBtnLine{
         display: none;
     }
 
