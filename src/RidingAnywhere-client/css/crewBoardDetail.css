@@ -190,6 +190,13 @@
     gap: 10px;
 }
 
+.CrewBoardDetail_First>.CrewBoardDetail_Writer{
+    display: flex;
+    width: max-content;
+    align-items: center;
+    height: 100%;
+}
+
 .CrewBoardDetail_Writer>.WriterName{
     display: flex;
     justify-content: center;
@@ -918,6 +925,7 @@
 
     .CrewBoardDetail_InfoLine>.CrewBoardDetail_First{
         width: 100%;
+        justify-content: space-between;
     }
 
     .CrewBoardDetail_InfoLine>.CrewBoardDetail_Second{
