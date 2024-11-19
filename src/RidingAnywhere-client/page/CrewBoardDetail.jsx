@@ -428,8 +428,8 @@ const CrewBoardDetail = () => {
                                     <h2 className='WriterName'>{crewBoardData.boardWriter}</h2>
                                     <h2 className='WriterLevel'>{crewBoardData.writerLevel}</h2>
                                     <div className='CrewBoardDetail_SettingBtnLine'>
-                                        <input type='button' className='BoardChangeBtn' onClick={onClickChangeModeBtn}/>
-                                        <input type='button' id='Board' className='BoardDeleteBtn' onClick={onClickDeleteBtn} value={boardId}/>
+                                        <input type='button' className='BoardChangeBtn' onClick={onClickChangeModeBtn} style={crewBoardData.writerId===userId?{display:'flex'}:{display:'none'}}/>
+                                        <input type='button' id='Board' className='BoardDeleteBtn' onClick={onClickDeleteBtn} value={boardId} style={crewBoardData.writerId===userId?{display:'flex'}:{display:'none'}}/>
                                     </div>
                                 </div>
                                 <div className='CrewBoardDetail_Date_SettingBtn'>
@@ -447,9 +447,9 @@ const CrewBoardDetail = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className='CrewBoardDetail_SettingBtnLine' style={crewBoardData.writerId===userId?{display:'flex'}:{display:'none'}}>
-                                        <input type='button' className='BoardChangeBtn' onClick={onClickChangeModeBtn}/>
-                                        <input type='button' id='Board' className='BoardDeleteBtn' onClick={onClickDeleteBtn} value={boardId}/>
+                                    <div className='CrewBoardDetail_SettingBtnLine'>
+                                        <input type='button' className='BoardChangeBtn' onClick={onClickChangeModeBtn} style={crewBoardData.writerId===userId?{display:'flex'}:{display:'none'}}/>
+                                        <input type='button' id='Board' className='BoardDeleteBtn' onClick={onClickDeleteBtn} value={boardId} style={crewBoardData.writerId===userId?{display:'flex'}:{display:'none'}}/>
                                     </div>
                                 </div>
                                 

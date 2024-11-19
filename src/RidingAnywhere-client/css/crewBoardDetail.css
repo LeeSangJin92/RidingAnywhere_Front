@@ -292,12 +292,13 @@
 }
 
 .CrewBoardDetail_SettingBtnLine>input{
+    display: none;
     width: 40px;
     height: 40px;
     background-size: cover;
     border: 0px;
     background-color: rgba(0, 0, 0, 0);
-    color: rgba(0, 0, 0, 0);
+    font-size: 0;
     cursor: pointer;
 }
 
