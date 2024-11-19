@@ -458,9 +458,9 @@ const CrewBoardDetail = () => {
                             </div>
                             <div className='CrewBoardDetail_InfoLine'>
                                 <h2 style={!changeMode?{display:'flex'}:{display:'none'}}>{crewBoardData.boardTitle}</h2>
-                                <div className='CrewBoardDetail_TitleSettingLine'>
-                                    <input className='CrewBoardDetail_TitleInputBox' type='text' id='boardTitle' style={changeMode?{display:'flex'}:{display:'none'}} placeholder={crewBoardData.boardTitle} value={changeData.boardTitle} onChange={onChangeBoardData}/>
-                                    <input className='CrewBoardDetail_TitleChangeBtn' type='button' id='boardTitle'  style={changeMode?{display:'flex'}:{display:'none'}} value={"제목 변경"} onClick={onClickBoardChangeBtn}/>
+                                <div className='CrewBoardDetail_TitleSettingLine'style={changeMode?{display:'flex'}:{display:'none'}}>
+                                    <input className='CrewBoardDetail_TitleInputBox' type='text' id='boardTitle' placeholder={crewBoardData.boardTitle} value={changeData.boardTitle} onChange={onChangeBoardData}/>
+                                    <input className='CrewBoardDetail_TitleChangeBtn' type='button' id='boardTitle' value={"제목 변경"} onClick={onClickBoardChangeBtn}/>
                                 </div>
                                 <div className='CrewBoardDetail_AddressLine' style={crewBoardData.boardType==='🚩모임글'?{display:'flex'}:{display:'none'}}>
                                     <div>

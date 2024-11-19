@@ -319,7 +319,6 @@
 }
 
 .CrewBoardDetail_InfoLine>.CrewBoardDetail_TitleSettingLine{
-    display: flex;
     width: 50%;
     gap: 10px;
     align-items: center;
@@ -327,7 +326,6 @@
 }
 
 .CrewBoardDetail_TitleSettingLine>.CrewBoardDetail_TitleInputBox{
-    display: flex;
     align-items: center;
     border: 2px solid orange;
     border-radius: 10px;
@@ -340,7 +338,6 @@
 }
 
 .CrewBoardDetail_TitleSettingLine>.CrewBoardDetail_TitleChangeBtn{
-    display: flex;
     align-items: center;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0);
